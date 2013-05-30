@@ -56,6 +56,7 @@ set virtualedit=all " this means we can go into empty spaces
 set hidden          " this is so we can hide windows without complaints
 " set wildmode=longest,list,full " enables longer tab completion
 set wildmenu        " enables tab completion on stuff like tabe
+set switchbuf+=usetab,newtab " this will make it switch to a tab if I already have the file open and open the quickfix in a tab
 
 syntax on           " syntax highlighing
 colorscheme molokai    " use this color scheme
@@ -74,7 +75,16 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.scss set ft=css
     autocmd BufRead,BufNewFile *.json set ft=json syntax=javascript
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+    autocmd BufRead,BufNewFile *.go set filetype=go
+    
+    " This make it so I can go to the place I want to go to in quickfix
+    autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 endif
+
+" function definitions
+function FindAll(where, to_find)
+  execute ":vimgrep " . a:to_find . " " . a:where . " | copen"
+endfunction
  
 " Keyboard mappings"
 
@@ -96,7 +106,7 @@ vnoremap C "_C
 vnoremap p "_dP
 " tab and window quick edit shortcuts
 nnoremap te :tabe **/
-nnoremap tn :tabnew <CR>
+nnoremap tn :tabnew<CR>
 nnoremap tv :vsp **/
 nnoremap th :split **/
 " window movement shortcuts
@@ -104,3 +114,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" find all occurences shortcut
+nnoremap fa :Fa **/* 
+command! -nargs=* Fa call FindAll(<f-args>)
