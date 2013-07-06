@@ -61,6 +61,9 @@ set switchbuf+=usetab,newtab " this will make it switch to a tab if I already ha
 syntax on           " syntax highlighing
 colorscheme molokai    " use this color scheme
 
+" Set Netrw defaults
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+
 if has("autocmd")
     " Restore cursor position
     au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
