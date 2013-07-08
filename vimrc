@@ -121,3 +121,20 @@ nnoremap <C-l> <C-w>l
 " find all occurences shortcut
 nnoremap fa :Fa **/* 
 command! -nargs=* Fa call FindAll(<f-args>)
+
+
+" airline extention settings
+
+" remove separators
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+" remove unused modes
+let g:airline_enable_fugitive=0
+let g:airline_enable_syntastic=0
+" set second section to filename
+let g:airline_section_b="%f"
+" empty third and fourth sections
+let g:airline_section_c=""
+let g:airline_section_x=""
+" put filetype in fifth section
+let g:airline_section_y="%Y"
