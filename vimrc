@@ -16,6 +16,7 @@ Bundle 'molokai'
 Bundle 'vim-coffee-script'
 Bundle 'surround.vim'
 Bundle 'pbcopy.vim'
+Bundle 'bling/vim-airline'
 
 filetype plugin indent on     " required!
 
