@@ -17,6 +17,7 @@ Bundle 'vim-coffee-script'
 Bundle 'surround.vim'
 Bundle 'pbcopy.vim'
 Bundle 'bling/vim-airline'
+Bundle 'slim-template/vim-slim'
 
 filetype plugin indent on     " required!
 
@@ -58,6 +59,7 @@ set hidden          " this is so we can hide windows without complaints
 " set wildmode=longest,list,full " enables longer tab completion
 set wildmenu        " enables tab completion on stuff like tabe
 set switchbuf+=usetab,newtab " this will make it switch to a tab if I already have the file open and open the quickfix in a tab
+set pastetoggle=<F3>
 
 syntax on           " syntax highlighing
 colorscheme molokai    " use this color scheme
@@ -123,7 +125,9 @@ nnoremap fa :Fa **/*
 command! -nargs=* Fa call FindAll(<f-args>)
 
 
-" airline extention settings
+" bett copy and paste
+imap <C-v>  <C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
+
 
 " remove separators
 let g:airline_left_sep=''
