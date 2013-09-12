@@ -18,6 +18,7 @@ Bundle 'surround.vim'
 Bundle 'pbcopy.vim'
 Bundle 'bling/vim-airline'
 Bundle 'slim-template/vim-slim'
+Bundle "http://github.com/jnwhiteh/vim-golang.git"
 
 filetype plugin indent on     " required!
 
@@ -29,6 +30,8 @@ set expandtab				"spaces insteaf of tabs
 set smarttab				" set tabspacing to be uniform
 set scrolloff=3     " keep 3 lines when scrolling
 set showcmd         " display incomplete commands
+set backspace=2     " make backspace work like most other apps
+set backspace=indent,eol,start " make backspace work like most other apps 
 set hlsearch        " highlight searches
 set incsearch       " do incremental searching
 set ruler           " show the cursor position all the time
@@ -56,16 +59,17 @@ set showmatch       " highlight matches
 set nowrap          " text wrap off eff that sheet
 set virtualedit=all " this means we can go into empty spaces
 set hidden          " this is so we can hide windows without complaints
-" set wildmode=longest,list,full " enables longer tab completion
 set wildmenu        " enables tab completion on stuff like tabe
 set switchbuf+=usetab,newtab " this will make it switch to a tab if I already have the file open and open the quickfix in a tab
 set pastetoggle=<F3>
+set clipboard+=unnamed
 
 syntax on           " syntax highlighing
 colorscheme molokai    " use this color scheme
 
 " Set Netrw defaults
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+let g:netrw_list_hide= '.*\.swp$,\.DS_Store,^\.\/$'
 
 if has("autocmd")
     " Restore cursor position
@@ -77,13 +81,17 @@ if has("autocmd")
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     autocmd Filetype html,xml,xsl source ~/.vim/closetag.vim
-    autocmd BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru} set ft=ruby
+    autocmd FileType go set omnifunc=gocomplete#Complete
+    autocmd FileType golang set omnifunc=gocomplete#Complete
+
+    autocmd BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru,*.jbuilder,*.csvbuilder} set ft=ruby
     autocmd BufRead,BufNewFile *.scss set ft=css
     autocmd BufRead,BufNewFile *.json set ft=json syntax=javascript
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+    autocmd BufRead,BufNewFile *.coffee set filetype=coffee
     autocmd BufRead,BufNewFile *.go set filetype=go
     
-    " This make it so I can go to the place I want to go to in quickfix
+    " This will enable pressing <CR> on a file in the quickfix and it will
+    " open a new window with that file
     autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 endif
 
@@ -94,6 +102,15 @@ endfunction
  
 " Keyboard mappings"
 
+" turn off the damn arrow keys
+noremap  <Up>     <NOP>
+noremap  <Down>   <NOP>
+noremap  <Left>   <NOP>
+noremap  <Right>  <NOP>
+inoremap <Up>     <NOP>
+inoremap <Down>   <NOP>
+inoremap <Left>   <NOP>
+inoremap <Right>  <NOP>
 " switch tab shortcuts
 map <C-m> gt
 map <C-n> gT
@@ -123,11 +140,6 @@ nnoremap <C-l> <C-w>l
 " find all occurences shortcut
 nnoremap fa :Fa **/* 
 command! -nargs=* Fa call FindAll(<f-args>)
-
-
-" bett copy and paste
-imap <C-v>  <C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
-
 
 " remove separators
 let g:airline_left_sep=''

@@ -38,9 +38,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export GOROOT=/usr/local/go
-export PATH=/Users/tanema/.rvm/gems/jruby-1.7.2@global/bin:/Users/tanema/.rvm/gems/jruby-1.7.2@global/bin:/Users/tanema/.rvm/rubies/jruby-1.7.2/bin:/Users/tanema/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/git/bin:/usr/local/share/npm/bin:/usr/local/sbin:$GOROOT/bin
-. ~/nvm/nvm.sh
+export PATH=/Library/android-sdk/platform-tools:/Users/tanema/.rvm/gems/jruby-1.7.2@global/bin:/Users/tanema/.rvm/gems/jruby-1.7.2@global/bin:/Users/tanema/.rvm/rubies/jruby-1.7.2/bin:/Users/tanema/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/git/bin:/usr/local/share/npm/bin:/usr/local/sbin:$GOROOT/bin
+. ~/tools/nvm/nvm.sh
 
 #stop autocorrect
 #unsetopt correct_all
 [[ -s "/Users/tanema/tools/gob/gob.sh" ]] && source "/Users/tanema/tools/gob/gob.sh" # Load gob
+
+#alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+
+alias tarhelp='echo "create:  tar -zcvf arc.tar.gx dir \nextract: tar -zxvf arc.tar.gz [-C outputdir] \n-z use gzip \n-v verbose \n-f filename \n-c create \n-x extract"'
