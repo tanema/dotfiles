@@ -111,6 +111,16 @@ inoremap <Up>     <NOP>
 inoremap <Down>   <NOP>
 inoremap <Left>   <NOP>
 inoremap <Right>  <NOP>
+vnoremap <Up>     <NOP>
+vnoremap <Down>   <NOP>
+vnoremap <Left>   <NOP>
+vnoremap <Right>  <NOP>
+
+"save my wrist with semicolon swap with colon
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ; 
 " switch tab shortcuts
 map <C-m> gt
 map <C-n> gT
