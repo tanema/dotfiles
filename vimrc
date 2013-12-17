@@ -13,10 +13,10 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 Bundle 'molokai'
-Bundle 'vim-coffee-script'
 Bundle 'surround.vim'
-Bundle 'pbcopy.vim'
 Bundle 'bling/vim-airline'
+"syntax
+Bundle 'vim-coffee-script'
 Bundle 'slim-template/vim-slim'
 Bundle "http://github.com/jnwhiteh/vim-golang.git"
 
@@ -63,6 +63,9 @@ set wildmenu        " enables tab completion on stuff like tabe
 set switchbuf+=usetab,newtab " this will make it switch to a tab if I already have the file open and open the quickfix in a tab
 set pastetoggle=<F3>
 set clipboard+=unnamed
+set colorcolumn=85
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="80,".join(range(120,999),",")
 
 syntax on           " syntax highlighing
 colorscheme molokai    " use this color scheme
@@ -75,20 +78,18 @@ if has("autocmd")
     " Restore cursor position
     au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
  
-    " Ctrl+X O
     autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-    autocmd Filetype html,xml,xsl source ~/.vim/closetag.vim
-    autocmd FileType go set omnifunc=gocomplete#Complete
-    autocmd FileType golang set omnifunc=gocomplete#Complete
+    autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+    autocmd FileType go,golang  set omnifunc=gocomplete#Complete
 
-    autocmd BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru,*.jbuilder,*.csvbuilder} set ft=ruby
-    autocmd BufRead,BufNewFile *.scss set ft=css
-    autocmd BufRead,BufNewFile *.json set ft=json syntax=javascript
+    autocmd BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru,*.jbuilder,*.csvbuilder} set filetype=ruby
+    autocmd BufRead,BufNewFile *.scss   set filetype=css
+    autocmd BufRead,BufNewFile *.json   set filetype=json syntax=javascript
     autocmd BufRead,BufNewFile *.coffee set filetype=coffee
-    autocmd BufRead,BufNewFile *.go set filetype=go
+    autocmd BufRead,BufNewFile *.go     set filetype=go
+    autocmd BufRead,BufNewFile *.slim     set filetype=slim
     
     " This will enable pressing <CR> on a file in the quickfix and it will
     " open a new window with that file
@@ -116,6 +117,9 @@ vnoremap <Down>   <NOP>
 vnoremap <Left>   <NOP>
 vnoremap <Right>  <NOP>
 
+" disable Ex mode key and map it to last macro
+nnoremap Q @@
+xnoremap Q @@
 "save my wrist with semicolon swap with colon
 nnoremap ; :
 nnoremap : ;
@@ -164,3 +168,6 @@ let g:airline_section_c=""
 let g:airline_section_x=""
 " put filetype in fifth section
 let g:airline_section_y="%Y"
+
+"this needs to be at the bottom otherwise it wont work
+hi ColorColumn ctermbg=235 guibg=#2c2d27
