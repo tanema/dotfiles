@@ -38,16 +38,11 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export GOROOT=/usr/local/go
-#export GOPATH=~/workspace/go
-export PATH=/usr/bin:/Library/flex_sdk/bin:/Library/android-sdk/tools:/Library/android-sdk/platform-tools:/Users/tanema/.rvm/gems/jruby-1.7.2@global/bin:/Users/tanema/.rvm/gems/jruby-1.7.2@global/bin:/Users/tanema/.rvm/rubies/jruby-1.7.2/bin:/Users/tanema/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/git/bin:/usr/local/share/npm/bin:/usr/local/sbin:$GOROOT/bin
-. ~/tools/nvm/nvm.sh
+export GOPATH=~/workspace/goworkspace
+export PATH=$GOPATH/bin:/usr/local/bin:/usr/bin:/Library/flex_sdk/bin:/Library/android-sdk/tools:/Library/android-sdk/platform-tools:/Users/tanema/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/git/bin:/usr/local/share/npm/bin:/usr/local/sbin:$GOROOT/bin
 
 #stop autocorrect
 #unsetopt correct_all
-[[ -s "/Users/tanema/tools/gob/gob.sh" ]] && source "/Users/tanema/tools/gob/gob.sh" # Load gob
-
-#alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-
 alias tarhelp='echo "create:  tar -zcvf arc.tar.gx dir \nextract: tar -zxvf arc.tar.gz [-C outputdir] \n-z use gzip \n-v verbose \n-f filename \n-c create \n-x extract"'
 alias c='cd'
 alias r='rails'
@@ -55,3 +50,5 @@ alias v='vim'
 alias vv='vim .'
 alias gp='git push'
 alias gc='git commit'
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

@@ -22,7 +22,7 @@ Bundle "http://github.com/jnwhiteh/vim-golang.git"
 
 filetype plugin indent on     " required!
 
-"set mouse=a		  		" use mouse because I am a noob
+set t_Co=256        " Fix all color schemes
 set ls=2            " allways show status line
 set tabstop=2       " numbers of spaces of tab character
 set shiftwidth=2    " numbers of spaces to (auto)indent
