@@ -22,7 +22,7 @@ Bundle "http://github.com/jnwhiteh/vim-golang.git"
 
 filetype plugin indent on     " required!
 
-set t_Co=256        " Fix all color schemes
+"set mouse=a		  		" use mouse because I am a noob
 set ls=2            " allways show status line
 set tabstop=2       " numbers of spaces of tab character
 set shiftwidth=2    " numbers of spaces to (auto)indent
@@ -71,8 +71,9 @@ syntax on           " syntax highlighing
 colorscheme molokai    " use this color scheme
 
 " Set Netrw defaults
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-let g:netrw_list_hide= '.*\.swp$,\.DS_Store,^\.\/$'
+let g:netrw_banner=0 " no banner
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' "order setting
+let g:netrw_list_hide= '.*\.swp$,\.DS_Store,^\.\/$' "hide these files from listing
 
 if has("autocmd")
     " Restore cursor position
@@ -84,12 +85,12 @@ if has("autocmd")
     autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
     autocmd FileType go,golang  set omnifunc=gocomplete#Complete
 
-    autocmd BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru,*.jbuilder,*.csvbuilder} set filetype=ruby
-    autocmd BufRead,BufNewFile *.scss   set filetype=css
-    autocmd BufRead,BufNewFile *.json   set filetype=json syntax=javascript
-    autocmd BufRead,BufNewFile *.coffee set filetype=coffee
-    autocmd BufRead,BufNewFile *.go     set filetype=go
-    autocmd BufRead,BufNewFile *.slim     set filetype=slim
+    autocmd BufRead,BufNewFile {*.jbuilder,*.csvbuilder}  set filetype=ruby
+    autocmd BufRead,BufNewFile *.scss                     set filetype=css
+    autocmd BufRead,BufNewFile *.json                     set filetype=json syntax=javascript
+    autocmd BufRead,BufNewFile *.coffee                   set filetype=coffee
+    autocmd BufRead,BufNewFile *.go                       set filetype=go
+    autocmd BufRead,BufNewFile *.slim                     set filetype=slim
     
     " This will enable pressing <CR> on a file in the quickfix and it will
     " open a new window with that file
@@ -142,6 +143,7 @@ nnoremap C "_C
 vnoremap C "_C
 vnoremap p "_dP
 " tab and window quick edit shortcuts
+nnoremap to :e **/
 nnoremap te :tabe **/
 nnoremap tn :tabnew<CR>
 nnoremap tv :vsp **/
