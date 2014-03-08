@@ -66,6 +66,7 @@ set clipboard+=unnamed
 set colorcolumn=85
 let &colorcolumn=join(range(81,999),",")
 let &colorcolumn="80,".join(range(120,999),",")
+set t_Co=256
 
 syntax on           " syntax highlighing
 colorscheme molokai    " use this color scheme
