@@ -35,5 +35,7 @@ alias v='vim'
 alias vv='vim .'
 alias gp='git push'
 alias gc='git commit'
+alias vimconfig="vim ~/.vimrc"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+alias backupconfig="cp ~/.vimrc ~/workspace/dotfiles/vimrc && cp ~/.zshrc ~/workspace/dotfiles/zshrc && cd ~/workspace/dotfiles/"
