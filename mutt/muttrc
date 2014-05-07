@@ -109,3 +109,5 @@ folder-hook 'gmail.com' 'source ~/.mutt/accounts/account.gmail'
 
 # switch to default account on startup
 source ~/.mutt/accounts/account.gmail
+#color scheme
+source ~/.mutt/color\ schemes/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
