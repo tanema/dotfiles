@@ -6,6 +6,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+export JRUBY_OPTS=--headless
 export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
@@ -39,3 +40,4 @@ alias vimconfig="vim ~/.vimrc"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias backupconfig="cp ~/.vimrc ~/workspace/dotfiles/vimrc && cp ~/.zshrc ~/workspace/dotfiles/zshrc && cd ~/workspace/dotfiles/"
+alias love='/Applications/love.app/Contents/MacOS/love'

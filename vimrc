@@ -12,7 +12,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
-Bundle 'molokai'
+Bundle 'jellybeans.vim'
 Bundle 'surround.vim'
 Bundle 'bling/vim-airline'
 "syntax
@@ -22,54 +22,51 @@ Bundle "http://github.com/jnwhiteh/vim-golang.git"
 
 filetype plugin indent on     " required!
 
-"set mouse=a		  		" use mouse because I am a noob
-set ls=2            " allways show status line
-set tabstop=2       " numbers of spaces of tab character
-set shiftwidth=2    " numbers of spaces to (auto)indent
-set expandtab				"spaces insteaf of tabs
-set smarttab				" set tabspacing to be uniform
-set scrolloff=3     " keep 3 lines when scrolling
-set showcmd         " display incomplete commands
-set backspace=2     " make backspace work like most other apps
-set backspace=indent,eol,start " make backspace work like most other apps 
-set hlsearch        " highlight searches
-set incsearch       " do incremental searching
-set ruler           " show the cursor position all the time
-set visualbell t_vb=    " turn off error beep/flash
-set novisualbell    " turn off visual bell
-set noerrorbells    " stop beeping fucker
-set nobackup        " do not keep a backup file
-set nowb            " no write backup
-set noswapfile      " no swap files either they are a pain in the ass
-set number          " show line numbers
-set ignorecase      " ignore case when searching 
-set title           " show title in console title bar
-set ttyfast         " smoother changes
-set modeline        " last lines in document sets vim mode
-set modelines=3     " number lines checked for modelines
-set shortmess=atI   " Abbreviate messages
-set nostartofline   " don't jump to first character when paging
+"set mouse=a		  	            " use mouse because I am a noob
+set ls=2                        " allways show status line
+set tabstop=2                   " numbers of spaces of tab character
+set shiftwidth=2                " numbers of spaces to (auto)indent
+set expandtab				            " spaces insteaf of tabs
+set smarttab				            " set tabspacing to be uniform
+set scrolloff=3                 " keep 3 lines when scrolling
+set showcmd                     " display incomplete commands
+set backspace=2                 " make backspace work like most other apps
+set backspace=indent,eol,start  " make backspace work like most other apps 
+set hlsearch                    " highlight searches
+set incsearch                   " do incremental searching
+set ruler                       " show the cursor position all the time
+set visualbell t_vb=            " turn off error beep/flash
+set novisualbell                " turn off visual bell
+set noerrorbells                " stop beeping fucker
+set nobackup                    " do not keep a backup file
+set nowb                        " no write backup
+set noswapfile                  " no swap files either they are a pain in the ass
+set number                      " show line numbers
+set ignorecase                  " ignore case when searching 
+set title                       " show title in console title bar
+set ttyfast                     " smoother changes
+set modeline                    " last lines in document sets vim mode
+set modelines=3                 " number lines checked for modelines
+set shortmess=atI               " Abbreviate messages
+set nostartofline               " don't jump to first character when paging
 set whichwrap=b,s,h,l,<,>,[,]   " move freely between files
 set noautoindent
 set nosmartindent
 set nocindent
-set splitright      " when vertical splitting set new window to the right
-set splitbelow      " when splitting the new window opens below
-set showmatch       " highlight matches
-set nowrap          " text wrap off eff that sheet
-set virtualedit=all " this means we can go into empty spaces
-set hidden          " this is so we can hide windows without complaints
-set wildmenu        " enables tab completion on stuff like tabe
-set switchbuf+=usetab,newtab " this will make it switch to a tab if I already have the file open and open the quickfix in a tab
-set pastetoggle=<F3>
-set clipboard+=unnamed
-set colorcolumn=85
-let &colorcolumn=join(range(81,999),",")
-let &colorcolumn="80,".join(range(120,999),",")
-set t_Co=256
+set splitright                  " when vertical splitting set new window to the right
+set splitbelow                  " when splitting the new window opens below
+set showmatch                   " highlight matches
+set nowrap                      " text wrap off eff that sheet
+set virtualedit=all             " this means we can go into empty spaces
+set hidden                      " this is so we can hide windows without complaints
+set wildmenu                    " enables tab completion on stuff like tabe
+set switchbuf+=usetab,newtab    " this will make it switch to a tab if I already have the file open and open the quickfix in a tab
+set clipboard+=unnamed          " use system clipboard
+set t_Co=256                    " use 256 colors
+let &colorcolumn="80,".join(range(120,999),",") "setup column warning and no-go zone
 
 syntax on           " syntax highlighing
-colorscheme molokai    " use this color scheme
+colorscheme jellybeans  " use this color scheme
 
 " Set Netrw defaults
 let g:netrw_banner=0 " no banner
@@ -86,12 +83,12 @@ if has("autocmd")
     autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
     autocmd FileType go,golang  set omnifunc=gocomplete#Complete
 
-    autocmd BufRead,BufNewFile {*.jbuilder,*.csvbuilder}  set filetype=ruby
-    autocmd BufRead,BufNewFile *.scss                     set filetype=css
-    autocmd BufRead,BufNewFile *.json                     set filetype=json syntax=javascript
-    autocmd BufRead,BufNewFile *.coffee                   set filetype=coffee
-    autocmd BufRead,BufNewFile *.go                       set filetype=go
-    autocmd BufRead,BufNewFile *.slim                     set filetype=slim
+    autocmd BufRead,BufNewFile {*.jbuilder,*.csvbuilder,Gemfile}  set filetype=ruby
+    autocmd BufRead,BufNewFile *.scss                             set filetype=css
+    autocmd BufRead,BufNewFile {*.json,*.tss}                     set filetype=json syntax=javascript
+    autocmd BufRead,BufNewFile *.coffee                           set filetype=coffee
+    autocmd BufRead,BufNewFile *.go                               set filetype=go
+    autocmd BufRead,BufNewFile *.slim                             set filetype=slim
     
     " This will enable pressing <CR> on a file in the quickfix and it will
     " open a new window with that file
@@ -171,6 +168,8 @@ let g:airline_section_c=""
 let g:airline_section_x=""
 " put filetype in fifth section
 let g:airline_section_y="%Y"
+" this will make the ruby plugin less of a pain in the ass
+let g:ruby_path = system('rvm current')
 
 "this needs to be at the bottom otherwise it wont work
 hi ColorColumn ctermbg=235 guibg=#2c2d27

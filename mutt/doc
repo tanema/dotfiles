@@ -1,0 +1,28 @@
+http://stevelosh.com/blog/2012/10/the-homely-mutt
+brew install mutt #have to patch with sidebar
+
+brew edit mutt
+
+then I scrolled down to a section of commands that all start with "option", sort of like:
+option "with-debug", "Build with debug option enabled"
+option "with-trash-patch", "Apply trash folder patch"
+option "with-s-lang", "Build against slang instead of ncurses"
+option "with-ignore-thread-patch", "Apply ignore-thread patch"
+option "with-pgp-verbose-mime-patch", "Apply PGP verbose mime patch"
+option "with-confirm-attachment-patch", "Apply confirm attachment patch"
+
+I then added a line at the bottom of this block
+option "with-sidebar-patch", "Apply sidebar patch"
+
+After that I scrolled down further to the section with all the patches, e.g.
+And I added the patch for sidebar (as I found here: https://github.com/kevwil/homebrew-patches/blob/master/mutt.rb)
+patch do
+  url "https://raw.github.com/nedos/mutt-sidebar-patch/7ba0d8db829fe54c4940a7471ac2ebc2283ecb15/mutt-sidebar.patch"
+  sha1 "1e151d4ff3ce83d635cf794acf0c781e1b748ff1"
+end if build.with? "sidebar-patch"
+
+Finally, exit the editor for the brew file and in the commandline:
+brew install mutt --with-sidebar-patch
+
+brew install urlview
+brew install msmtp

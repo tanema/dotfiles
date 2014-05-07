@@ -1,0 +1,13 @@
+[user]
+	name = Tim Anema
+	email = timanema@gmail.com
+[core]
+	editor = /usr/bin/vim
+[color]
+  ui = true
+[diff]
+  tool = vimdiff
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[push]
+	default = simple
