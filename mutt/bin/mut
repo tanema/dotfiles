@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#wrapper for mut to make it sync mailbox every 5 minutes while mutt is running
+
+while true                  # run forever
+do
+  ~/.mutt/offlineimap_wrapper.sh    # run offlineimap
+  sleep 300                 # sleep 5 minutes
+done &                      # run loop in background
+LOOP_PID=$!                 # copy PID of loop
+mutt                        # run mutt in foreground (and waits for mutt to exit)
+kill $LOOP_PID              # these two lines are a cool trick to kill the
+wait $LOOP_PID 2>/dev/null  # infinite loop and hide the error that it generates
+exit 0                      # force script to exit "cleanly"
