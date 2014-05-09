@@ -4,7 +4,8 @@ set spoolfile = "+gmail.com/INBOX"
 set postponed = "+gmail.com/Drafts"
 set mbox      = "+gmail.com/archive"
 unmailboxes *
-mailboxes + '+gmail.com/INBOX' \
+mailboxes + '+/INBOX' \
+          + '+gmail.com/INBOX' \
           + '+gmail.com/Sent Messages' \
           + '+gmail.com/[Gmail].Drafts' \
           + '+gmail.com/[Gmail].Starred' \
