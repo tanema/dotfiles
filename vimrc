@@ -12,17 +12,20 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'jellybeans.vim'
 Bundle 'surround.vim'
 Bundle 'bling/vim-airline'
 "syntax
 Bundle 'vim-coffee-script'
 Bundle 'slim-template/vim-slim'
-Bundle "http://github.com/jnwhiteh/vim-golang.git"
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'kien/ctrlp.vim'
 
 filetype plugin indent on     " required!
 
-"set mouse=a		  	            " use mouse because I am a noob
+set foldmethod=indent
+set foldlevel=20
 set ls=2                        " allways show status line
 set tabstop=2                   " numbers of spaces of tab character
 set shiftwidth=2                " numbers of spaces to (auto)indent
@@ -66,7 +69,7 @@ set t_Co=256                    " use 256 colors
 let &colorcolumn="80,".join(range(120,999),",") "setup column warning and no-go zone
 
 syntax on           " syntax highlighing
-colorscheme jellybeans  " use this color scheme
+colorscheme jellybeans
 
 " Set Netrw defaults
 let g:netrw_banner=0 " no banner
@@ -101,6 +104,8 @@ function FindAll(where, to_find)
 endfunction
  
 " Keyboard mappings"
+" folding space key in normal
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
 " turn off the damn arrow keys
 noremap  <Up>     <NOP>
