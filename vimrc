@@ -1,37 +1,32 @@
-set nocompatible    " use vim defaults
-filetype off				" required!
+set nocompatible                " use vim defaults
+filetype off				            " required!
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-"install vundle
-"git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+"install vundle git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" let Vundle manage Vundle required!   
+Bundle 'gmarik/vundle'          
 
 " My Bundles here:
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Bundle 'jellybeans.vim'
-Bundle 'surround.vim'
-Bundle 'bling/vim-airline'
-"syntax
-Bundle 'vim-coffee-script'
-Bundle 'slim-template/vim-slim'
+Bundle 'jellybeans.vim'         
+Bundle 'surround.vim'           
+Bundle 'bling/vim-airline'      
+Bundle 'vim-coffee-script'      
+Bundle 'slim-template/vim-slim' 
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'kien/ctrlp.vim'
+Bundle 'kien/ctrlp.vim'         
+Bundle 'glsl.vim'               
+Bundle 'Valloric/YouCompleteMe' 
 
-filetype plugin indent on     " required!
+filetype plugin indent on       " required!
 
-set foldmethod=indent
-set foldlevel=20
 set ls=2                        " allways show status line
 set tabstop=2                   " numbers of spaces of tab character
 set shiftwidth=2                " numbers of spaces to (auto)indent
 set expandtab				            " spaces insteaf of tabs
 set smarttab				            " set tabspacing to be uniform
-set scrolloff=3                 " keep 3 lines when scrolling
+set scrolloff=10                " keep 3 lines when scrolling
 set showcmd                     " display incomplete commands
 set backspace=2                 " make backspace work like most other apps
 set backspace=indent,eol,start  " make backspace work like most other apps 
@@ -53,6 +48,8 @@ set modelines=3                 " number lines checked for modelines
 set shortmess=atI               " Abbreviate messages
 set nostartofline               " don't jump to first character when paging
 set whichwrap=b,s,h,l,<,>,[,]   " move freely between files
+set foldmethod=indent
+set foldlevel=20
 set noautoindent
 set nosmartindent
 set nocindent
@@ -63,28 +60,23 @@ set nowrap                      " text wrap off eff that sheet
 set virtualedit=all             " this means we can go into empty spaces
 set hidden                      " this is so we can hide windows without complaints
 set wildmenu                    " enables tab completion on stuff like tabe
-set switchbuf+=usetab,newtab    " this will make it switch to a tab if I already have the file open and open the quickfix in a tab
+set switchbuf+=usetab,newtab    " this will make it switch to a tab if I already 
+                                " have the file open and open the quickfix in a tab
 set clipboard+=unnamed          " use system clipboard
 set t_Co=256                    " use 256 colors
 let &colorcolumn="80,".join(range(120,999),",") "setup column warning and no-go zone
 
-syntax on           " syntax highlighing
-colorscheme jellybeans
+syntax on                       " syntax highlighing is on
+colorscheme jellybeans          " Pretty Colors
 
 " Set Netrw defaults
 let g:netrw_banner=0 " no banner
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' "order setting
-let g:netrw_list_hide= '.*\.swp$,\.DS_Store,^\.\/$' "hide these files from listing
+let g:netrw_list_hide= '.*\.swp$,\.DS_Store,.*\.meta,^\.\/$' "hide these files from listing
 
 if has("autocmd")
     " Restore cursor position
     au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
- 
-    autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
-    autocmd FileType go,golang  set omnifunc=gocomplete#Complete
 
     autocmd BufRead,BufNewFile {*.jbuilder,*.csvbuilder,Gemfile}  set filetype=ruby
     autocmd BufRead,BufNewFile *.scss                             set filetype=css
@@ -92,7 +84,16 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.coffee                           set filetype=coffee
     autocmd BufRead,BufNewFile *.go                               set filetype=go
     autocmd BufRead,BufNewFile *.slim                             set filetype=slim
-    
+    autocmd BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl     set filetype=glsl 
+    autocmd BufRead,BufNewFile *.cs                               set filetype=cs
+ 
+    autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+    autocmd FileType go,golang  set omnifunc=gocomplete#Complete
+    autocmd FileType cs         set omnifunc=OmniSharp#Complete
+
     " This will enable pressing <CR> on a file in the quickfix and it will
     " open a new window with that file
     autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
@@ -124,11 +125,6 @@ vnoremap <Right>  <NOP>
 " disable Ex mode key and map it to last macro
 nnoremap Q @@
 xnoremap Q @@
-"save my wrist with semicolon swap with colon
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ; 
 " switch tab shortcuts
 map <C-m> gt
 map <C-n> gT
