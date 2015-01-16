@@ -47,7 +47,7 @@ set modeline                    " last lines in document sets vim mode
 set modelines=3                 " number lines checked for modelines
 set shortmess=atI               " Abbreviate messages
 set nostartofline               " don't jump to first character when paging
-set whichwrap=b,s,h,l,<,>,[,]   " move freely between files
+set whichwrap=b,s,h,l,<,>,[,]   " move freely between lines
 set foldmethod=indent
 set foldlevel=20
 set noautoindent
@@ -155,6 +155,8 @@ nnoremap <C-l> <C-w>l
 " find all occurences shortcut
 nnoremap fa :Fa **/* 
 command! -nargs=* Fa call FindAll(<f-args>)
+"clear search highlight with backspace
+nmap <BS> :noh<CR>
 
 " remove separators
 let g:airline_left_sep=''
