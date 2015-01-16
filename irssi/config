@@ -1,8 +1,8 @@
 settings = {
   core = {
-    real_name = "yourname";
-    user_name = "yourname";
-    nick = "yourname";
+    nick = "timanema";
+    user_name = "timanema";
+    real_name = "Tim Anema";
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = { theme = "weed"; };
@@ -24,6 +24,8 @@ settings = {
     awl_sbar_maxlength = "yes";
     awl_separator = "%N %N";
     awl_sort = "refnum";
+    nicklist_width = "50";
+    nicklist_height = "100";
   };
 };
 chatnets = {
@@ -76,6 +78,12 @@ chatnets = {
     max_msgs = "1";
     max_whois = "1";
   };
+  teksavvy = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "1";
+    max_whois = "1";
+  };
   SILC = { type = "SILC"; };
   Undernet = {
     type = "IRC";
@@ -85,18 +93,12 @@ chatnets = {
   };
   Freenode = {
     type = "IRC";
-    nick = "drunken_thor";
-    username = "tanema";
-    realname = "Tim Anema";
     max_kicks = "1";
     max_msgs = "4";
     max_whois = "1";
   };
   QuakeNet = {
     type = "IRC";
-    nick = "drunken_thor";
-    username = "tanema";
-    realname = "Tim Anema";
     max_kicks = "1";
     max_msgs = "1";
     max_whois = "1";
@@ -109,11 +111,6 @@ servers = (
   { 
     address = "chat.freenode.net";
     chatnet = "Freenode";
-    port = "6667";
-  },
-  {
-    address = "irc.gamesurge.net";
-    chatnet = "GameSurge";
     port = "6667";
   },
   { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
@@ -147,14 +144,11 @@ servers = (
     use_ssl = "no";
     ssl_verify = "no";
     autoconnect = "yes";
-  }
+  },
+  { address = "irc.teksavvy.ca"; chatnet = "teksavvy"; port = "6667"; }
 );
 
 channels = (
-  { name = "#lobby"; chatnet = "EsperNet"; autojoin = "No"; },
-  { name = "#freenode"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#irssi"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#gamesurge"; chatnet = "GameSurge"; autojoin = "No"; },
   { name = "#ruby-lang"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#ruby"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
