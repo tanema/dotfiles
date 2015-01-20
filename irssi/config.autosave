@@ -147,12 +147,12 @@ servers = (
 );
 
 channels = (
-  { name = "#ruby-lang"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#ruby"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#go-nuts"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#gamedev"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "##bicycles"; chatnet = "Freenode"; autojoin = "yes"; },
+  #{ name = "#ruby-lang"; chatnet = "Freenode"; autojoin = "yes"; },
+  #{ name = "#ruby"; chatnet = "Freenode"; autojoin = "yes"; },
+  #{ name = "#vim"; chatnet = "Freenode"; autojoin = "yes"; },
+  #{ name = "#go-nuts"; chatnet = "Freenode"; autojoin = "yes"; },
+  #{ name = "#gamedev"; chatnet = "Freenode"; autojoin = "yes"; },
+  #{ name = "##bicycles"; chatnet = "Freenode"; autojoin = "yes"; },
   { 
     name = "#friendly-coders";
     chatnet = "Freenode";
