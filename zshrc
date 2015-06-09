@@ -10,6 +10,8 @@ export JRUBY_OPTS="--headless -J-XX:MaxPermSize=128m"
 export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
+export GOPATH=~/workspace/go
+export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/Library/android-sdk/platform-tools
 export PATH=$PATH:/Library/android-sdk/tools
 export PATH=$PATH:/Library/flex_sdk/bin
@@ -20,8 +22,6 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/usr/X11/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.rvm/bin
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:.mutt/bin
@@ -40,4 +40,5 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias backupconfig="cp ~/.vimrc ~/workspace/dotfiles/vimrc && cp ~/.zshrc ~/workspace/dotfiles/zshrc && cd ~/workspace/dotfiles/"
 alias love='/Applications/love.app/Contents/MacOS/love'
+alias make='make -j'
 [[ -s "/Users/tanema/.gvm/scripts/gvm" ]] && source "/Users/tanema/.gvm/scripts/gvm"

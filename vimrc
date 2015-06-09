@@ -18,6 +18,8 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'         
 Bundle 'glsl.vim'               
 Bundle 'Valloric/YouCompleteMe' 
+Bundle 'fatih/vim-go'
+Bundle 'wakatime/vim-wakatime'
 
 filetype plugin indent on       " required!
 
@@ -48,9 +50,9 @@ set modelines=3                 " number lines checked for modelines
 set shortmess=atI               " Abbreviate messages
 set nostartofline               " don't jump to first character when paging
 set whichwrap=b,s,h,l,<,>,[,]   " move freely between lines
-set foldmethod=indent
-set foldlevel=20
-set noautoindent
+set foldmethod=indent           " Folding based on just indentation
+set foldlevel=20                " set fold level at a high level so most files are not all folded when opening
+set noautoindent                " indentation settings, let syntax handle this stuff
 set nosmartindent
 set nocindent
 set splitright                  " when vertical splitting set new window to the right
@@ -65,6 +67,7 @@ set switchbuf+=usetab,newtab    " this will make it switch to a tab if I already
 set clipboard+=unnamed          " use system clipboard
 set t_Co=256                    " use 256 colors
 let &colorcolumn="80,".join(range(120,999),",") "setup column warning and no-go zone
+set completeopt-=preview        " stop preview window from opening with omnicomplete
 
 syntax on                       " syntax highlighing is on
 colorscheme jellybeans          " Pretty Colors
@@ -86,6 +89,8 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.slim                             set filetype=slim
     autocmd BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl     set filetype=glsl 
     autocmd BufRead,BufNewFile *.cs                               set filetype=cs
+    autocmd BufRead,BufNewFile *.ejs,*.tag                        set filetype=html
+    autocmd BufRead,BufNewFile *.hamstache                        set filetype=haml
  
     autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS

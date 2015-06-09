@@ -1,7 +1,0 @@
-#!/bin/bash
-#wrapper for msmtp to specify config from home dir
-
-all=`cat "/dev/stdin"`
-config_file="$(dirname ~/.mutt/smtp)/$(basename ~/.mutt/smtp)"
-
-echo "$all" | msmtp --file $config_file $* 
