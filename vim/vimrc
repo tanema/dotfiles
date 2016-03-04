@@ -1,25 +1,25 @@
 set nocompatible                " use vim defaults
+
+" bundle setup
 filetype off				            " required!
-
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-"install vundle git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" let Vundle manage Vundle required!   
-Bundle 'gmarik/vundle'          
-
-" My Bundles here:
-Bundle 'jellybeans.vim'         
-Bundle 'surround.vim'           
-Bundle 'bling/vim-airline'      
-Bundle 'vim-coffee-script'      
-Bundle 'slim-template/vim-slim' 
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'kien/ctrlp.vim'         
-Bundle 'glsl.vim'               
-Bundle 'Valloric/YouCompleteMe' 
-Bundle 'fatih/vim-go'
-Bundle 'wakatime/vim-wakatime'
+" ------------------------------
+"         Plugins
+" install vundle     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" ------------------------------
+call vundle#begin()               " lazy load plugins for faster startup
+Plugin 'gmarik/vundle'            " package manager
+Plugin 'jellybeans.vim'           " color scheme
+Plugin 'surround.vim'             " easy wrap selected items
+Plugin 'bling/vim-airline'        " nice status line
+Plugin 'scrooloose/nerdcommenter' " easy comment blocks
+Plugin 'kien/ctrlp.vim'           " fast file search with ctrl p
+Plugin 'Valloric/YouCompleteMe'   " autocomplete
+Plugin 'fatih/vim-go'             " go sytanx highlighting
+Plugin 'glsl.vim'                 " glsl syntax highlighting
+Plugin 'vim-coffee-script'        " coffee script syntax highlighting
+Plugin 'slim-template/vim-slim'   " slim syntax highlighting
+call vundle#end()                 " required
 
 filetype plugin indent on       " required!
 
@@ -52,9 +52,9 @@ set nostartofline               " don't jump to first character when paging
 set whichwrap=b,s,h,l,<,>,[,]   " move freely between lines
 set foldmethod=indent           " Folding based on just indentation
 set foldlevel=20                " set fold level at a high level so most files are not all folded when opening
-set noautoindent                " indentation settings, let syntax handle this stuff
-set nosmartindent
-set nocindent
+set noautoindent                " Turn off indentation settings, let syntax handle this stuff
+set nosmartindent               " Turn off indentation settings, let syntax handle this stuff 
+set nocindent                   " Turn off indentation settings, let syntax handle this stuff 
 set splitright                  " when vertical splitting set new window to the right
 set splitbelow                  " when splitting the new window opens below
 set showmatch                   " highlight matches
@@ -68,51 +68,64 @@ set clipboard+=unnamed          " use system clipboard
 set t_Co=256                    " use 256 colors
 let &colorcolumn="80,".join(range(120,999),",") "setup column warning and no-go zone
 set completeopt-=preview        " stop preview window from opening with omnicomplete
+set pastetoggle=<F2>            " change behaviour of pasting with f2
 
 syntax on                       " syntax highlighing is on
 colorscheme jellybeans          " Pretty Colors
 
-" Set Netrw defaults
+" ------------------------------
+"           Netrw
+" ------------------------------
 let g:netrw_banner=0 " no banner
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' "order setting
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro' " order setting
 let g:netrw_list_hide= '.*\.swp$,\.DS_Store,.*\.meta,^\.\/$' "hide these files from listing
+let g:netrw_localrmdir='rm -r' " Allow netrw to remove non-empty local directories 
 
+" ------------------------------
+"        Auto Command
+" ------------------------------
 if has("autocmd")
-    " Restore cursor position
-    au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+  " Restore cursor position
+  au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-    autocmd BufRead,BufNewFile {*.jbuilder,*.csvbuilder,Gemfile}  set filetype=ruby
-    autocmd BufRead,BufNewFile *.scss                             set filetype=css
-    autocmd BufRead,BufNewFile {*.json,*.tss}                     set filetype=json syntax=javascript
-    autocmd BufRead,BufNewFile *.coffee                           set filetype=coffee
-    autocmd BufRead,BufNewFile *.go                               set filetype=go
-    autocmd BufRead,BufNewFile *.slim                             set filetype=slim
-    autocmd BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl     set filetype=glsl 
-    autocmd BufRead,BufNewFile *.cs                               set filetype=cs
-    autocmd BufRead,BufNewFile *.ejs,*.tag                        set filetype=html
-    autocmd BufRead,BufNewFile *.hamstache                        set filetype=haml
- 
-    autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
-    autocmd FileType go,golang  set omnifunc=gocomplete#Complete
-    autocmd FileType cs         set omnifunc=OmniSharp#Complete
+  " specify filetypes where they are not normally picked up
+  au BufRead,BufNewFile {*.jbuilder,*.csvbuilder,Gemfile}  set filetype=ruby
+  au BufRead,BufNewFile *.scss                             set filetype=css
+  au BufRead,BufNewFile {*.json,*.tss}                     set filetype=json syntax=javascript
+  au BufRead,BufNewFile *.coffee                           set filetype=coffee
+  au BufRead,BufNewFile *.go                               set filetype=go
+  au BufRead,BufNewFile *.slim,*.slimstache                set filetype=slim
+  au BufRead,BufNewFile *.frag,*.vert,*.fp,*.vp,*.glsl     set filetype=glsl 
+  au BufRead,BufNewFile *.cs                               set filetype=cs
+  au BufRead,BufNewFile *.ejs,*.tag,*.mustache             set filetype=html
+  au BufRead,BufNewFile *.hamstache                        set filetype=haml
 
-    " This will enable pressing <CR> on a file in the quickfix and it will
-    " open a new window with that file
-    autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+  " specify autocomplete for unrecognized file types
+  au FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  au FileType html       set omnifunc=htmlcomplete#CompleteTags
+  au FileType css        set omnifunc=csscomplete#CompleteCSS
+  au FileType cs         set omnifunc=OmniSharp#Complete
+
+  " This will enable pressing <CR> on a file in the quickfix and it will
+  " open a new window with that file
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 endif
 
-" function definitions
+
+" ------------------------------
+"             Functions
+" ------------------------------
+" find in all files
 function FindAll(where, to_find)
   execute ":vimgrep " . a:to_find . " " . a:where . " | copen"
 endfunction
+command! -nargs=* Fa call FindAll(<f-args>)
+nnoremap fa :Fa **/* 
  
-" Keyboard mappings"
-" folding space key in normal
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-
+" ------------------------------
+"             DISABLES
+" ------------------------------
 " turn off the damn arrow keys
 noremap  <Up>     <NOP>
 noremap  <Down>   <NOP>
@@ -130,9 +143,7 @@ vnoremap <Right>  <NOP>
 " disable Ex mode key and map it to last macro
 nnoremap Q @@
 xnoremap Q @@
-" switch tab shortcuts
-map <C-m> gt
-map <C-n> gT
+
 " These are to cancel the default behavior of d, D, c, C
 " to put the text they delete in the default register.
 " Note that this means e.g. "ad won't copy the text into
@@ -146,6 +157,13 @@ vnoremap c "_c
 nnoremap C "_C
 vnoremap C "_C
 vnoremap p "_dP
+
+" ------------------------------
+"        TABS and Window
+" ------------------------------
+" switch tab shortcuts
+nmap <tab> gt
+nmap <s-tab> gT
 " tab and window quick edit shortcuts
 nnoremap to :e **/
 nnoremap te :tabe **/
@@ -157,18 +175,26 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-" find all occurences shortcut
-nnoremap fa :Fa **/* 
-command! -nargs=* Fa call FindAll(<f-args>)
+nnoremap <C-=> <C-w>=
+
+" ------------------------------
+"             Misc
+" ------------------------------
+" folding space key in normal
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 "clear search highlight with backspace
 nmap <BS> :noh<CR>
+" toggle spell check 
+nnoremap <F3> :set spell!<CR> 
 
+" ------------------------------
+"             AIRLINE
+" ------------------------------
 " remove separators
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 " remove unused modes
-let g:airline_enable_fugitive=0
-let g:airline_enable_syntastic=0
+let g:airline#extensions#syntastic#enabled=0
 " set second section to filename
 let g:airline_section_b="%f"
 " empty third and fourth sections
@@ -179,5 +205,8 @@ let g:airline_section_y="%Y"
 " this will make the ruby plugin less of a pain in the ass
 let g:ruby_path = system('rvm current')
 
+" ------------------------------
+"         Nicer Colors
+" ------------------------------
 "this needs to be at the bottom otherwise it wont work
 hi ColorColumn ctermbg=235 guibg=#2c2d27

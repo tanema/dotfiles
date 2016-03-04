@@ -9,5 +9,16 @@
   tool = vimdiff
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  edit = "!vim `git ls-files -m` -p"
 [push]
 	default = simple
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/
+[url "ssh://git@bitbucket.org/"]
+	insteadOf = https://bitbucket.org/
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
+  

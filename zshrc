@@ -6,7 +6,10 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-export JRUBY_OPTS="--headless -J-XX:MaxPermSize=128m"
+ 
+#export SSL_CERT_FILE=$HOME/.rvm/cacert.pem
+export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
+export JRUBY_OPTS="--2.0 --headless -J-XX:MaxPermSize=128m -J-Xmx1024m"
 export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
@@ -17,10 +20,10 @@ export PATH=$PATH:/Library/android-sdk/tools
 export PATH=$PATH:/Library/flex_sdk/bin
 export PATH=$PATH:/bin
 export PATH=$PATH:/sbin
+export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/usr/X11/bin
-export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/.rvm/bin
 export PATH=$PATH:/usr/local/share/npm/bin
@@ -41,4 +44,6 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias backupconfig="cp ~/.vimrc ~/workspace/dotfiles/vimrc && cp ~/.zshrc ~/workspace/dotfiles/zshrc && cd ~/workspace/dotfiles/"
 alias love='/Applications/love.app/Contents/MacOS/love'
 alias make='make -j'
+alias eu='cd lib/kiuni_engine && git pull && cd ../..'
+alias ec='cd lib/kiuni_engine && git add --all && git commit -a && cd ../..'
 [[ -s "/Users/tanema/.gvm/scripts/gvm" ]] && source "/Users/tanema/.gvm/scripts/gvm"
