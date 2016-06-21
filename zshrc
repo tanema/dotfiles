@@ -5,11 +5,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-
  
 #export SSL_CERT_FILE=$HOME/.rvm/cacert.pem
-export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
-export JRUBY_OPTS="--2.0 --headless -J-XX:MaxPermSize=128m -J-Xmx1024m"
 export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
@@ -31,6 +28,7 @@ export PATH=$PATH:.mutt/bin
 export PATH=$PATH:/opt/local/bin
 
 alias tarhelp='echo "create:  tar -zcvf arc.tar.gx dir \nextract: tar -zxvf arc.tar.gz [-C outputdir] \n-z use gzip \n-v verbose \n-f filename \n-c create \n-x extract"'
+alias reload='source ~/.zshrc'
 alias r='rails'
 alias rs='rails s'
 alias rc='rails c'
@@ -38,12 +36,13 @@ alias v='vim'
 alias vv='vim .'
 alias gp='git push'
 alias gc='git commit'
-alias vimconfig="vim ~/.vimrc"
-alias zshconfig="vim ~/.zshrc"
+alias vimcfg="vim ~/.vimrc"
+alias zshcfg="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias backupconfig="cp ~/.vimrc ~/workspace/dotfiles/vimrc && cp ~/.zshrc ~/workspace/dotfiles/zshrc && cd ~/workspace/dotfiles/"
+alias bkpcfg="cp ~/.vimrc ~/workspace/dotfiles/vim/vimrc && cp ~/.zshrc ~/workspace/dotfiles/zshrc && cd ~/workspace/dotfiles/"
 alias love='/Applications/love.app/Contents/MacOS/love'
 alias make='make -j'
-alias eu='cd lib/kiuni_engine && git pull && cd ../..'
-alias ec='cd lib/kiuni_engine && git add --all && git commit -a && cd ../..'
-[[ -s "/Users/tanema/.gvm/scripts/gvm" ]] && source "/Users/tanema/.gvm/scripts/gvm"
+alias dus='dev down && dev up && dev server'
+alias us='dev up && dev server'
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh

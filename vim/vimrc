@@ -19,6 +19,8 @@ Plugin 'fatih/vim-go'             " go sytanx highlighting
 Plugin 'glsl.vim'                 " glsl syntax highlighting
 Plugin 'vim-coffee-script'        " coffee script syntax highlighting
 Plugin 'slim-template/vim-slim'   " slim syntax highlighting
+Plugin 'tpope/vim-vinegar'        " better netrw
+Plugin 'roman/golden-ratio'
 call vundle#end()                 " required
 
 filetype plugin indent on       " required!
