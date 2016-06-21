@@ -6,7 +6,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
  
-#export SSL_CERT_FILE=$HOME/.rvm/cacert.pem
 export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
@@ -39,7 +38,7 @@ alias gc='git commit'
 alias vimcfg="vim ~/.vimrc"
 alias zshcfg="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias bkpcfg="cp ~/.vimrc ~/workspace/dotfiles/vim/vimrc && cp ~/.zshrc ~/workspace/dotfiles/zshrc && cd ~/workspace/dotfiles/"
+alias bkpcfg="~/workspace/dotfiles/backup.sh && cd ~/workspace/dotfiles/"
 alias love='/Applications/love.app/Contents/MacOS/love'
 alias make='make -j'
 alias dus='dev down && dev up && dev server'

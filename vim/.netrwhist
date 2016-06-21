@@ -1,10 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/tanema/workspace/kiuni/app'
-let g:netrw_dirhist_2='/Users/tanema/workspace/kiuni/app/jobs'
-let g:netrw_dirhist_3='/Users/tanema/workspace/kiuni/app/models'
-let g:netrw_dirhist_4='/Users/tanema/workspace/kiuni/app'
-let g:netrw_dirhist_5='/Users/tanema/workspace/kiuni/app/controllers'
-let g:netrw_dirhist_6='/Users/tanema/workspace/kiuni/app/controllers/api'
-let g:netrw_dirhist_7='/Users/tanema/workspace/kiuni/app/controllers/api/v2'
-let g:netrw_dirhist_8='/Users/tanema/workspace/kiuni'
+let g:netrw_dirhist_cnt =0

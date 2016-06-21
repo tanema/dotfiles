@@ -1,6 +1,6 @@
 [user]
 	name = Tim Anema
-	email = timanema@gmail.com
+	email = tim.anema@shopify.com
 [core]
 	editor = /usr/bin/vim
 [color]
@@ -11,7 +11,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   edit = "!vim `git ls-files -m` -p"
 [push]
-	default = simple
+	default = current
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [url "git@bitbucket.org:"]
@@ -22,3 +22,9 @@
 	insteadOf = https://github.com/
 
   
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[pull]
+	rebase = true
