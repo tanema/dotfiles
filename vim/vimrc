@@ -20,7 +20,9 @@ Plugin 'glsl.vim'                 " glsl syntax highlighting
 Plugin 'vim-coffee-script'        " coffee script syntax highlighting
 Plugin 'slim-template/vim-slim'   " slim syntax highlighting
 Plugin 'tpope/vim-vinegar'        " better netrw
-Plugin 'roman/golden-ratio'
+Plugin 'roman/golden-ratio'       " better window sizing
+Plugin 'fugitive.vim'             " git integration
+Plugin 'syntastic'                " better syntax
 call vundle#end()                 " required
 
 filetype plugin indent on       " required!
@@ -220,6 +222,19 @@ let g:airline_section_x=""
 let g:airline_section_y="%Y"
 " this will make the ruby plugin less of a pain in the ass
 let g:ruby_path = system('rvm current')
+
+"------------------------------
+"         Syntastic
+"------------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 " ------------------------------
 "         Nicer Colors

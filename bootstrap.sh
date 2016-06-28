@@ -1,10 +1,10 @@
 #!/bin/bash
-# quickly setup my env
-cp ./gitconfig ~/.gitconfig
-cp ./zshrc ~/.zshrc
-cp -r ./vim ~/.vim
-ln -s ~/.vim/vimrc ~/.vimrc
-cp -r ./tmux ~/.tmux
-ln -s ~/.tmux/tmux.conf ~/.tmux.conf
-cp -r ./irssi ~/.irssi
+# quickly link all my dot files to thier proper locations
+ln -sf $(pwd)/gitconfig ~/.gitconfig
+ln -sf $(pwd)/zshrc ~/.zshrc
+ln -sf $(pwd)/vim ~/.vim
+ln -sf $(pwd)/vim/vimrc ~/.vimrc
+ln -sf $(pwd)/tmux ~/.tmux
+ln -sf $(pwd)/tmux/tmux.conf ~/.tmux.conf
+ln -sf $(pwd)/irssi ~/.irssi
 
