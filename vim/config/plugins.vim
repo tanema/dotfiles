@@ -18,7 +18,6 @@ Plugin 'glsl.vim'                 " glsl syntax highlighting
 Plugin 'vim-coffee-script'        " coffee script syntax highlighting
 Plugin 'slim-template/vim-slim'   " slim syntax highlighting
 Plugin 'tpope/vim-vinegar'        " better netrw
-Plugin 'roman/golden-ratio'       " better window sizing
 Plugin 'fugitive.vim'             " git integration
 Plugin 'neomake/neomake'          " better syntax
 Plugin 'benjie/neomake-local-eslint.vim' " local eslint usage

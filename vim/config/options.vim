@@ -46,6 +46,7 @@ set t_Co=256                    " use 256 colors
 let &colorcolumn="80,".join(range(120,999),",") "setup column warning and no-go zone
 set completeopt-=preview        " stop preview window from opening with omnicomplete
 set pastetoggle=<F2>            " change behaviour of pasting with f2
+set autoread                    " auto reload files
 
 syntax on                       " syntax highlighing is on
 colorscheme jellybeans          " Pretty Colors
