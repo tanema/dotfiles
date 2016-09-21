@@ -26,12 +26,12 @@ if has("autocmd")
 
   " This will enable pressing <CR> on a file in the quickfix and it will
   " open a new window with that file
-  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+  au BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
   " Remove all trailing whitespace
   au BufWritePre * %s/\s\+$//e
-  " run neomake on every buffer write
-  au! BufWritePost * Neomake
+  " run neomake on every buffer write except go let vim-go do that
+  au! BufWritePost * if index(['go'], &ft) < 0 | Neomake
 endif
 
 augroup checktime

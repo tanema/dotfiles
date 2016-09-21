@@ -50,3 +50,5 @@ set autoread                    " auto reload files
 
 syntax on                       " syntax highlighing is on
 colorscheme jellybeans          " Pretty Colors
+
+let g:go_fmt_command = "gofmt"
