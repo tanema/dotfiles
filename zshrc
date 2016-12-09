@@ -5,7 +5,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
- 
+
 export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
@@ -45,3 +45,9 @@ alias dus='dev down && dev up && dev server'
 alias us='dev up && dev server'
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+
+export MEMCACHEDCLOUD_PASSWORD=tOBX92GBeyflkBCY
+export MEMCACHEDCLOUD_SERVERS=pub-memcache-14313.us-east-1-3.6.ec2.redislabs.com:14313
+export MEMCACHEDCLOUD_USERNAME=memcached-app682181
+
+export PATH="$HOME/.yarn/bin:$PATH"

@@ -1,6 +1,7 @@
 [user]
 	name = Tim Anema
 	email = tim.anema@shopify.com
+	signingkey = C0CA880D
 [core]
 	editor = /usr/bin/vim
 [color]
