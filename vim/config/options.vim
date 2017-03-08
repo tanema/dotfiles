@@ -3,8 +3,8 @@ set mouse=r                     " no mouse for you
 set ls=2                        " allways show status line
 set tabstop=2                   " numbers of spaces of tab character
 set shiftwidth=2                " numbers of spaces to (auto)indent
-set expandtab				            " spaces insteaf of tabs
-set smarttab				            " set tabspacing to be uniform
+set expandtab                   " spaces insteaf of tabs
+set smarttab                    " set tabspacing to be uniform
 set scrolloff=10                " keep 3 lines when scrolling
 set showcmd                     " display incomplete commands
 set backspace=2                 " make backspace work like most other apps
@@ -53,3 +53,14 @@ colorscheme jellybeans          " Pretty Colors
 
 let g:go_fmt_command = "gofmt"
 let g:go_fmt_options = "-s"
+
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif

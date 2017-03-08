@@ -7,5 +7,3 @@ nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 nmap <BS> :noh<CR>
 " toggle spell check
 nnoremap <F3> :set spell!<CR>
-" quick find all
-nnoremap fa :Fa **/*

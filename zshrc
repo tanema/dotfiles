@@ -23,7 +23,6 @@ export PATH=$PATH:/usr/X11/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/.rvm/bin
 export PATH=$PATH:/usr/local/share/npm/bin
-export PATH=$PATH:.mutt/bin
 export PATH=$PATH:/opt/local/bin
 
 alias tarhelp='echo "create:  tar -zcvf arc.tar.gx dir \nextract: tar -zxvf arc.tar.gz [-C outputdir] \n-z use gzip \n-v verbose \n-f filename \n-c create \n-x extract"'
@@ -35,6 +34,7 @@ alias v='vim'
 alias vv='vim .'
 alias gp='git push'
 alias gc='git commit'
+alias gg='git grep'
 alias vimcfg="vim ~/.vimrc"
 alias zshcfg="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
@@ -43,6 +43,7 @@ alias love='/Applications/love.app/Contents/MacOS/love'
 alias make='make -j'
 alias dus='dev down && dev up && dev server'
 alias us='dev up && dev server'
+alias hi='pbpaste | highlight --syntax=js -O rtf | pbcopy'
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 

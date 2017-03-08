@@ -1,5 +1,5 @@
 " bundle setup
-filetype off				            " required!
+filetype off                    " required!
 set rtp+=~/.vim/bundle/vundle/
 " ------------------------------
 "         Plugins
@@ -22,4 +22,3 @@ Plugin 'fugitive.vim'             " git integration
 Plugin 'neomake/neomake'          " better syntax
 Plugin 'benjie/neomake-local-eslint.vim' " local eslint usage
 call vundle#end()                 " required
-

@@ -4,9 +4,9 @@ source ~/.vim/config/plugins.vim
 source ~/.vim/config/options.vim
 source ~/.vim/config/netrw.vim
 source ~/.vim/config/autocmd.vim
-source ~/.vim/config/functions.vim
 source ~/.vim/config/disabled.vim
 source ~/.vim/config/tabs_and_windows.vim
+source ~/.vim/config/search.vim
 source ~/.vim/config/misc.vim
 source ~/.vim/config/airline.vim
 source ~/.vim/config/neomake.vim
