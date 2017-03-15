@@ -1,33 +1,40 @@
 [user]
-	name = Tim Anema
-	email = tim.anema@shopify.com
+  name = Tim Anema
+  email = tim.anema@shopify.com
 	signingkey = C0CA880D
 [core]
-	editor = /usr/bin/vim
+  editor = /usr/bin/vim
 [color]
   ui = true
 [diff]
   tool = vimdiff
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   edit = "!vim `git ls-files -m` -p"
 [push]
-	default = current
+  default = current
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 [url "git@bitbucket.org:"]
-	insteadOf = https://bitbucket.org/
+  insteadOf = https://bitbucket.org/
 [url "ssh://git@bitbucket.org/"]
-	insteadOf = https://bitbucket.org/
+  insteadOf = https://bitbucket.org/
 [url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [pull]
-	rebase = true
+  rebase = true
+  prune = true
 [rerere]
-	enabled = true
+  enabled = true
+[fetch]
+  prune = true
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
