@@ -8,4 +8,4 @@ mkdir ~/.config/nvim
 ln -sf $(pwd)/vim/vimrc ~/.config/nvim/init.vim
 ln -sf $(pwd)/tmux ~/.tmux
 ln -sf $(pwd)/tmux/tmux.conf ~/.tmux.conf
-ln -sf $(pwd)/irssi ~/.irssi
+ln -sf $(pwd)/ctags ~/.ctags

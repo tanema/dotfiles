@@ -30,8 +30,6 @@ if has("autocmd")
 
   au BufWritePre * %s/\s\+$//e " Remove all trailing whitespace
   au BufWritePre * :retab " Reformat tabs to spaces on save
-  " run neomake on every buffer write except go let vim-go do that
-  au! BufWritePost * if index(['go'], &ft) < 0 | Neomake
 endif
 
 augroup checktime

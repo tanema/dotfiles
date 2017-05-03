@@ -35,15 +35,16 @@ alias vv='vim .'
 alias gp='git push'
 alias gc='git commit'
 alias gg='git grep'
+alias tmuxcfg="vim ~/.tmux"
 alias vimcfg="vim ~/.vimrc"
 alias zshcfg="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias bkpcfg="~/workspace/dotfiles/backup.sh && cd ~/workspace/dotfiles/"
-alias love='/Applications/love.app/Contents/MacOS/love'
 alias make='make -j'
 alias dus='dev down && dev up && dev server'
 alias us='dev up && dev server'
 alias hi='pbpaste | highlight --syntax=js -O rtf | pbcopy'
+alias ctags="`brew --prefix`/bin/ctags"
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 

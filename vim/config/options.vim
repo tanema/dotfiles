@@ -47,6 +47,7 @@ let &colorcolumn="80,".join(range(120,999),",") "setup column warning and no-go 
 set completeopt-=preview        " stop preview window from opening with omnicomplete
 set pastetoggle=<F2>            " change behaviour of pasting with f2
 set autoread                    " auto reload files
+set shell=$SHELL\ -l
 
 syntax on                       " syntax highlighing is on
 colorscheme jellybeans          " Pretty Colors
