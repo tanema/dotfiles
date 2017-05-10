@@ -33,10 +33,10 @@ alias rc='rails c'
 alias v='vim'
 alias vv='vim .'
 alias gp='git push'
-alias gc='git commit'
+alias gc='git commit -am'
 alias gg='git grep'
 alias tmuxcfg="vim ~/.tmux"
-alias vimcfg="vim ~/.vimrc"
+alias vimcfg="vim ~/.vim"
 alias zshcfg="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias bkpcfg="~/workspace/dotfiles/backup.sh && cd ~/workspace/dotfiles/"
@@ -45,6 +45,7 @@ alias dus='dev down && dev up && dev server'
 alias us='dev up && dev server'
 alias hi='pbpaste | highlight --syntax=js -O rtf | pbcopy'
 alias ctags="`brew --prefix`/bin/ctags"
+alias rtags='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 

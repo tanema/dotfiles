@@ -8,9 +8,8 @@ source ~/.vim/config/disabled.vim
 source ~/.vim/config/tabs_and_windows.vim
 source ~/.vim/config/search.vim
 source ~/.vim/config/misc.vim
-source ~/.vim/config/airline.vim
+source ~/.vim/config/statusline.vim
 source ~/.vim/config/neomake.vim
-source ~/.vim/config/neovim.vim
 
 " ------------------------------
 "         Nicer Colors

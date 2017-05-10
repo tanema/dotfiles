@@ -30,6 +30,9 @@ if has("autocmd")
 
   au BufWritePre * %s/\s\+$//e " Remove all trailing whitespace
   au BufWritePre * :retab " Reformat tabs to spaces on save
+
+  " Check the syntax on save
+  au BufWritePost * Neomake
 endif
 
 augroup checktime
