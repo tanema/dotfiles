@@ -27,7 +27,11 @@ function! Mode()
 endfunction
 
 function! FileStatus()
-  return (&readonly || !&modifiable?  '✖︎' : '') . (&modified ? '✎' : '')
+  let status = (&readonly || !&modifiable?  '✖︎' : '') . (&modified ? '✎' : '')
+  if status == ''
+    return ''
+  endif
+  return status . ' '
 endfunction
 
 function! GitInfo()
