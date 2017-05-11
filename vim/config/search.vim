@@ -1,7 +1,6 @@
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-" quick find all
-nnoremap fa :Ag<SPACE>
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
