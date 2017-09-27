@@ -9,10 +9,11 @@ call vundle#begin()               " lazy load plugins for faster startup
 
 Plugin 'gmarik/vundle'            " package manager
 Plugin 'jellybeans.vim'           " color scheme
+Plugin 'dracula/vim'
 Plugin 'surround.vim'             " easy wrap selected items
-Plugin 'scrooloose/nerdcommenter' " easy comment blocks
 Plugin 'kien/ctrlp.vim'           " fast file search with ctrl p
 Plugin 'tpope/vim-vinegar'        " better netrw
+Plugin 'tpope/vim-commentary.git' " easy commenting
 Plugin 'fugitive.vim'             " git integration
 Plugin 'ajh17/VimCompletesMe'     " Autocomplete
 

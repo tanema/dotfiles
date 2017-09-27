@@ -35,6 +35,7 @@ set nocindent                   " Turn off indentation settings, let syntax hand
 set splitright                  " when vertical splitting set new window to the right
 set splitbelow                  " when splitting the new window opens below
 set showmatch                   " highlight matches
+set cursorline                  " highlight current cursorline
 set nowrap                      " text wrap off eff that sheet
 set virtualedit=all             " this means we can go into empty spaces
 set hidden                      " this is so we can hide windows without complaints
@@ -50,7 +51,4 @@ set autoread                    " auto reload files
 set shell=$SHELL\ -l
 
 syntax on                       " syntax highlighing is on
-colorscheme jellybeans          " Pretty Colors
-
-let g:go_fmt_command = "gofmt"
-let g:go_fmt_options = "-s"
+colorscheme dracula             " Pretty Colors
