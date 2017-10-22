@@ -35,22 +35,6 @@ function! FileStatus()
   return status . ' '
 endfunction
 
-function! GitInfo()
-  let head = fugitive#head()
-  if head == ''
-    return '∅'
-  elseif head == 'master'
-    return '❣'
-  endif
-
-  let headLen = strlen(head)
-  if headLen > 25
-    let head = '<' . strpart(head, headLen-25, headLen-1)
-  endif
-
-  return '☀︎ [' . head . ']'
-endfunction
-
 hi User1 ctermfg=186
 hi User2 ctermfg=71
 hi User3 ctermfg=167
@@ -58,7 +42,6 @@ hi User3 ctermfg=167
 set laststatus=2
 set statusline=
 set statusline+=%{Mode()} " Edit mode
-set statusline+=%1*\ %{GitInfo()}\  " git branch info
 set statusline+=%3*%{FileStatus()}%h%w " File flags
 set statusline+=%2*%f
 set statusline+=%= " Space

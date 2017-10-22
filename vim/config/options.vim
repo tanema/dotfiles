@@ -44,11 +44,12 @@ set switchbuf+=usetab,newtab    " this will make it switch to a tab if I already
                                 " have the file open and open the quickfix in a tab
 set clipboard+=unnamed          " use system clipboard
 set t_Co=256                    " use 256 colors
-let &colorcolumn="80,".join(range(120,999),",") "setup column warning and no-go zone
+let &colorcolumn="80,".join(range(120,200),",") "setup column warning and no-go zone
+set synmaxcol=200
 set completeopt-=preview        " stop preview window from opening with omnicomplete
 set pastetoggle=<F2>            " change behaviour of pasting with f2
 set autoread                    " auto reload files
-set shell=$SHELL\ -l
+set shell=$SHELL
 
 syntax on                       " syntax highlighing is on
 colorscheme dracula             " Pretty Colors
