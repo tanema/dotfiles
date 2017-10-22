@@ -1,11 +1,8 @@
 #!/bin/bash
-# quickly link all my dot files to thier proper locations
-ln -sf $(pwd)/gitconfig ~/.gitconfig
-ln -sf $(pwd)/zshrc ~/.zshrc
-ln -sf $(pwd)/vim ~/.vim
-ln -sf $(pwd)/vim/vimrc ~/.vimrc
-ln -sf $(pwd)/tmux ~/.tmux
-ln -sf $(pwd)/tmux/tmux.conf ~/.tmux.conf
-ln -sf $(pwd)/ctags ~/.ctags
+files=("gitconfig" "zshrc" "vim" "vim/vimrc" "tmux" "tmux/tmux.conf" "ctags")
+for i in "${files[@]}"
+do
+  echo "$(pwd)/$i ~/.$(basename $i)"
+done
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
