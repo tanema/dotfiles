@@ -20,3 +20,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-=> <C-w>=
+
+" copy the contents of the current file
+nnoremap <leader>y :!cat %\|pbcopy<CR><CR>
+" copy the current filename
+nnoremap <leader>f :!echo %\|pbcopy<CR><CR>
