@@ -11,6 +11,7 @@ Plugin 'surround.vim'             " easy wrap selected items
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'         " fast file search with ctrl p
 Plugin 'tpope/vim-vinegar'        " better netrw
+Plugin 'tpope/vim-fugitive'        " better netrw
 Plugin 'tpope/vim-commentary.git' " easy commenting
 Plugin 'airblade/vim-gitgutter'   " marks the changes for git
 Plugin 'w0rp/ale.git'             " Syntax
