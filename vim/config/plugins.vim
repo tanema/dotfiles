@@ -18,4 +18,5 @@ Plugin 'w0rp/ale.git'             " Syntax
 Plugin 'ervandew/supertab'        " tab compltion
 Plugin 'fatih/vim-go'             " go sytanx highlighting
 Plugin 'sheerun/vim-polyglot'     " all syntaxes
+Plugin 'bogado/file-line'         " Allow opening file numbers in paths
 call vundle#end()                 " required

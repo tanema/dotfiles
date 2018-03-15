@@ -11,6 +11,7 @@ export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
 export GOPATH=~/workspace/go
+export MINITEST_DIFF="git diff --color"
 
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/Library/android-sdk/platform-tools
