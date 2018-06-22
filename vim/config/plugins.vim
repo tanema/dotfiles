@@ -6,7 +6,6 @@ filetype off                      " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()               " lazy load plugins for faster startup
 Plugin 'gmarik/vundle'            " package manager
-Plugin 'dracula/vim'              " color scheme
 Plugin 'surround.vim'             " easy wrap selected items
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'         " fast file search with ctrl p
@@ -18,4 +17,5 @@ Plugin 'w0rp/ale.git'             " Syntax
 Plugin 'ervandew/supertab'        " tab compltion
 Plugin 'fatih/vim-go'             " go sytanx highlighting
 Plugin 'sheerun/vim-polyglot'     " all syntaxes
+Plugin 'nanotech/jellybeans.vim'
 call vundle#end()                 " required

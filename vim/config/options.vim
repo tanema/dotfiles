@@ -56,4 +56,4 @@ set t_ti= t_te=                 " Don't clear the screen when running a command 
                                 " See http://www.shallowsky.com/linux/noaltscreen.html
 
 syntax on                       " syntax highlighing is on
-colorscheme dracula             " Pretty Colors
+colorscheme jellybeans             " Pretty Colors
