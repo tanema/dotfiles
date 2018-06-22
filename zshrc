@@ -28,6 +28,7 @@ export PATH=$PATH:$HOME/.rvm/bin
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:$HOME/.yarn/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 alias tarhelp='echo "create:  tar -zcvf arc.tar.gx dir \nextract: tar -zxvf arc.tar.gz [-C outputdir] \n-z use gzip \n-v verbose \n-f filename \n-c create \n-x extract"'
 alias reload='source ~/.zshrc'

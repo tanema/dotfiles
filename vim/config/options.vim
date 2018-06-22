@@ -50,6 +50,10 @@ set completeopt-=preview        " stop preview window from opening with omnicomp
 set pastetoggle=<F2>            " change behaviour of pasting with f2
 set autoread                    " auto reload files
 set shell=$SHELL
+set nojoinspaces                " Insert only one space when joining lines that
+                                " contain sentence-terminating punctuation like
+set t_ti= t_te=                 " Don't clear the screen when running a command or exiting
+                                " See http://www.shallowsky.com/linux/noaltscreen.html
 
 syntax on                       " syntax highlighing is on
 colorscheme dracula             " Pretty Colors

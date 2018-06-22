@@ -11,12 +11,11 @@ Plugin 'surround.vim'             " easy wrap selected items
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'         " fast file search with ctrl p
 Plugin 'tpope/vim-vinegar'        " better netrw
-Plugin 'tpope/vim-fugitive'        " better netrw
+Plugin 'tpope/vim-fugitive'       " better netrw
 Plugin 'tpope/vim-commentary.git' " easy commenting
 Plugin 'airblade/vim-gitgutter'   " marks the changes for git
 Plugin 'w0rp/ale.git'             " Syntax
 Plugin 'ervandew/supertab'        " tab compltion
 Plugin 'fatih/vim-go'             " go sytanx highlighting
 Plugin 'sheerun/vim-polyglot'     " all syntaxes
-Plugin 'bogado/file-line'         " Allow opening file numbers in paths
 call vundle#end()                 " required

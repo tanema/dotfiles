@@ -18,16 +18,4 @@ au BufRead,BufNewFile *.hamstache                        set filetype=haml
 au BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 au BufWritePre * %s/\s\+$//e " Remove all trailing whitespace
 au BufWritePre * :retab " Reformat tabs to spaces on save
-
-augroup checktime
-  au!
-  if !has("gui_running")
-    "silent! necessary otherwise throws errors when using command line window.
-    autocmd BufEnter        * silent! checktime
-    autocmd CursorHold      * silent! checktime
-    autocmd CursorHoldI     * silent! checktime
-    "these two _may_ slow things down. Remove if they do.
-    autocmd CursorMoved     * silent! checktime
-    autocmd CursorMovedI    * silent! checktime
-  endif
-augroup END
+au BufEnter * silent! checktime " check if there are changes to the file
