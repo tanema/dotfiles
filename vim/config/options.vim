@@ -54,6 +54,8 @@ set nojoinspaces                " Insert only one space when joining lines that
                                 " contain sentence-terminating punctuation like
 set t_ti= t_te=                 " Don't clear the screen when running a command or exiting
                                 " See http://www.shallowsky.com/linux/noaltscreen.html
+set listchars=tab:→\ ,nbsp:~    " set how hidden characters are displayed
+set list                        " display hidden characters
 
 syntax on                       " syntax highlighing is on
-colorscheme jellybeans             " Pretty Colors
+colorscheme jellybeans          " Pretty Colors
