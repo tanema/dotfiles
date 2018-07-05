@@ -1,7 +1,4 @@
-" ------------------------------
-"         Plugins
-" install vundle     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" ------------------------------
+" install vundle: git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 filetype off                      " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()               " lazy load plugins for faster startup

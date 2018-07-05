@@ -1,6 +1,3 @@
-" ------------------------------
-"             DISABLES
-" ------------------------------
 " turn off the damn arrow keys
 noremap  <Up>     <NOP>
 noremap  <Down>   <NOP>

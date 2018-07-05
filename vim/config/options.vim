@@ -45,11 +45,11 @@ set switchbuf+=usetab,newtab    " this will make it switch to a tab if I already
 set clipboard+=unnamed          " use system clipboard
 set t_Co=256                    " use 256 colors
 let &colorcolumn="80,".join(range(120,200),",") "setup column warning and no-go zone
-set synmaxcol=200
+set synmaxcol=200               " speed up vim by disabling syntax on long lines
 set completeopt-=preview        " stop preview window from opening with omnicomplete
 set pastetoggle=<F2>            " change behaviour of pasting with f2
 set autoread                    " auto reload files
-set shell=$SHELL
+set shell=$SHELL                " set shell for shell command explicitly
 set nojoinspaces                " Insert only one space when joining lines that
                                 " contain sentence-terminating punctuation like
 set t_ti= t_te=                 " Don't clear the screen when running a command or exiting
