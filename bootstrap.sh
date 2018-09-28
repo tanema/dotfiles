@@ -1,8 +1,12 @@
 #!/bin/bash
-files=("gitconfig" "zshrc" "vim" "vim/vimrc" "tmux" "tmux/tmux.conf" "ctags")
-for i in "${files[@]}"
-do
-  echo "$(pwd)/$i ~/.$(basename $i)"
+files=("gitconfig" "zshrc" "vim" "tmux")
+for i in "${files[@]}"; do
+  echo "linking: $(pwd)/$i => ~/.$(basename $i)"
+  ln -sf "$(pwd)/$i ~/.$(basename $i)"
 done
 
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+config=("alacritty")
+for i in "${config[@]}"; do
+  echo "linking: $(pwd)/$i => ~/.config/$(basename $i)"
+  ln -sf "$(pwd)/$i ~/.$(basename $i)"
+done

@@ -1,7 +1,17 @@
+tabspaces: 2
+render_timer: false
+custom_cursor_colors: false
+draw_bold_text_with_bright_colors: true
+dynamic_title: true
+hide_cursor_when_typing: false
+cursor_style: Block # [Block, Underline, Beam]
+unfocused_hollow_cursor: true
+live_config_reload: true
+background_opacity: 1.0
 env:
   TERM: xterm-256color
 window:
-  dimensions: {columns: 80, lines: 24}
+  dimensions: {columns: 300, lines: 100}
   padding: {x: 2, y: 2}
   decorations: none # [full, none, transparent, buttonless]
 scrolling:
@@ -9,8 +19,6 @@ scrolling:
   multiplier: 3 # Number of lines the viewport will move for every line scrolled when scrollback is enabled (history > 0).
   faux_multiplier: 3
   auto_scroll: false
-tabspaces: 2
-draw_bold_text_with_bright_colors: true
 font:
   normal: {family: Menlo}
   bold: {family: Menlo}
@@ -20,8 +28,6 @@ font:
   glyph_offset: {x: 0, y: 0}
   scale_with_dpi: true
   use_thin_strokes: true
-render_timer: false
-custom_cursor_colors: false
 colors: # Colors (Blood Moon)
   primary:
     background: '0x10100E'
@@ -47,17 +53,11 @@ colors: # Colors (Blood Moon)
 visual_bell:
   animation: EaseOutExpo # [Ease, EaseOut, EaseOutSine, EaseOutQuad, EaseOutCubic, EaseOutQuart, EaseOutQuint, EaseOutExpo, EaseOutCirc, Linear]
   duration: 0  # To completely disable the visual bell, set its duration to 0.
-background_opacity: 1.0
 mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-dynamic_title: true
-hide_cursor_when_typing: false
-cursor_style: Block # [Block, Underline, Beam]
-unfocused_hollow_cursor: true
-live_config_reload: true
 # shell:
 #   program: /usr/local/bin/zsh
 #   args:
