@@ -1,33 +1,22 @@
-tabspaces: 2
-render_timer: false
-custom_cursor_colors: false
-draw_bold_text_with_bright_colors: true
-dynamic_title: true
-hide_cursor_when_typing: false
-cursor_style: Block # [Block, Underline, Beam]
-unfocused_hollow_cursor: true
-live_config_reload: true
-background_opacity: 1.0
-env:
-  TERM: xterm-256color
+env: {TERM: xterm-256color}
 window:
-  dimensions: {columns: 300, lines: 100}
+  dimensions: {columns: 0, lines: 0}
   padding: {x: 2, y: 2}
-  decorations: none # [full, none, transparent, buttonless]
+  dynamic_padding: false
+  decorations: full
+  start_maximized: true
 scrolling:
-  history: 10000 # How many lines of scrollback to keep,
-  multiplier: 3 # Number of lines the viewport will move for every line scrolled when scrollback is enabled (history > 0).
+  history: 10000
+  multiplier: 3
   faux_multiplier: 3
-  auto_scroll: false
+  auto_scroll: true
+tabspaces: 2
 font:
-  normal: {family: Menlo}
-  bold: {family: Menlo}
-  italic: {family: Menlo}
   size: 14.0
   offset: {x: 0, y: 0}
   glyph_offset: {x: 0, y: 0}
-  scale_with_dpi: true
   use_thin_strokes: true
+draw_bold_text_with_bright_colors: true
 colors: # Colors (Blood Moon)
   primary:
     background: '0x10100E'
@@ -50,18 +39,24 @@ colors: # Colors (Blood Moon)
     magenta: '0xFF1493'
     cyan:    '0x00CCCC'
     white:   '0xFFFAFA'
-visual_bell:
-  animation: EaseOutExpo # [Ease, EaseOut, EaseOutSine, EaseOutQuad, EaseOutCubic, EaseOutQuart, EaseOutQuint, EaseOutExpo, EaseOutCirc, Linear]
-  duration: 0  # To completely disable the visual bell, set its duration to 0.
+visual_bell: {duration: 0}
+background_opacity: 1.0
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
 mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
+  hide_when_typing: false
+  url: {launcher: open, modifiers: Control}
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-# shell:
-#   program: /usr/local/bin/zsh
-#   args:
-#     - --login
+  save_to_clipboard: false
+dynamic_title: true
+cursor:
+  style: Block  # [Block, Underline, Beam]
+  unfocused_hollow: true
+live_config_reload: true
+alt_send_esc: true
 key_bindings:
   - { key: V,        mods: Command, action: Paste                        }
   - { key: C,        mods: Command, action: Copy                         }
