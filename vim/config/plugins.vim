@@ -14,5 +14,6 @@ Plugin 'w0rp/ale.git'             " Syntax
 Plugin 'ervandew/supertab'        " tab compltion
 Plugin 'fatih/vim-go'             " go sytanx highlighting
 Plugin 'sheerun/vim-polyglot'     " all syntaxes
+Plugin 'gf3/peg.vim'
 Plugin 'nanotech/jellybeans.vim'
 call vundle#end()                 " required
