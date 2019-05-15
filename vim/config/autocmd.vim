@@ -17,5 +17,5 @@ au BufRead,BufNewFile *.hamstache                        set filetype=haml
 au BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 au BufWritePre * %s/\s\+$//e    " Remove all trailing whitespace
 au BufWritePre * :retab         " Reformat tabs to spaces on save
+au BufWritePost * :GitGutter    " Check git status on save
 au BufEnter * silent! checktime " check if there are changes to the file
-
