@@ -4,3 +4,4 @@ let g:netrw_localrmdir='rm -r'                                " Allow netrw to r
 " Add hide files to wildignore. This works with vim-vinegar
 set wildignore+=.DS_Store
 set wildignore+=.git
+set wildignore+=*.pyc

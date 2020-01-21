@@ -4,6 +4,7 @@
   signingkey = C0CA880D
 [core]
   editor = /usr/bin/vim
+	commitGraph = true
 [color]
   ui = true
 [diff]
@@ -43,3 +44,5 @@
 	version = 2
 [credential]
 	helper = osxkeychain
+[gc]
+	writeCommitGraph = true
