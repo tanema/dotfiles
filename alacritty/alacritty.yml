@@ -4,15 +4,14 @@ window:
   padding: {x: 2, y: 2}
   dynamic_padding: false
   decorations: full
-  start_maximized: true
+  startup_mode: Maximized
 scrolling:
   history: 10000
   multiplier: 3
-  faux_multiplier: 3
   auto_scroll: true
 tabspaces: 2
 font:
-  size: 14.0
+  size: 20.0
   offset: {x: 0, y: 0}
   glyph_offset: {x: 0, y: 0}
   use_thin_strokes: true
