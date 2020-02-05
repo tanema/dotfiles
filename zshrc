@@ -24,4 +24,6 @@ alias love='/Applications/love.app/Contents/MacOS/love'
 alias reload='source ~/.zshrc'
 alias make='make -j'
 
+# Tool sourcing
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+[ -f "/Users/timanema/.shopify-app-cli/shopify.sh" ] && source "/Users/timanema/.shopify-app-cli/shopify.sh"
