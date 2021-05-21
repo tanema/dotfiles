@@ -1,12 +1,8 @@
 " toggle spell check
 nnoremap <F3> :set spell!<CR>
-"moving lines
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 " clear search highlight with backspace
 nmap <BS> :noh<CR>
-" bind K to grep word under cursor
-nnoremap <C-e> :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" Ctr-P action
 nnoremap <C-P> :Files<CR>
 " switch tab shortcuts
 nmap <tab> gt
