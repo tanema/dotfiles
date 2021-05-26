@@ -1,10 +1,10 @@
+#!/usr/bin/env bash
 echo "Linking config files"
 ln -sf $HOME/dotfiles/gitconfig $HOME/.gitconfig
 ln -sf $HOME/dotfiles/zshrc $HOME/.zshrc
 ln -sf $HOME/dotfiles/vim $HOME/.vim
 ln -sf $HOME/dotfiles/tmux $HOME/.tmux
 ln -sf $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
-ln -sf $HOME/dotfiles/alacritty $HOME/.config/.alacritty
 
 echo "installing vundle and vim plugins"
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
