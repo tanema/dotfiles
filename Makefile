@@ -41,7 +41,6 @@ vimplugins:
 	@export REPO=fatih/vim-go DEST=vim/pack/default/start/vim-go; $(MAKE) plugin; # go sytanx highlighting
 	@export REPO=sheerun/vim-polyglot DEST=vim/pack/default/start/vim-polyglot; $(MAKE) plugin; # all syntaxes
 	@export REPO=tpope/vim-vinegar DEST=vim/pack/default/start/vim-vinegar; $(MAKE) plugin; # better netrw
-
 tmuxplugins: ## Install tmux plugins because I cant figure out tpm
 	@export REPO=tmux-plugins/tpm DEST=tmux/plugins/tpm; $(MAKE) plugin;
 	@export REPO=tmux-plugins/tmux-yank DEST=tmux/plugins/tmux-yank; $(MAKE) plugin;
