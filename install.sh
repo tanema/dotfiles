@@ -6,6 +6,7 @@ ln -sf ~/dotfiles/tmux ~/.tmux
 ln -sf ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 if ! command -v fzf &> /dev/null; then
+  ssh-keyscan github.com >> ~/.ssh/known_hosts
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all
 fi
 
