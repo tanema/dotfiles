@@ -11,8 +11,8 @@ echo "Host github.com
   StrictHostKeyChecking no" >> ~/.ssh/config
 git config commit.gpgsign false
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth 1 https://github.com/dracula/zsh.git ~/.oh-my-zsh/custom/theme/dracula
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+git clone --depth 1 git://github.com/ohmyzsh/ohmyzsh.git
+git clone --depth 1 git://github.com/dracula/zsh.git ~/.oh-my-zsh/custom/theme/dracula
+git clone --depth 1 git://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 sudo apt-get install -y silversearcher-ag
