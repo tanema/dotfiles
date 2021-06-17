@@ -12,7 +12,7 @@ echo "Host github.com
 git config commit.gpgsign false
 
 git clone --depth 1 git://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-git clone --depth 1 git://github.com/dracula/zsh.git ~/.oh-my-zsh/custom/theme/dracula
+git clone --depth 1 git://github.com/dracula/zsh.git ~/.oh-my-zsh/custom/themes/dracula
 git clone --depth 1 git://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 sudo apt-get install -y silversearcher-ag
