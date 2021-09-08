@@ -94,8 +94,7 @@ let s:zig_syntax_keywords = {
     \ ,                "callconv"
     \ ,                "noalias"]
     \ , 'zigBuiltinFn': ["align"
-    \ ,                  "@add"
-    \ ,                  "@WithOverflow"
+    \ ,                  "@addWithOverflow"
     \ ,                  "@as"
     \ ,                  "@atomicLoad"
     \ ,                  "@atomicStore"
@@ -107,7 +106,6 @@ let s:zig_syntax_keywords = {
     \ ,                  "@cImport"
     \ ,                  "@cInclude"
     \ ,                  "@cUndef"
-    \ ,                  "@canImplicitCast"
     \ ,                  "@clz"
     \ ,                  "@cmpxchgWeak"
     \ ,                  "@cmpxchgStrong"
@@ -142,6 +140,7 @@ let s:zig_syntax_keywords = {
     \ ,                  "@src"
     \ ,                  "@bitOffsetOf"
     \ ,                  "@byteOffsetOf"
+    \ ,                  "@offsetOf"
     \ ,                  "@OpaqueType"
     \ ,                  "@panic"
     \ ,                  "@ptrCast"
@@ -155,8 +154,6 @@ let s:zig_syntax_keywords = {
     \ ,                  "@setRuntimeSafety"
     \ ,                  "@setEvalBranchQuota"
     \ ,                  "@setFloatMode"
-    \ ,                  "@setGlobalLinkage"
-    \ ,                  "@setGlobalSection"
     \ ,                  "@shlExact"
     \ ,                  "@This"
     \ ,                  "@hasDecl"
@@ -179,8 +176,6 @@ let s:zig_syntax_keywords = {
     \ ,                  "@typeName"
     \ ,                  "@TypeOf"
     \ ,                  "@atomicRmw"
-    \ ,                  "@bytesToSlice"
-    \ ,                  "@sliceToBytes"
     \ ,                  "@intToError"
     \ ,                  "@errorToInt"
     \ ,                  "@intToEnum"
@@ -277,7 +272,7 @@ highlight default link zigStructure Structure
 highlight default link zigExecution Special
 highlight default link zigMacro Macro
 highlight default link zigConditional Conditional
-highlight default link zigComparatorWord Operator
+highlight default link zigComparatorWord Keyword
 highlight default link zigRepeat Repeat
 highlight default link zigSpecial Special
 highlight default link zigVarDecl Function

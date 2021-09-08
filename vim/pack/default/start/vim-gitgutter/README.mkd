@@ -77,13 +77,16 @@ nvim -u NONE -c "helptags vim-gitgutter/doc" -c q
 
 ### Windows
 
-I recommend configuring vim-gitgutter with the full path to your git executable.  For example:
+There is a potential risk on Windows due to `cmd.exe` prioritising the current folder over folders in `PATH`.  If you have a file named `git.*` (i.e. with any extension in `PATHEXT`) in your current folder, it will be executed instead of git whenever the plugin calls git.
+
+You can avoid this risk by configuring the full path to your git executable.  For example:
 
 ```viml
+" This path probably won't work
 let g:gitgutter_git_executable = 'C:\Program Files\Git\bin\git.exe'
 ```
 
-This is to avoid a problem which occurs if you have file named `git.*` (i.e. with any extension in `PATHEXT`) in your current folder.  `cmd.exe` prioritises the current folder over folders in `PATH` and will try to execute your file instead of the `git` binary.
+Unfortunately I don't know the correct escaping for the path - if you do, please let me know!
 
 
 ### Getting started
@@ -280,6 +283,9 @@ You can customise:
 * How to handle non-gitgutter signs
 * The signs' colours and symbols
 * Line highlights
+* Line number highlights (only in Neovim 0.3.2 or higher)
+* The diff syntax colours used in the preview window
+* The intra-line diff highlights used in the preview window
 * Whether the diff is relative to the index (default) or working tree.
 * The base of the diff
 * Extra arguments for `git` when running `git diff`
@@ -389,6 +395,35 @@ Maybe you think `CursorLineNr` is a bit annoying.  For example, you could use `U
 
 ```viml
 highlight link GitGutterChangeLineNr Underlined
+```
+
+
+#### The diff syntax colours used in the preview window
+
+To change the diff syntax colours used in the preview window, set up the `diff*` highlight groups in your colorscheme or `~/.vimrc`:
+
+```viml
+diffAdded   " if not set: use GitGutterAdd's foreground colour
+diffChanged " if not set: use GitGutterChange's foreground colour
+diffRemoved " if not set: use GitGutterDelete's foreground colour
+```
+
+Note the `diff*` highlight groups are used in any buffer whose `'syntax'` is `diff`.
+
+
+#### The intra-line diff highlights used in the preview window
+
+To change the intra-line diff highlights used in the preview window, set up the following highlight groups in your colorscheme or `~/.vimrc`:
+
+```viml
+GitGutterAddIntraLine    " default: gui=reverse cterm=reverse
+GitGutterDeleteIntraLine " default: gui=reverse cterm=reverse
+```
+
+For example, to use `DiffAdd` for intra-line added regions:
+
+```viml
+highlight link GitGutterAddIntraLine DiffAdd
 ```
 
 

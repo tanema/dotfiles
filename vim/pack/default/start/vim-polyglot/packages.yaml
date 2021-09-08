@@ -773,22 +773,19 @@ filetypes:
   - hsig
 ---
 name: haxe
-remote: yaymukund/vim-haxe
+remote: jdonaldson/vaxe
 filetypes:
 - name: haxe
   linguist: Haxe
----
-name: hcl
-remote: b4b4r07/vim-hcl
-filetypes:
-- name: hcl
-  linguist: HCL
-  extra_filenames:
-  - Appfile
-  ignored_extensions:
-  # handled by vim-terraform
-  - tf
-  - tfvars
+- name: hxml
+  linguist: HXML
+- name: hss
+  extensions:
+    - hss
+ignored_dirs:
+  - ftplugin
+  - autoload
+  - compiler
 ---
 name: hive
 remote: zebradil/hive.vim
@@ -797,19 +794,6 @@ filetypes:
   linguist: HiveQL
   extra_extensions:
   - ql
----
-name: i3
-remote: mboughaba/i3config.vim
-filetypes:
-- name: i3config
-  filenames:
-  - i3.config
-  - i3config
-  - .i3.config
-  - .i3config
-  extensions:
-  - i3.config
-  - i3config
 ---
 name: icalendar
 remote: chutzpah/icalendar.vim
@@ -985,7 +969,7 @@ filetypes:
 name: livescript
 remote: gkz/vim-ls
 filetypes:
-- name: livescript
+- name: ls
   linguist: LiveScript
 ---
 name: llvm
@@ -1636,6 +1620,16 @@ filetypes:
   extensions:
   - tf
   - tfvars
+- name: hcl
+  linguist: HCL
+  extra_filenames:
+  - Appfile
+  - .terraformrc
+  - terraform.rc
+  ignored_extensions:
+  # handled by vim-terraform
+  - tf
+  - tfvars
 ---
 name: textile
 remote: timcharper/textile.vim
@@ -1945,7 +1939,7 @@ filetypes:
   - t
 ---
 name: gitignore
-remote: fszymanski/fzf-gitignore
+remote: SirJson/fzf-gitignore 
 filetypes:
 - name: gitignore
   filenames:
@@ -3213,8 +3207,6 @@ filetypes:
   - pattern: Prl*.*,JAM*.*
 ---
 name: java
-remote: vim/vim:runtime
-glob: "**/java.vim"
 filetypes:
 - name: java
   patterns:
@@ -4585,7 +4577,7 @@ glob: "**/scheme.vim"
 filetypes:
 - name: scheme
   patterns:
-  - pattern: "*.scm,*.ss,*.rkt"
+  - pattern: "*.scm,*.ss"
     description: Scheme
 ---
 name: screen
@@ -5509,16 +5501,8 @@ glob: "**/autodoc.vim"
 # Needed by c, cmod, and pike
 filetypes: []
 ---
-name: html
-remote: vim/vim:runtime
-glob: "**/html.vim"
-filetypes:
-- name: html
-  linguist: HTML
----
-# TODO: change after https://github.com/othree/html5.vim/pull/106 is merged
 name: html5
-remote: sheerun/html5.vim
+remote: othree/html5.vim
 dependencies: html
 filetypes: []
 ---
@@ -5585,9 +5569,51 @@ filetypes:
     description: Hjson (https://hjson.github.io)
 ---
 name: sway
-remote: aouelete/sway-vim-syntax
+remote: jamespeapen/swayconfig.vim/tree/i3sway
 filetypes:
-- name: sway
+- name: i3config
   patterns:
-  - pattern: '*sway/config'
-    description: Sway Configuration
+  - pattern: 'i3.config,*.i3config,*.i3.config,*sway/config,*.swayconfig,*.sway.config,sway.config'
+    description: Sway/i3 Configuration
+---
+name: just
+remote: NoahTheDuke/vim-just
+filetypes:
+- name: just
+  patterns:
+  - pattern: 'justfile,*.just'
+    description: 'Just a task runner (https://github.com/casey/just)'
+---
+name: nftables
+remote: nfnty/vim-nftables
+filetypes:
+- name: nftables
+  extensions:
+  - nft
+  patterns:
+  - pattern: '*/nftables.conf'
+    description: nftables configuration
+---
+name: openscad
+remote: sirtaj/vim-openscad
+filetypes:
+- name: openscad
+  patterns:
+  - pattern: '*.scad'
+    description: OpenSCAD 3D modeling language
+---
+name: mermaid
+remote: mracos/mermaid.vim
+filetypes:
+- name: mermaid
+  patterns:
+  - pattern: '*.mermaid,*.mm,*.mmd'
+    description: Mermaid (https://mermaid-js.github.io/)
+---
+name: org
+remote: axvr/org.vim
+filetypes:
+- name: org
+  patterns:
+  - pattern: '*.org'
+    description: GNU Emacs' Org mode

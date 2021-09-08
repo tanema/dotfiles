@@ -22,7 +22,3 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 alias reload='source ~/.zshrc'
 alias make='make -j'
-
-# Tool sourcing
-[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-if [ -e /Users/timanema/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/timanema/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

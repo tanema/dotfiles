@@ -28,7 +28,7 @@
 [fetch]
   prune = true
 [commit]
-  gpgsign = true
+  #gpgsign = true
 [gpg]
   program = /usr/local/MacGPG2/bin/gpg2
 [url "git@github.com:"]
@@ -51,7 +51,7 @@
   insteadOf = ssh://git@github.com/Shopify/
   insteadOf = ssh://git@github.com/shopify/
 [credential]
-	helper = 
-	helper = store --file /opt/dev/var/private/git_credential_store
+  helper =
+  helper = store --file /opt/dev/var/private/git_credential_store
 [init]
-	defaultBranch = main
+  defaultBranch = main

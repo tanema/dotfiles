@@ -3,31 +3,29 @@
 all: | directories xcode homebrew tools alacritty ohmyzsh dev fetchdotfiles linkdotfiles vundle tmuxplugins ssh
 
 directories: ## create directories that I expect to be there
-	mkdir -p $HOME/workspace
-	mkdir -p $HOME/.config
+	mkdir -p ~/workspace
+	mkdir -p ~/.config
 xcode: ## ensure xcode doesnt get in our way
 	xcode-select --install
 homebrew: ## install my package manager
 	@echo "installing homebrew"
-	@/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 tools: ## the default tools tools that I use
 	brew install tmux vim git gnupg ag
-alacritty: ## install my favourite terminal emulator
-	brew cask install alacritty
 ohmyzsh: ## install shopifys dev tool
 	@echo "installing ohmyzsh"
-	@sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	git clone --depth 1 git://github.com/dracula/zsh.git ~/.oh-my-zsh/custom/themes/dracula
 fetchdotfiles: ## fetch the dotfiles repo into my workspace
 	@echo "fetching dotfiles"
-	git clone https://github.com/tanema/dotfiles.git $HOME/workspace/dotfiles
+	git clone https://github.com/tanema/dotfiles.git ~/workspace/dotfiles
 linkdotfiles: ## link saved dotfiles to to home directory
 	@echo "Linking config files"
-	ln -sf $HOME/workspace/dotfiles/gitconfig $HOME/.gitconfig
-	ln -sf $HOME/workspace/dotfiles/zshrc $HOME/.zshrc
-	ln -sf $HOME/workspace/dotfiles/vim $HOME/.vim
-	ln -sf $HOME/workspace/dotfiles/tmux $HOME/.tmux
-	ln -sf $HOME/workspace/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
-	ln -sf $HOME/workspace/dotfiles/alacritty $HOME/.config/.alacritty
+	ln -sf ~/dotfiles/gitconfig ~/.gitconfig
+	ln -sf ~/dotfiles/zshrc ~/.zshrc
+	ln -sf ~/dotfiles/vim ~/.vim
+	ln -sf ~/dotfiles/tmux ~/.tmux
+	ln -sf ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 vimplugins:
 	@export REPO=dense-analysis/ale DEST=vim/pack/default/start/ale; $(MAKE) plugin;
 	@export REPO=junegunn/fzf.vim DEST=vim/pack/default/start/fzf.vim; $(MAKE) plugin;  # fast file search with ctrl p
@@ -55,8 +53,8 @@ ssh: ## Generate and add a new ssh key to this system for my email
 	@echo "Generating new ssh key"
 	ssh-keygen -t rsa -b 4096 -C "timanema@gmail.com"
 	eval "$(ssh-agent -s)"
-	mkdir -p $HOME/.ssh
-	$HOME/.ssh/config << EndOfMessage
+	mkdir -p ~/.ssh
+	~/.ssh/config << EndOfMessage
 	Host *
 		AddKeysToAgent yes
 		IgnoreUnknown UseKeychain
