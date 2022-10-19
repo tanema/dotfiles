@@ -1,7 +1,7 @@
 [user]
   name = Tim Anema
-  email = tim.anema@shopify.com
-  signingkey = 964E397804BFB51B
+  email = tim.anema@agilebits.com
+  signingkey = 222D82A25F3857A4
 [core]
   editor = /usr/bin/vim
   commitGraph = true
@@ -28,9 +28,9 @@
 [fetch]
   prune = true
 [commit]
-  #gpgsign = true
+  gpgsign = true
 [gpg]
-  program = /usr/local/MacGPG2/bin/gpg2
+  program = gpg2
 [url "git@github.com:"]
   insteadOf = https://github.com/
 [url "git@bitbucket.org:"]
@@ -39,17 +39,14 @@
   insteadOf = https://bitbucket.org/
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
+[url "ssh://git@gitlab.1password.io:2227"]
+  insteadOf = https://gitlab.1password.io
 [rebase]
   autoStash = true
 [protocol]
   version = 2
 [gc]
   writeCommitGraph = true
-[url "https://github.com/Shopify/"]
-  insteadOf = git@github.com:Shopify/
-  insteadOf = git@github.com:shopify/
-  insteadOf = ssh://git@github.com/Shopify/
-  insteadOf = ssh://git@github.com/shopify/
 [credential]
   helper =
   helper = store --file /opt/dev/var/private/git_credential_store
