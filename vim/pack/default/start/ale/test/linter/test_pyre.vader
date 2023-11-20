@@ -8,6 +8,8 @@ After:
   call ale#assert#TearDownLinterTest()
 
 Execute(The pyre command callback should return default string):
+  call ale#test#SetFilename('./foo.py')
+
   AssertLinter 'pyre',  ale#Escape('pyre') . ' persistent'
 
 Execute(The pyre executable should be configurable):
@@ -34,6 +36,7 @@ Execute(You should be able to override the pyre virtualenv lookup):
 
 Execute(Setting executable to 'pipenv' appends 'run pyre'):
   let g:ale_python_pyre_executable = 'path/to/pipenv'
+  call ale#test#SetFilename('../test-files/dummy')
 
   AssertLinter 'path/to/pipenv',
   \ ale#Escape('path/to/pipenv') . ' run pyre persistent'
@@ -57,3 +60,10 @@ Execute(Poetry is detected when python_pyre_auto_poetry is set):
 
   AssertLinter 'poetry',
   \ ale#Escape('poetry') . ' run pyre persistent'
+
+Execute(The FindProjectRoot should detect the project root directory for namespace package via .pyre_configuration.local):
+  silent execute 'file ' . fnameescape(g:dir . '/../test-files/python/pyre_configuration_dir/foo/bar.py')
+
+  AssertEqual
+  \ ale#path#Simplify(g:dir . '/../test-files/python/pyre_configuration_dir'),
+  \ ale#python#FindProjectRoot(bufnr(''))

@@ -24,13 +24,16 @@ if !exists("b:eelixir_subtype")
     let b:eelixir_subtype = matchstr(&filetype,'^eex\.\zs\w\+')
   endif
   if b:eelixir_subtype == ''
+    let b:eelixir_subtype = matchstr(&filetype,'^heex\.\zs\w\+')
+  endif
+  if b:eelixir_subtype == ''
     let b:eelixir_subtype = matchstr(&filetype,'^leex\.\zs\w\+')
   endif
   if b:eelixir_subtype == ''
     let b:eelixir_subtype = matchstr(&filetype,'^sface\.\zs\w\+')
   endif
   if b:eelixir_subtype == ''
-    let b:eelixir_subtype = matchstr(substitute(expand("%:t"),'\c\%(\.eex\|\.sface\|\.leex\|\.eelixir\)\+$','',''),'\.\zs\w\+$')
+    let b:eelixir_subtype = matchstr(substitute(expand("%:t"),'\c\%(\.eex\|\.heex\|\.leex\|\.sface\|\.eelixir\)\+$','',''),'\.\zs\w\+$')
   endif
   if b:eelixir_subtype == 'ex'
     let b:eelixir_subtype = 'elixir'
@@ -60,6 +63,8 @@ syn cluster eelixirRegions contains=eelixirBlock,surfaceExpression,eelixirExpres
 exe 'syn region  eelixirExpression matchgroup=eelixirDelimiter start="<%"  end="%\@<!%>" contains=@elixirTop  containedin=ALLBUT,@eelixirRegions keepend'
 exe 'syn region  eelixirExpression matchgroup=eelixirDelimiter start="<%=" end="%\@<!%>" contains=@elixirTop  containedin=ALLBUT,@eelixirRegions keepend'
 exe 'syn region  surfaceExpression matchgroup=surfaceDelimiter start="{{" end="}}" contains=@elixirTop  containedin=ALLBUT,@eelixirRegions keepend'
+exe 'syn region  surfaceExpression matchgroup=surfaceDelimiter start="{" end="}" contains=@elixirTop  containedin=ALLBUT,@eelixirRegions keepend'
+exe 'syn region  surfaceExpression matchgroup=surfaceDelimiter start="{" end="}" skip="#{[^}]*}" contains=@elixirTop  containedin=htmlValue keepend'
 exe 'syn region  eelixirQuote      matchgroup=eelixirDelimiter start="<%%" end="%\@<!%>" contains=@elixirTop  containedin=ALLBUT,@eelixirRegions keepend'
 exe 'syn region  eelixirComment    matchgroup=eelixirDelimiter start="<%#" end="%\@<!%>" contains=elixirTodo,@Spell containedin=ALLBUT,@eelixirRegions keepend'
 

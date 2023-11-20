@@ -140,10 +140,12 @@ syntax keyword swiftKeywords
       \ init
       \ inout
       \ internal
+      \ isolated
       \ lazy
       \ let
       \ mutating
       \ nil
+      \ nonisolated
       \ nonmutating
       \ open
       \ operator
@@ -190,17 +192,26 @@ syntax match swiftMultiwordKeywords "indirect enum"
 syntax region swiftEscapedReservedWord start="`" end="`" oneline
 
 syntax keyword swiftAttributes
+      \ @_disfavoredOverload
       \ @_exported
       \ @_implementationOnly
       \ @_silgen_name
+      \ @AppStorage
       \ @assignment
       \ @autoclosure
       \ @available
+      \ @Binding
       \ @convention
       \ @discardableResult
+      \ @Environment
+      \ @EnvironmentObject
       \ @escaping
       \ @exported
+      \ @FetchRequest
+      \ @FocusedBinding
+      \ @FocusedValue
       \ @frozen
+      \ @GestureState
       \ @IBAction
       \ @IBDesignable
       \ @IBInspectable
@@ -208,22 +219,33 @@ syntax keyword swiftAttributes
       \ @inlinable
       \ @main
       \ @MainActor
+      \ @Namespace
       \ @noescape
       \ @nonobjc
       \ @noreturn
+      \ @NSApplicationDelegateAdaptor
       \ @NSApplicationMain
       \ @NSCopying
       \ @NSManaged
       \ @objc
+      \ @ObservedObject
+      \ @preconcurrency
       \ @propertyWrapper
+      \ @Published
       \ @resultBuilder
+      \ @ScaledMetric
+      \ @SceneStorage
       \ @Sendable
+      \ @State
+      \ @StateObject
       \ @testable
+      \ @UIApplicationDelegateAdaptor
       \ @UIApplicationMain
       \ @usableFromInline
-      \ @warn_unused_result
 
-syntax keyword swiftConditionStatement #available
+syntax keyword swiftConditionStatement
+      \ #available
+      \ #unavailable
 
 syntax keyword swiftStructure
       \ struct
@@ -232,6 +254,8 @@ syntax keyword swiftStructure
 syntax keyword swiftDebugIdentifier
       \ #column
       \ #file
+      \ #fileID
+      \ #filePath
       \ #function
       \ #line
       \ __COLUMN__

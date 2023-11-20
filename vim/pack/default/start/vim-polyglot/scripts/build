@@ -491,6 +491,7 @@ def extract(packages)
 
   output = []
   packages.map do |package|
+    copied_something = false
     if !package["remote"]
       next
     end
@@ -516,12 +517,18 @@ def extract(packages)
             if package["extract_in_after"] == true
               target = "after/#{target}"
             end
+            copied_something = true
             copy_file(package["name"], "#{subtree}#{p}", target)
           end
         end
       elsif File.exist?(subpath)
+        copied_something = true
         copy_file(package["name"], subpath, subdir)
       end
+    end
+
+    if !copied_something
+      raise StandardError.new("No files in: #{package["name"]}")
     end
 
     if repo == "vim/vim"
@@ -889,16 +896,17 @@ def show_warnings(all_filetypes, expected_filetypes)
 end
 
 def generate_fallback
-  filetype_content = File.read('tmp/vim/vim/runtime/filetype.vim') 
+  filetype_content = File.read('tmp/vim/vim-v8.2.4274/runtime/filetype.vim') 
   filetype_content.gsub!('runtime! ftdetect/*.vim', '')
   filetype_content.gsub!(/^au BufNewFile,BufRead \*\n.+?runtime!.+?endif/m) {}
   filetype_content.gsub!(/^au StdinReadPost \* .+?runtime!.+?endif/m) {}
   filetype_content.gsub!(/^au filetypedetect BufNewFile,BufRead,StdinReadPost \*\n.+?endif/m) {}
   filetype_content.gsub!("dist#ft#", "polyglot#ft#")
+  filetype_content.gsub!("TestFiletypeFuncs", "TestPolyglotFiletypeFuncs")
   File.write('extras/filetype.vim', filetype_content)
-  File.write('extras/menu.vim', File.read('tmp/vim/vim/runtime/menu.vim'))
+  File.write('extras/menu.vim', File.read('tmp/vim/vim-v8.2.4274/runtime/menu.vim'))
 
-  autoload_content = File.read('tmp/vim/vim/runtime/autoload/dist/ft.vim') 
+  autoload_content = File.read('tmp/vim/vim-v8.2.4274/runtime/autoload/dist/ft.vim') 
   autoload_content.gsub!('dist#ft#', 'polyglot#ft#')
   File.write('autoload/polyglot/ft.vim', autoload_content)
 end
@@ -912,6 +920,11 @@ if __FILE__ == $0
   Dir.mkdir('tmp') unless File.exists?('tmp')
 
   packages, heuristics = load_data()
+  packages.each do |package|
+    if package["native"] == true
+      package["remote"] = "vim/vim@v8.2.4274:runtime"
+    end
+  end
   download(packages)
   extract(packages)
   generate_fallback()

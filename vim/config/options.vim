@@ -1,4 +1,5 @@
 filetype plugin indent on       " required!
+set nocompatible                " use vim defaults
 set mouse=r                     " no mouse for you
 set ls=2                        " allways show status line
 set tabstop=2                   " numbers of spaces of tab character
@@ -56,6 +57,5 @@ set t_ti= t_te=                 " Don't clear the screen when running a command 
                                 " See http://www.shallowsky.com/linux/noaltscreen.html
 set listchars=tab:→\ ,nbsp:~    " set how hidden characters are displayed
 set list                        " display hidden characters
-
 syntax on                       " syntax highlighing is on
 colorscheme jellybeans          " Pretty Colors

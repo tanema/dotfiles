@@ -68,12 +68,12 @@ if exists('loaded_matchit')
 	let b:undo_ftplugin .= ' | unlet! b:match_words b:match_skip'
 endif
 
-" Win32 can filter files in the browse dialog
-if has("gui_win32") && !exists("b:browsefilter")
-	let b:browsefilter = "Clojure Source Files (*.clj)\t*.clj\n" .
-	                   \ "ClojureScript Source Files (*.cljs)\t*.cljs\n" .
-	                   \ "Java Source Files (*.java)\t*.java\n" .
-	                   \ "All Files (*.*)\t*.*\n"
+" Filter files in the browse dialog
+if (has("gui_win32") || has("gui_gtk")) && !exists("b:browsefilter")
+	let b:browsefilter = "All Files\t*\n" .
+				\ "Clojure Files\t*.clj;*.cljc;*.cljs;*.cljx\n" .
+				\ "EDN Files\t*.edn\n" .
+				\ "Java Files\t*.java\n"
 	let b:undo_ftplugin .= ' | unlet! b:browsefilter'
 endif
 

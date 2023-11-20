@@ -1,24 +1,10 @@
-set nocompatible " use vim defaults
-
+source ~/.vim/config/options.vim    " set default options
 source ~/.vim/config/keyboard.vim
 source ~/.vim/config/ale.vim
 source ~/.vim/config/gitgutter.vim
-source ~/.vim/config/options.vim
 source ~/.vim/config/netrw.vim
 source ~/.vim/config/autocmd.vim
 source ~/.vim/config/disabled.vim
-source ~/.vim/config/vim-go.vim
 source ~/.vim/config/search.vim
-source ~/.vim/config/statusline.vim
-
-" ------------------------------
-"         Nicer Colors
-" ------------------------------
-"this needs to be at the bottom otherwise it wont work
-hi ColorColumn    ctermbg=235
-hi ALEErrorSign   ctermfg=141 ctermbg=NONE cterm=bold
-hi ALEWarningSign ctermfg=141 ctermbg=NONE cterm=bold
-hi DiffAdd        ctermfg=148 ctermbg=NONE cterm=bold
-hi DiffDelete     ctermfg=197 ctermbg=NONE cterm=bold
-hi DiffChange     ctermfg=208 ctermbg=NONE cterm=bold
-hi DiffText       ctermfg=231 ctermbg=24 cterm=bold
+source ~/.vim/config/statusline.vim " custom command line
+source ~/.vim/config/color.vim      " needs to be last

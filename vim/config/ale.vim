@@ -3,3 +3,4 @@ let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '●'
+let g:ale_completion_enabled = 1

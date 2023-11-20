@@ -41,7 +41,8 @@ one in 2013.
 ===============================================================================
 INSTALLATION                                           *gitgutter-installation*
 
-Use your favourite package manager, or use Vim's built-in package support.
+First, use your favourite package manager, or use Vim's built-in package
+support.
 
 Vim:~
 >
@@ -58,6 +59,16 @@ Neovim:~
   git clone https://github.com/airblade/vim-gitgutter.git
   nvim -u NONE -c "helptags vim-gitgutter/doc" -c q
 <
+
+Second, ensure your 'updatetime' and 'signcolumn' options are set appropriately.
+
+When you make a change to a file tracked by git, the diff markers should
+appear automatically after a short delay.  The delay is governed by vim's
+'updatetime' option; the default value is `4000`, i.e. 4 seconds, but I
+suggest reducing it to around 100ms (add `set updatetime=100` to your vimrc).
+Note 'updatetime' also controls the delay before vim writes its swap file.
+
+The 'signcolumn' option can have any value except "off".
 
 
 ===============================================================================
@@ -92,6 +103,15 @@ Commands for turning vim-gitgutter on and off:~
 
                                                    *gitgutter-:GitGutterToggle*
 :GitGutterToggle        Toggle vim-gitgutter on or off for all buffers.
+
+                                            *gitgutter-:GitGutterBufferDisable*
+:GitGutterBufferDisable Turn vim-gitgutter off for current buffer.
+
+                                             *gitgutter-:GitGutterBufferEnable*
+:GitGutterBufferEnable  Turn vim-gitgutter on for current buffer.
+
+                                             *gitgutter-:GitGutterBufferToggle*
+:GitGutterBufferToggle  Toggle vim-gitgutter on or off for current buffer.
 
                                                          *gitgutter-:GitGutter*
 :GitGutter              Update signs for the current buffer.  You shouldn't
@@ -210,6 +230,12 @@ Commands for folds:~
 
                                                      *gitgutter-:GitGutterFold*
 :GitGutterFold          Fold all unchanged lines.  Execute again to undo.
+
+
+Other commands:~
+
+                                                 *gitgutter-:GitGutterDiffOrig*
+:GitGutterDiffOrig      Similar to |:DiffOrig| but shows gitgutter's diff.
 
 
 ===============================================================================
@@ -348,6 +374,7 @@ Hunk jumping:~
 Hunk previews:~
 
     |g:gitgutter_preview_win_floating|
+    |g:gitgutter_floating_window_options|
     |g:gitgutter_close_preview_on_escape|
 
 Terminal:~
@@ -508,6 +535,36 @@ Whether to use floating/popup windows for hunk previews.  Note that if you use
 popup windows on Vim you will not be able to stage partial hunks via the
 preview window.
 
+                                          *g:gitgutter_floating_window_options*
+Default:
+>
+    " Vim
+    {
+        \ 'line': 'cursor+1',
+        \ 'col': 'cursor',
+        \ 'moved': 'any'
+    }
+
+    " Neovim
+    {
+        \ 'relative': 'cursor',
+        \ 'row': 1,
+        \ 'col': 0,
+        \ 'width': 42,
+        \ 'height': &previewheight,
+        \ 'style': 'minimal'
+    }
+<
+This dictionary is passed directly to |popup_create()| (Vim) or
+|nvim_open_win()| (Neovim).
+
+If you simply want to override one or two of the default values, create a file
+in an after/ directory.  For example:
+>
+    " ~/.vim/after/vim-gitgutter/overrides.vim
+    let g:gitgutter_floating_window_options['border'] = 'single'
+<
+
                                           *g:gitgutter_close_preview_on_escape*
 Default: 0
 
@@ -589,7 +646,7 @@ colorscheme or |vimrc|:
     GitGutterAddLine          " default: links to DiffAdd
     GitGutterChangeLine       " default: links to DiffChange
     GitGutterDeleteLine       " default: links to DiffDelete
-    GitGutterChangeDeleteLine " default: links to GitGutterChangeLineDefault
+    GitGutterChangeDeleteLine " default: links to GitGutterChangeLine
 <
 
 For example, to use |hl-DiffText| instead of |hl-DiffChange|:
@@ -602,7 +659,7 @@ your colorscheme or |vimrc|:
     GitGutterAddLineNr          " default: links to CursorLineNr
     GitGutterChangeLineNr       " default: links to CursorLineNr
     GitGutterDeleteLineNr       " default: links to CursorLineNr
-    GitGutterChangeDeleteLineNr " default: links to CursorLineNr
+    GitGutterChangeDeleteLineNr " default: links to GitGutterChangeLineNr
 <
 For example, to use |hl-Underlined| instead of |hl-CursorLineNr|:
 >

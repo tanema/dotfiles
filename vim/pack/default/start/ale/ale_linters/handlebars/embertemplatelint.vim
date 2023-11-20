@@ -11,10 +11,12 @@ function! ale_linters#handlebars#embertemplatelint#GetExecutable(buffer) abort
 endfunction
 
 function! ale_linters#handlebars#embertemplatelint#GetCommand(buffer, version) abort
-    " Reading from stdin was introduced in ember-template-lint@1.6.0
-    return ale#semver#GTE(a:version, [1, 6, 0])
-    \   ? '%e --json --filename %s'
-    \   : '%e --json %t'
+    if ale#semver#GTE(a:version, [4, 0, 0])
+        " --json was removed in favor of --format=json in ember-template-lint@4.0.0
+        return '%e --format=json --filename %s'
+    endif
+
+    return '%e --json --filename %s'
 endfunction
 
 function! ale_linters#handlebars#embertemplatelint#GetCommandWithVersionCheck(buffer) abort

@@ -22,6 +22,7 @@ let s:zig_syntax_keywords = {
     \ ,             "f16"
     \ ,             "f32"
     \ ,             "f64"
+    \ ,             "f80"
     \ ,             "f128"
     \ ,             "void"
     \ ,             "type"
@@ -47,7 +48,7 @@ let s:zig_syntax_keywords = {
     \ ,             "c_longlong"
     \ ,             "c_ulonglong"
     \ ,             "c_longdouble"
-    \ ,             "c_void"]
+    \ ,             "anyopaque"]
     \ , 'zigConstant': ["undefined"
     \ ,                 "unreachable"]
     \ , 'zigConditional': ["if"
@@ -118,6 +119,7 @@ let s:zig_syntax_keywords = {
     \ ,                  "@divTrunc"
     \ ,                  "@embedFile"
     \ ,                  "@export"
+    \ ,                  "@extern"
     \ ,                  "@tagName"
     \ ,                  "@TagType"
     \ ,                  "@errorName"
@@ -132,9 +134,12 @@ let s:zig_syntax_keywords = {
     \ ,                  "@newStackCall"
     \ ,                  "@asyncCall"
     \ ,                  "@intToPtr"
+    \ ,                  "@maximum"
+    \ ,                  "@minimum"
     \ ,                  "@memcpy"
     \ ,                  "@memset"
     \ ,                  "@mod"
+    \ ,                  "@mulAdd"
     \ ,                  "@mulWithOverflow"
     \ ,                  "@splat"
     \ ,                  "@src"
@@ -143,6 +148,7 @@ let s:zig_syntax_keywords = {
     \ ,                  "@offsetOf"
     \ ,                  "@OpaqueType"
     \ ,                  "@panic"
+    \ ,                  "@prefetch"
     \ ,                  "@ptrCast"
     \ ,                  "@ptrToInt"
     \ ,                  "@rem"
@@ -151,6 +157,7 @@ let s:zig_syntax_keywords = {
     \ ,                  "@Type"
     \ ,                  "@shuffle"
     \ ,                  "@reduce"
+    \ ,                  "@select"
     \ ,                  "@setRuntimeSafety"
     \ ,                  "@setEvalBranchQuota"
     \ ,                  "@setFloatMode"
@@ -188,6 +195,7 @@ let s:zig_syntax_keywords = {
     \ ,                  "@Vector"
     \ ,                  "@sin"
     \ ,                  "@cos"
+    \ ,                  "@tan"
     \ ,                  "@exp"
     \ ,                  "@exp2"
     \ ,                  "@log"
@@ -197,6 +205,8 @@ let s:zig_syntax_keywords = {
     \ ,                  "@floor"
     \ ,                  "@ceil"
     \ ,                  "@trunc"
+    \ ,                  "@wasmMemorySize"
+    \ ,                  "@wasmMemoryGrow"
     \ ,                  "@round"]
     \ }
 
@@ -251,11 +261,11 @@ highlight default link zigCommentLineDoc Comment
 highlight default link zigDummyVariable Comment
 highlight default link zigTodo Todo
 highlight default link zigString String
-highlight default link zigStringDelimiter Delimiter
+highlight default link zigStringDelimiter String
 highlight default link zigMultilineString String
 highlight default link zigMultilineStringContent String
 highlight default link zigMultilineStringPrefix String
-highlight default link zigMultilineStringDelimiter Ignore
+highlight default link zigMultilineStringDelimiter Delimiter
 highlight default link zigCharacterInvalid Error
 highlight default link zigCharacterInvalidUnicode zigCharacterInvalid
 highlight default link zigCharacter Character

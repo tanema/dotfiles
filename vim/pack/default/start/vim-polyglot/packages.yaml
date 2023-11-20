@@ -1,6 +1,6 @@
 ---
 name: 8th
-remote: vim/vim:runtime
+native: true
 glob: '**/8th.vim'
 filetypes:
 - name: 8th
@@ -9,7 +9,7 @@ filetypes:
   - 8th
 ---
 name: a2ps
-remote: vim/vim:runtime
+native: true
 glob: '**/a2ps.vim'
 filetypes:
 - name: a2ps
@@ -20,7 +20,7 @@ filetypes:
   - .a2psrc
 ---
 name: a65
-remote: vim/vim:runtime
+native: true
 glob: '**/a65.vim'
 filetypes:
 - name: a65
@@ -29,7 +29,7 @@ filetypes:
   - a65
 ---
 name: aap
-remote: vim/vim:runtime
+native: true
 glob: '**/aap.vim'
 filetypes:
 - name: aap
@@ -38,7 +38,7 @@ filetypes:
   - aap
 ---
 name: abap
-remote: vim/vim:runtime
+native: true
 glob: '**/abap.vim'
 filetypes:
 - name: abap
@@ -47,7 +47,7 @@ filetypes:
   - abap
 ---
 name: abaqus
-remote: vim/vim:runtime
+native: true
 glob: '**/abaqus.vim'
 filetypes:
 - name: abaqus
@@ -55,7 +55,7 @@ filetypes:
   - inp
 ---
 name: abc
-remote: vim/vim:runtime
+native: true
 glob: '**/abc.vim'
 filetypes:
 - name: abc
@@ -64,7 +64,7 @@ filetypes:
   - abc
 ---
 name: abel
-remote: vim/vim:runtime
+native: true
 glob: '**/abel.vim'
 filetypes:
 - name: abel
@@ -73,7 +73,7 @@ filetypes:
   - abl
 ---
 name: acedb
-remote: vim/vim:runtime
+native: true
 glob: '**/acedb.vim'
 filetypes:
 - name: acedb
@@ -90,7 +90,7 @@ filetypes:
   - dsl
 ---
 name: ada
-remote: vim/vim:runtime
+native: true
 glob: '**/ada.vim'
 filetypes:
 - name: ada
@@ -104,7 +104,7 @@ filetypes:
   - ada_m
 ---
 name: ahdl
-remote: vim/vim:runtime
+native: true
 glob: '**/ahdl.vim'
 filetypes:
 - name: ahdl
@@ -113,7 +113,7 @@ filetypes:
   - tdf
 ---
 name: aidl
-remote: vim/vim:runtime
+native: true
 glob: '**/aidl.vim'
 filetypes:
 - name: aidl
@@ -122,7 +122,7 @@ filetypes:
   - aidl
 ---
 name: alsaconf
-remote: vim/vim:runtime
+native: true
 glob: '**/alsaconf.vim'
 filetypes:
 - name: alsaconf
@@ -132,7 +132,7 @@ filetypes:
   - '*/etc/asound.conf'
 ---
 name: aml
-remote: vim/vim:runtime
+native: true
 glob: '**/aml.vim'
 filetypes:
 - name: aml
@@ -140,7 +140,7 @@ filetypes:
   - aml
 ---
 name: ampl
-remote: vim/vim:runtime
+native: true
 glob: '**/ampl.vim'
 filetypes:
 - name: ampl
@@ -149,7 +149,7 @@ filetypes:
   - run
 ---
 name: ant
-remote: vim/vim:runtime
+native: true
 glob: '**/ant.vim'
 filetypes:
 - name: ant
@@ -157,7 +157,7 @@ filetypes:
   - build.xml
 ---
 name: apache
-remote: vim/vim:runtime
+native: true
 glob: '**/apache.vim'
 filetypes:
 - name: apache
@@ -192,7 +192,7 @@ filetypes:
   linguist: AppleScript
 ---
 name: aptconf
-remote: vim/vim:runtime
+native: true
 glob: '**/aptconf.vim'
 filetypes:
 - name: aptconf
@@ -208,7 +208,7 @@ filetypes:
   - '*/etc/apt/apt.conf.d/]\+.conf'
 ---
 name: arch
-remote: vim/vim:runtime
+native: true
 glob: '**/arch.vim'
 filetypes:
 - name: arch
@@ -226,7 +226,7 @@ filetypes:
   - ino
 ---
 name: art
-remote: vim/vim:runtime
+native: true
 glob: '**/art.vim'
 filetypes:
 - name: art
@@ -246,7 +246,7 @@ filetypes:
   linguist: AutoHotkey
 ---
 name: make
-remote: vim/vim:runtime
+native: true
 glob: '**/make.vim'
 filetypes:
 - name: make
@@ -258,7 +258,7 @@ filetypes:
   - mk
 ---
 name: automake
-remote: vim/vim:runtime
+native: true
 glob: '**/automake.vim'
 filetypes:
 - name: automake
@@ -267,7 +267,7 @@ filetypes:
   - GNUmakefile.am
 ---
 name: asn
-remote: vim/vim:runtime
+native: true
 glob: '**/asn.vim'
 filetypes:
 - name: asn
@@ -276,7 +276,7 @@ filetypes:
   - asn1
 ---
 name: aspvbs
-remote: vim/vim:runtime
+native: true
 globs:
 - '**/aspvbs.vim'
 filetypes:
@@ -286,7 +286,7 @@ filetypes:
   - asp
 ---
 name: aspperl
-remote: vim/vim:runtime
+native: true
 globs:
 - '**/aspperl.vim'
 filetypes:
@@ -295,7 +295,7 @@ filetypes:
   - asp
 ---
 name: atlas
-remote: vim/vim:runtime
+native: true
 glob: '**/atlas.vim'
 filetypes:
 - name: atlas
@@ -304,7 +304,7 @@ filetypes:
   - as
 ---
 name: autoit
-remote: vim/vim:runtime
+native: true
 glob: '**/autoit.vim'
 filetypes:
 - name: autoit
@@ -312,7 +312,7 @@ filetypes:
   - au3
 ---
 name: ave
-remote: vim/vim:runtime
+native: true
 glob: '**/ave.vim'
 filetypes:
 - name: ave
@@ -320,7 +320,7 @@ filetypes:
   - ave
 ---
 name: awk
-remote: vim/vim:runtime
+native: true
 glob: '**/awk.vim'
 filetypes:
 - name: awk
@@ -513,7 +513,7 @@ filetypes:
   - 'docker-compose*.yml*'
 ---
 name: elf
-remote: vim/vim:runtime
+native: true
 glob: '**/elf.vim'
 filetypes:
 - name: elf
@@ -589,7 +589,7 @@ filetypes:
   - fbs
 ---
 name: forth
-remote: vim/vim:runtime
+native: true
 glob: '**/forth.vim'
 filetypes:
 - name: forth
@@ -605,15 +605,6 @@ ignored_dirs:
 filetypes:
 - name: fsharp
   linguist: F#
----
-name: gdscript
-remote: calviken/vim-gdscript3
-dirs:
-- syntax
-- indent
-filetypes:
-- name: gdscript3
-  linguist: GDScript
 ---
 name: git
 remote: tpope/vim-git
@@ -686,6 +677,12 @@ filetypes:
 - name: gomod
   filenames:
   - go.mod
+- name: gosum
+  filenames:
+  - go.sum
+- name: gowork
+  filenames:
+  - go.work
 - name: gohtmltmpl
   extensions:
   - tmpl
@@ -705,7 +702,7 @@ dependencies: groovy
 filetypes: []
 ---
 name: groovy
-remote: vim/vim:runtime
+native: true
 glob: '**/groovy.vim'
 filetypes:
 - name: groovy
@@ -714,7 +711,7 @@ filetypes:
   - gradle
 ---
 name: grub
-remote: vim/vim:runtime
+native: true
 glob: '**/grub.vim'
 filetypes:
 - name: grub
@@ -865,7 +862,7 @@ filetypes:
   - Jenkinsfile*
 ---
 name: htmldjango
-remote: vim/vim:runtime
+native: true
 globs:
 - '**/django.vim'
 - '**/htmldjango.vim'
@@ -954,14 +951,14 @@ filetypes:
   - journal
 ---
 name: less
-remote: vim/vim:runtime
+native: true
 glob: '**/less.vim'
 filetypes:
 - name: less
   linguist: Less
 ---
 name: lilypond
-remote: anowlcalledjosh/vim-lilypond
+remote: anowlcalledjosh/vim-lilypond@main
 filetypes:
 - name: lilypond
   linguist: LilyPond
@@ -999,7 +996,7 @@ filetypes:
   linguist: Lua
 ---
 name: m4
-remote: vim/vim:runtime
+native: true
 glob: '**/m4.vim'
 filetypes:
 - name: m4
@@ -1061,7 +1058,7 @@ filetypes:
   linguist: MoonScript
 ---
 name: murphi
-remote: vim/vim:runtime
+native: true
 glob: '**/murphi.vim'
 filetypes:
 - name: murphi
@@ -1517,11 +1514,6 @@ filetypes:
   - '.zsh*'
   - '*/etc/zprofile'
 ---
-name: zinit
-remote: zinit-zsh/zplugin-vim-syntax
-# just adds to zsh filetype
-filetypes: []
----
 name: slim
 remote: slim-template/vim-slim
 filetypes:
@@ -1651,7 +1643,7 @@ filetypes:
   - '.tmux*.conf'
 ---
 name: toml
-remote: cespare/vim-toml
+remote: cespare/vim-toml@main
 filetypes:
 - name: toml
   linguist: TOML
@@ -1742,7 +1734,7 @@ filetypes:
   - vm
 ---
 name: vmasm
-remote: vim/vim:runtime
+native: true
 glob: '**/vmasm.vim'
 filetypes:
 - name: vmasm
@@ -1793,9 +1785,9 @@ filetypes:
 - name: xsl
   linguist: XSLT
 ---
-name: yaml
 # Fixes indentation issue: https://github.com/vim/vim/issues/6417
-remote: vim/vim@df44a27b53586fccfc6a3aedc89061fdd9a515ff:runtime
+name: yaml
+native: true
 glob: '**/yaml.vim'
 filetypes:
 - name: yaml
@@ -1859,7 +1851,7 @@ filetypes:
   - zir
 ---
 name: trasys
-remote: vim/vim:runtime
+native: true
 glob: '**/trasys.vim'
 filetypes:
 - name: trasys
@@ -1867,7 +1859,7 @@ filetypes:
   - inp
 ---
 name: basic
-remote: vim/vim:runtime
+native: true
 glob: '**/basic.vim'
 filetypes:
 - name: basic
@@ -1875,7 +1867,7 @@ filetypes:
   - basic
 ---
 name: visual-basic
-remote: vim/vim:runtime
+native: true
 glob: '**/vb.vim'
 filetypes:
 - name: vb
@@ -1890,7 +1882,7 @@ filetypes:
   - '*.vb'
 ---
 name: dosini
-remote: vim/vim:runtime
+native: true
 glob: '**/dosini.vim'
 filetypes:
 - name: dosini
@@ -1912,7 +1904,7 @@ filetypes:
   linguist: Odin
 ---
 name: bzl
-remote: vim/vim:runtime
+native: true
 glob: '**/bzl.vim'
 filetypes:
 - name: bzl
@@ -1922,7 +1914,7 @@ filetypes:
   - BUILD
 ---
 name: prolog
-remote: vim/vim:runtime
+native: true
 glob: '**/prolog.vim'
 filetypes:
 - name: prolog
@@ -1931,7 +1923,7 @@ filetypes:
   - pdb
 ---
 name: tads
-remote: vim/vim:runtime
+native: true
 glob: '**/tads.vim'
 filetypes:
 - name: tads
@@ -1948,7 +1940,7 @@ filetypes:
   - '*.git/info/exclude'
 ---
 name: sql
-remote: vim/vim:runtime
+native: true
 glob: 
 - '**/sql.vim'
 - '**/sqloracle.vim'
@@ -1961,7 +1953,7 @@ filetypes:
   - tyc
 ---
 name: conf
-remote: vim/vim:runtime
+native: true
 glob: '**/conf.vim'
 filetypes:
 - name: conf
@@ -1973,7 +1965,7 @@ filetypes:
   - '*/etc/hosts'
 ---
 name: b
-remote: vim/vim:runtime
+native: true
 glob: '**/b.vim'
 filetypes:
 - name: b
@@ -1983,7 +1975,7 @@ filetypes:
   - imp
 ---
 name: ibasic
-remote: vim/vim:runtime
+native: true
 glob: '**/ibasic.vim'
 filetypes:
 - name: ibasic
@@ -1992,7 +1984,7 @@ filetypes:
   - ibi
 ---
 name: freebasic
-remote: vim/vim:runtime
+native: true
 glob: '**/freebasic.vim'
 filetypes:
 - name: freebasic
@@ -2001,7 +1993,7 @@ filetypes:
   - bi
 ---
 name: hamster
-remote: vim/vim:runtime
+native: true
 glob: '**/hamster.vim'
 filetypes:
 - name: hamster
@@ -2010,7 +2002,7 @@ filetypes:
   - hsm
 ---
 name: dosbatch
-remote: vim/vim:runtime
+native: true
 glob: "**/dosbatch.vim"
 filetypes:
 - name: dosbatch
@@ -2019,7 +2011,7 @@ filetypes:
     description: Batch file for MSDOS.
 ---
 name: bc
-remote: vim/vim:runtime
+native: true
 glob: "**/bc.vim"
 filetypes:
 - name: bc
@@ -2028,7 +2020,7 @@ filetypes:
     description: BC calculator
 ---
 name: bdf
-remote: vim/vim:runtime
+native: true
 glob: "**/bdf.vim"
 filetypes:
 - name: bdf
@@ -2037,7 +2029,7 @@ filetypes:
     description: BDF font
 ---
 name: bib
-remote: vim/vim:runtime
+native: true
 glob: "**/bib.vim"
 filetypes:
 - name: bib
@@ -2046,7 +2038,7 @@ filetypes:
     description: BibTeX bibliography database file
 ---
 name: bst
-remote: vim/vim:runtime
+native: true
 glob: "**/bst.vim"
 filetypes:
 - name: bst
@@ -2055,7 +2047,7 @@ filetypes:
     description: BibTeX Bibliography Style
 ---
 name: named
-remote: vim/vim:runtime
+native: true
 glob: "**/named.vim"
 filetypes:
 - name: named
@@ -2064,7 +2056,7 @@ filetypes:
     description: sudoedit uses namedXXXX.conf
 ---
 name: bindzone
-remote: vim/vim:runtime
+native: true
 glob: "**/bindzone.vim"
 filetypes:
 - name: bindzone
@@ -2074,7 +2066,7 @@ filetypes:
   - pattern: "*/named/db.*,*/bind/db.*"
 ---
 name: blank
-remote: vim/vim:runtime
+native: true
 glob: "**/blank.vim"
 filetypes:
 - name: blank
@@ -2083,7 +2075,7 @@ filetypes:
     description: Blank
 ---
 name: bsdl
-remote: vim/vim:runtime
+native: true
 glob: "**/bsdl.vim"
 filetypes:
 - name: bsdl
@@ -2092,7 +2084,7 @@ filetypes:
     description: BSDL
 ---
 name: lpc
-remote: vim/vim:runtime
+native: true
 glob: "**/lpc.vim"
 filetypes:
 - name: lpc
@@ -2101,7 +2093,7 @@ filetypes:
     description: C or lpc
 ---
 name: calendar
-remote: vim/vim:runtime
+native: true
 glob: "**/calendar.vim"
 filetypes:
 - name: calendar
@@ -2111,7 +2103,7 @@ filetypes:
   - pattern: "*/.calendar/*,*/share/calendar/*/calendar.*,*/share/calendar/calendar.*"
 ---
 name: cs
-remote: vim/vim:runtime
+native: true
 glob: "**/cs.vim"
 filetypes:
 - name: cs
@@ -2120,7 +2112,7 @@ filetypes:
     description: C#
 ---
 name: csdl
-remote: vim/vim:runtime
+native: true
 glob: "**/csdl.vim"
 filetypes:
 - name: csdl
@@ -2129,7 +2121,7 @@ filetypes:
     description: CSDL
 ---
 name: cabal
-remote: vim/vim:runtime
+native: true
 glob: "**/cabal.vim"
 filetypes:
 - name: cabal
@@ -2138,7 +2130,7 @@ filetypes:
     description: Cabal
 ---
 name: cdrtoc
-remote: vim/vim:runtime
+native: true
 glob: "**/cdrtoc.vim"
 filetypes:
 - name: cdrtoc
@@ -2147,7 +2139,7 @@ filetypes:
     description: Cdrdao TOC
 ---
 name: cdrdaoconf
-remote: vim/vim:runtime
+native: true
 glob: "**/cdrdaoconf.vim"
 filetypes:
 - name: cdrdaoconf
@@ -2155,17 +2147,8 @@ filetypes:
   - pattern: "*/etc/cdrdao.conf,*/etc/defaults/cdrdao,*/etc/default/cdrdao,.cdrdao"
     description: Cdrdao config
 ---
-name: cfengine
-remote: vim/vim:runtime
-glob: "**/cfengine.vim"
-filetypes:
-- name: cfengine
-  patterns:
-  - pattern: cfengine.conf
-    description: Cfengine
----
 name: chaiscript
-remote: vim/vim:runtime
+native: true
 glob: "**/chaiscript.vim"
 filetypes:
 - name: chaiscript
@@ -2174,7 +2157,7 @@ filetypes:
     description: ChaiScript
 ---
 name: cdl
-remote: vim/vim:runtime
+native: true
 glob: "**/cdl.vim"
 filetypes:
 - name: cdl
@@ -2183,7 +2166,7 @@ filetypes:
     description: Comshare Dimension Definition Language
 ---
 name: conaryrecipe
-remote: vim/vim:runtime
+native: true
 glob: "**/conaryrecipe.vim"
 filetypes:
 - name: conaryrecipe
@@ -2192,7 +2175,7 @@ filetypes:
     description: Conary Recipe
 ---
 name: crm
-remote: vim/vim:runtime
+native: true
 glob: "**/crm.vim"
 filetypes:
 - name: crm
@@ -2201,7 +2184,7 @@ filetypes:
     description: Controllable Regex Mutilator
 ---
 name: cynpp
-remote: vim/vim:runtime
+native: true
 glob: "**/cynpp.vim"
 filetypes:
 - name: cynpp
@@ -2210,7 +2193,7 @@ filetypes:
     description: Cyn++
 ---
 name: ch
-remote: vim/vim:runtime
+native: true
 glob: "**/ch.vim"
 filetypes:
 - name: ch
@@ -2219,7 +2202,7 @@ filetypes:
     description: Ch (CHscript)
 ---
 name: css
-remote: vim/vim:runtime
+native: true
 glob: "**/css.vim"
 filetypes:
 - name: css
@@ -2228,7 +2211,7 @@ filetypes:
     description: Cascading Style Sheets
 ---
 name: cterm
-remote: vim/vim:runtime
+native: true
 glob: "**/cterm.vim"
 filetypes:
 - name: cterm
@@ -2237,7 +2220,7 @@ filetypes:
     description: Century Term Command Scripts (*.cmd too)
 ---
 name: debchangelog
-remote: vim/vim:runtime
+native: true
 glob: "**/debchangelog.vim"
 filetypes:
 - name: debchangelog
@@ -2245,7 +2228,7 @@ filetypes:
   - pattern: changelog.Debian,changelog.dch,NEWS.Debian,NEWS.dch,*/debian/changelog
 ---
 name: chill
-remote: vim/vim:runtime
+native: true
 glob: "**/chill.vim"
 filetypes:
 - name: chill
@@ -2254,7 +2237,7 @@ filetypes:
     description: CHILL
 ---
 name: chordpro
-remote: vim/vim:runtime
+native: true
 glob: "**/chordpro.vim"
 filetypes:
 - name: chordpro
@@ -2263,7 +2246,7 @@ filetypes:
     description: ChordPro
 ---
 name: clean
-remote: vim/vim:runtime
+native: true
 glob: "**/clean.vim"
 filetypes:
 - name: clean
@@ -2272,7 +2255,7 @@ filetypes:
     description: Clean
 ---
 name: cl
-remote: vim/vim:runtime
+native: true
 glob: "**/cl.vim"
 filetypes:
 - name: cl
@@ -2281,7 +2264,7 @@ filetypes:
     description: Clever
 ---
 name: cmusrc
-remote: vim/vim:runtime
+native: true
 glob: "**/cmusrc.vim"
 filetypes:
 - name: cmusrc
@@ -2290,7 +2273,7 @@ filetypes:
     description: Cmusrc
 ---
 name: cobol
-remote: vim/vim:runtime
+native: true
 glob: "**/cobol.vim"
 filetypes:
 - name: cobol
@@ -2299,7 +2282,7 @@ filetypes:
     description: Cobol
 ---
 name: coco
-remote: vim/vim:runtime
+native: true
 glob: "**/coco.vim"
 filetypes:
 - name: coco
@@ -2308,7 +2291,7 @@ filetypes:
     description: Coco/R
 ---
 name: cf
-remote: vim/vim:runtime
+native: true
 glob: "**/cf.vim"
 filetypes:
 - name: cf
@@ -2317,7 +2300,7 @@ filetypes:
     description: Cold Fusion
 ---
 name: config
-remote: vim/vim:runtime
+native: true
 glob: "**/config.vim"
 filetypes:
 - name: config
@@ -2329,7 +2312,7 @@ filetypes:
   - pattern: "/etc/hostname.*"
 ---
 name: cuda
-remote: vim/vim:runtime
+native: true
 glob: "**/cuda.vim"
 filetypes:
 - name: cuda
@@ -2338,7 +2321,7 @@ filetypes:
     description: CUDA  Cumpute Unified Device Architecture
 ---
 name: dockerfile
-remote: vim/vim:runtime
+native: true
 glob: "**/dockerfile.vim"
 filetypes:
 - name: dockerfile
@@ -2347,7 +2330,7 @@ filetypes:
     description: Dockerfile; Podman uses the same syntax with name Containerfile
 ---
 name: dcd
-remote: vim/vim:runtime
+native: true
 glob: "**/dcd.vim"
 filetypes:
 - name: dcd
@@ -2356,7 +2339,7 @@ filetypes:
     description: WildPackets EtherPeek Decoder
 ---
 name: eterm
-remote: vim/vim:runtime
+native: true
 glob: "**/eterm.vim"
 filetypes:
 - name: eterm
@@ -2365,7 +2348,7 @@ filetypes:
     description: Eterm
 ---
 name: lynx
-remote: vim/vim:runtime
+native: true
 glob: "**/lynx.vim"
 filetypes:
 - name: lynx
@@ -2374,7 +2357,7 @@ filetypes:
     description: Lynx config files
 ---
 name: quake
-remote: vim/vim:runtime
+native: true
 glob: "**/quake.vim"
 filetypes:
 - name: quake
@@ -2383,7 +2366,7 @@ filetypes:
     description: Quake
 ---
 name: cfg
-remote: vim/vim:runtime
+native: true
 glob: "**/cfg.vim"
 filetypes:
 - name: cfg
@@ -2394,7 +2377,7 @@ filetypes:
     description: Mercurial config (looks like generic config file)
 ---
 name: csp
-remote: vim/vim:runtime
+native: true
 glob: "**/csp.vim"
 filetypes:
 - name: csp
@@ -2403,7 +2386,7 @@ filetypes:
     description: Communicating Sequential Processes
 ---
 name: cupl
-remote: vim/vim:runtime
+native: true
 glob: "**/cupl.vim"
 filetypes:
 - name: cupl
@@ -2412,7 +2395,7 @@ filetypes:
     description: CUPL logic description and simulation
 ---
 name: cuplsim
-remote: vim/vim:runtime
+native: true
 glob: "**/cuplsim.vim"
 filetypes:
 - name: cuplsim
@@ -2421,7 +2404,7 @@ filetypes:
     description: CUPL logic description and simulation
 ---
 name: debcontrol
-remote: vim/vim:runtime
+native: true
 glob: "**/debcontrol.vim"
 filetypes:
 - name: debcontrol
@@ -2430,7 +2413,7 @@ filetypes:
     description: Debian Control
 ---
 name: debcopyright
-remote: vim/vim:runtime
+native: true
 glob: "**/debcopyright.vim"
 filetypes:
 - name: debcopyright
@@ -2439,7 +2422,7 @@ filetypes:
     description: Debian Copyright
 ---
 name: debsources
-remote: vim/vim:runtime
+native: true
 glob: "**/debsources.vim"
 filetypes:
 - name: debsources
@@ -2448,7 +2431,7 @@ filetypes:
     description: Debian Sources.list
 ---
 name: denyhosts
-remote: vim/vim:runtime
+native: true
 glob: "**/denyhosts.vim"
 filetypes:
 - name: denyhosts
@@ -2457,7 +2440,7 @@ filetypes:
     description: Deny hosts
 ---
 name: dnsmasq
-remote: vim/vim:runtime
+native: true
 glob: "**/dnsmasq.vim"
 filetypes:
 - name: dnsmasq
@@ -2467,7 +2450,7 @@ filetypes:
   - pattern: "*/etc/dnsmasq.d/*"
 ---
 name: desc
-remote: vim/vim:runtime
+native: true
 glob: "**/desc.vim"
 filetypes:
 - name: desc
@@ -2476,7 +2459,7 @@ filetypes:
     description: ROCKLinux package description
 ---
 name: desktop
-remote: vim/vim:runtime
+native: true
 glob: "**/desktop.vim"
 filetypes:
 - name: desktop
@@ -2485,7 +2468,7 @@ filetypes:
     description: Desktop files
 ---
 name: dictconf
-remote: vim/vim:runtime
+native: true
 glob: "**/dictconf.vim"
 filetypes:
 - name: dictconf
@@ -2494,7 +2477,7 @@ filetypes:
     description: Dict config
 ---
 name: dictdconf
-remote: vim/vim:runtime
+native: true
 glob: "**/dictdconf.vim"
 filetypes:
 - name: dictdconf
@@ -2503,7 +2486,7 @@ filetypes:
     description: Dictd config
 ---
 name: diff
-remote: vim/vim:runtime
+native: true
 glob: "**/diff.vim"
 filetypes:
 - name: diff
@@ -2512,7 +2495,7 @@ filetypes:
     description: Diff files
 ---
 name: dircolors
-remote: vim/vim:runtime
+native: true
 glob: "**/dircolors.vim"
 filetypes:
 - name: dircolors
@@ -2521,7 +2504,7 @@ filetypes:
     description: Dircolors
 ---
 name: dot
-remote: vim/vim:runtime
+native: true
 glob: "**/dot.vim"
 filetypes:
 - name: dot
@@ -2530,7 +2513,7 @@ filetypes:
     description: DOT
 ---
 name: dylanlid
-remote: vim/vim:runtime
+native: true
 glob: "**/dylanlid.vim"
 filetypes:
 - name: dylanlid
@@ -2539,7 +2522,7 @@ filetypes:
     description: Dylan - lid files
 ---
 name: dylanintr
-remote: vim/vim:runtime
+native: true
 glob: "**/dylanintr.vim"
 filetypes:
 - name: dylanintr
@@ -2548,7 +2531,7 @@ filetypes:
     description: Dylan - intr files (melange)
 ---
 name: dylan
-remote: vim/vim:runtime
+native: true
 glob: "**/dylan.vim"
 filetypes:
 - name: dylan
@@ -2557,7 +2540,7 @@ filetypes:
     description: Dylan
 ---
 name: def
-remote: vim/vim:runtime
+native: true
 glob: "**/def.vim"
 filetypes:
 - name: def
@@ -2566,7 +2549,7 @@ filetypes:
     description: Microsoft Module Definition
 ---
 name: dracula
-remote: vim/vim:runtime
+native: true
 glob: "**/dracula.vim"
 filetypes:
 - name: dracula
@@ -2576,7 +2559,7 @@ filetypes:
   - pattern: drac.*
 ---
 name: datascript
-remote: vim/vim:runtime
+native: true
 glob: "**/datascript.vim"
 filetypes:
 - name: datascript
@@ -2585,7 +2568,7 @@ filetypes:
     description: Datascript
 ---
 name: dsl
-remote: vim/vim:runtime
+native: true
 glob: "**/dsl.vim"
 filetypes:
 - name: dsl
@@ -2594,7 +2577,7 @@ filetypes:
     description: dsl
 ---
 name: dtd
-remote: vim/vim:runtime
+native: true
 glob: "**/dtd.vim"
 filetypes:
 - name: dtd
@@ -2603,7 +2586,7 @@ filetypes:
     description: DTD (Document Type Definition for XML)
 ---
 name: dts
-remote: vim/vim:runtime
+native: true
 glob: "**/dts.vim"
 filetypes:
 - name: dts
@@ -2612,7 +2595,7 @@ filetypes:
     description: DTS/DSTI (device tree files)
 ---
 name: edif
-remote: vim/vim:runtime
+native: true
 glob: "**/edif.vim"
 filetypes:
 - name: edif
@@ -2620,7 +2603,7 @@ filetypes:
   - pattern: "*.ed\\(f\\|if\\|o\\)"
 ---
 name: ecd
-remote: vim/vim:runtime
+native: true
 glob: "**/ecd.vim"
 filetypes:
 - name: ecd
@@ -2629,7 +2612,7 @@ filetypes:
     description: Embedix Component Description
 ---
 name: elinks
-remote: vim/vim:runtime
+native: true
 glob: "**/elinks.vim"
 filetypes:
 - name: elinks
@@ -2638,7 +2621,7 @@ filetypes:
     description: Elinks configuration
 ---
 name: elmfilt
-remote: vim/vim:runtime
+native: true
 glob: "**/elmfilt.vim"
 filetypes:
 - name: elmfilt
@@ -2647,7 +2630,7 @@ filetypes:
     description: Elm Filter Rules file
 ---
 name: esmtprc
-remote: vim/vim:runtime
+native: true
 glob: "**/esmtprc.vim"
 filetypes:
 - name: esmtprc
@@ -2656,7 +2639,7 @@ filetypes:
     description: ESMTP rc file
 ---
 name: esqlc
-remote: vim/vim:runtime
+native: true
 glob: "**/esqlc.vim"
 filetypes:
 - name: esqlc
@@ -2665,7 +2648,7 @@ filetypes:
     description: ESQL-C
 ---
 name: esterel
-remote: vim/vim:runtime
+native: true
 glob: "**/esterel.vim"
 filetypes:
 - name: esterel
@@ -2674,7 +2657,7 @@ filetypes:
     description: Esterel
 ---
 name: csc
-remote: vim/vim:runtime
+native: true
 glob: "**/csc.vim"
 filetypes:
 - name: csc
@@ -2683,7 +2666,7 @@ filetypes:
     description: Essbase script
 ---
 name: exim
-remote: vim/vim:runtime
+native: true
 glob: "**/exim.vim"
 filetypes:
 - name: exim
@@ -2692,7 +2675,7 @@ filetypes:
     description: Exim
 ---
 name: expect
-remote: vim/vim:runtime
+native: true
 glob: "**/expect.vim"
 filetypes:
 - name: expect
@@ -2701,7 +2684,7 @@ filetypes:
     description: Expect
 ---
 name: exports
-remote: vim/vim:runtime
+native: true
 glob: "**/exports.vim"
 filetypes:
 - name: exports
@@ -2711,7 +2694,7 @@ filetypes:
 ---
 # TODO: change after merge: 
 name: falcon
-remote: vim/vim:runtime
+native: true
 glob: "**/falcon.vim"
 filetypes:
 - name: falcon
@@ -2720,7 +2703,7 @@ filetypes:
     description: Falcon
 ---
 name: fan
-remote: vim/vim:runtime
+native: true
 glob: "**/fan.vim"
 filetypes:
 - name: fan
@@ -2728,17 +2711,8 @@ filetypes:
   - pattern: "*.fan,*.fwt"
     description: Fantom
 ---
-name: factor
-remote: vim/vim:runtime
-glob: "**/factor.vim"
-filetypes:
-- name: factor
-  patterns:
-  - pattern: "*.factor"
-    description: Factor
----
 name: fetchmail
-remote: vim/vim:runtime
+native: true
 glob: "**/fetchmail.vim"
 filetypes:
 - name: fetchmail
@@ -2747,7 +2721,7 @@ filetypes:
     description: Fetchmail RC file
 ---
 name: focexec
-remote: vim/vim:runtime
+native: true
 glob: "**/focexec.vim"
 filetypes:
 - name: focexec
@@ -2756,7 +2730,7 @@ filetypes:
     description: Focus Executable
 ---
 name: master
-remote: vim/vim:runtime
+native: true
 glob: "**/master.vim"
 filetypes:
 - name: master
@@ -2765,7 +2739,7 @@ filetypes:
     description: Focus Master file (but not for auto.master)
 ---
 name: reva
-remote: vim/vim:runtime
+native: true
 glob: "**/reva.vim"
 filetypes:
 - name: reva
@@ -2774,7 +2748,7 @@ filetypes:
     description: Reva Forth
 ---
 name: fortran
-remote: vim/vim:runtime
+native: true
 glob: "**/fortran.vim"
 filetypes:
 - name: fortran
@@ -2783,7 +2757,7 @@ filetypes:
     description: Fortran
 ---
 name: framescript
-remote: vim/vim:runtime
+native: true
 glob: "**/framescript.vim"
 filetypes:
 - name: framescript
@@ -2792,7 +2766,7 @@ filetypes:
     description: Framescript
 ---
 name: fstab
-remote: vim/vim:runtime
+native: true
 glob: "**/fstab.vim"
 filetypes:
 - name: fstab
@@ -2801,7 +2775,7 @@ filetypes:
     description: FStab
 ---
 name: gdb
-remote: vim/vim:runtime
+native: true
 glob: "**/gdb.vim"
 filetypes:
 - name: gdb
@@ -2810,7 +2784,7 @@ filetypes:
     description: GDB command files
 ---
 name: gdmo
-remote: vim/vim:runtime
+native: true
 glob: "**/gdmo.vim"
 filetypes:
 - name: gdmo
@@ -2819,7 +2793,7 @@ filetypes:
     description: GDMO
 ---
 name: gedcom
-remote: vim/vim:runtime
+native: true
 glob: "**/gedcom.vim"
 filetypes:
 - name: gedcom
@@ -2829,7 +2803,7 @@ filetypes:
   - pattern: "*/tmp/lltmp*"
 ---
 name: gkrellmrc
-remote: vim/vim:runtime
+native: true
 glob: "**/gkrellmrc.vim"
 filetypes:
 - name: gkrellmrc
@@ -2838,7 +2812,7 @@ filetypes:
     description: Gkrellmrc
 ---
 name: gp
-remote: vim/vim:runtime
+native: true
 glob: "**/gp.vim"
 filetypes:
 - name: gp
@@ -2847,7 +2821,7 @@ filetypes:
     description: GP scripts (2.0 and onward)
 ---
 name: gpg
-remote: vim/vim:runtime
+native: true
 glob: "**/gpg.vim"
 filetypes:
 - name: gpg
@@ -2856,7 +2830,7 @@ filetypes:
     description: GPG
 ---
 name: gnash
-remote: vim/vim:runtime
+native: true
 glob: "**/gnash.vim"
 filetypes:
 - name: gnash
@@ -2865,7 +2839,7 @@ filetypes:
     description: gnash(1) configuration files
 ---
 name: gitolite
-remote: vim/vim:runtime
+native: true
 glob: "**/gitolite.vim"
 filetypes:
 - name: gitolite
@@ -2875,7 +2849,7 @@ filetypes:
   - pattern: "*/gitolite-admin/conf/*"
 ---
 name: grads
-remote: vim/vim:runtime
+native: true
 glob: "**/grads.vim"
 filetypes:
 - name: grads
@@ -2884,7 +2858,7 @@ filetypes:
     description: GrADS scripts
 ---
 name: gretl
-remote: vim/vim:runtime
+native: true
 glob: "**/gretl.vim"
 filetypes:
 - name: gretl
@@ -2893,7 +2867,7 @@ filetypes:
     description: Gretl
 ---
 name: gsp
-remote: vim/vim:runtime
+native: true
 glob: "**/gsp.vim"
 filetypes:
 - name: gsp
@@ -2902,7 +2876,7 @@ filetypes:
     description: GNU Server Pages
 ---
 name: group
-remote: vim/vim:runtime
+native: true
 glob: "**/group.vim"
 filetypes:
 - name: group
@@ -2911,7 +2885,7 @@ filetypes:
     description: Group file
 ---
 name: gtkrc
-remote: vim/vim:runtime
+native: true
 glob: "**/gtkrc.vim"
 filetypes:
 - name: gtkrc
@@ -2921,7 +2895,7 @@ filetypes:
   - pattern: ".gtkrc*,gtkrc*"
 ---
 name: lhaskell
-remote: vim/vim:runtime
+native: true
 glob: "**/lhaskell.vim"
 filetypes:
 - name: lhaskell
@@ -2930,7 +2904,7 @@ filetypes:
     description: Haskell
 ---
 name: chaskell
-remote: vim/vim:runtime
+native: true
 glob: "**/chaskell.vim"
 filetypes:
 - name: chaskell
@@ -2939,7 +2913,7 @@ filetypes:
     description: Haskell
 ---
 name: haste
-remote: vim/vim:runtime
+native: true
 glob: "**/haste.vim"
 filetypes:
 - name: haste
@@ -2948,7 +2922,7 @@ filetypes:
     description: Haste
 ---
 name: hastepreproc
-remote: vim/vim:runtime
+native: true
 glob: "**/hastepreproc.vim"
 filetypes:
 - name: hastepreproc
@@ -2957,7 +2931,7 @@ filetypes:
     description: Haste
 ---
 name: hercules
-remote: vim/vim:runtime
+native: true
 glob: "**/hercules.vim"
 filetypes:
 - name: hercules
@@ -2966,7 +2940,7 @@ filetypes:
     description: Hercules
 ---
 name: hex
-remote: vim/vim:runtime
+native: true
 glob: "**/hex.vim"
 filetypes:
 - name: hex
@@ -2975,7 +2949,7 @@ filetypes:
     description: HEX (Intel)
 ---
 name: hollywood
-remote: vim/vim:runtime
+native: true
 glob: "**/hollywood.vim"
 filetypes:
 - name: hollywood
@@ -2984,7 +2958,7 @@ filetypes:
     description: Hollywood
 ---
 name: tilde
-remote: vim/vim:runtime
+native: true
 glob: "**/tilde.vim"
 filetypes:
 - name: tilde
@@ -2993,7 +2967,7 @@ filetypes:
     description: Tilde (must be before HTML)
 ---
 name: htmlm4
-remote: vim/vim:runtime
+native: true
 glob: "**/htmlm4.vim"
 filetypes:
 - name: htmlm4
@@ -3002,7 +2976,7 @@ filetypes:
     description: HTML with M4
 ---
 name: template
-remote: vim/vim:runtime
+native: true
 glob: "**/template.vim"
 filetypes:
 - name: template
@@ -3011,7 +2985,7 @@ filetypes:
     description: Some template.  Used to be HTML Cheetah.
 ---
 name: hostconf
-remote: vim/vim:runtime
+native: true
 glob: "**/hostconf.vim"
 filetypes:
 - name: hostconf
@@ -3020,7 +2994,7 @@ filetypes:
     description: Host config
 ---
 name: hostsaccess
-remote: vim/vim:runtime
+native: true
 glob: "**/hostsaccess.vim"
 filetypes:
 - name: hostsaccess
@@ -3029,7 +3003,7 @@ filetypes:
     description: Hosts access
 ---
 name: hb
-remote: vim/vim:runtime
+native: true
 glob: "**/hb.vim"
 filetypes:
 - name: hb
@@ -3037,17 +3011,8 @@ filetypes:
   - pattern: "*.hb"
     description: Hyper Builder
 ---
-name: httest
-remote: vim/vim:runtime
-glob: "**/httest.vim"
-filetypes:
-- name: httest
-  patterns:
-  - pattern: "*.htt,*.htb"
-    description: Httest
----
 name: icon
-remote: vim/vim:runtime
+native: true
 glob: "**/icon.vim"
 filetypes:
 - name: icon
@@ -3056,7 +3021,7 @@ filetypes:
     description: Icon
 ---
 name: msidl
-remote: vim/vim:runtime
+native: true
 glob: "**/msidl.vim"
 filetypes:
 - name: msidl
@@ -3065,7 +3030,7 @@ filetypes:
     description: MOF = WMI (Windows Management Instrumentation) Managed Object Format
 ---
 name: icemenu
-remote: vim/vim:runtime
+native: true
 glob: "**/icemenu.vim"
 filetypes:
 - name: icemenu
@@ -3074,7 +3039,7 @@ filetypes:
     description: Icewm menu
 ---
 name: indent
-remote: vim/vim:runtime
+native: true
 glob: "**/indent.vim"
 filetypes:
 - name: indent
@@ -3085,7 +3050,7 @@ filetypes:
     description: Indent RC
 ---
 name: inform
-remote: vim/vim:runtime
+native: true
 glob: "**/inform.vim"
 filetypes:
 - name: inform
@@ -3094,7 +3059,7 @@ filetypes:
     description: Inform
 ---
 name: initng
-remote: vim/vim:runtime
+native: true
 glob: "**/initng.vim"
 filetypes:
 - name: initng
@@ -3103,7 +3068,7 @@ filetypes:
     description: Initng
 ---
 name: upstreamdat
-remote: vim/vim:runtime
+native: true
 glob: "**/upstreamdat.vim"
 filetypes:
 - name: upstreamdat
@@ -3111,7 +3076,7 @@ filetypes:
   - pattern: upstream.dat\c,upstream.*.dat\c,*.upstream.dat\c
 ---
 name: upstreamlog
-remote: vim/vim:runtime
+native: true
 glob: "**/upstreamlog.vim"
 filetypes:
 - name: upstreamlog
@@ -3119,7 +3084,7 @@ filetypes:
   - pattern: fdrupstream.log,upstream.log\c,upstream.*.log\c,*.upstream.log\c,UPSTREAM-*.log\c
 ---
 name: upstreaminstalllog
-remote: vim/vim:runtime
+native: true
 glob: "**/upstreaminstalllog.vim"
 filetypes:
 - name: upstreaminstalllog
@@ -3127,7 +3092,7 @@ filetypes:
   - pattern: upstreaminstall.log\c,upstreaminstall.*.log\c,*.upstreaminstall.log\c
 ---
 name: usserverlog
-remote: vim/vim:runtime
+native: true
 glob: "**/usserverlog.vim"
 filetypes:
 - name: usserverlog
@@ -3135,7 +3100,7 @@ filetypes:
   - pattern: usserver.log\c,usserver.*.log\c,*.usserver.log\c
 ---
 name: usw2kagtlog
-remote: vim/vim:runtime
+native: true
 glob: "**/usw2kagtlog.vim"
 filetypes:
 - name: usw2kagtlog
@@ -3143,7 +3108,7 @@ filetypes:
   - pattern: usw2kagt.log\c,usw2kagt.*.log\c,*.usw2kagt.log\c
 ---
 name: ipfilter
-remote: vim/vim:runtime
+native: true
 glob: "**/ipfilter.vim"
 filetypes:
 - name: ipfilter
@@ -3152,7 +3117,7 @@ filetypes:
     description: Ipfilter
 ---
 name: fgl
-remote: vim/vim:runtime
+native: true
 glob: "**/fgl.vim"
 filetypes:
 - name: fgl
@@ -3161,7 +3126,7 @@ filetypes:
     description: Informix 4GL (source - canonical, include file, I4GL+M4 preproc.)
 ---
 name: inittab
-remote: vim/vim:runtime
+native: true
 glob: "**/inittab.vim"
 filetypes:
 - name: inittab
@@ -3170,7 +3135,7 @@ filetypes:
     description: SysV Inittab
 ---
 name: iss
-remote: vim/vim:runtime
+native: true
 glob: "**/iss.vim"
 filetypes:
 - name: iss
@@ -3179,7 +3144,7 @@ filetypes:
     description: Inno Setup
 ---
 name: j
-remote: vim/vim:runtime
+native: true
 glob: "**/j.vim"
 filetypes:
 - name: j
@@ -3188,7 +3153,7 @@ filetypes:
     description: J
 ---
 name: jal
-remote: vim/vim:runtime
+native: true
 glob: "**/jal.vim"
 filetypes:
 - name: jal
@@ -3197,7 +3162,7 @@ filetypes:
     description: JAL
 ---
 name: jam
-remote: vim/vim:runtime
+native: true
 glob: "**/jam.vim"
 filetypes:
 - name: jam
@@ -3214,7 +3179,7 @@ filetypes:
     description: Java
 ---
 name: javacc
-remote: vim/vim:runtime
+native: true
 glob: "**/javacc.vim"
 filetypes:
 - name: javacc
@@ -3223,7 +3188,7 @@ filetypes:
     description: JavaCC
 ---
 name: jsp
-remote: vim/vim:runtime
+native: true
 glob: "**/jsp.vim"
 filetypes:
 - name: jsp
@@ -3232,7 +3197,7 @@ filetypes:
     description: Java Server Pages
 ---
 name: jproperties
-remote: vim/vim:runtime
+native: true
 glob: "**/jproperties.vim"
 filetypes:
 - name: jproperties
@@ -3242,7 +3207,7 @@ filetypes:
   - pattern: "*.properties_??_??_*"
 ---
 name: jess
-remote: vim/vim:runtime
+native: true
 glob: "**/jess.vim"
 filetypes:
 - name: jess
@@ -3251,7 +3216,7 @@ filetypes:
     description: Jess
 ---
 name: jgraph
-remote: vim/vim:runtime
+native: true
 glob: "**/jgraph.vim"
 filetypes:
 - name: jgraph
@@ -3260,7 +3225,7 @@ filetypes:
     description: Jgraph
 ---
 name: jovial
-remote: vim/vim:runtime
+native: true
 glob: "**/jovial.vim"
 filetypes:
 - name: jovial
@@ -3269,7 +3234,7 @@ filetypes:
     description: Jovial
 ---
 name: kix
-remote: vim/vim:runtime
+native: true
 glob: "**/kix.vim"
 filetypes:
 - name: kix
@@ -3278,7 +3243,7 @@ filetypes:
     description: Kixtart
 ---
 name: kwt
-remote: vim/vim:runtime
+native: true
 glob: "**/kwt.vim"
 filetypes:
 - name: kwt
@@ -3287,7 +3252,7 @@ filetypes:
     description: Kimwitu[++]
 ---
 name: kivy
-remote: vim/vim:runtime
+native: true
 glob: "**/kivy.vim"
 filetypes:
 - name: kivy
@@ -3296,7 +3261,7 @@ filetypes:
     description: Kivy
 ---
 name: kscript
-remote: vim/vim:runtime
+native: true
 glob: "**/kscript.vim"
 filetypes:
 - name: kscript
@@ -3305,7 +3270,7 @@ filetypes:
     description: KDE script
 ---
 name: kconfig
-remote: vim/vim:runtime
+native: true
 glob: "**/kconfig.vim"
 filetypes:
 - name: kconfig
@@ -3315,7 +3280,7 @@ filetypes:
   - pattern: Kconfig.*
 ---
 name: lace
-remote: vim/vim:runtime
+native: true
 glob: "**/lace.vim"
 filetypes:
 - name: lace
@@ -3324,7 +3289,7 @@ filetypes:
     description: Lace (ISE)
 ---
 name: latte
-remote: vim/vim:runtime
+native: true
 glob: "**/latte.vim"
 filetypes:
 - name: latte
@@ -3333,7 +3298,7 @@ filetypes:
     description: Latte
 ---
 name: limits
-remote: vim/vim:runtime
+native: true
 glob: "**/limits.vim"
 filetypes:
 - name: limits
@@ -3342,7 +3307,7 @@ filetypes:
     description: Limits
 ---
 name: lprolog
-remote: vim/vim:runtime
+native: true
 glob: "**/lprolog.vim"
 filetypes:
 - name: lprolog
@@ -3351,7 +3316,7 @@ filetypes:
     description: LambdaProlog (*.mod too, see Modsim)
 ---
 name: ldif
-remote: vim/vim:runtime
+native: true
 glob: "**/ldif.vim"
 filetypes:
 - name: ldif
@@ -3360,7 +3325,7 @@ filetypes:
     description: LDAP LDIF
 ---
 name: ld
-remote: vim/vim:runtime
+native: true
 glob: "**/ld.vim"
 filetypes:
 - name: ld
@@ -3369,7 +3334,7 @@ filetypes:
     description: Ld loader
 ---
 name: lex
-remote: vim/vim:runtime
+native: true
 glob: "**/lex.vim"
 filetypes:
 - name: lex
@@ -3378,7 +3343,7 @@ filetypes:
     description: Lex
 ---
 name: libao
-remote: vim/vim:runtime
+native: true
 glob: "**/libao.vim"
 filetypes:
 - name: libao
@@ -3387,7 +3352,7 @@ filetypes:
     description: Libao
 ---
 name: sensors
-remote: vim/vim:runtime
+native: true
 glob: "**/sensors.vim"
 filetypes:
 - name: sensors
@@ -3396,7 +3361,7 @@ filetypes:
     description: Libsensors
 ---
 name: lftp
-remote: vim/vim:runtime
+native: true
 glob: "**/lftp.vim"
 filetypes:
 - name: lftp
@@ -3405,7 +3370,7 @@ filetypes:
     description: LFTP
 ---
 name: lifelines
-remote: vim/vim:runtime
+native: true
 glob: "**/lifelines.vim"
 filetypes:
 - name: lifelines
@@ -3414,7 +3379,7 @@ filetypes:
     description: Lifelines (or Lex for C++!)
 ---
 name: lilo
-remote: vim/vim:runtime
+native: true
 glob: "**/lilo.vim"
 filetypes:
 - name: lilo
@@ -3424,7 +3389,7 @@ filetypes:
   - pattern: lilo.conf*
 ---
 name: lisp
-remote: vim/vim:runtime
+native: true
 glob: "**/lisp.vim"
 filetypes:
 - name: lisp
@@ -3436,7 +3401,7 @@ filetypes:
     description: SBCL implementation of Common Lisp
 ---
 name: liquid
-remote: vim/vim:runtime
+native: true
 glob: "**/liquid.vim"
 filetypes:
 - name: liquid
@@ -3445,7 +3410,7 @@ filetypes:
     description: Liquid
 ---
 name: lite
-remote: vim/vim:runtime
+native: true
 glob: "**/lite.vim"
 filetypes:
 - name: lite
@@ -3454,7 +3419,7 @@ filetypes:
     description: Lite
 ---
 name: litestep
-remote: vim/vim:runtime
+native: true
 glob: "**/litestep.vim"
 filetypes:
 - name: litestep
@@ -3463,7 +3428,7 @@ filetypes:
     description: LiteStep RC files
 ---
 name: loginaccess
-remote: vim/vim:runtime
+native: true
 glob: "**/loginaccess.vim"
 filetypes:
 - name: loginaccess
@@ -3472,7 +3437,7 @@ filetypes:
     description: Login access
 ---
 name: logindefs
-remote: vim/vim:runtime
+native: true
 glob: "**/logindefs.vim"
 filetypes:
 - name: logindefs
@@ -3481,7 +3446,7 @@ filetypes:
     description: Login defs
 ---
 name: logtalk
-remote: vim/vim:runtime
+native: true
 glob: "**/logtalk.vim"
 filetypes:
 - name: logtalk
@@ -3490,7 +3455,7 @@ filetypes:
     description: Logtalk
 ---
 name: lotos
-remote: vim/vim:runtime
+native: true
 glob: "**/lotos.vim"
 filetypes:
 - name: lotos
@@ -3499,7 +3464,7 @@ filetypes:
     description: LOTOS
 ---
 name: lout
-remote: vim/vim:runtime
+native: true
 glob: "**/lout.vim"
 filetypes:
 - name: lout
@@ -3508,7 +3473,7 @@ filetypes:
     description: 'Lout (also: *.lt)'
 ---
 name: lsl
-remote: vim/vim:runtime
+native: true
 glob: "**/lsl.vim"
 filetypes:
 - name: lsl
@@ -3517,7 +3482,7 @@ filetypes:
     description: Linden Scripting Language (Second Life)
 ---
 name: lss
-remote: vim/vim:runtime
+native: true
 glob: "**/lss.vim"
 filetypes:
 - name: lss
@@ -3526,7 +3491,7 @@ filetypes:
     description: Lynx style file (or LotusScript!)
 ---
 name: mgp
-remote: vim/vim:runtime
+native: true
 glob: "**/mgp.vim"
 filetypes:
 - name: mgp
@@ -3535,7 +3500,7 @@ filetypes:
     description: MaGic Point
 ---
 name: mail
-remote: vim/vim:runtime
+native: true
 glob: "**/mail.vim"
 filetypes:
 - name: mail
@@ -3543,7 +3508,7 @@ filetypes:
   - pattern: snd.\d\+,.letter,.letter.\d\+,.followup,.article,.article.\d\+,pico.\d\+,mutt{ng,}-*-\w\+,mutt[[:alnum:]_-]\\\{6\},neomutt-*-\w\+,neomutt[[:alnum:]_-]\\\{6\},ae\d\+.txt,/tmp/SLRN[0-9A-Z.]\+,*.eml,{neo,}mutt[[:alnum:]._-]\\\{6\},reportbug-*
 ---
 name: mailaliases
-remote: vim/vim:runtime
+native: true
 glob: "**/mailaliases.vim"
 filetypes:
 - name: mailaliases
@@ -3552,7 +3517,7 @@ filetypes:
     description: Mail aliases
 ---
 name: mailcap
-remote: vim/vim:runtime
+native: true
 glob: "**/mailcap.vim"
 filetypes:
 - name: mailcap
@@ -3561,7 +3526,7 @@ filetypes:
     description: Mailcap configuration file
 ---
 name: ist
-remote: vim/vim:runtime
+native: true
 glob: "**/ist.vim"
 filetypes:
 - name: ist
@@ -3570,7 +3535,7 @@ filetypes:
     description: MakeIndex
 ---
 name: mallard
-remote: vim/vim:runtime
+native: true
 glob: "**/mallard.vim"
 filetypes:
 - name: mallard
@@ -3579,7 +3544,7 @@ filetypes:
     description: Mallard
 ---
 name: manconf
-remote: vim/vim:runtime
+native: true
 glob: "**/manconf.vim"
 filetypes:
 - name: manconf
@@ -3588,7 +3553,7 @@ filetypes:
     description: Man config
 ---
 name: maple
-remote: vim/vim:runtime
+native: true
 glob: "**/maple.vim"
 filetypes:
 - name: maple
@@ -3596,17 +3561,8 @@ filetypes:
   - pattern: "*.mv,*.mpl,*.mws"
     description: Maple V
 ---
-name: map
-remote: vim/vim:runtime
-glob: "**/map.vim"
-filetypes:
-- name: map
-  patterns:
-  - pattern: "*.map"
-    description: Map (UMN mapserver config file)
----
 name: mel
-remote: vim/vim:runtime
+native: true
 glob: "**/mel.vim"
 filetypes:
 - name: mel
@@ -3615,7 +3571,7 @@ filetypes:
     description: Maya Extension Language
 ---
 name: hgcommit
-remote: vim/vim:runtime
+native: true
 glob: "**/hgcommit.vim"
 filetypes:
 - name: hgcommit
@@ -3624,7 +3580,7 @@ filetypes:
     description: Mercurial (hg) commit file
 ---
 name: messages
-remote: vim/vim:runtime
+native: true
 glob: "**/messages.vim"
 filetypes:
 - name: messages
@@ -3633,7 +3589,7 @@ filetypes:
     description: Messages (logs mostly)
 ---
 name: mf
-remote: vim/vim:runtime
+native: true
 glob: "**/mf.vim"
 filetypes:
 - name: mf
@@ -3642,7 +3598,7 @@ filetypes:
     description: Metafont
 ---
 name: mp
-remote: vim/vim:runtime
+native: true
 glob: "**/mp.vim"
 filetypes:
 - name: mp
@@ -3651,7 +3607,7 @@ filetypes:
     description: MetaPost
 ---
 name: mgl
-remote: vim/vim:runtime
+native: true
 glob: "**/mgl.vim"
 filetypes:
 - name: mgl
@@ -3660,7 +3616,7 @@ filetypes:
     description: MGL
 ---
 name: mix
-remote: vim/vim:runtime
+native: true
 glob: "**/mix.vim"
 filetypes:
 - name: mix
@@ -3669,7 +3625,7 @@ filetypes:
     description: MIX - Knuth assembly
 ---
 name: mmp
-remote: vim/vim:runtime
+native: true
 glob: "**/mmp.vim"
 filetypes:
 - name: mmp
@@ -3678,7 +3634,7 @@ filetypes:
     description: Symbian meta-makefile definition (MMP)
 ---
 name: modula2
-remote: vim/vim:runtime
+native: true
 glob: "**/modula2.vim"
 filetypes:
 - name: modula2
@@ -3687,7 +3643,7 @@ filetypes:
     description: Modula 2  (.md removed in favor of Markdown)
 ---
 name: modula3
-remote: vim/vim:runtime
+native: true
 glob: "**/modula3.vim"
 filetypes:
 - name: modula3
@@ -3696,7 +3652,7 @@ filetypes:
     description: Modula 3 (.m3, .i3, .mg, .ig)
 ---
 name: monk
-remote: vim/vim:runtime
+native: true
 glob: "**/monk.vim"
 filetypes:
 - name: monk
@@ -3705,7 +3661,7 @@ filetypes:
     description: Monk
 ---
 name: moo
-remote: vim/vim:runtime
+native: true
 glob: "**/moo.vim"
 filetypes:
 - name: moo
@@ -3714,7 +3670,7 @@ filetypes:
     description: MOO
 ---
 name: modconf
-remote: vim/vim:runtime
+native: true
 glob: "**/modconf.vim"
 filetypes:
 - name: modconf
@@ -3724,7 +3680,7 @@ filetypes:
   - pattern: "*/etc/modprobe.*"
 ---
 name: mplayerconf
-remote: vim/vim:runtime
+native: true
 glob: "**/mplayerconf.vim"
 filetypes:
 - name: mplayerconf
@@ -3733,7 +3689,7 @@ filetypes:
     description: Mplayer config
 ---
 name: srec
-remote: vim/vim:runtime
+native: true
 glob: "**/srec.vim"
 filetypes:
 - name: srec
@@ -3742,7 +3698,7 @@ filetypes:
     description: Motorola S record
 ---
 name: mrxvtrc
-remote: vim/vim:runtime
+native: true
 glob: "**/mrxvtrc.vim"
 filetypes:
 - name: mrxvtrc
@@ -3751,7 +3707,7 @@ filetypes:
     description: Mrxvtrc
 ---
 name: msql
-remote: vim/vim:runtime
+native: true
 glob: "**/msql.vim"
 filetypes:
 - name: msql
@@ -3760,7 +3716,7 @@ filetypes:
     description: Msql
 ---
 name: mysql
-remote: vim/vim:runtime
+native: true
 glob: "**/mysql.vim"
 filetypes:
 - name: mysql
@@ -3769,7 +3725,7 @@ filetypes:
     description: Mysql
 ---
 name: muttrc
-remote: vim/vim:runtime
+native: true
 glob: "**/muttrc.vim"
 filetypes:
 - name: muttrc
@@ -3779,7 +3735,7 @@ filetypes:
     description: Mutt setup file (also for Muttng)
 ---
 name: rc
-remote: vim/vim:runtime
+native: true
 glob: "**/rc.vim"
 filetypes:
 - name: rc
@@ -3788,7 +3744,7 @@ filetypes:
     description: M$ Resource files
 ---
 name: mupad
-remote: vim/vim:runtime
+native: true
 glob: "**/mupad.vim"
 filetypes:
 - name: mupad
@@ -3797,7 +3753,7 @@ filetypes:
     description: MuPAD source
 ---
 name: mush
-remote: vim/vim:runtime
+native: true
 glob: "**/mush.vim"
 filetypes:
 - name: mush
@@ -3806,7 +3762,7 @@ filetypes:
     description: Mush
 ---
 name: n1ql
-remote: vim/vim:runtime
+native: true
 glob: "**/n1ql.vim"
 filetypes:
 - name: n1ql
@@ -3815,7 +3771,7 @@ filetypes:
     description: N1QL
 ---
 name: nanorc
-remote: vim/vim:runtime
+native: true
 glob: "**/nanorc.vim"
 filetypes:
 - name: nanorc
@@ -3824,7 +3780,7 @@ filetypes:
     description: Nano
 ---
 name: natural
-remote: vim/vim:runtime
+native: true
 glob: "**/natural.vim"
 filetypes:
 - name: natural
@@ -3833,7 +3789,7 @@ filetypes:
     description: Natural
 ---
 name: neomuttrc
-remote: vim/vim:runtime
+native: true
 glob: "**/neomuttrc.vim"
 filetypes:
 - name: neomuttrc
@@ -3843,7 +3799,7 @@ filetypes:
   - pattern: ".neomuttrc*,*/.neomutt/neomuttrc*,neomuttrc*,Neomuttrc*"
 ---
 name: netrc
-remote: vim/vim:runtime
+native: true
 glob: "**/netrc.vim"
 filetypes:
 - name: netrc
@@ -3852,7 +3808,7 @@ filetypes:
     description: Netrc
 ---
 name: ninja
-remote: vim/vim:runtime
+native: true
 glob: "**/ninja.vim"
 filetypes:
 - name: ninja
@@ -3861,7 +3817,7 @@ filetypes:
     description: Ninja file
 ---
 name: ncf
-remote: vim/vim:runtime
+native: true
 glob: "**/ncf.vim"
 filetypes:
 - name: ncf
@@ -3870,7 +3826,7 @@ filetypes:
     description: Novell netware batch files
 ---
 name: nroff
-remote: vim/vim:runtime
+native: true
 glob: "**/nroff.vim"
 filetypes:
 - name: nroff
@@ -3882,7 +3838,7 @@ filetypes:
   - pattern: tmac.*
 ---
 name: nqc
-remote: vim/vim:runtime
+native: true
 glob: "**/nqc.vim"
 filetypes:
 - name: nqc
@@ -3891,7 +3847,7 @@ filetypes:
     description: Not Quite C
 ---
 name: nsis
-remote: vim/vim:runtime
+native: true
 glob: "**/nsis.vim"
 filetypes:
 - name: nsis
@@ -3900,7 +3856,7 @@ filetypes:
     description: NSIS
 ---
 name: occam
-remote: vim/vim:runtime
+native: true
 glob: "**/occam.vim"
 filetypes:
 - name: occam
@@ -3909,7 +3865,7 @@ filetypes:
     description: Occam
 ---
 name: omnimark
-remote: vim/vim:runtime
+native: true
 glob: "**/omnimark.vim"
 filetypes:
 - name: omnimark
@@ -3918,7 +3874,7 @@ filetypes:
     description: Omnimark
 ---
 name: openroad
-remote: vim/vim:runtime
+native: true
 glob: "**/openroad.vim"
 filetypes:
 - name: openroad
@@ -3927,7 +3883,7 @@ filetypes:
     description: OpenROAD
 ---
 name: opl
-remote: vim/vim:runtime
+native: true
 glob: "**/opl.vim"
 filetypes:
 - name: opl
@@ -3936,7 +3892,7 @@ filetypes:
     description: OPL
 ---
 name: ora
-remote: vim/vim:runtime
+native: true
 glob: "**/ora.vim"
 filetypes:
 - name: ora
@@ -3945,7 +3901,7 @@ filetypes:
     description: Oracle config file
 ---
 name: pf
-remote: vim/vim:runtime
+native: true
 glob: "**/pf.vim"
 filetypes:
 - name: pf
@@ -3954,7 +3910,7 @@ filetypes:
     description: Packet filter conf
 ---
 name: pamconf
-remote: vim/vim:runtime
+native: true
 glob: "**/pamconf.vim"
 filetypes:
 - name: pamconf
@@ -3964,7 +3920,7 @@ filetypes:
   - pattern: "*/etc/pam.d/*"
 ---
 name: pamenv
-remote: vim/vim:runtime
+native: true
 glob: "**/pamenv.vim"
 filetypes:
 - name: pamenv
@@ -3973,7 +3929,7 @@ filetypes:
     description: Pam environment
 ---
 name: papp
-remote: vim/vim:runtime
+native: true
 glob: "**/papp.vim"
 filetypes:
 - name: papp
@@ -3982,7 +3938,7 @@ filetypes:
     description: PApp
 ---
 name: passwd
-remote: vim/vim:runtime
+native: true
 glob: "**/passwd.vim"
 filetypes:
 - name: passwd
@@ -3991,7 +3947,7 @@ filetypes:
     description: Password file
 ---
 name: pascal
-remote: vim/vim:runtime
+native: true
 glob: "**/pascal.vim"
 filetypes:
 - name: pascal
@@ -4002,7 +3958,7 @@ filetypes:
     description: Delphi or Lazarus program file
 ---
 name: pdf
-remote: vim/vim:runtime
+native: true
 glob: "**/pdf.vim"
 filetypes:
 - name: pdf
@@ -4010,17 +3966,8 @@ filetypes:
   - pattern: "*.pdf"
     description: PDF
 ---
-name: pcmk
-remote: vim/vim:runtime
-glob: "**/pcmk.vim"
-filetypes:
-- name: pcmk
-  patterns:
-  - pattern: "*.pcmk"
-    description: PCMK - HAE - crm configure edit
----
 name: pike
-remote: vim/vim:runtime
+native: true
 glob: "**/pike.vim"
 dependencies: autodoc
 filetypes:
@@ -4030,7 +3977,7 @@ filetypes:
     description: Pike and Cmod
 ---
 name: cmod
-remote: vim/vim:runtime
+native: true
 glob: "**/cmod.vim"
 dependencies: autodoc
 filetypes:
@@ -4040,7 +3987,7 @@ filetypes:
     description: Pike and Cmod
 ---
 name: pinfo
-remote: vim/vim:runtime
+native: true
 glob: "**/pinfo.vim"
 filetypes:
 - name: pinfo
@@ -4049,7 +3996,7 @@ filetypes:
     description: Pinfo config
 ---
 name: pilrc
-remote: vim/vim:runtime
+native: true
 glob: "**/pilrc.vim"
 filetypes:
 - name: pilrc
@@ -4058,7 +4005,7 @@ filetypes:
     description: Palm Resource compiler
 ---
 name: pine
-remote: vim/vim:runtime
+native: true
 glob: "**/pine.vim"
 filetypes:
 - name: pine
@@ -4067,7 +4014,7 @@ filetypes:
     description: Pine config
 ---
 name: pli
-remote: vim/vim:runtime
+native: true
 glob: "**/pli.vim"
 filetypes:
 - name: pli
@@ -4076,7 +4023,7 @@ filetypes:
     description: PL/1, PL/I
 ---
 name: plm
-remote: vim/vim:runtime
+native: true
 glob: "**/plm.vim"
 filetypes:
 - name: plm
@@ -4085,7 +4032,7 @@ filetypes:
     description: 'PL/M (also: *.inp)'
 ---
 name: plsql
-remote: vim/vim:runtime
+native: true
 glob: "**/plsql.vim"
 filetypes:
 - name: plsql
@@ -4094,7 +4041,7 @@ filetypes:
     description: PL/SQL
 ---
 name: plp
-remote: vim/vim:runtime
+native: true
 glob: "**/plp.vim"
 filetypes:
 - name: plp
@@ -4103,7 +4050,7 @@ filetypes:
     description: PLP
 ---
 name: po
-remote: vim/vim:runtime
+native: true
 glob: "**/po.vim"
 filetypes:
 - name: po
@@ -4112,7 +4059,7 @@ filetypes:
     description: PO and PO template (GNU gettext)
 ---
 name: pfmain
-remote: vim/vim:runtime
+native: true
 glob: "**/pfmain.vim"
 filetypes:
 - name: pfmain
@@ -4121,7 +4068,7 @@ filetypes:
     description: Postfix main config
 ---
 name: postscr
-remote: vim/vim:runtime
+native: true
 glob: "**/postscr.vim"
 filetypes:
 - name: postscr
@@ -4130,7 +4077,7 @@ filetypes:
     description: PostScript (+ font files, encapsulated PostScript, Adobe Illustrator)
 ---
 name: ppd
-remote: vim/vim:runtime
+native: true
 glob: "**/ppd.vim"
 filetypes:
 - name: ppd
@@ -4139,7 +4086,7 @@ filetypes:
     description: PostScript Printer Description
 ---
 name: pov
-remote: vim/vim:runtime
+native: true
 glob: "**/pov.vim"
 filetypes:
 - name: pov
@@ -4148,7 +4095,7 @@ filetypes:
     description: Povray
 ---
 name: povini
-remote: vim/vim:runtime
+native: true
 glob: "**/povini.vim"
 filetypes:
 - name: povini
@@ -4157,7 +4104,7 @@ filetypes:
     description: Povray configuration
 ---
 name: pccts
-remote: vim/vim:runtime
+native: true
 glob: "**/pccts.vim"
 filetypes:
 - name: pccts
@@ -4166,7 +4113,7 @@ filetypes:
     description: "u BufNewFile,BufRead *.g\t\t\tsetf antrl"
 ---
 name: ppwiz
-remote: vim/vim:runtime
+native: true
 glob: "**/ppwiz.vim"
 filetypes:
 - name: ppwiz
@@ -4175,7 +4122,7 @@ filetypes:
     description: PPWizard
 ---
 name: obj
-remote: vim/vim:runtime
+native: true
 glob: "**/obj.vim"
 filetypes:
 - name: obj
@@ -4183,17 +4130,8 @@ filetypes:
   - pattern: "*.obj"
     description: 'TODO: is there a way to avoid MS-Windows Object files?'
 ---
-name: proc
-remote: vim/vim:runtime
-glob: "**/proc.vim"
-filetypes:
-- name: proc
-  patterns:
-  - pattern: "*.pc"
-    description: Oracle Pro*C/C++
----
 name: privoxy
-remote: vim/vim:runtime
+native: true
 glob: "**/privoxy.vim"
 filetypes:
 - name: privoxy
@@ -4202,7 +4140,7 @@ filetypes:
     description: Privoxy actions file
 ---
 name: procmail
-remote: vim/vim:runtime
+native: true
 glob: "**/procmail.vim"
 filetypes:
 - name: procmail
@@ -4211,7 +4149,7 @@ filetypes:
     description: Procmail
 ---
 name: psf
-remote: vim/vim:runtime
+native: true
 glob: "**/psf.vim"
 filetypes:
 - name: psf
@@ -4220,7 +4158,7 @@ filetypes:
     description: Software Distributor Product Specification File (POSIX 1387.2-1995)
 ---
 name: promela
-remote: vim/vim:runtime
+native: true
 glob: "**/promela.vim"
 filetypes:
 - name: promela
@@ -4229,7 +4167,7 @@ filetypes:
     description: Promela
 ---
 name: protocols
-remote: vim/vim:runtime
+native: true
 glob: "**/protocols.vim"
 filetypes:
 - name: protocols
@@ -4238,7 +4176,7 @@ filetypes:
     description: Protocols
 ---
 name: pyrex
-remote: vim/vim:runtime
+native: true
 glob: "**/pyrex.vim"
 filetypes:
 - name: pyrex
@@ -4247,7 +4185,7 @@ filetypes:
     description: Pyrex
 ---
 name: radiance
-remote: vim/vim:runtime
+native: true
 glob: "**/radiance.vim"
 filetypes:
 - name: radiance
@@ -4256,7 +4194,7 @@ filetypes:
     description: Radiance
 ---
 name: ratpoison
-remote: vim/vim:runtime
+native: true
 glob: "**/ratpoison.vim"
 filetypes:
 - name: ratpoison
@@ -4265,7 +4203,7 @@ filetypes:
     description: Ratpoison config/command files
 ---
 name: rcs
-remote: vim/vim:runtime
+native: true
 glob: "**/rcs.vim"
 filetypes:
 - name: rcs
@@ -4273,7 +4211,7 @@ filetypes:
   - pattern: "*\\,v"
 ---
 name: readline
-remote: vim/vim:runtime
+native: true
 glob: "**/readline.vim"
 filetypes:
 - name: readline
@@ -4282,7 +4220,7 @@ filetypes:
     description: Readline
 ---
 name: rib
-remote: vim/vim:runtime
+native: true
 glob: "**/rib.vim"
 filetypes:
 - name: rib
@@ -4291,7 +4229,7 @@ filetypes:
     description: Renderman Interface Bytestream
 ---
 name: rego
-remote: vim/vim:runtime
+native: true
 glob: "**/rego.vim"
 filetypes:
 - name: rego
@@ -4300,7 +4238,7 @@ filetypes:
     description: Rego Policy Language
 ---
 name: rexx
-remote: vim/vim:runtime
+native: true
 glob: "**/rexx.vim"
 filetypes:
 - name: rexx
@@ -4309,7 +4247,7 @@ filetypes:
     description: Rexx
 ---
 name: rnoweb
-remote: vim/vim:runtime
+native: true
 glob: "**/rnoweb.vim"
 filetypes:
 - name: rnoweb
@@ -4318,7 +4256,7 @@ filetypes:
     description: R noweb file
 ---
 name: rmd
-remote: vim/vim:runtime
+native: true
 glob: "**/rmd.vim"
 filetypes:
 - name: rmd
@@ -4327,7 +4265,7 @@ filetypes:
     description: R Markdown file
 ---
 name: rrst
-remote: vim/vim:runtime
+native: true
 glob: "**/rrst.vim"
 filetypes:
 - name: rrst
@@ -4336,7 +4274,7 @@ filetypes:
     description: R reStructuredText file
 ---
 name: remind
-remote: vim/vim:runtime
+native: true
 glob: "**/remind.vim"
 filetypes:
 - name: remind
@@ -4346,7 +4284,7 @@ filetypes:
   - pattern: ".reminders*"
 ---
 name: resolv
-remote: vim/vim:runtime
+native: true
 glob: "**/resolv.vim"
 filetypes:
 - name: resolv
@@ -4355,7 +4293,7 @@ filetypes:
     description: Resolv.conf
 ---
 name: rnc
-remote: vim/vim:runtime
+native: true
 glob: "**/rnc.vim"
 filetypes:
 - name: rnc
@@ -4364,7 +4302,7 @@ filetypes:
     description: Relax NG Compact
 ---
 name: rng
-remote: vim/vim:runtime
+native: true
 glob: "**/rng.vim"
 filetypes:
 - name: rng
@@ -4373,7 +4311,7 @@ filetypes:
     description: Relax NG XML
 ---
 name: rpl
-remote: vim/vim:runtime
+native: true
 glob: "**/rpl.vim"
 filetypes:
 - name: rpl
@@ -4382,7 +4320,7 @@ filetypes:
     description: RPL/2
 ---
 name: robots
-remote: vim/vim:runtime
+native: true
 glob: "**/robots.vim"
 filetypes:
 - name: robots
@@ -4391,7 +4329,7 @@ filetypes:
     description: Robots.txt
 ---
 name: rpcgen
-remote: vim/vim:runtime
+native: true
 glob: "**/rpcgen.vim"
 filetypes:
 - name: rpcgen
@@ -4400,7 +4338,7 @@ filetypes:
     description: Rpcgen
 ---
 name: rtf
-remote: vim/vim:runtime
+native: true
 glob: "**/rtf.vim"
 filetypes:
 - name: rtf
@@ -4409,7 +4347,7 @@ filetypes:
     description: RTF
 ---
 name: slang
-remote: vim/vim:runtime
+native: true
 glob: "**/slang.vim"
 filetypes:
 - name: slang
@@ -4418,7 +4356,7 @@ filetypes:
     description: S-lang (or shader language, or SmallLisp)
 ---
 name: samba
-remote: vim/vim:runtime
+native: true
 glob: "**/samba.vim"
 filetypes:
 - name: samba
@@ -4427,7 +4365,7 @@ filetypes:
     description: Samba config
 ---
 name: sas
-remote: vim/vim:runtime
+native: true
 glob: "**/sas.vim"
 filetypes:
 - name: sas
@@ -4436,7 +4374,7 @@ filetypes:
     description: SAS script
 ---
 name: sass
-remote: vim/vim:runtime
+native: true
 glob: "**/sass.vim"
 filetypes:
 - name: sass
@@ -4445,7 +4383,7 @@ filetypes:
     description: Sass
 ---
 name: sather
-remote: vim/vim:runtime
+native: true
 glob: "**/sather.vim"
 filetypes:
 - name: sather
@@ -4454,7 +4392,7 @@ filetypes:
     description: Sather
 ---
 name: sbt
-remote: vim/vim:runtime
+native: true
 glob: "**/sbt.vim"
 filetypes:
 - name: sbt
@@ -4463,7 +4401,7 @@ filetypes:
     description: SBT - Scala Build Tool
 ---
 name: scilab
-remote: vim/vim:runtime
+native: true
 glob: "**/scilab.vim"
 filetypes:
 - name: scilab
@@ -4472,7 +4410,7 @@ filetypes:
     description: Scilab
 ---
 name: sd
-remote: vim/vim:runtime
+native: true
 glob: "**/sd.vim"
 filetypes:
 - name: sd
@@ -4481,7 +4419,7 @@ filetypes:
     description: 'SD: Streaming Descriptors'
 ---
 name: sdl
-remote: vim/vim:runtime
+native: true
 glob: "**/sdl.vim"
 filetypes:
 - name: sdl
@@ -4490,7 +4428,7 @@ filetypes:
     description: SDL
 ---
 name: sed
-remote: vim/vim:runtime
+native: true
 glob: "**/sed.vim"
 filetypes:
 - name: sed
@@ -4499,7 +4437,7 @@ filetypes:
     description: sed
 ---
 name: sieve
-remote: vim/vim:runtime
+native: true
 glob: "**/sieve.vim"
 filetypes:
 - name: sieve
@@ -4508,7 +4446,7 @@ filetypes:
     description: Sieve (RFC 3028, 5228)
 ---
 name: sm
-remote: vim/vim:runtime
+native: true
 glob: "**/sm.vim"
 filetypes:
 - name: sm
@@ -4517,7 +4455,7 @@ filetypes:
     description: Sendmail
 ---
 name: services
-remote: vim/vim:runtime
+native: true
 glob: "**/services.vim"
 filetypes:
 - name: services
@@ -4526,7 +4464,7 @@ filetypes:
     description: Services
 ---
 name: slpconf
-remote: vim/vim:runtime
+native: true
 glob: "**/slpconf.vim"
 filetypes:
 - name: slpconf
@@ -4535,7 +4473,7 @@ filetypes:
     description: Service Location config
 ---
 name: slpreg
-remote: vim/vim:runtime
+native: true
 glob: "**/slpreg.vim"
 filetypes:
 - name: slpreg
@@ -4544,7 +4482,7 @@ filetypes:
     description: Service Location registration
 ---
 name: slpspi
-remote: vim/vim:runtime
+native: true
 glob: "**/slpspi.vim"
 filetypes:
 - name: slpspi
@@ -4553,7 +4491,7 @@ filetypes:
     description: Service Location SPI
 ---
 name: setserial
-remote: vim/vim:runtime
+native: true
 glob: "**/setserial.vim"
 filetypes:
 - name: setserial
@@ -4562,7 +4500,7 @@ filetypes:
     description: Setserial config
 ---
 name: catalog
-remote: vim/vim:runtime
+native: true
 glob: "**/catalog.vim"
 filetypes:
 - name: catalog
@@ -4572,7 +4510,7 @@ filetypes:
   - pattern: sgml.catalog*
 ---
 name: scheme
-remote: vim/vim:runtime
+native: true
 glob: "**/scheme.vim"
 filetypes:
 - name: scheme
@@ -4581,7 +4519,7 @@ filetypes:
     description: Scheme
 ---
 name: screen
-remote: vim/vim:runtime
+native: true
 glob: "**/screen.vim"
 filetypes:
 - name: screen
@@ -4590,7 +4528,7 @@ filetypes:
     description: Screen RC
 ---
 name: simula
-remote: vim/vim:runtime
+native: true
 glob: "**/simula.vim"
 filetypes:
 - name: simula
@@ -4599,7 +4537,7 @@ filetypes:
     description: Simula
 ---
 name: sinda
-remote: vim/vim:runtime
+native: true
 glob: "**/sinda.vim"
 filetypes:
 - name: sinda
@@ -4608,7 +4546,7 @@ filetypes:
     description: SINDA
 ---
 name: sisu
-remote: vim/vim:runtime
+native: true
 glob: "**/sisu.vim"
 filetypes:
 - name: sisu
@@ -4617,7 +4555,7 @@ filetypes:
     description: SiSU
 ---
 name: skill
-remote: vim/vim:runtime
+native: true
 glob: "**/skill.vim"
 filetypes:
 - name: skill
@@ -4626,7 +4564,7 @@ filetypes:
     description: SKILL
 ---
 name: slrnrc
-remote: vim/vim:runtime
+native: true
 glob: "**/slrnrc.vim"
 filetypes:
 - name: slrnrc
@@ -4635,7 +4573,7 @@ filetypes:
     description: SLRN
 ---
 name: slrnsc
-remote: vim/vim:runtime
+native: true
 glob: "**/slrnsc.vim"
 filetypes:
 - name: slrnsc
@@ -4644,7 +4582,7 @@ filetypes:
     description: SLRN
 ---
 name: st
-remote: vim/vim:runtime
+native: true
 glob: "**/st.vim"
 after: html
 filetypes:
@@ -4654,7 +4592,7 @@ filetypes:
     description: Smalltalk (and TeX)
 ---
 name: smarty
-remote: vim/vim:runtime
+native: true
 glob: "**/smarty.vim"
 filetypes:
 - name: smarty
@@ -4663,7 +4601,7 @@ filetypes:
     description: Smarty templates
 ---
 name: smith
-remote: vim/vim:runtime
+native: true
 glob: "**/smith.vim"
 filetypes:
 - name: smith
@@ -4672,7 +4610,7 @@ filetypes:
     description: SMITH
 ---
 name: snobol4
-remote: vim/vim:runtime
+native: true
 glob: "**/snobol4.vim"
 filetypes:
 - name: snobol4
@@ -4681,7 +4619,7 @@ filetypes:
     description: Snobol4 and spitbol
 ---
 name: mib
-remote: vim/vim:runtime
+native: true
 glob: "**/mib.vim"
 filetypes:
 - name: mib
@@ -4690,7 +4628,7 @@ filetypes:
     description: SNMP MIB files
 ---
 name: hog
-remote: vim/vim:runtime
+native: true
 glob: "**/hog.vim"
 filetypes:
 - name: hog
@@ -4699,7 +4637,7 @@ filetypes:
     description: Snort Configuration
 ---
 name: spec
-remote: vim/vim:runtime
+native: true
 glob: "**/spec.vim"
 filetypes:
 - name: spec
@@ -4708,7 +4646,7 @@ filetypes:
     description: Spec (Linux RPM)
 ---
 name: spup
-remote: vim/vim:runtime
+native: true
 glob: "**/spup.vim"
 filetypes:
 - name: spup
@@ -4717,7 +4655,7 @@ filetypes:
     description: Speedup (AspenTech plant simulator)
 ---
 name: slice
-remote: vim/vim:runtime
+native: true
 glob: "**/slice.vim"
 filetypes:
 - name: slice
@@ -4726,7 +4664,7 @@ filetypes:
     description: Slice
 ---
 name: spice
-remote: vim/vim:runtime
+native: true
 glob: "**/spice.vim"
 filetypes:
 - name: spice
@@ -4735,7 +4673,7 @@ filetypes:
     description: Spice
 ---
 name: spyce
-remote: vim/vim:runtime
+native: true
 glob: "**/spyce.vim"
 filetypes:
 - name: spyce
@@ -4744,7 +4682,7 @@ filetypes:
     description: Spyce
 ---
 name: squid
-remote: vim/vim:runtime
+native: true
 glob: "**/squid.vim"
 filetypes:
 - name: squid
@@ -4753,7 +4691,7 @@ filetypes:
     description: Squid
 ---
 name: sqlj
-remote: vim/vim:runtime
+native: true
 glob: "**/sqlj.vim"
 filetypes:
 - name: sqlj
@@ -4762,7 +4700,7 @@ filetypes:
     description: SQLJ
 ---
 name: sqr
-remote: vim/vim:runtime
+native: true
 glob: "**/sqr.vim"
 filetypes:
 - name: sqr
@@ -4771,7 +4709,7 @@ filetypes:
     description: SQR
 ---
 name: sshconfig
-remote: vim/vim:runtime
+native: true
 glob: "**/sshconfig.vim"
 filetypes:
 - name: sshconfig
@@ -4780,7 +4718,7 @@ filetypes:
     description: OpenSSH configuration
 ---
 name: sshdconfig
-remote: vim/vim:runtime
+native: true
 glob: "**/sshdconfig.vim"
 filetypes:
 - name: sshdconfig
@@ -4789,7 +4727,7 @@ filetypes:
     description: OpenSSH server configuration
 ---
 name: stata
-remote: vim/vim:runtime
+native: true
 glob: "**/stata.vim"
 filetypes:
 - name: stata
@@ -4798,7 +4736,7 @@ filetypes:
     description: Stata
 ---
 name: smcl
-remote: vim/vim:runtime
+native: true
 glob: "**/smcl.vim"
 filetypes:
 - name: smcl
@@ -4807,7 +4745,7 @@ filetypes:
     description: SMCL
 ---
 name: stp
-remote: vim/vim:runtime
+native: true
 glob: "**/stp.vim"
 filetypes:
 - name: stp
@@ -4816,7 +4754,7 @@ filetypes:
     description: Stored Procedures
 ---
 name: sml
-remote: vim/vim:runtime
+native: true
 glob: "**/sml.vim"
 filetypes:
 - name: sml
@@ -4825,7 +4763,7 @@ filetypes:
     description: Standard ML
 ---
 name: voscm
-remote: vim/vim:runtime
+native: true
 glob: "**/voscm.vim"
 filetypes:
 - name: voscm
@@ -4834,7 +4772,7 @@ filetypes:
     description: Sratus VOS command macro
 ---
 name: swiftgyb
-remote: vim/vim:runtime
+native: true
 glob: "**/swiftgyb.vim"
 filetypes:
 - name: swiftgyb
@@ -4843,7 +4781,7 @@ filetypes:
     description: Swift
 ---
 name: sil
-remote: vim/vim:runtime
+native: true
 glob: "**/sil.vim"
 filetypes:
 - name: sil
@@ -4852,7 +4790,7 @@ filetypes:
     description: Swift Intermediate Language
 ---
 name: sysctl
-remote: vim/vim:runtime
+native: true
 glob: "**/sysctl.vim"
 filetypes:
 - name: sysctl
@@ -4861,7 +4799,7 @@ filetypes:
     description: Sysctl
 ---
 name: sdc
-remote: vim/vim:runtime
+native: true
 glob: "**/sdc.vim"
 filetypes:
 - name: sdc
@@ -4870,7 +4808,7 @@ filetypes:
     description: Synopsys Design Constraints
 ---
 name: sudoers
-remote: vim/vim:runtime
+native: true
 glob: "**/sudoers.vim"
 filetypes:
 - name: sudoers
@@ -4879,7 +4817,7 @@ filetypes:
     description: Sudoers
 ---
 name: tags
-remote: vim/vim:runtime
+native: true
 glob: "**/tags.vim"
 filetypes:
 - name: tags
@@ -4888,7 +4826,7 @@ filetypes:
     description: Tags
 ---
 name: tak
-remote: vim/vim:runtime
+native: true
 glob: "**/tak.vim"
 filetypes:
 - name: tak
@@ -4897,7 +4835,7 @@ filetypes:
     description: TAK
 ---
 name: taskdata
-remote: vim/vim:runtime
+native: true
 glob: "**/taskdata.vim"
 filetypes:
 - name: taskdata
@@ -4906,7 +4844,7 @@ filetypes:
     description: Task
 ---
 name: taskedit
-remote: vim/vim:runtime
+native: true
 glob: "**/taskedit.vim"
 filetypes:
 - name: taskedit
@@ -4915,7 +4853,7 @@ filetypes:
     description: Task
 ---
 name: tcl
-remote: vim/vim:runtime
+native: true
 glob: "**/tcl.vim"
 filetypes:
 - name: tcl
@@ -4924,7 +4862,7 @@ filetypes:
     description: Tcl (JACL too)
 ---
 name: tli
-remote: vim/vim:runtime
+native: true
 glob: "**/tli.vim"
 filetypes:
 - name: tli
@@ -4933,7 +4871,7 @@ filetypes:
     description: TealInfo
 ---
 name: tsalt
-remote: vim/vim:runtime
+native: true
 glob: "**/tsalt.vim"
 filetypes:
 - name: tsalt
@@ -4942,7 +4880,7 @@ filetypes:
     description: Telix Salt
 ---
 name: teraterm
-remote: vim/vim:runtime
+native: true
 glob: "**/teraterm.vim"
 filetypes:
 - name: teraterm
@@ -4951,7 +4889,7 @@ filetypes:
     description: Tera Term Language
 ---
 name: terminfo
-remote: vim/vim:runtime
+native: true
 glob: "**/terminfo.vim"
 filetypes:
 - name: terminfo
@@ -4960,7 +4898,7 @@ filetypes:
     description: Terminfo
 ---
 name: tex
-remote: vim/vim:runtime
+native: true
 glob: "**/tex.vim"
 extract_in_after: true
 filetypes:
@@ -4970,7 +4908,7 @@ filetypes:
     description: TeX
 ---
 name: texinfo
-remote: vim/vim:runtime
+native: true
 glob: "**/texinfo.vim"
 filetypes:
 - name: texinfo
@@ -4979,7 +4917,7 @@ filetypes:
     description: Texinfo
 ---
 name: texmf
-remote: vim/vim:runtime
+native: true
 glob: "**/texmf.vim"
 filetypes:
 - name: texmf
@@ -4988,7 +4926,7 @@ filetypes:
     description: TeX configuration
 ---
 name: tidy
-remote: vim/vim:runtime
+native: true
 glob: "**/tidy.vim"
 filetypes:
 - name: tidy
@@ -4997,7 +4935,7 @@ filetypes:
     description: Tidy config
 ---
 name: tf
-remote: vim/vim:runtime
+native: true
 glob: "**/tf.vim"
 filetypes:
 - name: tf
@@ -5006,7 +4944,7 @@ filetypes:
     description: TF mud client
 ---
 name: tpp
-remote: vim/vim:runtime
+native: true
 glob: "**/tpp.vim"
 filetypes:
 - name: tpp
@@ -5015,7 +4953,7 @@ filetypes:
     description: TPP - Text Presentation Program
 ---
 name: treetop
-remote: vim/vim:runtime
+native: true
 glob: "**/treetop.vim"
 filetypes:
 - name: treetop
@@ -5024,7 +4962,7 @@ filetypes:
     description: Treetop
 ---
 name: trustees
-remote: vim/vim:runtime
+native: true
 glob: "**/trustees.vim"
 filetypes:
 - name: trustees
@@ -5033,7 +4971,7 @@ filetypes:
     description: Trustees
 ---
 name: tssgm
-remote: vim/vim:runtime
+native: true
 glob: "**/tssgm.vim"
 filetypes:
 - name: tssgm
@@ -5042,7 +4980,7 @@ filetypes:
     description: TSS - Geometry
 ---
 name: tssop
-remote: vim/vim:runtime
+native: true
 glob: "**/tssop.vim"
 filetypes:
 - name: tssop
@@ -5051,7 +4989,7 @@ filetypes:
     description: TSS - Optics
 ---
 name: tsscl
-remote: vim/vim:runtime
+native: true
 glob: "**/tsscl.vim"
 filetypes:
 - name: tsscl
@@ -5060,7 +4998,7 @@ filetypes:
     description: TSS - Command Line (temporary)
 ---
 name: twig
-remote: vim/vim:runtime
+native: true
 glob: "**/twig.vim"
 filetypes:
 - name: twig
@@ -5069,7 +5007,7 @@ filetypes:
     description: TWIG files
 ---
 name: uil
-remote: vim/vim:runtime
+native: true
 glob: "**/uil.vim"
 filetypes:
 - name: uil
@@ -5078,7 +5016,7 @@ filetypes:
     description: Motif UIT/UIL files
 ---
 name: udevconf
-remote: vim/vim:runtime
+native: true
 glob: "**/udevconf.vim"
 filetypes:
 - name: udevconf
@@ -5087,7 +5025,7 @@ filetypes:
     description: Udev conf
 ---
 name: udevperm
-remote: vim/vim:runtime
+native: true
 glob: "**/udevperm.vim"
 filetypes:
 - name: udevperm
@@ -5096,7 +5034,7 @@ filetypes:
     description: Udev permissions
 ---
 name: uc
-remote: vim/vim:runtime
+native: true
 glob: "**/uc.vim"
 filetypes:
 - name: uc
@@ -5105,7 +5043,7 @@ filetypes:
     description: UnrealScript
 ---
 name: updatedb
-remote: vim/vim:runtime
+native: true
 glob: "**/updatedb.vim"
 filetypes:
 - name: updatedb
@@ -5114,7 +5052,7 @@ filetypes:
     description: Updatedb
 ---
 name: upstart
-remote: vim/vim:runtime
+native: true
 glob: "**/upstart.vim"
 filetypes:
 - name: upstart
@@ -5123,7 +5061,7 @@ filetypes:
     description: Upstart (init(8)) config files
 ---
 name: vera
-remote: vim/vim:runtime
+native: true
 glob: "**/vera.vim"
 filetypes:
 - name: vera
@@ -5132,7 +5070,7 @@ filetypes:
     description: Vera
 ---
 name: verilog
-remote: vim/vim:runtime
+native: true
 glob: "**/verilog.vim"
 filetypes:
 - name: verilog
@@ -5141,7 +5079,7 @@ filetypes:
     description: Verilog HDL
 ---
 name: verilogams
-remote: vim/vim:runtime
+native: true
 glob: "**/verilogams.vim"
 filetypes:
 - name: verilogams
@@ -5150,7 +5088,7 @@ filetypes:
     description: Verilog-AMS HDL
 ---
 name: systemverilog
-remote: vim/vim:runtime
+native: true
 glob: "**/systemverilog.vim"
 filetypes:
 - name: systemverilog
@@ -5159,7 +5097,7 @@ filetypes:
     description: SystemVerilog
 ---
 name: vhdl
-remote: vim/vim:runtime
+native: true
 glob: "**/vhdl.vim"
 filetypes:
 - name: vhdl
@@ -5177,7 +5115,7 @@ filetypes:
   - pattern: "*vimrc*"
 ---
 name: viminfo
-remote: vim/vim:runtime
+native: true
 glob: "**/viminfo.vim"
 filetypes:
 - name: viminfo
@@ -5186,7 +5124,7 @@ filetypes:
     description: Viminfo file
 ---
 name: vgrindefs
-remote: vim/vim:runtime
+native: true
 glob: "**/vgrindefs.vim"
 filetypes:
 - name: vgrindefs
@@ -5195,7 +5133,7 @@ filetypes:
     description: Vgrindefs file
 ---
 name: vrml
-remote: vim/vim:runtime
+native: true
 glob: "**/vrml.vim"
 filetypes:
 - name: vrml
@@ -5204,7 +5142,7 @@ filetypes:
     description: VRML V1.0c
 ---
 name: vroom
-remote: vim/vim:runtime
+native: true
 glob: "**/vroom.vim"
 filetypes:
 - name: vroom
@@ -5213,7 +5151,7 @@ filetypes:
     description: Vroom (vim testing and executable documentation)
 ---
 name: wast
-remote: vim/vim:runtime
+native: true
 glob: "**/wast.vim"
 filetypes:
 - name: wast
@@ -5222,7 +5160,7 @@ filetypes:
     description: WebAssembly
 ---
 name: webmacro
-remote: vim/vim:runtime
+native: true
 glob: "**/webmacro.vim"
 filetypes:
 - name: webmacro
@@ -5231,7 +5169,7 @@ filetypes:
     description: Webmacro
 ---
 name: wget
-remote: vim/vim:runtime
+native: true
 glob: "**/wget.vim"
 filetypes:
 - name: wget
@@ -5240,7 +5178,7 @@ filetypes:
     description: Wget config
 ---
 name: wml
-remote: vim/vim:runtime
+native: true
 glob: "**/wml.vim"
 filetypes:
 - name: wml
@@ -5249,7 +5187,7 @@ filetypes:
     description: Website MetaLanguage
 ---
 name: winbatch
-remote: vim/vim:runtime
+native: true
 glob: "**/winbatch.vim"
 filetypes:
 - name: winbatch
@@ -5258,7 +5196,7 @@ filetypes:
     description: Winbatch
 ---
 name: wsml
-remote: vim/vim:runtime
+native: true
 glob: "**/wsml.vim"
 filetypes:
 - name: wsml
@@ -5267,7 +5205,7 @@ filetypes:
     description: WSML
 ---
 name: wvdial
-remote: vim/vim:runtime
+native: true
 glob: "**/wvdial.vim"
 filetypes:
 - name: wvdial
@@ -5276,7 +5214,7 @@ filetypes:
     description: WvDial
 ---
 name: cvsrc
-remote: vim/vim:runtime
+native: true
 glob: "**/cvsrc.vim"
 filetypes:
 - name: cvsrc
@@ -5285,7 +5223,7 @@ filetypes:
     description: CVS RC file
 ---
 name: cvs
-remote: vim/vim:runtime
+native: true
 glob: "**/cvs.vim"
 filetypes:
 - name: cvs
@@ -5293,7 +5231,7 @@ filetypes:
   - pattern: cvs\d\+
 ---
 name: wsh
-remote: vim/vim:runtime
+native: true
 glob: "**/wsh.vim"
 filetypes:
 - name: wsh
@@ -5302,7 +5240,7 @@ filetypes:
     description: Windows Scripting Host and Windows Script Component
 ---
 name: xhtml
-remote: vim/vim:runtime
+native: true
 glob: "**/xhtml.vim"
 filetypes:
 - name: xhtml
@@ -5311,7 +5249,7 @@ filetypes:
     description: XHTML
 ---
 name: xinetd
-remote: vim/vim:runtime
+native: true
 glob: "**/xinetd.vim"
 filetypes:
 - name: xinetd
@@ -5321,7 +5259,7 @@ filetypes:
   - pattern: "*/etc/xinetd.d/*"
 ---
 name: xdefaults
-remote: vim/vim:runtime
+native: true
 glob: "**/xdefaults.vim"
 filetypes:
 - name: xdefaults
@@ -5331,7 +5269,7 @@ filetypes:
   - pattern: Xresources*,*/app-defaults/*,*/Xresources/*
 ---
 name: xmath
-remote: vim/vim:runtime
+native: true
 glob: "**/xmath.vim"
 filetypes:
 - name: xmath
@@ -5340,7 +5278,7 @@ filetypes:
     description: Xmath
 ---
 name: xmodmap
-remote: vim/vim:runtime
+native: true
 glob: "**/xmodmap.vim"
 filetypes:
 - name: xmodmap
@@ -5350,7 +5288,7 @@ filetypes:
   - pattern: "*xmodmap*"
 ---
 name: xquery
-remote: vim/vim:runtime
+native: true
 glob: "**/xquery.vim"
 filetypes:
 - name: xquery
@@ -5359,7 +5297,7 @@ filetypes:
     description: Xquery
 ---
 name: xsd
-remote: vim/vim:runtime
+native: true
 glob: "**/xsd.vim"
 filetypes:
 - name: xsd
@@ -5368,7 +5306,7 @@ filetypes:
     description: XSD
 ---
 name: xslt
-remote: vim/vim:runtime
+native: true
 glob: "**/xslt.vim"
 filetypes:
 - name: xslt
@@ -5377,7 +5315,7 @@ filetypes:
     description: Xslt
 ---
 name: yacc
-remote: vim/vim:runtime
+native: true
 glob: "**/yacc.vim"
 filetypes:
 - name: yacc
@@ -5386,7 +5324,7 @@ filetypes:
     description: Yacc
 ---
 name: zimbu
-remote: vim/vim:runtime
+native: true
 glob: "**/zimbu.vim"
 filetypes:
 - name: zimbu
@@ -5394,17 +5332,8 @@ filetypes:
   - pattern: "*.zu"
     description: Zimbu
 ---
-name: zimbutempl
-remote: vim/vim:runtime
-glob: "**/zimbutempl.vim"
-filetypes:
-- name: zimbutempl
-  patterns:
-  - pattern: "*.zut"
-    description: Zimbu Templates
----
 name: z8a
-remote: vim/vim:runtime
+native: true
 glob: "**/z8a.vim"
 filetypes:
 - name: z8a
@@ -5413,7 +5342,7 @@ filetypes:
     description: Z80 assembler asz80
 ---
 name: apachestyle
-remote: vim/vim:runtime
+native: true
 glob: "**/apachestyle.vim"
 filetypes:
 - name: apachestyle
@@ -5421,7 +5350,7 @@ filetypes:
   - pattern: "*/etc/proftpd/*.conf*,*/etc/proftpd/conf.*/*,proftpd.conf*"
 ---
 name: asterisk
-remote: vim/vim:runtime
+native: true
 glob: "**/asterisk.vim"
 filetypes:
 - name: asterisk
@@ -5429,7 +5358,7 @@ filetypes:
   - pattern: "*asterisk/*.conf*"
 ---
 name: asteriskvm
-remote: vim/vim:runtime
+native: true
 glob: "**/asteriskvm.vim"
 filetypes:
 - name: asteriskvm
@@ -5437,7 +5366,7 @@ filetypes:
   - pattern: "*asterisk*/*voicemail.conf*"
 ---
 name: bzr
-remote: vim/vim:runtime
+native: true
 glob: "**/bzr.vim"
 filetypes:
 - name: bzr
@@ -5446,7 +5375,7 @@ filetypes:
     description: Bazaar version control
 ---
 name: crontab
-remote: vim/vim:runtime
+native: true
 glob: "**/crontab.vim"
 filetypes:
 - name: crontab
@@ -5454,7 +5383,7 @@ filetypes:
   - pattern: crontab,crontab.*,*/etc/cron.d/*
 ---
 name: fvwm
-remote: vim/vim:runtime
+native: true
 glob: "**/fvwm.vim"
 filetypes:
 - name: fvwm
@@ -5462,7 +5391,7 @@ filetypes:
   - pattern: "*/.fvwm/*"
 ---
 name: logcheck
-remote: vim/vim:runtime
+native: true
 glob: "**/logcheck.vim"
 filetypes:
 - name: logcheck
@@ -5470,7 +5399,7 @@ filetypes:
   - pattern: "*/etc/logcheck/*.d*/*"
 ---
 name: svn
-remote: vim/vim:runtime
+native: true
 glob: "**/svn.vim"
 filetypes:
 - name: svn
@@ -5479,7 +5408,7 @@ filetypes:
     description: Subversion commit file
 ---
 name: text
-remote: vim/vim:runtime
+native: true
 glob: "**/text.vim"
 filetypes:
 - name: text
@@ -5487,16 +5416,8 @@ filetypes:
   - pattern: "*.text,README"
     description: the "conf" type being used if there is a line starting with '#'.
 ---
-name: pullrequest
-remote: vim/vim:runtime
-glob: "**/pullrequest.vim"
-filetypes:
-- name: pullrequest
-  patterns:
-  - pattern: PULLREQ_EDITMSG
----
 name: autodoc
-remote: vim/vim:runtime
+native: true
 glob: "**/autodoc.vim"
 # Needed by c, cmod, and pike
 filetypes: []
@@ -5507,7 +5428,7 @@ dependencies: html
 filetypes: []
 ---
 name: xf86conf
-remote: vim/vim:runtime
+native: true
 glob: "**/xf86conf.vim"
 filetypes:
 - name: xf86conf
@@ -5515,14 +5436,14 @@ filetypes:
   - pattern: "XF86Config-4*,XF86Config*,*/xorg.conf.d/*.conf,xorg.conf,xorg.conf-4"
 ---
 name: xpm
-remote: vim/vim:runtime
+native: true
 glob: "**/xpm.vim"
 filetypes:
 - name: xpm
   linguist: X PixMap
 ---
 name: xpm2
-remote: vim/vim:runtime
+native: true
 glob: "**/xpm2.vim"
 filetypes:
 - name: xpm2
@@ -5569,12 +5490,12 @@ filetypes:
     description: Hjson (https://hjson.github.io)
 ---
 name: sway
-remote: jamespeapen/swayconfig.vim/tree/i3sway
+remote: jamespeapen/swayconfig.vim
 filetypes:
-- name: i3config
+- name: swayconfig
   patterns:
-  - pattern: 'i3.config,*.i3config,*.i3.config,*sway/config,*.swayconfig,*.sway.config,sway.config'
-    description: Sway/i3 Configuration
+  - pattern: '*sway/config,*.swayconfig,*.sway.config,swayconfig'
+    description: Sway Configuration
 ---
 name: just
 remote: NoahTheDuke/vim-just
@@ -5603,7 +5524,7 @@ filetypes:
     description: OpenSCAD 3D modeling language
 ---
 name: mermaid
-remote: mracos/mermaid.vim
+remote: mracos/mermaid.vim@main
 filetypes:
 - name: mermaid
   patterns:
@@ -5617,3 +5538,16 @@ filetypes:
   patterns:
   - pattern: '*.org'
     description: GNU Emacs' Org mode
+---
+name: zinit
+remote: zdharma-continuum/zinit-vim-syntax@main
+# just adds to zsh filetype
+filetypes: []
+---
+name: bicep
+remote: carlsmedstad/vim-bicep
+filetypes:
+- name: bicep
+  patterns:
+  - pattern: '*.bicep'
+    description: Microsoft Bicep

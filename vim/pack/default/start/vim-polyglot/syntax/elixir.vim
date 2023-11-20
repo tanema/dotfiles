@@ -119,6 +119,7 @@ syntax include @HTML syntax/html.vim
 unlet b:current_syntax
 syntax region elixirLiveViewSigil matchgroup=elixirSigilDelimiter keepend start=+\~L\z("""\)+ end=+^\s*\z1+ skip=+\\"+ contains=@HTML fold
 syntax region elixirSurfaceSigil matchgroup=elixirSigilDelimiter keepend start=+\~H\z("""\)+ end=+^\s*\z1+ skip=+\\"+ contains=@HTML fold
+syntax region elixirSurfaceSigil matchgroup=elixirSigilDelimiter keepend start=+\~F\z("""\)+ end=+^\s*\z1+ skip=+\\"+ contains=@HTML fold
 syntax region elixirPhoenixESigil matchgroup=elixirSigilDelimiter keepend start=+\~E\z("""\)+ end=+^\s*\z1+ skip=+\\"+ contains=@HTML fold
 syntax region elixirPhoenixeSigil matchgroup=elixirSigilDelimiter keepend start=+\~e\z("""\)+ end=+^\s*\z1+ skip=+\\"+ contains=@HTML fold
 
@@ -148,6 +149,7 @@ syn region elixirDocString matchgroup=elixirDocSigilDelimiter  start=+\%(@\w*doc
 " Defines
 syn match elixirDefine              '\<def\>\(:\)\@!'             nextgroup=elixirFunctionDeclaration        skipwhite skipnl
 syn match elixirPrivateDefine       '\<defp\>\(:\)\@!'            nextgroup=elixirPrivateFunctionDeclaration skipwhite skipnl
+syn match elixirNumericalDefine     '\<defn\>\(:\)\@!'            nextgroup=elixirFunctionDeclaration        skipwhite skipnl
 syn match elixirGuard               '\<defguard\>\(:\)\@!'        nextgroup=elixirFunctionDeclaration        skipwhite skipnl
 syn match elixirPrivateGuard        '\<defguardp\>\(:\)\@!'       nextgroup=elixirPrivateFunctionDeclaration skipwhite skipnl
 syn match elixirModuleDefine        '\<defmodule\>\(:\)\@!'       nextgroup=elixirModuleDeclaration          skipwhite skipnl
@@ -190,6 +192,7 @@ syn sync minlines=2000
 hi def link elixirBlockDefinition            Define
 hi def link elixirDefine                     Define
 hi def link elixirPrivateDefine              Define
+hi def link elixirNumericalDefine            Define
 hi def link elixirGuard                      Define
 hi def link elixirPrivateGuard               Define
 hi def link elixirModuleDefine               Define

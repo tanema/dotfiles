@@ -1,10 +1,607 @@
 CHANGELOG
 =========
 
+0.44.1
+------
+- Fixed crash when preview window is hidden on `focus` event
+
+0.44.0
+------
+- (Experimental) Sixel image support in preview window (not available on Windows)
+    - [bin/fzf-preview.sh](bin/fzf-preview.sh) is added to demonstrate how to
+      display an image using Kitty image protocol or Sixel. You can use it
+      like so:
+      ```sh
+      fzf --preview='fzf-preview.sh {}'
+      ```
+- (Experimental) iTerm2 inline image protocol support in preview window (not available on Windows)
+  ```sh
+  # Using https://iterm2.com/utilities/imgcat
+  fzf --preview 'imgcat -W $FZF_PREVIEW_COLUMNS -H $FZF_PREVIEW_LINES {}'
+  ```
+- HTTP server can be configured to accept remote connections
+  ```sh
+  # FZF_API_KEY is required for a non-localhost listen address
+  export FZF_API_KEY="$(head -c 32 /dev/urandom | base64)"
+  fzf --listen 0.0.0.0:6266
+  ```
+    - To allow remote process execution, use `--listen-unsafe` instead
+      (`execute*`, `reload*`, `become`, `preview`, `change-preview`, `transform-*`)
+      ```sh
+      fzf --listen-unsafe 0.0.0.0:6266
+      ```
+- Bug fixes
+
+0.43.0
+------
+- (Experimental) Added support for Kitty image protocol in the preview window
+  (not available on Windows)
+  ```sh
+  fzf --preview='
+    if file --mime-type {} | grep -qF image/; then
+      # --transfer-mode=memory is the fastest option but if you want fzf to be able
+      # to redraw the image on terminal resize or on 'change-preview-window',
+      # you need to use --transfer-mode=stream.
+      kitty icat --clear --transfer-mode=memory --stdin=no --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 {} | sed \$d
+    else
+      bat --color=always {}
+    fi
+  '
+  ```
+- (Experimental) `--listen` server can report program state in JSON format (`GET /`)
+  ```sh
+  # fzf server started in "headless" mode
+  fzf --listen 6266 2> /dev/null
+
+  # Get program state
+  curl localhost:6266 | jq .
+
+  # Increase the number of items returned (default: 100)
+  curl localhost:6266?limit=1000 | jq .
+  ```
+- `--listen` server can be secured by setting `$FZF_API_KEY` environment
+  variable.
+  ```sh
+  export FZF_API_KEY="$(head -c 32 /dev/urandom | base64)"
+
+  # Server
+  fzf --listen 6266
+
+  # Client
+  curl localhost:6266 -H "x-api-key: $FZF_API_KEY" -d 'change-query(yo)'
+  ```
+- Added `toggle-header` action
+- Added mouse events for `--bind`
+    - `scroll-up` (bound to `up`)
+    - `scroll-down` (bound to `down`)
+    - `shift-scroll-up` (bound to `toggle+up`)
+    - `shift-scroll-down` (bound to `toggle+down`)
+    - `shift-left-click` (bound to `toggle`)
+    - `shift-right-click` (bound to `toggle`)
+    - `preview-scroll-up` (bound to `preview-up`)
+    - `preview-scroll-down` (bound to `preview-down`)
+    ```sh
+    # Twice faster scrolling both in the main window and the preview window
+    fzf --bind 'scroll-up:up+up,scroll-down:down+down' \
+        --bind 'preview-scroll-up:preview-up+preview-up' \
+        --bind 'preview-scroll-down:preview-down+preview-down' \
+        --preview 'cat {}'
+    ```
+- Added `offset-up` and `offset-down` actions
+  ```sh
+  # Scrolling will behave similarly to CTRL-E and CTRL-Y of vim
+  fzf --bind scroll-up:offset-up,scroll-down:offset-down \
+      --bind ctrl-y:offset-up,ctrl-e:offset-down \
+      --scroll-off=5
+  ```
+- Shell extensions
+    - Updated bash completion for fzf options
+    - bash key bindings no longer requires perl; it will use awk or mawk
+      instead if perl is not found
+    - Basic context-aware completion for ssh command
+    - Applied `--scheme=path` for better ordering of the result
+- Bug fixes and improvements
+
+0.42.0
+------
+- Added new info style: `--info=right`
+- Added new info style: `--info=inline-right`
+- Added new border style `thinblock` which uses symbols for legacy computing
+  [one eighth block elements](https://en.wikipedia.org/wiki/Symbols_for_Legacy_Computing)
+    - Similarly to `block`, this style is suitable when using a different
+      background color because the window is completely contained within the border.
+      ```sh
+      BAT_THEME=GitHub fzf --info=right --border=thinblock --preview-window=border-thinblock \
+          --margin=3 --scrollbar=▏▕ --preview='bat --color=always --style=numbers {}' \
+          --color=light,query:238,fg:238,bg:251,bg+:249,gutter:251,border:248,preview-bg:253
+      ```
+    - This style may not render correctly depending on the font and the
+      terminal emulator.
+
+0.41.1
+------
+- Fixed a bug where preview window is not updated when `--disabled` is set and
+  a reload is triggered by `change:reload` binding
+
+0.41.0
+------
+- Added color name `preview-border` and `preview-scrollbar`
+- Added new border style `block` which uses [block elements](https://en.wikipedia.org/wiki/Block_Elements)
+- `--scrollbar` can take two characters, one for the main window, the other
+  for the preview window
+- Putting it altogether:
+  ```sh
+  fzf-tmux -p 80% --padding 1,2 --preview 'bat --style=plain --color=always {}' \
+      --color 'bg:237,bg+:235,gutter:237,border:238,scrollbar:236' \
+      --color 'preview-bg:235,preview-border:236,preview-scrollbar:234' \
+      --preview-window 'border-block' --border block --scrollbar '▌▐'
+  ```
+- Bug fixes and improvements
+
+0.40.0
+------
+- Added `zero` event that is triggered when there's no match
+  ```sh
+  # Reload the candidate list when there's no match
+  echo $RANDOM | fzf --bind 'zero:reload(echo $RANDOM)+clear-query' --height 3
+  ```
+- New actions
+    - Added `track` action which makes fzf track the current item when the
+      search result is updated. If the user manually moves the cursor, or the
+      item is not in the updated search result, tracking is automatically
+      disabled. Tracking is useful when you want to see the surrounding items
+      by deleting the query string.
+      ```sh
+      # Narrow down the list with a query, point to a command,
+      # and hit CTRL-T to see its surrounding commands.
+      export FZF_CTRL_R_OPTS="
+        --preview 'echo {}' --preview-window up:3:hidden:wrap
+        --bind 'ctrl-/:toggle-preview'
+        --bind 'ctrl-t:track+clear-query'
+        --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+        --color header:italic
+        --header 'Press CTRL-Y to copy command into clipboard'"
+      ```
+    - Added `change-header(...)`
+    - Added `transform-header(...)`
+    - Added `toggle-track` action
+- Fixed `--track` behavior when used with `--tac`
+    - However, using `--track` with `--tac` is not recommended. The resulting
+      behavior can be very confusing.
+- Bug fixes and improvements
+
+0.39.0
+------
+- Added `one` event that is triggered when there's only one match
+  ```sh
+  # Automatically select the only match
+  seq 10 | fzf --bind one:accept
+  ```
+- Added `--track` option that makes fzf track the current selection when the
+  result list is updated. This can be useful when browsing logs using fzf with
+  sorting disabled.
+  ```sh
+  git log --oneline --graph --color=always | nl |
+      fzf --ansi --track --no-sort --layout=reverse-list
+  ```
+- If you use `--listen` option without a port number fzf will automatically
+  allocate an available port and export it as `$FZF_PORT` environment
+  variable.
+  ```sh
+  # Automatic port assignment
+  fzf --listen --bind 'start:execute-silent:echo $FZF_PORT > /tmp/fzf-port'
+
+  # Say hello
+  curl "localhost:$(cat /tmp/fzf-port)" -d 'preview:echo Hello, fzf is listening on $FZF_PORT.'
+  ```
+- A carriage return and a line feed character will be rendered as dim ␍ and
+  ␊ respectively.
+  ```sh
+  printf "foo\rbar\nbaz" | fzf --read0 --preview 'echo {}'
+  ```
+- fzf will stop rendering a non-displayable characters as a space. This will
+  likely cause less glitches in the preview window.
+  ```sh
+  fzf --preview 'head -1000 /dev/random'
+  ```
+- Bug fixes and improvements
+
+0.38.0
+------
+- New actions
+    - `become(...)` - Replace the current fzf process with the specified
+      command using `execve(2)` system call.
+      See https://github.com/junegunn/fzf#turning-into-a-different-process for
+      more information.
+      ```sh
+      # Open selected files in Vim
+      fzf --multi --bind 'enter:become(vim {+})'
+
+      # Open the file in Vim and go to the line
+      git grep --line-number . |
+          fzf --delimiter : --nth 3.. --bind 'enter:become(vim {1} +{2})'
+      ```
+        - This action is not supported on Windows
+    - `show-preview`
+    - `hide-preview`
+- Bug fixes
+    - `--preview-window 0,hidden` should not execute the preview command until
+      `toggle-preview` action is triggered
+
+0.37.0
+------
+- Added a way to customize the separator of inline info
+  ```sh
+  fzf --info 'inline: ╱ ' --prompt '╱ ' --color prompt:bright-yellow
+  ```
+- New event
+    - `focus` - Triggered when the focus changes due to a vertical cursor
+      movement or a search result update
+      ```sh
+      fzf --bind 'focus:transform-preview-label:echo [ {} ]' --preview 'cat {}'
+
+      # Any action bound to the event runs synchronously and thus can make the interface sluggish
+      # e.g. lolcat isn't one of the fastest programs, and every cursor movement in
+      #      fzf will be noticeably affected by its execution time
+      fzf --bind 'focus:transform-preview-label:echo [ {} ] | lolcat -f' --preview 'cat {}'
+
+      # Beware not to introduce an infinite loop
+      seq 10 | fzf --bind 'focus:up' --cycle
+      ```
+- New actions
+    - `change-border-label`
+    - `change-preview-label`
+    - `transform-border-label`
+    - `transform-preview-label`
+- Bug fixes and improvements
+
+0.36.0
+------
+- Added `--listen=HTTP_PORT` option to start HTTP server. It allows external
+  processes to send actions to perform via POST method.
+  ```sh
+  # Start HTTP server on port 6266
+  fzf --listen 6266
+
+  # Send actions to the server
+  curl -XPOST localhost:6266 -d 'reload(seq 100)+change-prompt(hundred> )'
+  ```
+- Added draggable scrollbar to the main search window and the preview window
+  ```sh
+  # Hide scrollbar
+  fzf --no-scrollbar
+
+  # Customize scrollbar
+  fzf --scrollbar ┆ --color scrollbar:blue
+  ```
+- New event
+    - Added `load` event that is triggered when the input stream is complete
+      and the initial processing of the list is complete.
+      ```sh
+      # Change the prompt to "loaded" when the input stream is complete
+      (seq 10; sleep 1; seq 11 20) | fzf --prompt 'Loading> ' --bind 'load:change-prompt:Loaded> '
+
+      # You can use it instead of 'start' event without `--sync` if asynchronous
+      # trigger is not an issue.
+      (seq 10; sleep 1; seq 11 20) | fzf --bind 'load:last'
+      ```
+- New actions
+    - Added `pos(...)` action to move the cursor to the numeric position
+        - `first` and `last` are equivalent to `pos(1)` and `pos(-1)` respectively
+      ```sh
+      # Put the cursor on the 10th item
+      seq 100 | fzf --sync --bind 'start:pos(10)'
+
+      # Put the cursor on the 10th to last item
+      seq 100 | fzf --sync --bind 'start:pos(-10)'
+      ```
+    - Added `reload-sync(...)` action which replaces the current list only after
+      the reload process is complete. This is useful when the command takes
+      a while to produce the initial output and you don't want fzf to run against
+      an empty list while the command is running.
+      ```sh
+      # You can still filter and select entries from the initial list for 3 seconds
+      seq 100 | fzf --bind 'load:reload-sync(sleep 3; seq 1000)+unbind(load)'
+      ```
+    - Added `next-selected` and `prev-selected` actions to move between selected
+      items
+      ```sh
+      # `next-selected` will move the pointer to the next selected item below the current line
+      # `prev-selected` will move the pointer to the previous selected item above the current line
+      seq 10 | fzf --multi --bind ctrl-n:next-selected,ctrl-p:prev-selected
+
+      # Both actions respect --layout option
+      seq 10 | fzf --multi --bind ctrl-n:next-selected,ctrl-p:prev-selected --layout reverse
+      ```
+    - Added `change-query(...)` action that simply changes the query string to the
+      given static string. This can be useful when used with `--listen`.
+      ```sh
+      curl localhost:6266 -d "change-query:$(date)"
+      ```
+    - Added `transform-prompt(...)` action for transforming the prompt string
+      using an external command
+      ```sh
+      # Press space to change the prompt string using an external command
+      # (only the first line of the output is taken)
+      fzf --bind 'space:reload(ls),load:transform-prompt(printf "%s> " "$(date)")'
+      ```
+    - Added `transform-query(...)` action for transforming the query string using
+      an external command
+      ```sh
+      # Press space to convert the query to uppercase letters
+      fzf --bind 'space:transform-query(tr "[:lower:]" "[:upper:]" <<< {q})'
+
+      # Bind it to 'change' event for automatic conversion
+      fzf --bind 'change:transform-query(tr "[:lower:]" "[:upper:]" <<< {q})'
+
+      # Can only type numbers
+      fzf --bind 'change:transform-query(sed "s/[^0-9]//g" <<< {q})'
+      ```
+    - `put` action can optionally take an argument string
+      ```sh
+      # a will put 'alpha' on the prompt, ctrl-b will put 'bravo'
+      fzf --bind 'a:put+put(lpha),ctrl-b:put(bravo)'
+      ```
+- Added color name `preview-label` for `--preview-label` (defaults to `label`
+  for `--border-label`)
+- Better support for (Windows) terminals where each box-drawing character
+  takes 2 columns. Set `RUNEWIDTH_EASTASIAN` environment variable to `0` or `1`.
+    - On Vim, the variable will be automatically set if `&ambiwidth` is `double`
+- Behavior changes
+    - fzf will always execute the preview command if the command template
+      contains `{q}` even when it's empty. If you prefer the old behavior,
+      you'll have to check if `{q}` is empty in your command.
+      ```sh
+      # This will show // even when the query is empty
+      : | fzf --preview 'echo /{q}/'
+
+      # But if you don't want it,
+      : | fzf --preview '[ -n {q} ] || exit; echo /{q}/'
+      ```
+    - `double-click` will behave the same as `enter` unless otherwise specified,
+      so you don't have to repeat the same action twice in `--bind` in most cases.
+      ```sh
+      # No need to bind 'double-click' to the same action
+      fzf --bind 'enter:execute:less {}' # --bind 'double-click:execute:less {}'
+      ```
+    - If the color for `separator` is not specified, it will default to the
+      color for `border`. Same holds true for `scrollbar`. This is to reduce
+      the number of configuration items required to achieve a consistent color
+      scheme.
+    - If `follow` flag is specified in `--preview-window` option, fzf will
+      automatically scroll to the bottom of the streaming preview output. But
+      when the user manually scrolls the window, the following stops. With
+      this version, fzf will resume following if the user scrolls the window
+      to the bottom.
+    - Default border style on Windows is changed to `sharp` because some
+      Windows terminals are not capable of displaying `rounded` border
+      characters correctly.
+- Minor bug fixes and improvements
+
+0.35.1
+------
+- Fixed a bug where fzf with `--tiebreak=chunk` crashes on inverse match query
+- Fixed a bug where clicking above fzf would paste escape sequences
+
+0.35.0
+------
+- Added `start` event that is triggered only once when fzf finder starts.
+  Since fzf consumes the input stream asynchronously, the input list is not
+  available unless you use `--sync`.
+  ```sh
+  seq 100 | fzf --multi --sync --bind 'start:last+select-all+preview(echo welcome)'
+  ```
+- Added `--border-label` and `--border-label-pos` for putting label on the border
+  ```sh
+  # ANSI color codes are supported
+  # (with https://github.com/busyloop/lolcat)
+  label=$(curl -s http://metaphorpsum.com/sentences/1 | lolcat -f)
+
+  # Border label at the center
+  fzf --height=10 --border --border-label="╢ $label ╟" --color=label:italic:black
+
+  # Left-aligned (positive integer)
+  fzf --height=10 --border --border-label="╢ $label ╟" --border-label-pos=3 --color=label:italic:black
+
+  # Right-aligned (negative integer) on the bottom line (:bottom)
+  fzf --height=10 --border --border-label="╢ $label ╟" --border-label-pos=-3:bottom --color=label:italic:black
+  ```
+- Also added `--preview-label` and `--preview-label-pos` for the border of the
+  preview window
+  ```sh
+  fzf --preview 'cat {}' --border --preview-label=' Preview ' --preview-label-pos=2
+  ```
+- Info panel (match counter) will be followed by a horizontal separator by
+  default
+    - Use `--no-separator` or `--separator=''` to hide the separator
+    - You can specify an arbitrary string that is repeated to form the
+      horizontal separator. e.g. `--separator=╸`
+    - The color of the separator can be customized via `--color=separator:...`
+    - ANSI color codes are also supported
+  ```sh
+  fzf --separator=╸ --color=separator:green
+  fzf --separator=$(lolcat -f -F 1.4 <<< ▁▁▂▃▄▅▆▆▅▄▃▂▁▁) --info=inline
+  ```
+- Added `--border=bold` and `--border=double` along with
+  `--preview-window=border-bold` and `--preview-window=border-double`
+
+0.34.0
+------
+- Added support for adaptive `--height`. If the `--height` value is prefixed
+  with `~`, fzf will automatically determine the height in the range according
+  to the input size.
+  ```sh
+  seq 1 | fzf --height ~70% --border --padding 1 --margin 1
+  seq 10 | fzf --height ~70% --border --padding 1 --margin 1
+  seq 100 | fzf --height ~70% --border --padding 1 --margin 1
+  ```
+    - There are a few limitations
+        - Not compatible with percent top/bottom margin/padding
+          ```sh
+          # This is not allowed (top/bottom margin in percent value)
+          fzf --height ~50% --border --margin 5%,10%
+
+          # This is allowed (top/bottom margin in fixed value)
+          fzf --height ~50% --border --margin 2,10%
+          ```
+        - fzf will not start until it can determine the right height for the input
+          ```sh
+          # fzf will open immediately
+          (sleep 2; seq 10) | fzf --height 50%
+
+          # fzf will open after 2 seconds
+          (sleep 2; seq 10) | fzf --height ~50%
+          (sleep 2; seq 1000) | fzf --height ~50%
+          ```
+- Fixed tcell renderer used to render full-screen fzf on Windows
+- ~~`--no-clear` is deprecated. Use `reload` action instead.~~
+
+0.33.0
+------
+- Added `--scheme=[default|path|history]` option to choose scoring scheme
+    - (Experimental)
+    - We updated the scoring algorithm in 0.32.0, however we have learned that
+      this new scheme (`default`) is not always giving the optimal result
+    - `path`: Additional bonus point is only given to the characters after
+      path separator. You might want to choose this scheme if you have many
+      files with spaces in their paths.
+    - `history`: No additional bonus points are given so that we give more
+      weight to the chronological ordering. This is equivalent to the scoring
+      scheme before 0.32.0. This also sets `--tiebreak=index`.
+- ANSI color sequences with colon delimiters are now supported.
+  ```sh
+  printf "\e[38;5;208mOption 1\e[m\nOption 2" | fzf --ansi
+  printf "\e[38:5:208mOption 1\e[m\nOption 2" | fzf --ansi
+  ```
+- Support `border-{up,down}` as the synonyms for `border-{top,bottom}` in
+  `--preview-window`
+- Added support for ANSI `strikethrough`
+  ```sh
+  printf "\e[9mdeleted" | fzf --ansi
+  fzf --color fg+:strikethrough
+  ```
+
+0.32.1
+------
+- Fixed incorrect ordering of `--tiebreak=chunk`
+- fzf-tmux will show fzf border instead of tmux popup border (requires tmux 3.3)
+  ```sh
+  fzf-tmux -p70%
+  fzf-tmux -p70% --color=border:bright-red
+  fzf-tmux -p100%,60% --color=border:bright-yellow --border=horizontal --padding 1,5 --margin 1,0
+  fzf-tmux -p70%,100% --color=border:bright-green --border=vertical
+
+  # Key bindings (CTRL-T, CTRL-R, ALT-C) will use these options
+  export FZF_TMUX_OPTS='-p100%,60% --color=border:green --border=horizontal --padding 1,5 --margin 1,0'
+  ```
+
+0.32.0
+------
+- Updated the scoring algorithm
+    - Different bonus points to different categories of word boundaries
+      (listed higher to lower bonus point)
+        - Word after whitespace characters or beginning of the string
+        - Word after common delimiter characters (`/,:;|`)
+        - Word after other non-word characters
+      ```sh
+      # foo/bar.sh` is preferred over `foo-bar.sh` on `bar`
+      fzf --query=bar --height=4 << EOF
+      foo-bar.sh
+      foo/bar.sh
+      EOF
+      ```
+- Added a new tiebreak `chunk`
+    - Favors the line with shorter matched chunk. A chunk is a set of
+      consecutive non-whitespace characters.
+    - Unlike the default `length`, this scheme works well with tabular input
+      ```sh
+      # length prefers item #1, because the whole line is shorter,
+      # chunk prefers item #2, because the matched chunk ("foo") is shorter
+      fzf --height=6 --header-lines=2 --tiebreak=chunk --reverse --query=fo << "EOF"
+      N | Field1 | Field2 | Field3
+      - | ------ | ------ | ------
+      1 | hello  | foobar | baz
+      2 | world  | foo    | bazbaz
+      EOF
+      ```
+    - If the input does not contain any spaces, `chunk` is equivalent to
+      `length`. But we're not going to set it as the default because it is
+      computationally more expensive.
+- Bug fixes and improvements
+
+0.31.0
+------
+- Added support for an alternative preview window layout that is activated
+  when the size of the preview window is smaller than a certain threshold.
+  ```sh
+  # If the width of the preview window is smaller than 50 columns,
+  # it will be displayed above the search window.
+  fzf --preview 'cat {}' --preview-window 'right,50%,border-left,<50(up,30%,border-bottom)'
+
+  # Or you can just hide it like so
+  fzf --preview 'cat {}' --preview-window '<50(hidden)'
+  ```
+- fzf now uses SGR mouse mode to properly support mouse on larger terminals
+- You can now use characters that do not satisfy `unicode.IsGraphic` constraint
+  for `--marker`, `--pointer`, and `--ellipsis`. Allows Nerd Fonts and stuff.
+  Use at your own risk.
+- Bug fixes and improvements
+- Shell extension
+    - `kill` completion now requires trigger sequence (`**`) for consistency
+
+0.30.0
+------
+- Fixed cursor flickering over the screen by hiding it during rendering
+- Added `--ellipsis` option. You can take advantage of it to make fzf
+  effectively search non-visible parts of the item.
+  ```sh
+  # Search against hidden line numbers on the far right
+  nl /usr/share/dict/words                  |
+    awk '{printf "%s%1000s\n", $2, $1}'     |
+    fzf --nth=-1 --no-hscroll --ellipsis='' |
+    awk '{print $2}'
+  ```
+- Added `rebind` action for restoring bindings after `unbind`
+- Bug fixes and improvements
+
+0.29.0
+------
+- Added `change-preview(...)` action to change the `--preview` command
+    - cf. `preview(...)` is a one-off action that doesn't change the default
+      preview command
+- Added `change-preview-window(...)` action
+    - You can rotate through the different options separated by `|`
+      ```sh
+      fzf --preview 'cat {}' --preview-window right:40% \
+          --bind 'ctrl-/:change-preview-window(right,70%|down,40%,border-top|hidden|)'
+      ```
+- Fixed rendering of the prompt line when overflow occurs with `--info=inline`
+
+0.28.0
+------
+- Added `--header-first` option to print header before the prompt line
+  ```sh
+  fzf --header $'Welcome to fzf\n▔▔▔▔▔▔▔▔▔▔▔▔▔▔' --reverse --height 30% --border --header-first
+  ```
+- Added `--scroll-off=LINES` option (similar to `scrolloff` option of Vim)
+    - You can set it to a very large number so that the cursor stays in the
+      middle of the screen while scrolling
+      ```sh
+      fzf --scroll-off=5
+      fzf --scroll-off=999
+      ```
+- Fixed bug where preview window is not updated on `reload` (#2644)
+- fzf on Windows will also use `$SHELL` to execute external programs
+    - See #2638 and #2647
+    - Thanks to @rashil2000, @vovcacik, and @janlazo
+
 0.27.3
 ------
 - Preview window is `hidden` by default when there are `preview` bindings but
   `--preview` command is not given
+- Fixed bug where `{n}` is not properly reset on `reload`
+- Fixed bug where spinner is not displayed on `reload`
+- Enhancements in tcell renderer for Windows (#2616)
 - Vim plugin
     - `sinklist` is added as a synonym to `sink*` so that it's easier to add
       a function to a spec dictionary
@@ -16,6 +613,7 @@ CHANGELOG
 
       call fzf#run(fzf#wrap(spec))
       ```
+    - Vim 7 compatibility
 
 0.27.2
 ------

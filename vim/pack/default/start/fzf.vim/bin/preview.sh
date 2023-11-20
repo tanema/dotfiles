@@ -3,22 +3,25 @@
 REVERSE="\x1b[7m"
 RESET="\x1b[m"
 
-if [ -z "$1" ]; then
+if [[ $# -lt 1 ]]; then
   echo "usage: $0 [--tag] FILENAME[:LINENO][:IGNORED]"
   exit 1
 fi
 
-if [ "$1" = --tag ]; then
+if [[ $1 = --tag ]]; then
   shift
   "$(dirname "${BASH_SOURCE[0]}")/tagpreview.sh" "$@"
   exit $?
 fi
 
+# Ignore if an empty path is given
+[[ -z $1 ]] && exit
+
 IFS=':' read -r -a INPUT <<< "$1"
 FILE=${INPUT[0]}
 CENTER=${INPUT[1]}
 
-if [[ $1 =~ ^[A-Za-z]:\\ ]]; then
+if [[ "$1" =~ ^[A-Za-z]:\\ ]]; then
   FILE=$FILE:${INPUT[1]}
   CENTER=${INPUT[2]}
 fi
@@ -29,7 +32,7 @@ fi
 CENTER=${CENTER/[^0-9]*/}
 
 # MS Win support
-if [[ $FILE =~ '\' ]]; then
+if [[ "$FILE" =~ '\' ]]; then
   if [ -z "$MSWINHOME" ]; then
     MSWINHOME="$HOMEDRIVE$HOMEPATH"
   fi
@@ -61,12 +64,12 @@ fi
 
 if [ -z "$FZF_PREVIEW_COMMAND" ] && [ "${BATNAME:+x}" ]; then
   ${BATNAME} --style="${BAT_STYLE:-numbers}" --color=always --pager=never \
-      --highlight-line=$CENTER "$FILE"
+      --highlight-line=$CENTER -- "$FILE"
   exit $?
 fi
 
 FILE_LENGTH=${#FILE}
-MIME=$(file --dereference --mime "$FILE")
+MIME=$(file --dereference --mime -- "$FILE")
 if [[ "${MIME:FILE_LENGTH}" =~ binary ]]; then
   echo "$MIME"
   exit 0

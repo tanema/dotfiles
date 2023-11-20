@@ -10,6 +10,7 @@ export VISUAL=vim
 export EDITOR=vim
 export GOPATH=~/workspace/go
 export MINITEST_DIFF="git diff --color"
+export PAT="glpat-hWWQxrzjSjd9eX_EL9Bz"
 
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/bin
