@@ -23,6 +23,7 @@
 [pull]
   rebase = true
   prune = true
+	default = current
 [rerere]
   enabled = true
 [fetch]
