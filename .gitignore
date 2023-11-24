@@ -1,4 +1,4 @@
 .DS_Store
 config/vim/.netrwhist
-config/vim/pack/start/*
+config/vim/pack/default/start/*
 config/tmux/plugins
