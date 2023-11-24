@@ -1,4 +1,6 @@
 filetype plugin indent on       " required!
+set runtimepath+=~/.config/vim,~/.config/vim/after " instruct vim to run from .config
+set viminfo+=n~/.vim/viminfo
 set nocompatible                " use vim defaults
 set mouse=r                     " no mouse for you
 set ls=2                        " allways show status line
