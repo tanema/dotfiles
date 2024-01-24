@@ -2,57 +2,66 @@
 .PHONY: shorthelp help install/directories install/link install/xcode install/homebrew install/tools install/ohmyzsh install/ssh plugins
 .PHONY: update/tools update/omz update/tools
 
-install: | install/directories install/link install/xcode install/homebrew install/tools install/ohmyzsh install/ssh plugins ## Run full setup
+install: ## Clean install of all the tools that we need
+	$(MAKE) install/clean 
+	$(MAKE) install/directories 
+	$(MAKE) install/link 
+	$(MAKE) install/ssh 
+	$(MAKE) install/gpg
+	read -p "New key is in clipboard add it to github and press enter to continue ..."
+	$(MAKE) install/tools 
+	$(MAKE) plugins
+
 update: | plugins update/omz update/tools ## Update tools and plugins
 
 clean: ## Clean up the linked directories in the home directory.
-	rm -rf ~/.config/git ~/.config/tmux ~/.vim ~/.zshrc
+	@rm -rf ~/.config/git ~/.config/tmux ~/.vim ~/.zshrc ~/.oh-my-zsh ~/.ssh
 
 install/directories: ## Create directories that I expect to be there
 	@echo "==== creating default directories"
-	mkdir -p ~/workspace
-	mkdir -p ~/.config
+	@mkdir -p ~/workspace
+	@mkdir -p ~/.config
+	@mkdir -p ~/.ssh
 
 install/link: ## Link saved dotfiles to to home directory
 	@echo "==== linking config files"
-	ln -s ~/workspace/dotfiles/config/git ~/.config/git
-	ln -s ~/workspace/dotfiles/config/tmux ~/.config/tmux
-	ln -s ~/workspace/dotfiles/config/vim ~/.vim
-	ln -sf ~/workspace/dotfiles/zshrc ~/.zshrc
-
-install/xcode: ## ensure xcode doesnt get in our way
-	@echo "==== ensuring xcode is setup"
-	xcode-select --install
-
-install/homebrew: ## install my package manager
-	@echo "==== installing homebrew"
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-install/tools: ## the default tools tools that I use
-	brew install go tmux vim git gnupg ag rainbarf
-
-install/omz: ## install oh my zsh sugar
-	@echo "==== installing ohmyzsh"
-	@sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	@git clone --depth 1 git://github.com/dracula/zsh.git ~/.oh-my-zsh/custom/themes/dracula
+	@ln -s ~/workspace/dotfiles/config/git ~/.config/git
+	@ln -s ~/workspace/dotfiles/config/tmux ~/.config/tmux
+	@ln -s ~/workspace/dotfiles/config/vim ~/.vim
+	@ln -sf ~/workspace/dotfiles/config/zshrc ~/.zshrc
+	@ln -sf ~/workspace/dotfiles/config/ssh/config ~/.ssh/config
 
 install/ssh: ## Generate and add a new ssh key to this system for my email
 	@echo "==== generating a new ssh key"
 	ssh-keygen -t rsa -b 4096 -C "timanema@gmail.com"
 	eval "$(ssh-agent -s)"
-	mkdir -p ~/.ssh
-	~/.ssh/config << EndOfMessage
-	Host *
-		AddKeysToAgent yes
-		IgnoreUnknown UseKeychain
-		UseKeychain yes
-		IdentityFile ~/.ssh/id_rsa
-	EndOfMessage
 	ssh-add -K ~/.ssh/id_rsa
+	cat ~/.ssh/id_rsa.pub | pbcopy
+
+install/gpg:
+	gpg --default-new-key-algo rsa4096 --gen-key
+	echo "run `gpg --armor --export <ID> | pbcopy` and add key to github"
+	read -p "press enter to continue ..."
+
+install/tools: install/xcode install/homebrew install/omz ## the default tools that I use
+
+install/xcode: ## ensure xcode doesnt get in our way
+	@echo "==== ensuring xcode is setup"
+	@xcode-select --install
+
+install/homebrew: ## install my package manager
+	@echo "==== installing homebrew"
+	@which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	@brew install go tmux vim git gnupg ag
+
+install/omz: ## install oh my zsh sugar
+	@echo "==== installing ohmyzsh"
+	@sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	@export REPO=dracula/zsh DEST=~/.oh-my-zsh/custom/themes/dracula; $(MAKE) plugins/install
 
 update/tools: ## Update the tools I use every day
 	brew update
-	brew upgrade go tmux vim git gnupg ag rainbarf
+	brew upgrade go tmux vim git gnupg ag
 
 update/omz: ## Update zsh plugins
 	@echo "==== updating ohmyzsh"

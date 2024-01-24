@@ -1,7 +1,7 @@
 [user]
   name = Tim Anema
-  email = tim.anema@agilebits.com
-  signingkey = 222D82A25F3857A4
+  email = timanema@gmail.com
+  signingkey = 62453728A8164CAF
 [core]
   editor = /usr/bin/vim
   commitGraph = true
@@ -31,7 +31,7 @@
 [commit]
   gpgsign = true
 [gpg]
-  program = gpg2
+  program = gpg
 [url "git@github.com:"]
   insteadOf = https://github.com/
 [url "git@bitbucket.org:"]
