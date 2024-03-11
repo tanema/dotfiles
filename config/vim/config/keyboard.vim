@@ -1,5 +1,3 @@
-" toggle spell check
-nnoremap <F3> :set spell!<CR>
 " clear search highlight with backspace
 nmap <BS> :noh<CR>
 " Ctr-P action

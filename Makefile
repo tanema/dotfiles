@@ -3,7 +3,7 @@
 .PHONY: update/tools update/omz update/tools
 
 install: ## Clean install of all the tools that we need
-	$(MAKE) install/clean 
+	$(MAKE) clean 
 	$(MAKE) install/directories 
 	$(MAKE) install/link 
 	$(MAKE) install/ssh 
@@ -28,6 +28,7 @@ install/link: ## Link saved dotfiles to to home directory
 	@ln -s ~/workspace/dotfiles/config/git ~/.config/git
 	@ln -s ~/workspace/dotfiles/config/tmux ~/.config/tmux
 	@ln -s ~/workspace/dotfiles/config/vim ~/.vim
+	@ln -s ~/workspace/dotfiles/config/nvim ~/.config/nvim
 	@ln -sf ~/workspace/dotfiles/config/zshrc ~/.zshrc
 	@ln -sf ~/workspace/dotfiles/config/ssh/config ~/.ssh/config
 
@@ -47,7 +48,7 @@ install/tools: install/xcode install/homebrew install/omz ## the default tools t
 
 install/xcode: ## ensure xcode doesnt get in our way
 	@echo "==== ensuring xcode is setup"
-	@xcode-select --install
+	@xcode-select --install || echo "already installed"
 
 install/homebrew: ## install my package manager
 	@echo "==== installing homebrew"

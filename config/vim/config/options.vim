@@ -3,23 +3,21 @@ set runtimepath+=~/.config/vim,~/.config/vim/after " instruct vim to run from .c
 set viminfo+=n~/.vim/viminfo
 set nocompatible                " use vim defaults
 set mouse=r                     " no mouse for you
-set ls=2                        " allways show status line
+set laststatus=2                " allways show status line
 set tabstop=2                   " numbers of spaces of tab character
 set shiftwidth=2                " numbers of spaces to (auto)indent
 set expandtab                   " spaces insteaf of tabs
 set smarttab                    " set tabspacing to be uniform
 set scrolloff=10                " keep 3 lines when scrolling
 set showcmd                     " display incomplete commands
-set backspace=2                 " make backspace work like most other apps
 set backspace=indent,eol,start  " make backspace work like most other apps
 set hlsearch                    " highlight searches
 set incsearch                   " do incremental searching
-set ruler                       " show the cursor position all the time
 set visualbell t_vb=            " turn off error beep/flash
 set novisualbell                " turn off visual bell
 set noerrorbells                " stop beeping fucker
 set nobackup                    " do not keep a backup file
-set nowb                        " no write backup
+set nowritebackup               " no write backup
 set noswapfile                  " no swap files either they are a pain in the ass
 set number                      " show line numbers
 set ignorecase                  " ignore case when searching
@@ -57,7 +55,7 @@ set nojoinspaces                " Insert only one space when joining lines that
                                 " contain sentence-terminating punctuation like
 set t_ti= t_te=                 " Don't clear the screen when running a command or exiting
                                 " See http://www.shallowsky.com/linux/noaltscreen.html
-set listchars=tab:→\ ,nbsp:~    " set how hidden characters are displayed
+set listchars=tab:→\ ,nbsp:~,eol:$    " set how hidden characters are displayed
 set list                        " display hidden characters
 syntax on                       " syntax highlighing is on
 colorscheme jellybeans          " Pretty Colors
