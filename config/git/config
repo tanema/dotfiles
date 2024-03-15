@@ -3,7 +3,7 @@
   email = timanema@gmail.com
   signingkey = 966B6CB1A02D644EB6E4AA583531851954C354A9
 [core]
-  editor = /usr/bin/vim
+  editor = nvim
   commitGraph = true
 [color]
   ui = true
@@ -11,9 +11,6 @@
   tool = vimdiff
   algorithm = patience
   noprefix = true
-[alias]
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  edit = "!vim `git ls-files -m` -p"
 [push]
   default = current
 [filter "lfs"]
