@@ -19,7 +19,6 @@ vim.opt.swapfile = false    -- no swap files either they are a pain in the ass
 vim.opt.number = true       -- show line numbers
 vim.opt.ignorecase = true   -- ignore case when searching
 vim.opt.title = true        -- show title in console title bar
-vim.opt.shortmess= "atI"    -- Abbreviate messages
 vim.opt.splitright = true   -- when vertical splitting set new window to the right
 vim.opt.splitbelow = true   -- when splitting the new window opens below
 vim.opt.showmatch = true    -- highlight matches
