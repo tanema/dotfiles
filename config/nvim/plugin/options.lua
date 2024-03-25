@@ -9,6 +9,7 @@ local ignoreFiles = {
   "build/",
 }
 
+vim.opt.background = 'dark'
 vim.opt.laststatus = 2
 vim.opt.showmode = false
 vim.opt.tabstop = 2         -- numbers of spaces of tab character
