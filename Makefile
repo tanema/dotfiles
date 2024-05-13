@@ -6,8 +6,8 @@ install: ## Clean install of all the tools that we need
 	@$(MAKE) clean 
 	@$(MAKE) install/directories 
 	@$(MAKE) install/link 
-	@$(MAKE) install/tools 
 	@$(MAKE) install/ssh 
+	@$(MAKE) install/tools 
 	@$(MAKE) install/gpg
 	@$(MAKE) install/plugins
 
