@@ -1,7 +1,7 @@
 [user]
   name = Tim Anema
   email = timanema@gmail.com
-  signingkey = 966B6CB1A02D644EB6E4AA583531851954C354A9
+  signingkey = 9E702B2C9C62228C33B91B80DBAF213060B6C4E9
 [core]
   editor = nvim
   commitGraph = true

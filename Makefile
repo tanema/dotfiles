@@ -3,14 +3,13 @@
 .PHONY: update/tools update/omz update/tools
 
 install: ## Clean install of all the tools that we need
-	$(MAKE) clean 
-	$(MAKE) install/directories 
-	$(MAKE) install/link 
-	$(MAKE) install/ssh 
-	$(MAKE) install/gpg
-	read -p "New key is in clipboard add it to github and press enter to continue ..."
-	$(MAKE) install/tools 
-	$(MAKE) plugins
+	@$(MAKE) clean 
+	@$(MAKE) install/directories 
+	@$(MAKE) install/link 
+	@$(MAKE) install/tools 
+	@$(MAKE) install/ssh 
+	@$(MAKE) install/gpg
+	@$(MAKE) install/plugins
 
 update: | plugins update/omz update/tools ## Update tools and plugins
 
@@ -34,15 +33,16 @@ install/link: ## Link saved dotfiles to to home directory
 
 install/ssh: ## Generate and add a new ssh key to this system for my email
 	@echo "==== generating a new ssh key"
-	ssh-keygen -t rsa -b 4096 -C "timanema@gmail.com"
-	eval "$(ssh-agent -s)"
-	ssh-add -K ~/.ssh/id_rsa
-	cat ~/.ssh/id_rsa.pub | pbcopy
+	@ssh-keygen -t rsa -b 4096 -C "timanema@gmail.com"
+	@eval "$(ssh-agent -s)"
+	@ssh-add -K ~/.ssh/id_rsa
+	@cat ~/.ssh/id_rsa.pub | pbcopy
+	@read -p "New ssh key is in clipboard add it to github and press enter to continue ..."
 
 install/gpg:
-	gpg --default-new-key-algo rsa4096 --gen-key
-	echo "run `gpg --armor --export <ID> | pbcopy` and add key to github"
-	read -p "press enter to continue ..."
+	@gpg --default-new-key-algo rsa4096 --gen-key
+	@echo "run `gpg --armor --export <ID> | pbcopy` and add key to github"
+	@read -p "press enter to continue ..."
 
 install/tools: install/xcode install/homebrew install/omz ## the default tools that I use
 
@@ -52,23 +52,22 @@ install/xcode: ## ensure xcode doesnt get in our way
 
 install/homebrew: ## install my package manager
 	@echo "==== installing homebrew"
-	@which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	@which brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | /bin/bash
 	@brew install go tmux vim git gnupg ag
 
 install/omz: ## install oh my zsh sugar
 	@echo "==== installing ohmyzsh"
-	@sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	@export REPO=dracula/zsh DEST=~/.oh-my-zsh/custom/themes/dracula; $(MAKE) plugins/install
+	@curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
 
 update/tools: ## Update the tools I use every day
-	brew update
-	brew upgrade go tmux vim git gnupg ag
+	@brew update
+	@brew upgrade go tmux vim git gnupg ag
 
 update/omz: ## Update zsh plugins
 	@echo "==== updating ohmyzsh"
-	omz update
+	@omz update
 
-install/plugins: plugins/vim plugins/tmux ## install all plugins
+install/plugins: plugins/vim plugins/tmux plugins/omz ## install all plugins
 update/plugins: install/plugins ## update all plugins
 
 plugins/vim: ## Install vim plugins
@@ -91,6 +90,9 @@ plugins/tmux: ## Install tmux plugins because I cant figure out tpm
 	@export REPO=tmux-plugins/tpm DEST=config/tmux/plugins/tpm; $(MAKE) plugins/install;
 	@export REPO=tmux-plugins/tmux-yank DEST=config/tmux/plugins/tmux-yank; $(MAKE) plugins/install;
 	@export REPO=tmux-plugins/tmux-sensible DEST=config/tmux/plugins/tmux-sensible; $(MAKE) plugins/install;
+
+plugins/omz: ## Install themes for omz
+	@export REPO=dracula/zsh DEST=~/.oh-my-zsh/custom/themes/dracula; $(MAKE) plugins/install
 
 plugins/install: # a generic task that will clone a git plugin to a destination, requires a DEST and REPO env var
 	@echo "installing ${REPO}" && \
