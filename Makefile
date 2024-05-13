@@ -1,12 +1,11 @@
 .DEFAULT_GOAL := shorthelp
-.PHONY: shorthelp help install/directories install/link install/xcode install/homebrew install/tools install/ohmyzsh install/ssh plugins
+.PHONY: shorthelp help install/directories install/link install/xcode install/homebrew install/tools install/ohmyzsh plugins
 .PHONY: update/tools update/omz update/tools
 
 install: ## Clean install of all the tools that we need
 	@$(MAKE) clean 
 	@$(MAKE) install/directories 
 	@$(MAKE) install/link 
-	@$(MAKE) install/ssh 
 	@$(MAKE) install/tools 
 	@$(MAKE) install/gpg
 	@$(MAKE) install/plugins
@@ -14,13 +13,12 @@ install: ## Clean install of all the tools that we need
 update: | plugins update/omz update/tools ## Update tools and plugins
 
 clean: ## Clean up the linked directories in the home directory.
-	@rm -rf ~/.config/git ~/.config/tmux ~/.vim ~/.zshrc ~/.oh-my-zsh ~/.ssh
+	@rm -rf ~/.config/git ~/.config/tmux ~/.vim ~/.zshrc ~/.oh-my-zsh
 
 install/directories: ## Create directories that I expect to be there
 	@echo "==== creating default directories"
 	@mkdir -p ~/workspace
 	@mkdir -p ~/.config
-	@mkdir -p ~/.ssh
 
 install/link: ## Link saved dotfiles to to home directory
 	@echo "==== linking config files"
@@ -31,18 +29,10 @@ install/link: ## Link saved dotfiles to to home directory
 	@ln -sf ~/workspace/dotfiles/config/zshrc ~/.zshrc
 	@ln -sf ~/workspace/dotfiles/config/ssh/config ~/.ssh/config
 
-install/ssh: ## Generate and add a new ssh key to this system for my email
-	@echo "==== generating a new ssh key"
-	@ssh-keygen -t rsa -b 4096 -C "timanema@gmail.com"
-	@eval "$(ssh-agent -s)"
-	@ssh-add -K ~/.ssh/id_rsa
-	@cat ~/.ssh/id_rsa.pub | pbcopy
-	@read -p "New ssh key is in clipboard add it to github and press enter to continue ..."
-
 install/gpg:
 	@gpg --default-new-key-algo rsa4096 --gen-key
-	@echo "run `gpg --armor --export <ID> | pbcopy` and add key to github"
-	@read -p "press enter to continue ..."
+	@gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
+	@read -p "New gpg key is in clipboard add it to github and press enter to continue ..."
 
 install/tools: install/xcode install/homebrew install/omz ## the default tools that I use
 
