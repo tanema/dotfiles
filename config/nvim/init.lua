@@ -29,6 +29,7 @@ require("lazy").setup({
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/nvim-cmp',
   'sbdchd/neoformat',
+	{'metalelf0/jellybeans-nvim', dependencies = {'rktjmp/lush.nvim'}}
 })
 
-vim.cmd.colorscheme('jelly')
+vim.cmd.colorscheme('jellybeans-nvim')

@@ -1,7 +1,7 @@
 [user]
   name = Tim Anema
-  email = timanema@gmail.com
-  signingkey = 9E702B2C9C62228C33B91B80DBAF213060B6C4E9
+  email = tim.anema@netlify.com
+  signingkey = F19C3BEBB0C2DDE831E490E8F5C811898B856FAF
 [core]
   editor = nvim
   commitGraph = true

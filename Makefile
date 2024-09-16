@@ -17,14 +17,12 @@ clean: ## Clean up the linked directories in the home directory.
 
 install/directories: ## Create directories that I expect to be there
 	@echo "==== creating default directories"
-	@mkdir -p ~/workspace
 	@mkdir -p ~/.config
 
 install/link: ## Link saved dotfiles to to home directory
 	@echo "==== linking config files"
 	@ln -s ~/workspace/dotfiles/config/git ~/.config/git
 	@ln -s ~/workspace/dotfiles/config/tmux ~/.config/tmux
-	@ln -s ~/workspace/dotfiles/config/vim ~/.vim
 	@ln -s ~/workspace/dotfiles/config/nvim ~/.config/nvim
 	@ln -sf ~/workspace/dotfiles/config/zshrc ~/.zshrc
 	@ln -sf ~/workspace/dotfiles/config/ssh/config ~/.ssh/config
@@ -42,8 +40,8 @@ install/xcode: ## ensure xcode doesnt get in our way
 
 install/homebrew: ## install my package manager
 	@echo "==== installing homebrew"
-	@which brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | /bin/bash
-	@brew install go tmux vim git gnupg ag
+	@/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	@brew install go tmux nvim git gnupg ag
 
 install/omz: ## install oh my zsh sugar
 	@echo "==== installing ohmyzsh"
@@ -59,21 +57,6 @@ update/omz: ## Update zsh plugins
 
 install/plugins: plugins/vim plugins/tmux plugins/omz ## install all plugins
 update/plugins: install/plugins ## update all plugins
-
-plugins/vim: ## Install vim plugins
-	@echo "==== installing vim plugins"
-	@export REPO=dense-analysis/ale DEST=config/vim/pack/default/start/ale; $(MAKE) plugins/install;
-	@export REPO=junegunn/fzf.vim DEST=config/vim/pack/default/start/fzf.vim; $(MAKE) plugins/install;  # fast file search with ctrl p
-	@export REPO=junegunn/fzf DEST=config/vim/pack/default/start/fzf; $(MAKE) plugins/install;
-	@export REPO=nanotech/jellybeans.vim DEST=config/vim/pack/default/start/jellybeans.vim; $(MAKE) plugins/install;
-	@export REPO=ervandew/supertab DEST=config/vim/pack/default/start/supertab; $(MAKE) plugins/install; # tab compltion
-	@export REPO=tpope/vim-surround DEST=config/vim/pack/default/start/vim-surround; $(MAKE) plugins/install; # easy wrap selected items
-	@export REPO=tpope/vim-commentary DEST=config/vim/pack/default/start/vim-commentary; $(MAKE) plugins/install; # easy commenting
-	@export REPO=tpope/vim-fugitive DEST=config/vim/pack/default/start/vim-fugitive; $(MAKE) plugins/install; # better netrw
-	@export REPO=airblade/vim-gitgutter DEST=config/vim/pack/default/start/vim-gitgutter; $(MAKE) plugins/install; # marks the changes for git
-	@export REPO=fatih/vim-go DEST=config/vim/pack/default/start/vim-go; $(MAKE) plugins/install; # go sytanx highlighting
-	@export REPO=sheerun/vim-polyglot DEST=config/vim/pack/default/start/vim-polyglot; $(MAKE) plugins/install; # all syntaxes
-	@export REPO=tpope/vim-vinegar DEST=config/vim/pack/default/start/vim-vinegar; $(MAKE) plugins/install; # better netrw
 
 plugins/tmux: ## Install tmux plugins because I cant figure out tpm
 	@echo "==== installing tmux plugins"
