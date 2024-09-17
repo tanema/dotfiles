@@ -22,6 +22,7 @@ require("lazy").setup({
 			vim.g.gitgutter_sign_modified_removed = '●'
 		end,
 	},
+ 	{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
   {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
