@@ -9,11 +9,20 @@ local ignoreFiles = {
   "build/",
 }
 
-vim.api.nvim_create_user_command('Find', 'grep! <args>|cwindow|redraw!', { nargs = "+" })
-if vim.fn.executable('rg') then -- Use ag over grep
-  local agIgnores = {}
+local function Find(opts)
+	local findStr = table.concat(opts.fargs, '\\ ')
+	vim.cmd('grep! "'.. findStr .. '"|cwindow|redraw!')
+end
+
+vim.api.nvim_create_user_command('Find', Find, {
+	desc = "Custom find command to make things easier",
+	nargs = "+",
+})
+
+if vim.fn.executable('rg') then -- Use rg over grep
+  local ignores = {}
   for _, pattern in ipairs(ignoreFiles) do
-    table.insert(agIgnores, "-g='!"..pattern.."'")
+    table.insert(ignores, "-g='!"..pattern.."'")
   end
-  vim.opt.grepprg = "rg --vimgrep " .. table.concat(agIgnores, " ")
+  vim.opt.grepprg = "rg --vimgrep " .. table.concat(ignores, " ")
 end
