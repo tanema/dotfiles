@@ -17,5 +17,4 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:$HOME/.cargo/bin
 
 alias reload='source ~/.zshrc'
-if [ -f '/Users/timanema/workspace/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/timanema/workspace/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/timanema/workspace/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/timanema/workspace/google-cloud-sdk/completion.zsh.inc'; fi
+alias pds='~/Developer/PlaydateSDK/bin/Playdate\ Simulator.app/Contents/MacOS/Playdate\ Simulator'

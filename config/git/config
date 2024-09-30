@@ -14,9 +14,10 @@
 [push]
   default = current
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
   required = true
+	process = git-lfs filter-process
 [pull]
   rebase = true
   prune = true
@@ -26,7 +27,7 @@
 [fetch]
   prune = true
 [commit]
-  gpgsign = true
+  gpgsign = false
 [gpg]
   program = gpg
 [url "ssh://git@github.com/"]

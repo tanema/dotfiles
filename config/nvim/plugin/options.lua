@@ -32,6 +32,7 @@ vim.opt.clipboard:append("unnamed")           -- use system clipboard
 vim.opt.switchbuf:append({"usetab","newtab"}) -- this will make it switch to a tab if I already have the file open and open the quickfix in a tab
 vim.opt.wildmenu = true
 vim.opt.wildignore = table.concat(ignoreFiles, ",")
+vim.opt.termguicolors = true
 
 local colorColumns = {"80"}
 for i = 120,200 do table.insert(colorColumns, i) end
