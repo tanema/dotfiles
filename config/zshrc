@@ -17,4 +17,3 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:$HOME/.cargo/bin
 
 alias reload='source ~/.zshrc'
-alias pds='~/Developer/PlaydateSDK/bin/Playdate\ Simulator.app/Contents/MacOS/Playdate\ Simulator'

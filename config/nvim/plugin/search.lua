@@ -10,13 +10,13 @@ local ignoreFiles = {
 }
 
 local function Find(opts)
-	local findStr = table.concat(opts.fargs, '\\ ')
-	vim.cmd('grep! "'.. findStr .. '"|cwindow|redraw!')
+  local findStr = table.concat(opts.fargs, '\\ ')
+  vim.cmd('grep! "'.. findStr .. '"|cwindow|redraw!')
 end
 
 vim.api.nvim_create_user_command('Find', Find, {
-	desc = "Custom find command to make things easier",
-	nargs = "+",
+  desc = "Custom find command to make things easier",
+  nargs = "+",
 })
 
 if vim.fn.executable('rg') then -- Use rg over grep

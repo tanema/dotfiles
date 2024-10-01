@@ -22,20 +22,12 @@ require('mason-lspconfig').setup({
     "marksman",
     "rust_analyzer",
   },
- 	automatic_installation = true,
+  automatic_installation = true,
   handlers = {
-		lsp_zero.default_setup,
-		lua_ls = function ()
-			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup {
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim", "playdate", "import", "class" }
-						}
-					}
-				}
-			}
-	 end,
-	},
+    lsp_zero.default_setup,
+    lua_ls = function ()
+      local lspconfig = require("lspconfig")
+      lspconfig.lua_ls.setup {settings = {Lua = {diagnostics = {globals = { "vim" }}}}}
+    end,
+  },
 })
