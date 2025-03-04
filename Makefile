@@ -3,10 +3,10 @@
 .PHONY: update/tools update/omz update/tools
 
 install: ## Clean install of all the tools that we need
-	@$(MAKE) clean 
-	@$(MAKE) install/directories 
-	@$(MAKE) install/link 
-	@$(MAKE) install/tools 
+	@$(MAKE) clean
+	@$(MAKE) install/directories
+	@$(MAKE) install/link
+	@$(MAKE) install/tools
 	@$(MAKE) install/gpg
 	@$(MAKE) install/plugins
 
@@ -49,13 +49,13 @@ install/omz: ## install oh my zsh sugar
 
 update/tools: ## Update the tools I use every day
 	@brew update
-	@brew upgrade go tmux vim git gnupg ag
+	@brew upgrade go tmux nvim git gnupg ag
 
 update/omz: ## Update zsh plugins
 	@echo "==== updating ohmyzsh"
 	@omz update
 
-install/plugins: plugins/vim plugins/tmux plugins/omz ## install all plugins
+install/plugins: plugins/tmux plugins/omz ## install all plugins
 update/plugins: install/plugins ## update all plugins
 
 plugins/tmux: ## Install tmux plugins because I cant figure out tpm

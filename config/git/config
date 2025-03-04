@@ -1,7 +1,9 @@
 [user]
   name = Tim Anema
-  email = tim.anema@netlify.com
-  signingkey = F19C3BEBB0C2DDE831E490E8F5C811898B856FAF
+  email = timanema@gmail.com
+  signingkey = 9C9449A191B5F4EFD01171E962453728A8164CAF
+[column]
+  ui = auto
 [core]
   editor = nvim
   commitGraph = true
@@ -9,10 +11,14 @@
   ui = true
 [diff]
   tool = vimdiff
-  algorithm = patience
-  noprefix = true
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [push]
-  default = current
+  default = simple
+  autoSetupRemote = true
+  followTags = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -24,16 +30,22 @@
 	default = current
 [rerere]
   enabled = true
+  autoupdate = true
 [fetch]
   prune = true
+  pruneTags = true
+  all = true
 [commit]
-  gpgsign = false
+  gpgsign = true
+  verbose = true
 [gpg]
   program = gpg
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
 [rebase]
   autoStash = true
+  autoSquash = true
+  updateRefs = true
 [protocol]
   version = 2
 [gc]
@@ -41,5 +53,11 @@
 [credential]
   helper =
   helper = store --file /opt/dev/var/private/git_credential_store
+[help]
+  autocorrect = prompt
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
 [init]
   defaultBranch = main
