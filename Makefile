@@ -13,7 +13,7 @@ install: ## Clean install of all the tools that we need
 update: | plugins update/omz update/tools ## Update tools and plugins
 
 clean: ## Clean up the linked directories in the home directory.
-	@rm -rf ~/.config/git ~/.config/tmux ~/.vim ~/.zshrc ~/.oh-my-zsh
+	@rm -rf ~/.config/git ~/.config/tmux ~/.zshrc ~/.oh-my-zsh
 
 install/directories: ## Create directories that I expect to be there
 	@echo "==== creating default directories"
