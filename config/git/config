@@ -1,7 +1,7 @@
 [user]
   name = Tim Anema
-  email = timanema@gmail.com
-  signingkey = 9C9449A191B5F4EFD01171E962453728A8164CAF
+  email = tim.anema@pocket.health
+  signingkey = E2ED9EC727BD8EE2
 [diff]
   tool = vimdiff
   algorithm = histogram
@@ -15,7 +15,7 @@
 [pull]
   rebase = true
   prune = true
-	default = current
+  default = current
 [rerere]
   enabled = true
   autoupdate = true
@@ -34,6 +34,8 @@
   program = gpg
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+  insteadOf = https://gitlab.com/
 [protocol]
   version = 2
 [gc]

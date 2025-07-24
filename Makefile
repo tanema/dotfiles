@@ -26,10 +26,12 @@ install/link: ## Link saved dotfiles to to home directory
 	@ln -s ~/workspace/dotfiles/config/nvim ~/.config/nvim
 	@ln -sf ~/workspace/dotfiles/config/zshrc ~/.zshrc
 	@ln -sf ~/workspace/dotfiles/config/ssh/config ~/.ssh/config
+	@cp ~/.Brewfile ~/.dotfiles/Brewfile
 
-install/gpg:
+install/gpg: ## Generate a new gpg key
 	@gpg --default-new-key-algo rsa4096 --gen-key
 	@gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
+	@open "https://github.com/settings/keys"
 	@read -p "New gpg key is in clipboard add it to github and press enter to continue ..."
 
 install/tools: install/xcode install/homebrew install/omz ## the default tools that I use
@@ -40,8 +42,12 @@ install/xcode: ## ensure xcode doesnt get in our way
 
 install/homebrew: ## install my package manager
 	@echo "==== installing homebrew"
-	@/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	@brew install go tmux nvim git gnupg ag
+	@echo "==== energizing sudo"
+	@sudo true
+	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+	@echo "==== installing brew bundle"
+	/opt/homebrew/bin/brew shellenv | eval
+	/opt/homebrew/bin/brew bundle --global
 
 install/omz: ## install oh my zsh sugar
 	@echo "==== installing ohmyzsh"
