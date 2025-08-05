@@ -7,7 +7,11 @@ install: ## Clean install of all the tools that we need
 	@$(MAKE) install/gpg
 	@$(MAKE) install/plugins
 
-update: | plugins update/tools ## Update tools and plugins
+update: install/plugins ## Update tools and plugins
+	@echo "=== updating brew ==="
+	@brew bundle --global
+	@echo "=== updating ohmyzsh ==="
+	@omz update
 
 clean: ## Clean up the linked directories in the home directory.
 	@rm -rf \
@@ -29,6 +33,19 @@ install/config: ## Link saved dotfiles to to home directory
 	@ln -sf ~/workspace/dotfiles/config/ssh/config ~/.ssh/config
 	@ln -sf ~/workspace/dotfiles/config/zshrc      ~/.zshrc
 
+install/tools: ## the default tools that I use
+	@echo "=== ensuring xcode is setup ==="
+	@xcode-select --install || echo "already installed"
+	@echo "=== energizing sudo ==="
+	@sudo true
+	@echo "=== installing homebrew ==="
+	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+	@echo "=== installing brew bundle ==="
+	/opt/homebrew/bin/brew shellenv | eval
+	/opt/homebrew/bin/brew bundle --global
+	@echo "=== installing ohmyzsh ==="
+	@curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
+
 install/gpg: ## Generate a new gpg key
 	@echo "=== setting up GPG ==="
 	@gpg --default-new-key-algo rsa4096 --gen-key
@@ -36,33 +53,7 @@ install/gpg: ## Generate a new gpg key
 	@open "https://github.com/settings/keys"
 	@read -p "New gpg key is in clipboard add it to github and press enter to continue ..."
 
-install/tools: install/xcode install/homebrew install/omz ## the default tools that I use
-
-install/xcode: ## ensure xcode doesnt get in our way
-	@echo "=== ensuring xcode is setup ==="
-	@xcode-select --install || echo "already installed"
-
-install/homebrew: ## install my package manager
-	@echo "=== installing homebrew ===""
-	@echo "=== energizing sudo ===""
-	@sudo true
-	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
-	@echo "=== installing brew bundle ==="
-	/opt/homebrew/bin/brew shellenv | eval
-	/opt/homebrew/bin/brew bundle --global
-
-install/omz: ## install oh my zsh sugar
-	@echo "=== installing ohmyzsh ==="
-	@curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
-
-update/tools: ## Update the tools I use every day
-	@echo "=== updating brew ==="
-	@brew bundle --global
-	@echo "=== updating ohmyzsh ==="
-	@omz update
-
 install/plugins: plugins/tmux plugins/omz ## install all plugins
-update/plugins: install/plugins ## update all plugins
 
 plugins/tmux: ## Install tmux plugins because I cant figure out tpm
 	@echo "==== installing tmux plugins"
