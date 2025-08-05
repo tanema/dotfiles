@@ -1,34 +1,36 @@
 .DEFAULT_GOAL := shorthelp
-.PHONY: shorthelp help install/directories install/link install/xcode install/homebrew install/tools install/ohmyzsh plugins
-.PHONY: update/tools update/omz update/tools
 
 install: ## Clean install of all the tools that we need
 	@$(MAKE) clean
-	@$(MAKE) install/directories
-	@$(MAKE) install/link
+	@$(MAKE) install/config
 	@$(MAKE) install/tools
 	@$(MAKE) install/gpg
 	@$(MAKE) install/plugins
 
-update: | plugins update/omz update/tools ## Update tools and plugins
+update: | plugins update/tools ## Update tools and plugins
 
 clean: ## Clean up the linked directories in the home directory.
-	@rm -rf ~/.config/git ~/.config/tmux ~/.zshrc ~/.oh-my-zsh
+	@rm -rf \
+		~/.config/git \
+		~/.config/tmux \
+		~/.config/nvim \
+		~/.config/homebrew \
+		~/.ssh/config \
+		~/.zshrc
 
-install/directories: ## Create directories that I expect to be there
-	@echo "==== creating default directories"
-	@mkdir -p ~/.config
-
-install/link: ## Link saved dotfiles to to home directory
-	@echo "==== linking config files"
-	@ln -s ~/workspace/dotfiles/config/git ~/.config/git
-	@ln -s ~/workspace/dotfiles/config/tmux ~/.config/tmux
-	@ln -s ~/workspace/dotfiles/config/nvim ~/.config/nvim
-	@ln -sf ~/workspace/dotfiles/config/zshrc ~/.zshrc
+install/config: ## Link saved dotfiles to to home directory
+	@echo "=== creating default directories ==="
+	@mkdir -p ~/.config ~/.config/less ~/.config/zsh
+	@echo "=== linking config files ==="
+	@ln -sf ~/workspace/dotfiles/config/git        ~/.config/git
+	@ln -sf ~/workspace/dotfiles/config/tmux       ~/.config/tmux
+	@ln -sf ~/workspace/dotfiles/config/nvim       ~/.config/nvim
+	@ln -sf ~/workspace/dotfiles/config/homebrew   ~/.config/homebrew
 	@ln -sf ~/workspace/dotfiles/config/ssh/config ~/.ssh/config
-	@cp ~/.Brewfile ~/.dotfiles/Brewfile
+	@ln -sf ~/workspace/dotfiles/config/zshrc      ~/.zshrc
 
 install/gpg: ## Generate a new gpg key
+	@echo "=== setting up GPG ==="
 	@gpg --default-new-key-algo rsa4096 --gen-key
 	@gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
 	@open "https://github.com/settings/keys"
@@ -37,28 +39,26 @@ install/gpg: ## Generate a new gpg key
 install/tools: install/xcode install/homebrew install/omz ## the default tools that I use
 
 install/xcode: ## ensure xcode doesnt get in our way
-	@echo "==== ensuring xcode is setup"
+	@echo "=== ensuring xcode is setup ==="
 	@xcode-select --install || echo "already installed"
 
 install/homebrew: ## install my package manager
-	@echo "==== installing homebrew"
-	@echo "==== energizing sudo"
+	@echo "=== installing homebrew ===""
+	@echo "=== energizing sudo ===""
 	@sudo true
 	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
-	@echo "==== installing brew bundle"
+	@echo "=== installing brew bundle ==="
 	/opt/homebrew/bin/brew shellenv | eval
 	/opt/homebrew/bin/brew bundle --global
 
 install/omz: ## install oh my zsh sugar
-	@echo "==== installing ohmyzsh"
+	@echo "=== installing ohmyzsh ==="
 	@curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
 
 update/tools: ## Update the tools I use every day
-	@brew update
-	@brew upgrade go tmux nvim git gnupg ag
-
-update/omz: ## Update zsh plugins
-	@echo "==== updating ohmyzsh"
+	@echo "=== updating brew ==="
+	@brew bundle --global
+	@echo "=== updating ohmyzsh ==="
 	@omz update
 
 install/plugins: plugins/tmux plugins/omz ## install all plugins
