@@ -15,23 +15,6 @@ cmp.setup({
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = {
-		"lua_ls",
-		"gopls",
-		"ts_ls",
-		"marksman",
-		"rust_analyzer",
-		"clangd",
-	},
+	ensure_installed = { "lua_ls", "gopls", "ts_ls", "marksman", "rust_analyzer", "clangd" },
 	automatic_installation = true,
-	handlers = {
-		lsp_zero.default_setup,
-		lua_ls = function()
-			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { globals = { "vim" } } } } })
-		end,
-		clangd = function()
-			require("lspconfig").clangd.setup({})
-		end,
-	},
 })

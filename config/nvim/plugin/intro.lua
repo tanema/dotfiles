@@ -7,8 +7,7 @@ local function readLines(file)
 end
 
 math.randomseed(os.time())
-local intro_logo = readLines("icons/intro")
-local icons = { "toast", "sonic", "skull" }
+local intro_logo = readLines("intro")
 local PLUGIN_NAME = "customintro"
 local augroup = vim.api.nvim_create_augroup(PLUGIN_NAME, {})
 local introBuff = vim.api.nvim_create_buf("nobuflisted", "unlisted")
@@ -53,10 +52,7 @@ end
 local function draw()
 	local window = vim.fn.bufwinid(introBuff)
 	local logo_width = vim.fn.strdisplaywidth(intro_logo[1])
-	local icon = readLines("icons/" .. icons[math.random(#icons)])
-	local icon_width = vim.fn.strdisplaywidth(icon[1])
-	local icon_pad = math.floor((logo_width - icon_width) / 2)
-	local logo = append(intro_logo, lpad(icon, icon_pad))
+	local logo = intro_logo
 	local logo_height = #logo
 
 	local screen_width = vim.api.nvim_win_get_width(window)
