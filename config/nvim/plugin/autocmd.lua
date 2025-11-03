@@ -20,3 +20,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 		vim.cmd([[%s/\s\+$//e]])
 	end,
 })
+
+vim.api.nvim_create_autocmd("CursorHold", {
+	callback = function()
+		vim.diagnostic.open_float(nil, { focusable = false, source = "if_many" })
+	end,
+})
