@@ -23,6 +23,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 vim.api.nvim_create_autocmd("CursorHold", {
 	callback = function()
-		vim.diagnostic.open_float(nil, { focusable = false, source = "if_many" })
+		vim.diagnostic.open_float(nil, {
+			scope = "line",
+			focusable = false,
+			source = "if_many",
+			close_events = { "CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave" },
+		})
 	end,
 })
