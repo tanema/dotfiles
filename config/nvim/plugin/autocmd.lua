@@ -12,19 +12,19 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	desc = "Fix style changes on save.",
 	group = vim.api.nvim_create_augroup("style-fix-on-save", { clear = true }),
 	callback = function()
-		-- fix tabs
-		vim.cmd.retab()
-		-- fix style
-		vim.cmd("silent Neoformat")
-		-- remove space at the end of each line
-		vim.cmd([[%s/\s\+$//e]])
+		vim.cmd.retab() -- fix tabs
+		vim.cmd("silent Neoformat") -- fix style
+		vim.cmd([[%s/\s\+$//e]]) -- remove space at the end of each line
 	end,
 })
 
 vim.api.nvim_create_autocmd("CursorHold", {
+	desc = "Diagnostic window open on cursor hold over issue.",
+	group = vim.api.nvim_create_augroup("diag-open-float", { clear = true }),
 	callback = function()
 		vim.diagnostic.open_float(nil, {
-			scope = "line",
+			scope = "cursor",
+			header = false,
 			focusable = false,
 			source = "if_many",
 			close_events = { "CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave" },
