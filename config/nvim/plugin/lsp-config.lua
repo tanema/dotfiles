@@ -13,6 +13,24 @@ cmp.setup({
 	}),
 })
 
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+})
+
+vim.lsp.config("gopls", {
+	settings = {
+		gopls = {
+			buildFlags = { "-tags=integration" },
+		},
+	},
+})
+
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls", "gopls", "ts_ls", "marksman", "rust_analyzer", "clangd" },
