@@ -1,7 +1,6 @@
 [user]
   name = Tim Anema
-  email = tim.anema@pocket.health
-  signingkey = E2ED9EC727BD8EE2
+  email = timanema@gmail.com
 [diff]
   tool = vimdiff
   algorithm = histogram
