@@ -1,0 +1,15 @@
+{
+  "theme": "dark-daltonized",
+  "editormode": "vim",
+  "effort": "medium",
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/timanema/.claude/statusline-command.sh"
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "spending money..."
+    ]
+  }
+}

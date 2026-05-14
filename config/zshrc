@@ -14,6 +14,8 @@ export VISUAL=nvim
 export EDITOR=nvim
 export GOPATH=~/workspace/go
 export GOPRIVATE=gitlab.com/pockethealth
+export AWS_PROFILE=dealmaker_dev
+export CLAUDE_CONFIG_DIR=~/.config/claude
 
 export PATH="" # reset so my path will work as expected without touching /etc/paths
 export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
@@ -30,3 +32,4 @@ export PATH=$PATH:/bin
 export PATH=$PATH:/sbin
 
 alias reload='source ~/.zshrc'
+export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"

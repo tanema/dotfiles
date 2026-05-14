@@ -1,6 +1,7 @@
 [user]
   name = Tim Anema
-  email = timanema@gmail.com
+  email = tim.anema@dealmaker.tech
+	signingkey = 9ABC0B6694E981BA
 [diff]
   tool = vimdiff
   algorithm = histogram
