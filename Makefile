@@ -32,7 +32,7 @@ install/config: ## Link saved dotfiles to to home directory
 	@ln -sf ~/workspace/dotfiles/config/homebrew   ~/.config/homebrew
 	@ln -sf ~/workspace/dotfiles/config/claude     ~/.config/claude
 	@ln -sf ~/workspace/dotfiles/config/ssh/config ~/.ssh/config
-	@ln -sf ~/workspace/dotfiles/config/zshrc      ~/.zshrc
+	@ln -sf ~/workspace/dotfiles/config/zsh/zshrc  ~/.zshrc
 
 install/tools: ## the default tools that I use
 	@echo "=== ensuring xcode is setup ==="
