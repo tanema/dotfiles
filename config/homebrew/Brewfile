@@ -12,6 +12,7 @@ brew 'marksman'
 # Javascript
 brew 'nvm'
 brew 'typescript-language-server'
+brew 'prettierd'
 
 # Ruby
 brew 'rbenv'

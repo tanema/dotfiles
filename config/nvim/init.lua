@@ -29,15 +29,16 @@ require("lazy").setup({
 })
 
 vim.lsp.enable({
-	"ruby",
-	"lua",
-	"golang",
-	"golang-lint",
-	"rubocop",
-	"typescript",
-	"markdown",
-	"rust",
 	"clangd",
+	"golang-lint",
+	"golang",
+	"lua",
+	"markdown",
+	"prettierd",
+	"rubocop",
+	"ruby",
+	"rust",
+	"typescript",
 })
 
 vim.cmd.colorscheme("jellybeans-nvim")

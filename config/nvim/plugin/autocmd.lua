@@ -8,11 +8,22 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	desc = "Fix style changes on save.",
-	group = vim.api.nvim_create_augroup("style-fix-on-save", { clear = true }),
-	callback = function()
-		vim.lsp.buf.format({ async = false })
+vim.api.nvim_create_autocmd("LspAttach", {
+	desc = "Attach LSP to autocomplete and auto formatting",
+	callback = function(ev)
+		local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+		if client:supports_method('textDocument/completion') then
+			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+		end
+		if not client:supports_method('textDocument/willSaveWaitUntil') and client:supports_method('textDocument/formatting') then
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = vim.api.nvim_create_augroup('auto-format', { clear = false }),
+				buffer = ev.buf,
+				callback = function()
+					vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
+				end,
+			})
+		end
 	end,
 })
 

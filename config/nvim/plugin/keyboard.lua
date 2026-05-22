@@ -1,6 +1,5 @@
 local telescope = require("telescope.builtin")
-local keyset = vim.keymap.set
-local normal, normVis, visual = { "n" }, { "n", "v" }, { "v" }
+local insert, normal, normVis, visual = { "i" }, { "n" }, { "n", "v" }, { "v" }
 
 local function runCurrentFile()
 	local fileName = vim.fn.expand("%")
@@ -9,15 +8,23 @@ local function runCurrentFile()
 	vim.api.nvim_feedkeys("i", "n", false) -- Enter insert mode, moves to end of prompt if there's one
 end
 
--- autocomplete for lsp
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(ev)
-		vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, {})
-	end,
-})
+local function autoCompleteSelect()
+	return vim.fn.pumvisible() ~= 0 and '<C-y>' or '<CR>'
+end
+
+local function autoCompleteNext()
+	return vim.fn.pumvisible() ~= 0 and '<C-n>' or '<TAB>'
+end
+
+local function autoCompletePrev()
+	return vim.fn.pumvisible() ~= 0 and '<C-p>' or '<s-TAB>'
+end
 
 -- Keymap config in table so that it feels easier to me to add mappings
 local keymap = {
+	{ insert,  "<CR>",      autoCompleteSelect,            { desc = "press enter to select item in autocomplete", expr = true, noremap = true } },
+	{ insert,  "<tab>",     autoCompleteNext,              { desc = "press tab to select next item in autocomplete", expr = true, noremap = true } },
+	{ insert,  "<s-tab>",   autoCompletePrev,              { desc = "press shift tab to select prev item in autocomplete", expr = true, noremap = true } },
 	{ normVis, "d",         '"_d',                         { desc = "delete without yanking contents" } },
 	{ normVis, "D",         '"_D',                         { desc = "delete line without yanking contents" } },
 	{ normVis, "c",         '"_c',                         { desc = "change without yanking contents" } },
@@ -38,5 +45,5 @@ local keymap = {
 }
 
 for _, params in ipairs(keymap) do
-	keyset(unpack(params))
+	vim.keymap.set(unpack(params))
 end

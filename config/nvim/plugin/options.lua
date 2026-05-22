@@ -38,6 +38,7 @@ vim.opt.wildmenu = true
 vim.opt.wildignore = table.concat(ignoreFiles, ",")
 vim.opt.termguicolors = true
 vim.opt.updatetime = 500
+vim.opt.completeopt = { "menu", "noinsert", "popup", "preview" }
 
 local colorColumns = { "80" }
 for i = 120, 200 do
