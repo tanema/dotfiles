@@ -12,9 +12,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	desc = "Fix style changes on save.",
 	group = vim.api.nvim_create_augroup("style-fix-on-save", { clear = true }),
 	callback = function()
-		vim.cmd.retab() -- fix tabs
-		vim.cmd("silent Neoformat") -- fix style
-		vim.cmd([[%s/\s\+$//e]]) -- remove space at the end of each line
+		vim.lsp.buf.format({ async = false })
 	end,
 })
 

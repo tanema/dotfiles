@@ -1,14 +1,35 @@
-brew "mas"
-brew "go"
-brew "tmux"
-brew "nvim"
-brew "git"
-brew "gnupg"
-brew "ag"
-brew "rbenv"
-brew "nvm"
-brew "rg"
-brew "rust"
-brew "golangci-lint"
-cask "ghostty"
-cask "claude-code"
+brew 'git'
+brew 'rg'
+brew 'gnupg'
+brew 'nvim'
+brew 'tmux'
+cask 'ghostty'
+cask 'claude-code'
+
+# Markdown
+brew 'marksman'
+
+# Javascript
+brew 'nvm'
+brew 'typescript-language-server'
+
+# Ruby
+brew 'rbenv'
+brew 'ruby-lsp'
+
+# Go
+brew 'go'
+brew 'golangci-lint'
+brew 'golangci-lint-langserver'
+brew 'gopls'
+
+# Lua
+brew 'lua'
+brew 'lua-language-server'
+
+# Rust
+brew 'rust'
+brew 'rust-analyzer'
+
+# C
+brew 'llvm'
