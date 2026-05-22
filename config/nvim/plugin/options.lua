@@ -1,14 +1,3 @@
--- files ignored in netrw and tabbing
-local ignoreFiles = {
-	"^\\./$",
-	".DS_Store",
-	".git/",
-	"*.pyc",
-	"node_modules/",
-	"dist/",
-	"build/",
-}
-
 vim.g.netrw_banner = 0
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro" -- order setting
 vim.g.netrw_localrmdir = "rm -r"                         -- Allow netrw to remove non-empty local directories
@@ -35,10 +24,14 @@ vim.opt.listchars = "tab:→ ,nbsp:~,eol:$" -- set how hidden characters are dis
 vim.opt.clipboard:append("unnamed") -- use system clipboard
 vim.opt.switchbuf:append({ "usetab", "newtab" }) -- this will make it switch to a tab if I already have the file open and open the quickfix in a tab
 vim.opt.wildmenu = true
-vim.opt.wildignore = table.concat(ignoreFiles, ",")
 vim.opt.termguicolors = true
-vim.opt.updatetime = 500
+vim.opt.updatetime = 100
 vim.opt.completeopt = { "menu", "noinsert", "popup", "preview" }
+
+if vim.fn.executable('rg') then -- Use rg over grep
+	vim.opt.grepprg = "rg --vimgrep --smart-case"
+	vim.opt.grepformat = "%f:%l:%c:%m"
+end
 
 local colorColumns = { "80" }
 for i = 120, 200 do

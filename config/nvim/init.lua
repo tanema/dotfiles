@@ -19,26 +19,16 @@ vim.g.gitgutter_sign_modified_removed = "●"
 
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
-	"tpope/vim-surround",  -- surround highlighted text
-	"tpope/vim-vinegar",   -- make netrw easier to use and navigate
-	"tpope/vim-fugitive",  -- git plugin for vim
-	"tpope/vim-commentary", -- comment out selected blocks
-	"airblade/vim-gitgutter",
+	"tpope/vim-surround",    -- surround highlighted text
+	"tpope/vim-vinegar",     -- make netrw easier to use and navigate
+	"tpope/vim-fugitive",    -- git plugin for vim
+	"tpope/vim-commentary",  -- comment out selected blocks
+	"airblade/vim-gitgutter", -- show git changes in gutter
+	'stevearc/conform.nvim', -- autoformat
 	{ "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 	{ "metalelf0/jellybeans-nvim",     dependencies = { "rktjmp/lush.nvim" } },
 })
 
-vim.lsp.enable({
-	"clangd",
-	"golang-lint",
-	"golang",
-	"lua",
-	"markdown",
-	"prettierd",
-	"rubocop",
-	"ruby",
-	"rust",
-	"typescript",
-})
-
+-- see lsp directory for configuration of these.
+vim.lsp.enable { "clangd", "golang-lint", "golang", "lua", "markdown", "ruby", "rust", "typescript" }
 vim.cmd.colorscheme("jellybeans-nvim")

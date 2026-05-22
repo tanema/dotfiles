@@ -1,3 +1,11 @@
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+	group = vim.api.nvim_create_augroup("AutoQuickfix", { clear = true }),
+	pattern = "[^l]*", -- Targets all quickfix commands (excludes location list commands like :lgrep)
+	callback = function()
+		vim.cmd("cwindow") -- Opens quickfix ONLY if there are results
+	end,
+})
+
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	desc = "Auto jump to last position",
 	group = vim.api.nvim_create_augroup("auto-last-position", { clear = true }),
