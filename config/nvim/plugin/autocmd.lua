@@ -2,7 +2,7 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 	group = vim.api.nvim_create_augroup("AutoQuickfix", { clear = true }),
 	pattern = "[^l]*", -- Targets all quickfix commands (excludes location list commands like :lgrep)
 	callback = function()
-		vim.cmd("cwindow") -- Opens quickfix ONLY if there are results
+		vim.cmd("cwindow") -- Opens quickfix
 	end,
 })
 
@@ -20,15 +20,40 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "Attach LSP to autocomplete and auto formatting",
 	callback = function(ev)
 		local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+
 		if client:supports_method('textDocument/completion') then
 			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
 		end
+
+		if client:supports_method('textDocument/inlineCompletion') then
+			vim.lsp.inline_completion.enable(true, { bufnr = ev.buf, client_id = client.id })
+		end
+
 		if not client:supports_method('textDocument/willSaveWaitUntil') and client:supports_method('textDocument/formatting') then
 			vim.api.nvim_create_autocmd('BufWritePre', {
 				group = vim.api.nvim_create_augroup('auto-format', { clear = false }),
 				buffer = ev.buf,
 				callback = function()
-					vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
+					-- Allow go to format imports
+					local params = vim.lsp.util.make_range_params()
+					params.context = { only = { "source.organizeImports" } }
+					local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+					for cid, res in pairs(result or {}) do
+						for _, r in pairs(res.result or {}) do
+							if r.edit then
+								local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+								vim.lsp.util.apply_workspace_edit(r.edit, enc)
+							end
+						end
+					end
+
+
+					vim.lsp.buf.format({
+						bufnr = ev.buf,
+						id = client.id,
+						timeout_ms = 1000,
+						async = false,
+					})
 				end,
 			})
 		end

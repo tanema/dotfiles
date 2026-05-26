@@ -30,5 +30,5 @@ require("lazy").setup({
 })
 
 -- see lsp directory for configuration of these.
-vim.lsp.enable { "clangd", "golang-lint", "golang", "lua", "markdown", "ruby", "rust", "typescript" }
+vim.lsp.enable { "clangd", "golang", "lua", "markdown", "ruby", "rust", "typescript" }
 vim.cmd.colorscheme("jellybeans-nvim")

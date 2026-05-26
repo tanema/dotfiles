@@ -1,14 +1,12 @@
 return {
-	filetypes = { "ruby" },
-	cmd = { "ruby-lsp" },
+	cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
 	root_markers = { "Gemfile", ".git" },
-	init_options = {
-		formatter = 'standard',
+	filetypes = { 'ruby', 'eruby' },
+	settings = {
+		formatter = 'auto',
 		linters = { 'standard' },
 		addonSettings = {
-			["Ruby LSP Rails"] = {
-				enablePendingMigrationsPrompt = false,
-			},
+			["Ruby LSP Rails"] = { enablePendingMigrationsPrompt = false },
 		},
 	},
 }

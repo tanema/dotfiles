@@ -17,6 +17,7 @@ brew 'prettierd'
 # Ruby
 brew 'rbenv'
 brew 'ruby-lsp'
+brew 'rubyfmt'
 
 # Go
 brew 'go'

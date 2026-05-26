@@ -5,6 +5,7 @@
   "outputStyle": "Explanatory",
   "showTurnDuration": true,
   "tui": "fullscreen",
+  "companyAnnouncements": [],
   "statusLine": {
     "type": "command",
     "command": "bash /Users/timanema/.config/claude/statusline-command.sh"
@@ -12,19 +13,10 @@
   "spinnerTipsEnabled": false,
   "spinnerVerbs": {
     "mode": "replace",
-    "verbs": [
-      "🤖 🖕🏻",
-      "taking your job...",
-      "spending money..."
-    ]
+    "verbs": ["🤖", "🖕🏻", "💩", "🚽"]
   },
   "env": {
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
     "DO_NOT_TRACK": "1"
-  },
-  "companyAnnouncements": [
-    "Remember! You're replacable!",
-    "Line goes up or else!",
-    "Beatings will continue until token usages are up!"
-  ]
+  }
 }

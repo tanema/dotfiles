@@ -40,6 +40,10 @@ local keymap = {
 	{ normal,  "<C-k>",     "<C-w>k",                      { desc = "ctrl-k to quick move to upper window" } },
 	{ normal,  "<C-l>",     "<C-w>l",                      { desc = "ctrl-l to quick move to right window" } },
 	{ normal,  "<C-=>",     "<C-w>=",                      { desc = "ctrl-= to make all windows the same size" } },
+	{ normal,  'K',         vim.lsp.buf.hover,             { desc = 'Show hover' } },
+	{ normal,  'gd',        vim.lsp.buf.definition,        { desc = 'Go to definition' } },
+	{ normal,  'gi',        vim.lsp.buf.implementation,    { desc = 'Go to implementation' } },
+	{ normal,  'gr',        vim.lsp.buf.references,        { desc = 'Show references' } },
 	{ normal,  "<leader>f", ':!echo "%" | pbcopy<CR><CR>', { desc = "quickly copy filename of current file" } },
 	{ normal,  "<leader>r", runCurrentFile,                { desc = "run current file" } },
 }
