@@ -5,13 +5,9 @@ install: ## Clean install of all the tools that we need
 	@$(MAKE) install/config
 	@$(MAKE) install/tools
 	@$(MAKE) install/gpg
-	@$(MAKE) install/plugins
 
-update: install/plugins ## Update tools and plugins
-	@echo "=== updating brew ==="
+update: ## Update tools
 	@brew bundle --global
-	@echo "=== updating ohmyzsh ==="
-	@omz update
 
 clean: ## Clean up the linked directories in the home directory.
 	@rm -rf \
@@ -19,18 +15,21 @@ clean: ## Clean up the linked directories in the home directory.
 		~/.config/tmux \
 		~/.config/nvim \
 		~/.config/homebrew \
+		~/.config/zsh \
+		~/.config/claude \
 		~/.ssh/config \
 		~/.zshrc
 
 install/config: ## Link saved dotfiles to to home directory
 	@echo "=== creating default directories ==="
-	@mkdir -p ~/.config ~/.config/less ~/.config/zsh
+	@mkdir -p ~/.config ~/.config/irb ~/.local/share/less ~/.local/share/zsh
 	@echo "=== linking config files ==="
 	@ln -sf ~/workspace/dotfiles/config/git        ~/.config/git
 	@ln -sf ~/workspace/dotfiles/config/tmux       ~/.config/tmux
 	@ln -sf ~/workspace/dotfiles/config/nvim       ~/.config/nvim
 	@ln -sf ~/workspace/dotfiles/config/homebrew   ~/.config/homebrew
 	@ln -sf ~/workspace/dotfiles/config/claude     ~/.config/claude
+	@ln -sf ~/workspace/dotfiles/config/zsh        ~/.config/zsh
 	@ln -sf ~/workspace/dotfiles/config/ssh/config ~/.ssh/config
 	@ln -sf ~/workspace/dotfiles/config/zsh/zshrc  ~/.zshrc
 
@@ -44,8 +43,6 @@ install/tools: ## the default tools that I use
 	@echo "=== installing brew bundle ==="
 	/opt/homebrew/bin/brew shellenv | eval
 	/opt/homebrew/bin/brew bundle --global
-	@echo "=== installing ohmyzsh ==="
-	@curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
 
 install/gpg: ## Generate a new gpg key
 	@echo "=== setting up GPG ==="
@@ -53,24 +50,6 @@ install/gpg: ## Generate a new gpg key
 	@gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
 	@open "https://github.com/settings/keys"
 	@read -p "New gpg key is in clipboard add it to github and press enter to continue ..."
-
-install/plugins: plugins/tmux plugins/omz ## install all plugins
-
-plugins/tmux: ## Install tmux plugins because I cant figure out tpm
-	@echo "==== installing tmux plugins"
-	@export REPO=tmux-plugins/tpm DEST=config/tmux/plugins/tpm; $(MAKE) plugins/install;
-	@export REPO=tmux-plugins/tmux-yank DEST=config/tmux/plugins/tmux-yank; $(MAKE) plugins/install;
-	@export REPO=tmux-plugins/tmux-sensible DEST=config/tmux/plugins/tmux-sensible; $(MAKE) plugins/install;
-
-plugins/omz: ## Install themes for omz
-	@export REPO=dracula/zsh DEST=~/.oh-my-zsh/custom/themes/dracula; $(MAKE) plugins/install
-
-plugins/install: # a generic task that will clone a git plugin to a destination, requires a DEST and REPO env var
-	@echo "installing ${REPO}" && \
-		rm -rf ${DEST} && \
-		git clone --quiet --depth=1 git@github.com:${REPO}.git ${DEST} && \
-		rm -rf ${DEST}/.git && \
-		echo "installed ${REPO} successfully"
 
 shorthelp:
 	@grep -E '^[a-zA-Z_0-9-]+:.*?## .*$$' $(MAKEFILE_LIST) | \

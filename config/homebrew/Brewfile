@@ -3,6 +3,7 @@ brew 'rg'
 brew 'gnupg'
 brew 'nvim'
 brew 'tmux'
+brew 'reattach-to-user-namespace'
 cask 'ghostty'
 cask 'claude-code'
 

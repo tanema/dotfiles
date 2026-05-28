@@ -1,0 +1,13 @@
+export PATH="" # reset so my path will work as expected without touching /etc/paths
+export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$RBENV_ROOT/shims
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/bin
+export PATH=$PATH:/sbin
