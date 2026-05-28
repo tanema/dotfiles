@@ -1,7 +1,4 @@
-export DO_NOT_TRACK=1
-export VISUAL=nvim
-export EDITOR=nvim
-
+source "$HOME/.config/zsh/options.sh"
 source "$HOME/.config/zsh/xdg_setup.sh"
 source "$HOME/.config/zsh/path_setup.sh"
 source "$HOME/.config/zsh/alias.sh"
