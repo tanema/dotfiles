@@ -33,32 +33,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.api.nvim_create_autocmd('BufWritePre', {
 				group = vim.api.nvim_create_augroup('auto-format', { clear = false }),
 				buffer = ev.buf,
-				callback = function()
-					-- Allow go to format imports
-					local params = vim.lsp.util.make_range_params()
-					params.context = { only = { "source.organizeImports" } }
-					local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
-					for cid, res in pairs(result or {}) do
-						for _, r in pairs(res.result or {}) do
-							if r.edit then
-								local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-								vim.lsp.util.apply_workspace_edit(r.edit, enc)
+				callback = function(evt)
+					if not client.config.settings.disable_codeactions then
+						local params = vim.lsp.util.make_range_params()
+						params.context = { only = { "source.organizeImports" } }
+						local result = vim.lsp.buf_request_sync(evt.buf, "textDocument/codeAction", params)
+						for _, res in pairs(result or {}) do
+							for _, r in pairs(res.result or {}) do
+								if r.edit then
+									local enc = client.offset_encoding or "utf-16"
+									vim.lsp.util.apply_workspace_edit(r.edit, enc)
+								end
 							end
 						end
 					end
 
-
-					vim.lsp.buf.format({
-						bufnr = ev.buf,
-						id = client.id,
-						timeout_ms = 1000,
-						async = false,
-					})
+					vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000, async = false })
 				end,
 			})
 		end
 	end,
 })
+
 
 vim.api.nvim_create_autocmd("CursorHold", {
 	desc = "Diagnostic window open on cursor hold over issue.",
