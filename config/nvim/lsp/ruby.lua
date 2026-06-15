@@ -1,5 +1,5 @@
 return {
-	cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+	cmd = { vim.fn.expand("$RBENV_ROOT/shims/ruby-lsp") },
 	root_markers = { "Gemfile", ".git" },
 	filetypes = { 'ruby', 'eruby' },
 	settings = {

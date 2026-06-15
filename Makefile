@@ -23,6 +23,7 @@ clean: ## Clean up the linked directories in the home directory.
 install/config: ## Link saved dotfiles to to home directory
 	@echo "=== creating default directories ==="
 	@mkdir -p ~/.config ~/.config/irb ~/.local/share/less ~/.local/share/zsh
+	@touch ~/.gitconfig.local
 	@echo "=== linking config files ==="
 	@ln -sf ~/workspace/dotfiles/config/git        ~/.config/git
 	@ln -sf ~/workspace/dotfiles/config/tmux       ~/.config/tmux

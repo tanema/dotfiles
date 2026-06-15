@@ -1,7 +1,8 @@
+[include]
+	# Allow computer settings so each computer can have different emails and signing keys
+  path = ~/.gitconfig.local
 [user]
   name = Tim Anema
-  email = tim.anema@dealmaker.tech
-	signingkey = 9ABC0B6694E981BA
 [diff]
   tool = vimdiff
   algorithm = histogram

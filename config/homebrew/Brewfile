@@ -36,3 +36,7 @@ brew 'rust-analyzer'
 
 # C
 brew 'llvm'
+
+# Zig
+brew 'zig'
+brew 'zls'

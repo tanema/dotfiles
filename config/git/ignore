@@ -1,2 +1,9 @@
 **/.claude/settings.local.json
 .DS_Store
+tmp
+luac.out
+.idea/
+*.rbc
+*.log
+.eslintcache
+node_modules
