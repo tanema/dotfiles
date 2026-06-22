@@ -7,7 +7,6 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
-bindkey '^I' autosuggest-accept # Tab accept
 
 setopt autocd                 # name a directory to navigate to it.
 setopt NO_BEEP                # no dang bell
@@ -23,7 +22,7 @@ setopt HIST_SAVE_NO_DUPS      # Don\'t write duplicate entries in the history fi
 setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY            # show command with history expansion to user before running it
 setopt INC_APPEND_HISTORY     # automatically append history after every command rather than on exit
-unsetopt MENU_COMPLETE        # do not autoselect the first completion entry
 setopt AUTO_MENU              # show completion menu on successive tab press
-setopt COMPLETE_IN_WORD
-setopt ALWAYS_TO_END
+setopt COMPLETE_IN_WORD       # Allow completion from within a word/phrase
+setopt ALWAYS_TO_END          # When completing from the middle of a word, move the cursor to the end of the word
+setopt PROMPT_SUBST           # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
