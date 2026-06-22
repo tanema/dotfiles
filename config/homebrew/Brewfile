@@ -2,11 +2,15 @@ brew 'git'
 brew 'rg'
 brew 'gnupg'
 brew 'nvim'
-brew 'tmux'
-brew 'reattach-to-user-namespace'
-brew 'atuin'
 cask 'ghostty'
 cask 'claude-code'
+
+# zsh
+brew 'zsh-autosuggestions'
+
+# tmux
+brew 'tmux'
+brew 'reattach-to-user-namespace'
 
 # Markdown
 brew 'marksman'

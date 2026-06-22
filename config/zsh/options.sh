@@ -1,26 +1,29 @@
-export DO_NOT_TRACK=1
-export VISUAL=nvim
-export EDITOR=nvim
+export HISTSIZE=50000
+export SAVEHIST=10000
 
-HISTSIZE=50000
-SAVEHIST=10000
-
-autoload -U +X bashcompinit && bashcompinit
-autoload -U compinit && compinit
-
-bindkey '\e[A' history-search-backward
-bindkey '\e[B' history-search-forward
+autoload -U compinit; compinit
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+bindkey '^I' autosuggest-accept # Tab accept
 
 setopt autocd                 # name a directory to navigate to it.
 setopt NO_BEEP                # no dang bell
-setopt extended_history       # record timestamp of command in HISTFILE
-setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups       # ignore duplicated commands history list
-setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_verify            # show command with history expansion to user before running it
-setopt share_history          # share command history data
-unsetopt menu_complete        # do not autoselect the first completion entry
-unsetopt flowcontrol
-setopt auto_menu              # show completion menu on successive tab press
-setopt complete_in_word
-setopt always_to_end
+setopt EXTENDED_HISTORY       # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY          # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_ALL_DUPS   # History won't save duplicates.
+setopt HIST_IGNORE_DUPS       # Don\'t record an entry that was just recorded again.
+setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE      # Don\'t record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS      # Don\'t write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY            # show command with history expansion to user before running it
+setopt INC_APPEND_HISTORY     # automatically append history after every command rather than on exit
+unsetopt MENU_COMPLETE        # do not autoselect the first completion entry
+setopt AUTO_MENU              # show completion menu on successive tab press
+setopt COMPLETE_IN_WORD
+setopt ALWAYS_TO_END

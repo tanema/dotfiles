@@ -1,2 +1,2 @@
-# Add atuin to shell for better history search
-eval "$(atuin init zsh)"
+# https://github.com/zsh-users/zsh-autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

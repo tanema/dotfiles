@@ -5,6 +5,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="$HOME/.local/bin"
+
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump-$HOST"
@@ -22,3 +23,7 @@ export BUNDLE_USER_HOME="$XDG_CONFIG_HOME/bundle"
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
 export AWS_CLI_HISTORY_FILE="$XDG_DATA_HOME/aws/history"
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_DATA_HOME/aws/credentials"
+
+export DO_NOT_TRACK=1
+export VISUAL=nvim
+export EDITOR=nvim
