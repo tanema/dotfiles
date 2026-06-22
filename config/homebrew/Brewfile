@@ -9,6 +9,7 @@ cask 'claude-code'
 
 # Markdown
 brew 'marksman'
+brew 'yaml-language-server'
 
 # Javascript
 brew 'nvm'
