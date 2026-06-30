@@ -38,5 +38,18 @@
   "theme": "dark-daltonized",
   "showTurnDuration": true,
   "editormode": "vim",
-  "effort": "medium"
+  "effort": "medium",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -3,9 +3,12 @@ brew 'rg'
 brew 'gnupg'
 brew 'nvim'
 cask 'ghostty'
-cask 'claude-code'
 brew 'mysql'
 brew 'openssl'
+
+# Clankers
+cask 'claude-code'
+brew "rtk"
 
 # zsh
 brew 'zsh-autosuggestions'
