@@ -4,6 +4,8 @@ brew 'gnupg'
 brew 'nvim'
 cask 'ghostty'
 cask 'claude-code'
+brew 'mysql'
+brew 'openssl'
 
 # zsh
 brew 'zsh-autosuggestions'
@@ -23,7 +25,6 @@ brew 'prettierd'
 
 # Ruby
 brew 'rbenv'
-brew 'ruby-lsp'
 brew 'rubyfmt'
 
 # Go
