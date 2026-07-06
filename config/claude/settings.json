@@ -7,6 +7,8 @@
 	"permissions": {
 		"allow": [
 			"Bash(rtk ls *)",
+			"Bash(rtk find *)",
+			"Bash(rtk wc *)",
 			"Bash(rtk tree *)",
 			"Bash(rtk read *)",
 			"Bash(rtk lint *)",

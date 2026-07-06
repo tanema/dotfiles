@@ -27,12 +27,13 @@ require('lazy').setup({
 	'stevearc/conform.nvim', -- autoformat
 	{ 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 	{ 'metalelf0/jellybeans-nvim',     dependencies = { 'rktjmp/lush.nvim' } },
+	'leafOfTree/vim-svelte-plugin',  -- svelte syntax highlighting
 })
 
 -- see lsp directory for configuration of these.
 vim.lsp.enable {
 	'clangd', 'golang', 'lua', 'markdown',
 	'ruby', 'rust', 'typescript', 'zig', 'yaml',
-	'html', 'json', 'css'
+	'html', 'json', 'css', 'svelte'
 }
 vim.cmd.colorscheme('jellybeans-nvim')

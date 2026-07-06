@@ -1,15 +1,14 @@
 # Tims Dotfiles
 
-Run this command and hope to hell most of the work is done for you
+Run this command and hope to hell most of the work is done for you. This script sets up the 
+computer's ssh key, clones the repo, and calls the install script.
 
 ```zsh
-# Setup initial ssh setup so that we can clone something from github.
-curl -fsSL https://raw.githubusercontent.com/tanema/dotfiles/main/ssh_setup.sh | bash
-# Clone this repo
-git clone git@github.com:tanema/dotfiles.git ~/workspace/dotfiles
-# Run the setup
-cd ~/workspace/dotfiles && make install
+curl -fsSL https://raw.githubusercontent.com/tanema/dotfiles/main/scripts/start | bash
 ```
+## Updates
+If any updates are needed a script call `dotupdate` is linked in `~/.local/bin` so 
+at anytime you can call `dotupdate` to update those deps.
 
 ## First Setup and Maintenance Strategy
 A fresh setup almost never goes exactly as expected because deps change, environments change,
@@ -28,8 +27,8 @@ and include the `~/.gitconfig.local` to change keys and emails.
 ## Plugin Strategy
 No plugin managers or LSP managers. Whenever a tool is needed for nvim, zsh or tmux:
 
-- Add tool to config/homebrew/Brewfile
-- Run `brew bundle --global`
+- Add tool to config/homebrew/Brewfile or add an install command to the `./scripts/dotupdate` script.
+- Run `dotupdate` to install it.
 - Add config to use it.
     - In `zsh` source the tool
     - In `nvim` add config. (See: `config/nvim/lsp` files)

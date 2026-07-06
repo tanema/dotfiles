@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+echo "==== Brew Bundle"
+/opt/homebrew/bin/brew bundle --global
+
+echo "==== NPM deps"
+/opt/homebrew/bin/npm install -g svelte-language-server
+  
+echo "==== Reloading shell"
+source $HOME/.zshrc
