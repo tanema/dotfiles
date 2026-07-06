@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup('auto-format', { clear = false }),
 				buffer = ev.buf,
 				callback = function(evt)
-					if not client.config.settings.disable_codeactions then
+					if client.config.settings and not client.config.settings.disable_codeactions then
 						local params = vim.lsp.util.make_range_params()
 						params.context = { only = { "source.organizeImports" } }
 						local result = vim.lsp.buf_request_sync(evt.buf, "textDocument/codeAction", params)

@@ -17,9 +17,9 @@ brew 'zsh-autosuggestions'
 brew 'tmux'
 brew 'reattach-to-user-namespace'
 
-# Markdown
-brew 'marksman'
+# LSPs
 brew 'yaml-language-server'
+brew 'vscode-langservers-extracted'
 
 # Javascript
 brew 'nvm'

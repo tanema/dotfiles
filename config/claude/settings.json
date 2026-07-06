@@ -1,55 +1,103 @@
 {
-  "env": {
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
-    "DO_NOT_TRACK": "1",
-    "ENABLE_LSP_TOOL": "1"
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "bash /Users/timanema/.config/claude/statusline-command.sh"
-  },
-  "enabledPlugins": {
-    "typescript-lsp@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "ruby-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "claude-plugins-official": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-official"
-      }
-    }
-  },
-  "outputStyle": "Explanatory",
-  "spinnerTipsEnabled": false,
-  "spinnerVerbs": {
-    "mode": "replace",
-    "verbs": [
-      "🤖", "🖕🏻", "💩", "🚽", "🫪", "🪦", "💀", "⚰️", "⚱️", "🎠", "🥸", "🤮",
-      "👽", "👹", "🐳", "💰", "💸", "🪎", "💵", "🤑", "🧨", "💣", "🧿", "🎱",
-      "⚗️", "🗿", "🏧", "🔥", "🌊", "🦠"
-    ]
-  },
-  "companyAnnouncements": [],
-  "tui": "fullscreen",
-  "theme": "dark-daltonized",
-  "showTurnDuration": true,
-  "editormode": "vim",
-  "effort": "medium",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "rtk hook claude"
-          }
-        ]
-      }
-    ]
-  }
+	"env": {
+		"CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+		"DO_NOT_TRACK": "1",
+		"ENABLE_LSP_TOOL": "1"
+	},
+	"permissions": {
+		"allow": [
+			"Bash(rtk ls *)",
+			"Bash(rtk tree *)",
+			"Bash(rtk read *)",
+			"Bash(rtk lint *)",
+			"Bash(rtk prettier *)",
+			"Bash(rtk grep *)",
+			"Bash(rtk rg *)",
+			"Bash(rtk rubocop *)",
+			"Bash(rtk go *)",
+			"Bash(rtk golangci-lint *)",
+			"Bash(rtk rspec *)",
+			"Bash(rtk git diff *)",
+			"Bash(rtk gh pr diff *)"
+		],
+		"deny": [
+			"Bash(rtk git push *)",
+			"Bash(rtk git commit *)"
+		]
+	},
+	"statusLine": {
+		"type": "command",
+		"command": "bash /Users/timanema/.config/claude/statusline-command.sh"
+	},
+	"enabledPlugins": {
+		"typescript-lsp@claude-plugins-official": true,
+		"gopls-lsp@claude-plugins-official": true,
+		"ruby-lsp@claude-plugins-official": true,
+		"lua-lsp@claude-plugins-official": true,
+		"rust-analyzer-lsp@claude-plugins-official": true
+	},
+	"extraKnownMarketplaces": {
+		"claude-plugins-official": {
+			"source": {
+				"source": "github",
+				"repo": "anthropics/claude-plugins-official"
+			}
+		}
+	},
+	"outputStyle": "Explanatory",
+	"spinnerTipsEnabled": false,
+	"spinnerVerbs": {
+		"mode": "replace",
+		"verbs": [
+			"🤖",
+			"🖕🏻",
+			"💩",
+			"🚽",
+			"🫪",
+			"🪦",
+			"💀",
+			"⚰️",
+			"⚱️",
+			"🎠",
+			"🥸",
+			"🤮",
+			"👽",
+			"👹",
+			"🐳",
+			"💰",
+			"💸",
+			"🪎",
+			"💵",
+			"🤑",
+			"🧨",
+			"💣",
+			"🧿",
+			"🎱",
+			"⚗️",
+			"🗿",
+			"🏧",
+			"🔥",
+			"🌊",
+			"🦠"
+		]
+	},
+	"companyAnnouncements": [],
+	"tui": "fullscreen",
+	"theme": "dark-daltonized",
+	"showTurnDuration": true,
+	"editormode": "vim",
+	"effort": "medium",
+	"hooks": {
+		"PreToolUse": [
+			{
+				"matcher": "Bash",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "rtk hook claude"
+					}
+				]
+			}
+		]
+	}
 }
