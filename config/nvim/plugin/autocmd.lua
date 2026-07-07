@@ -1,4 +1,5 @@
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+	desc = "Automatically opens quickfix when needed.",
 	group = vim.api.nvim_create_augroup("AutoQuickfix", { clear = true }),
 	pattern = "[^l]*", -- Targets all quickfix commands (excludes location list commands like :lgrep)
 	callback = function()

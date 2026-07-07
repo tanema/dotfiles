@@ -1,25 +1,20 @@
 # Tims Dotfiles
 
 Run this command and hope to hell most of the work is done for you. This script sets up the 
-computer's ssh key, clones the repo, and calls the install script.
+computer's ssh key, clones the repo, and installs tools needed.
 
 ```zsh
-curl -fsSL https://raw.githubusercontent.com/tanema/dotfiles/main/scripts/start | bash
+curl -fsSL https://raw.githubusercontent.com/tanema/dotfiles/main/install | bash
 ```
 ## Updates
-If any updates are needed a script call `dotupdate` is linked in `~/.local/bin` so 
-at anytime you can call `dotupdate` to update those deps.
-
-## First Setup and Maintenance Strategy
-A fresh setup almost never goes exactly as expected because deps change, environments change,
-and so on. So breaking up the setup in the makefile into many steps that can be called
-individually, allows me to be able to pick up the pieces after something inevitably fails.
+If any updates are needed a script call `dup` is linked in `~/.local/bin` so 
+at anytime you can call `dup` to update those deps.
 
 ## Config Strategy
-I have tried hard to assert XDG setup in my environments so that my $HOME does not
+I have tried hard to assert XDG setup in my environments so that my `$HOME` does not
 become cluttered with a mess of dotfiles. See `config/zsh/xdg_setup.sh` for my setup.
 
-## Git Config
+## Git Local Config
 I like to keep my gitconfig in the dotfiles, however I usually need a different key
 and email for each machine so I use an include directive in `config/git/config`
 and include the `~/.gitconfig.local` to change keys and emails.

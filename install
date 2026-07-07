@@ -1,0 +1,110 @@
+#!/usr/bin/env zsh
+# Main install script to setup links to dotfiles that are in this repo. This can be called
+# locally after cloning the repo or through curling the file and pipeing it to bash.
+
+declare -A confLinks=(
+	[config/git]="$HOME/.config/git" 
+	[config/tmux]="$HOME/.config/tmux" 
+	[config/nvim]="$HOME/.config/nvim"
+	[config/homebrew]="$HOME/.config/homebrew"
+	[config/claude]="$HOME/.config/claude"
+	[config/zsh]="$HOME/.config/zsh"
+	[config/ssh/config]="$HOME/.ssh/config"
+	[config/zsh/zshrc]="$HOME/.zshrc"
+	[config/bin/dup]="$HOME/.local/bin/dup"
+)
+
+# Required directories that just need to exist for other actions or for the config
+# to work correctly
+defaultDirs=(
+	"$HOME/.ssh"
+	"$HOME/workspace"
+	# Enure XDG folders are setup
+	"$HOME/.config" 
+ 	"$HOME/.local"
+	"$HOME/.cache"
+	# Local Bin folder for linked commands
+	"$HOME/.local/bin"
+	# History File Locations
+	"$HOME/.local/share/less" 
+	"$HOME/.local/share/zsh"
+)
+                                                                
+echo "╔═══════════════════════════════════════════════════════════════════════╗"
+echo "║╔═════════════════════════════════════════════════════════════════════╗║"
+echo "║║   █████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗██╗   ║║"
+echo "║║   █╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝██║   ║║"
+echo "║║   █║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗██║   ║║"
+echo "║║   █║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║╚═╝   ║║"
+echo "║║   █████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║██╗   ║║"
+echo "║║   ═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝╚═╝   ║║"
+echo "║╚═════════════════════════════════════════════════════════════════════╝║"
+echo "╚═══════════════════════════════════════════════════════════════════════╝"
+
+echo "=== resetting env ==="
+for value in "${confLinks[@]}"; do 
+	echo "  🔥 $value"
+	rm -rf $value; 
+done
+echo "✅ clean."
+
+echo "=== creating default directories ==="
+for item in "${defaultDirs[@]}"; do
+	echo "  🗂️ Creating Dir: '$item'"
+	mkdir -p "$item"
+done
+# Create gitconfig.local so that our gitconfig will not break.
+touch $HOME/.gitconfig.local
+echo "✅ default directories in place."
+
+# Ensure we have our ssh key setup if this is the first time.
+if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+	echo "==== generating a new ssh key"
+	mkdir -p $HOME/.ssh
+	ssh-keygen -t rsa -b 4096 -C "timanema@gmail.com"
+	eval "$(ssh-agent -s)"
+	ssh-add -K $HOME/.ssh/id_rsa
+	cat $HOME/.ssh/id_rsa.pub | pbcopy
+	open "https://github.com/settings/keys"
+	read -p "New ssh key is in clipboard add it to github and press enter to continue ..."
+fi
+
+# This might be a call from curl pipes to bash so we might not have the repo yet.
+if [ ! -f "$HOME/workspace/dotfiles" ]; then
+	echo "=== Cloning dotfiles"
+	mkdir -p $HOME/workspace
+	git clone git@github.com:tanema/dotfiles.git $HOME/workspace/dotfiles
+fi
+
+echo "=== linking config files ==="
+for key value in "${(@kv)confLinks}"; do 
+	echo "  🌊 Linking $HOME/workspace/dotfiles/$key => $value"
+	ln -sf "$HOME/workspace/dotfiles/$key" "$value"
+done
+echo "✅ config files linked"
+
+echo "=== ensuring xcode is setup ==="
+xcode-select --install
+echo "✅ command line tools installed"
+
+echo "=== installing homebrew ==="
+if ! command -v brew >/dev/null 2>&1; then
+	sudo true
+	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+	/opt/homebrew/bin/brew shellenv | eval
+fi
+echo "✅ Homebrew installed"
+
+# Calling our linked update command it will install the tools we need for following
+# commands
+dup
+
+echo "=== setting up GPG ==="
+GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
+if [[ -z $GPG_COUNT ]]; then
+	gpg --default-new-key-algo rsa4096 --gen-key
+	gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
+	open "https://github.com/settings/keys"
+	read -p "New gpg key is in clipboard add it to github and press enter to continue ..."
+fi
+echo "✅ gpg setup complete"
