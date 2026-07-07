@@ -16,14 +16,6 @@
       "rev": "427b576c16792edad01a92b89721d923c19ad60f",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
-    "vim-commentary": {
-      "rev": "64a654ef4a20db1727938338310209b6a63f60c9",
-      "src": "https://github.com/tpope/vim-commentary"
-    },
-    "vim-fugitive": {
-      "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
-      "src": "https://github.com/tpope/vim-fugitive"
-    },
     "vim-gitgutter": {
       "rev": "21c977e8597c468c7dc76001389b0b430d46a4b0",
       "src": "https://github.com/airblade/vim-gitgutter"
@@ -35,10 +27,6 @@
     "vim-svelte-plugin": {
       "rev": "f80ff67a94e3ac279fe55ecdf55ad7342f4a5228",
       "src": "https://github.com/leafOfTree/vim-svelte-plugin"
-    },
-    "vim-vinegar": {
-      "rev": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6",
-      "src": "https://github.com/tpope/vim-vinegar"
     }
   }
 }
