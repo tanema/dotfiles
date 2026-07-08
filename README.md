@@ -1,4 +1,5 @@
-# Tims Dotfiles
+Tims Dotfiles
+-------------
 
 Run this command and hope to hell most of the work is done for you. This script sets up the 
 computer's ssh key, clones the repo, and installs tools needed.

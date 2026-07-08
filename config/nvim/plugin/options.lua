@@ -28,6 +28,8 @@ vim.opt.wildmenu = true
 vim.opt.termguicolors = true
 vim.opt.updatetime = 100
 vim.opt.completeopt = { "menu", "noinsert", "popup", "preview" }
+vim.opt.spelllang = 'en_gb'
+
 
 if vim.fn.executable('rg') then -- Use rg over grep
 	vim.opt.grepprg = "rg --vimgrep --smart-case"

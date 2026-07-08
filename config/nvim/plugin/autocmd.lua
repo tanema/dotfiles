@@ -1,10 +1,28 @@
+local fileUtils = require('fileutils')
+local gitgutter = require('gitgutter')
+
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 	desc = "Automatically opens quickfix when needed.",
 	group = vim.api.nvim_create_augroup("AutoQuickfix", { clear = true }),
-	pattern = "[^l]*", -- Targets all quickfix commands (excludes location list commands like :lgrep)
-	callback = function()
-		vim.cmd("cwindow") -- Opens quickfix
+	pattern = "[^l]*",                           -- Targets all quickfix commands (excludes location list commands like :lgrep)
+	callback = function() vim.cmd("cwindow") end, -- Opens quickfix
+})
+
+-- vim-vinegar type navigation
+-- TODO reminder we wont need this in nvim 0.13.x
+-- https://www.reddit.com/r/neovim/comments/1uh24id/new_builtin_directory_viewer/
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = 'netrw',
+	callback = function(ev)
+		vim.keymap.set('n', '-', fileUtils.navigateUp, { desc = 'Navigate up', buffer = ev.buf })
+		vim.keymap.set('n', '~', ':edit ~/<CR>', { desc = 'Open $HOME', buffer = ev.buf })
 	end,
+})
+
+-- git-gutter port of only the stuff I use
+vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost', 'BufEnter', 'FocusGained' }, {
+	group = vim.api.nvim_create_augroup('gitgutter', { clear = true }),
+	callback = function(args) gitgutter.update(args.buf) end,
 })
 
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {

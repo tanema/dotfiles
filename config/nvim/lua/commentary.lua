@@ -60,6 +60,13 @@ local function toggle_comment(start_line, end_line)
 	vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, new_lines)
 end
 
-vim.keymap.set('x', 'gc', function()
-	toggle_comment(vim.fn.line("'<"), vim.fn.line("'>"))
-end, { desc = 'Toggle comment on selection' })
+
+return {
+	toggle = function()
+		toggle_comment(vim.fn.line("'<"), vim.fn.line("'>"))
+	end,
+	toggle_line = function()
+		local line = vim.fn.line('.')
+		toggle_comment(line, line)
+	end,
+}

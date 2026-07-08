@@ -4,9 +4,9 @@
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
-    "jellybeans.nvim": {
-      "rev": "29f4c17981f70c0919c2f3f918da9a89f906bf37",
-      "src": "https://github.com/wtfox/jellybeans.nvim"
+    "dracula.nvim": {
+      "rev": "ae752c13e95fb7c5f58da4b5123cb804ea7568ee",
+      "src": "https://github.com/Mofiqul/dracula.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
@@ -15,14 +15,6 @@
     "telescope.nvim": {
       "rev": "427b576c16792edad01a92b89721d923c19ad60f",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
-    },
-    "vim-gitgutter": {
-      "rev": "21c977e8597c468c7dc76001389b0b430d46a4b0",
-      "src": "https://github.com/airblade/vim-gitgutter"
-    },
-    "vim-surround": {
-      "rev": "3d188ed2113431cf8dac77be61b842acb64433d9",
-      "src": "https://github.com/tpope/vim-surround"
     },
     "vim-svelte-plugin": {
       "rev": "f80ff67a94e3ac279fe55ecdf55ad7342f4a5228",
