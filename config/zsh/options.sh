@@ -1,6 +1,4 @@
-export HISTSIZE=50000
-export SAVEHIST=10000
-
+# Better history usage
 autoload -U compinit; compinit
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -8,6 +6,7 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
+# ZSH specific settings.
 setopt autocd                 # name a directory to navigate to it.
 setopt NO_BEEP                # no dang bell
 setopt EXTENDED_HISTORY       # Write the history file in the ":start:elapsed;command" format.

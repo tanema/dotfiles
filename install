@@ -50,7 +50,7 @@ echo "✅ clean."
 
 echo "=== creating default directories ==="
 for item in "${defaultDirs[@]}"; do
-	echo "  🗂️ Creating Dir: '$item'"
+	echo "  🗂️ $item"
 	mkdir -p "$item"
 done
 # Create gitconfig.local so that our gitconfig will not break.

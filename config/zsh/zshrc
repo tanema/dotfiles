@@ -1,4 +1,5 @@
 source "$HOME/.config/zsh/xdg_setup.sh"
+source "$ZSH/variables.sh"
 source "$ZSH/options.sh"
 source "$ZSH/path_setup.sh"
 source "$ZSH/alias.sh"

@@ -23,8 +23,8 @@ and include the `~/.gitconfig.local` to change keys and emails.
 ## Plugin Strategy
 No plugin managers or LSP managers. Whenever a tool is needed for nvim, zsh or tmux:
 
-- Add tool to config/homebrew/Brewfile or add an install command to the `./scripts/dotupdate` script.
-- Run `dotupdate` to install it.
+- Add tool to config/homebrew/Brewfile or add an install command to the `./scripts/dup` script.
+- Run `dup` to install it.
 - Add config to use it.
     - In `zsh` source the tool
     - In `nvim` add config. (See: `config/nvim/lsp` files)
