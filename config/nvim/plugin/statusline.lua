@@ -1,13 +1,13 @@
 local palette = require('dracula.palette')
 
 vim.api.nvim_set_hl(0, 'SLNormal', { fg = palette.bg, bg = palette.cyan })
-vim.api.nvim_set_hl(0, 'SLInsert', { fg = palette.fg, bg = palette.pink })
-vim.api.nvim_set_hl(0, 'SLVisual', { fg = palette.fg, bg = palette.bright_blue })
-vim.api.nvim_set_hl(0, 'SLSelect', { fg = palette.fg, bg = palette.bright_green })
-vim.api.nvim_set_hl(0, 'SLReplace', { fg = palette.fg, bg = palette.bright_red })
-vim.api.nvim_set_hl(0, 'SLCommand', { fg = palette.fg, bg = palette.bright_magenta })
-vim.api.nvim_set_hl(0, 'SLConfirm', { fg = palette.fg, bg = palette.orange })
-vim.api.nvim_set_hl(0, 'SLTerminal', { fg = palette.fg, bg = palette.green })
+vim.api.nvim_set_hl(0, 'SLInsert', { fg = palette.fg, bg = palette.green })
+vim.api.nvim_set_hl(0, 'SLVisual', { fg = palette.fg, bg = palette.red })
+vim.api.nvim_set_hl(0, 'SLSelect', { fg = palette.fg, bg = palette.yellow })
+vim.api.nvim_set_hl(0, 'SLReplace', { fg = palette.fg, bg = palette.yellow })
+vim.api.nvim_set_hl(0, 'SLCommand', { fg = palette.fg, bg = palette.orange })
+vim.api.nvim_set_hl(0, 'SLConfirm', { fg = palette.fg, bg = palette.purple })
+vim.api.nvim_set_hl(0, 'SLTerminal', { fg = palette.fg, bg = palette.purple })
 vim.api.nvim_set_hl(0, 'User1', { fg = palette.fg, bg = palette.bg })
 
 local mode_map = {
