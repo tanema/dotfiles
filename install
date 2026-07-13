@@ -7,7 +7,10 @@ declare -A confLinks=(
 	[config/tmux]="$HOME/.config/tmux" 
 	[config/nvim]="$HOME/.config/nvim"
 	[config/homebrew]="$HOME/.config/homebrew"
-	[config/claude]="$HOME/.config/claude"
+	[config/claude/CLAUDE.md]="$HOME/.config/claude/CLAUDE.md"
+	[config/claude/RTK.md]="$HOME/.config/claude/RTK.md"
+	[config/claude/settings.json]="$HOME/.config/claude/settings.json"
+	[config/claude/statusline-command.sh]="$HOME/.config/claude/statusline-command.sh"
 	[config/zsh]="$HOME/.config/zsh"
 	[config/ssh/config]="$HOME/.ssh/config"
 	[config/zsh/zshrc]="$HOME/.zshrc"
@@ -20,11 +23,14 @@ declare -a defaultDirs=(
 	"$HOME/.ssh"
 	"$HOME/workspace"
 	# Enure XDG folders are setup
-	"$HOME/.config" 
+	"$HOME/.config"
+	"$HOME/.config/claude"
  	"$HOME/.local"
 	"$HOME/.cache"
 	# Local Bin folder for linked commands
 	"$HOME/.local/bin"
+	# XDG Runtime Directory
+	"$HOME/.local/run"
 	# History File Locations
 	"$HOME/.local/share/less" 
 	"$HOME/.local/share/zsh"
@@ -44,7 +50,7 @@ echo "╚═══════════════════════�
 echo "=== resetting env ==="
 for value in "${confLinks[@]}"; do 
 	echo "  🔥 $value"
-	rm -rf $value; 
+	rm -rf "$value";
 done
 echo "✅ clean."
 
@@ -61,16 +67,17 @@ echo "✅ default directories in place."
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then
 	echo "==== generating a new ssh key"
 	mkdir -p $HOME/.ssh
-	ssh-keygen -t rsa -b 4096 -C "timanema@gmail.com"
+	read -r "ssh_email?Enter your email for the SSH key: "
+	ssh-keygen -t rsa -b 4096 -C "$ssh_email"
 	eval "$(ssh-agent -s)"
-	ssh-add -K $HOME/.ssh/id_rsa
+	ssh-add --apple-use-keychain $HOME/.ssh/id_rsa
 	cat $HOME/.ssh/id_rsa.pub | pbcopy
 	open "https://github.com/settings/keys"
 	read -p "New ssh key is in clipboard add it to github and press enter to continue ..."
 fi
 
 # This might be a call from curl pipes to bash so we might not have the repo yet.
-if [ ! -f "$HOME/workspace/dotfiles" ]; then
+if [ ! -d "$HOME/workspace/dotfiles" ]; then
 	echo "=== Cloning dotfiles"
 	mkdir -p $HOME/workspace
 	git clone git@github.com:tanema/dotfiles.git $HOME/workspace/dotfiles
@@ -84,24 +91,24 @@ done
 echo "✅ config files linked"
 
 echo "=== ensuring xcode is setup ==="
-xcode-select --install
+xcode-select --install 2>/dev/null || true
 echo "✅ command line tools installed"
 
 echo "=== installing homebrew ==="
 if ! command -v brew >/dev/null 2>&1; then
 	sudo true
 	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
-	/opt/homebrew/bin/brew shellenv | eval
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 echo "✅ Homebrew installed"
 
 # Calling our linked update command it will install the tools we need for following
 # commands
-dup
+$HOME/.local/bin/dup
 
 echo "=== setting up GPG ==="
 GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
-if [[ -z $GPG_COUNT ]]; then
+if [[ $GPG_COUNT -eq 0 ]]; then
 	gpg --default-new-key-algo rsa4096 --gen-key
 	gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
 	open "https://github.com/settings/keys"

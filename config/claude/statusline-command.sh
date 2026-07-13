@@ -7,7 +7,7 @@ if git -C "$cwd" --no-optional-locks rev-parse --is-inside-work-tree &>/dev/null
   branch=$(git -C "$cwd" --no-optional-locks symbolic-ref --quiet --short HEAD 2>/dev/null)
 fi
 git_status="🍗"
-if [[ -n "$(git --no-optional-locks status --porcelain -unormal --ignore-submodules=dirty)" ]]; then
+if [[ -n "$(git -C "$cwd" --no-optional-locks status --porcelain -unormal --ignore-submodules=dirty)" ]]; then
   git_status="🍖"
 fi
 
