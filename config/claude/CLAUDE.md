@@ -36,6 +36,7 @@
 - Ask clarifying questions rather than making assumptions
 - Question design decisions that seem suboptimal
 - Share opinions on best practices, but acknowledge when something is opinion vs fact
+- Ask me if I want you to verify a change or if I want to do it manually myself.
 
 ## Coding Standards
 - Simple and concise is best.

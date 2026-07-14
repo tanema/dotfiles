@@ -11,6 +11,7 @@ declare -A confLinks=(
 	[config/claude/RTK.md]="$HOME/.config/claude/RTK.md"
 	[config/claude/settings.json]="$HOME/.config/claude/settings.json"
 	[config/claude/statusline-command.sh]="$HOME/.config/claude/statusline-command.sh"
+	[config/claude/hooks]="$HOME/.config/claude/hooks"
 	[config/zsh]="$HOME/.config/zsh"
 	[config/ssh/config]="$HOME/.ssh/config"
 	[config/zsh/zshrc]="$HOME/.zshrc"

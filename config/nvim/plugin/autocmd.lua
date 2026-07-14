@@ -1,4 +1,3 @@
-local fileUtils = require('fileutils')
 local gitgutter = require('gitgutter')
 
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
@@ -8,14 +7,21 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 	callback = function() vim.cmd("cwindow") end, -- Opens quickfix
 })
 
--- vim-vinegar type navigation
--- TODO reminder we wont need this in nvim 0.13.x
--- https://www.reddit.com/r/neovim/comments/1uh24id/new_builtin_directory_viewer/
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'netrw',
+-- Neovim's built-in .sh detector only recognizes shell dialects (bash/zsh/ksh/csh)
+-- in the shebang and silently defaults to "sh" otherwise, so a .sh file with e.g.
+-- a ruby or python shebang gets the wrong filetype. Re-run hashbang matching to fix it.
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Correct filetype for .sh files whose shebang isn't actually a shell",
+	group = vim.api.nvim_create_augroup("shebang-filetype", { clear = true }),
+	pattern = "sh",
 	callback = function(ev)
-		vim.keymap.set('n', '-', fileUtils.navigateUp, { desc = 'Navigate up', buffer = ev.buf })
-		vim.keymap.set('n', '~', ':edit ~/<CR>', { desc = 'Open $HOME', buffer = ev.buf })
+		local shebang = vim.api.nvim_buf_get_lines(ev.buf, 0, 1, false)
+		if not shebang[1] or not shebang[1]:match("^#!") then return end
+
+		local ft = vim.filetype.match({ contents = shebang })
+		if ft and ft ~= "sh" then
+			vim.bo[ev.buf].filetype = ft
+		end
 	end,
 })
 

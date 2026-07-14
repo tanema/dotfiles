@@ -38,6 +38,16 @@
 					}
 				]
 			}
+		],
+		"MessageDisplay": [
+			{
+				"hooks": [
+					{
+						"type": "command",
+						"command": "$HOME/.config/claude/hooks/wordswap.sh"
+					}
+				]
+			}
 		]
 	},
 	"statusLine": {
