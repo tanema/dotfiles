@@ -109,7 +109,7 @@ $HOME/.local/bin/dup
 
 echo "=== setting up GPG ==="
 GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
-if [[ $GPG_COUNT -eq 0 ]]; then
+if [[ -z "$GPG_COUNT" ]]; then
 	gpg --default-new-key-algo rsa4096 --gen-key
 	gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
 	open "https://github.com/settings/keys"
