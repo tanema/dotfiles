@@ -2,10 +2,11 @@
 require 'json'
 
 replacements = {
-    "seam": "whatchamacallit",
+    "seam": "thing",
     "you're absolutely right": "I'm a complete clown",
-    "honest take": "spicy doodad",
-    "load-bearing": "cooked"
+    "honest take": "garbage output",
+    "load-bearing": "bricked up",
+    "Cooked": "🔥🌎🔥"
 }
 
 data = JSON.parse($stdin.read)
