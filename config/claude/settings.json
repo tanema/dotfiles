@@ -6,6 +6,9 @@
 	},
 	"permissions": {
 		"allow": [
+			"Bash(go build *)",
+			"Bash(go test *)",
+			"Bash(go vet *)",
 			"Bash(rtk ls *)",
 			"Bash(rtk find *)",
 			"Bash(rtk wc *)",
