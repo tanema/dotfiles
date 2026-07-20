@@ -6,9 +6,6 @@ return {
 		disable_codeactions = true, -- refactor on this lsp for some reason changes param orders
 		Lua = {
 			["$schema"] = "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
-			runtime = {
-				version = "LuaJIT",
-			},
 			diagnostics = {
 				globals = { "vim" },
 			},

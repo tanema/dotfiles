@@ -29,6 +29,7 @@ config/nvim
 - Load `plugin/**/*.{vim,lua}` 
     - directories with a `after` suffix will be loaded with the after directory.
 - Load `start/**/*.{vim,lua}`
+- Load `after/**/*.{vim,lua}`
 
 ## Useful
 - Load without plugins or syntax highlighting `nvim -u NONE`

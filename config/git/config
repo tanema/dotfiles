@@ -1,22 +1,37 @@
+[core]
+  editor = nvim
+  commitGraph = true
+[color]
+  ui = true
+[init]
+  defaultBranch = main
+[column]
+  ui = auto 
+[help]
+  autocorrect = 5
 [include]
 	# Allow computer settings so each computer can have different emails and signing keys
   path = ~/.gitconfig.local
 [user]
   name = Tim Anema
 [diff]
-  tool = vimdiff
+  tool = nvim -d
   algorithm = histogram
-  colorMoved = plain
+  colorMoved = dimmed-zebra
+  colorMovedWs = ignore-space-change
   mnemonicPrefix = true
   renames = true
+	context = 10
 [push]
-  default = simple
+  default = current
   autoSetupRemote = true
   followTags = true
 [pull]
   rebase = true
   prune = true
   default = current
+[merge]
+  conflictstyle = zdiff3
 [rerere]
   enabled = true
   autoupdate = true
@@ -41,18 +56,7 @@
   version = 2
 [gc]
   writeCommitGraph = true
-[help]
-  autocorrect = prompt
 [branch]
   sort = -committerdate
 [tag]
   sort = version:refname
-[init]
-  defaultBranch = main
-[column]
-  ui = auto
-[core]
-  editor = nvim
-  commitGraph = true
-[color]
-  ui = true

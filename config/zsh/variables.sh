@@ -14,6 +14,7 @@ export SAVEHIST=50000
 export VISUAL=nvim
 # EDITOR = fallback for line-oriented editors 
 export EDITOR=nvim
+export GIT_EDITOR=nvim
 
 # MANPAGER overrides PAGER specifically for man pages, taking precedence over both PAGER and the man default
 # Using nvims pager makes man pages a lot more friendly
