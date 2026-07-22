@@ -27,6 +27,7 @@ else
 fi
 
 echo "=== Brew Bundle ==="
+/opt/homebrew/bin/brew update
 /opt/homebrew/bin/brew bundle --global --quiet
 echo "✅ homebrew bundle updated."
 
