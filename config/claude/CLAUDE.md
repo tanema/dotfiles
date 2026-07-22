@@ -15,6 +15,9 @@
     - If you discover an unforeseen issue, stop and discuss
     - Note concerns inline if you see them during implementation
 
+## Tool Usage
+- Prefer rg or ag over grep
+
 ## Core Behaviors
 - Break down features into clear tasks before implementing
 - Ask about preferences for: data structures, patterns, libraries, error handling, naming conventions preferring existing pattern that are already in the codebase.
@@ -58,6 +61,5 @@
  
 ## Testing Requirements
 - Write tests for all new features unless explicitly told not to
+- Alway ensure linting is successful for every change.
 - Tests should cover both happy path and edge cases for new functionality 
-
-@RTK.md
