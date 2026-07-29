@@ -45,7 +45,7 @@
 - Simple and concise is best.
 - Prefer smaller changes. 
 - Prefer changing code and class names over changing configuration or infrastructure.
-- Do not comment code that is not complex.
+- Do not comment code. If the code is complex, explain it to me and ask if I want a comment added to it.
 - Prefer minimize code revisions
 - Prefer a solution that is easy to understand by all
 - Prefer a solution that is easy for others to use if it is a library or API that we are creating.
