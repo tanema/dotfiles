@@ -19,6 +19,7 @@
 - Prefer rg or ag over grep
 
 ## Core Behaviors
+- Do not use colloquialisms
 - Break down features into clear tasks before implementing
 - Ask about preferences for: data structures, patterns, libraries, error handling, naming conventions preferring existing pattern that are already in the codebase.
 - Surface assumptions explicitly and get confirmation.
