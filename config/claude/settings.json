@@ -122,5 +122,6 @@
   "theme": "dark-daltonized",
   "showTurnDuration": true,
   "editormode": "vim",
-  "effort": "medium"
+  "effort": "medium",
+  "awaySummaryEnabled": false
 }

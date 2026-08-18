@@ -34,3 +34,7 @@ echo "✅ homebrew bundle updated."
 echo "=== NPM deps ==="
 "$(brew --prefix)/bin/npm" install -g --silent svelte-language-server
 echo "✅ npm packages updated."
+
+echo "=== Cargo deps ==="
+cargo install ebnfer
+echo "✅ cargo packages updated."

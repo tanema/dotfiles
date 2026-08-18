@@ -1,6 +1,6 @@
 vim.g.netrw_banner = 0
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro" -- order setting
-vim.g.netrw_localrmdir = "rm -r"                         -- Allow netrw to remove non-empty local directories
+vim.g.netrw_localrmdir = "rm -r" -- Allow netrw to remove non-empty local directories
 vim.g.netrw_list_hide = [[^\./$,^\.\./$]]
 
 vim.opt.background = "dark"
@@ -27,16 +27,25 @@ vim.opt.switchbuf:append({ "usetab", "newtab" }) -- this will make it switch to 
 vim.opt.wildmenu = true
 vim.opt.termguicolors = true
 vim.opt.updatetime = 100
-vim.opt.completeopt = { "menu", "noinsert", "popup", "preview" }
-vim.opt.spelllang = 'en_gb'
+vim.opt.completeopt = { -- tab complete opts
+  "menu", -- Use a popup menu to show the possible completions.
+  "menuone", -- Use the popup menu also when there is only one match.
+  "noinsert", -- Do not insert any text for a match until the user selects a match from the menu.
+  -- "noselect", -- Same as "noinsert", except that no menu item is pre-selected.
+  "popup", -- Show extra information about the currently selected completion in a popup window.
+  "preview", -- Show extra information about the currently selected completion in the preview window.
+  -- "preselect", -- When one of complete-items has its "preselect" field set, select the first such item
+  "fuzzy", -- Enable fuzzy-matching for completion candidates.
+}
+vim.opt.spelllang = "en_gb"
 
-if vim.fn.executable('rg') then -- Use rg over grep
-	vim.opt.grepprg = "rg --vimgrep --smart-case"
-	vim.opt.grepformat = "%f:%l:%c:%m"
+if vim.fn.executable("rg") then -- Use rg over grep
+  vim.opt.grepprg = "rg --vimgrep --smart-case"
+  vim.opt.grepformat = "%f:%l:%c:%m"
 end
 
 local colorColumns = { "80" }
 for i = 120, 200 do
-	table.insert(colorColumns, i)
+  table.insert(colorColumns, i)
 end
 vim.opt.colorcolumn = colorColumns

@@ -38,7 +38,7 @@ brew 'gopls'
 
 # Lua
 brew 'lua'
-brew 'lua-language-server'
+brew 'luajit'
 brew 'stylua'
 
 # Rust
