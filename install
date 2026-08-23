@@ -16,6 +16,7 @@ declare -A confLinks=(
 	[config/ssh/config]="$HOME/.ssh/config"
 	[config/zsh/zshrc]="$HOME/.zshrc"
 	[config/bin/dup]="$HOME/.local/bin/dup"
+	[config/bin/rebase]="$HOME/.local/bin/rebase"
 )
 
 # Required directories that just need to exist for other actions or for the config
