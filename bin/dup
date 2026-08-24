@@ -10,38 +10,39 @@ echo '│  \:\ \:\ \ \: ___\/  \:\ \ \ \ \:: __  \ \   \::\ \    \::___\/_ │'
 echo '│   \:\_\:\ \ \ \ \     \:\/.:| | \:.\ \  \ \   \::\ \    \:\____/\│'
 echo '│    \_____\/  \_\/      \____/_/  \__\/\__\/    \__\/     \_____\/│'
 echo '╚──────────────────────────────────────────────────────────────────╝'
-echo '\033[0m"'
+echo '\033[0m'
 
 DOTFILES_DIR="$HOME/workspace/dotfiles"
 BIN="$(brew --prefix)/bin"
 
-echo "=== Dotfiles repo ==="
+printf "\033[32m=== Repo ===\033[0m"
 "$BIN/git" -C "$DOTFILES_DIR" fetch --quiet
 if [[ "$($BIN/git -C "$DOTFILES_DIR" rev-parse @)" != "$($BIN/git -C "$DOTFILES_DIR" rev-parse @{u})" ]]; then
 	if [[ -n "$($BIN/git -C "$DOTFILES_DIR" status --porcelain)" ]]; then
-		echo "⚠️  dotfiles repo is behind remote, commit or stash local changes before updating"
+		echo " ⚠️  dotfiles repo is behind remote, commit or stash local changes before updating"
+		exit
 	else
-		echo "⬇️  pulling latest dotfiles"
 		$BIN/git -C "$DOTFILES_DIR" pull --ff-only
 	fi
+	echo " ✅"
 else
-	echo "✅ dotfiles up to date."
+	echo " ✅"
 fi
 
-echo "=== Brew Bundle ==="
-"$BIN/brew" update
+printf "\033[32m=== Brew Bundle ===\033[0m"
+"$BIN/brew" update --quiet
 "$BIN/brew" bundle cleanup --global --quiet --all --force
 "$BIN/brew" bundle install --global --quiet
 "$BIN/brew" cleanup --quiet --scrub
-echo "✅ homebrew bundle updated."
 
-echo "=== Neovim Packages ==="
+printf "\033[32m=== Neovim Packages ===\033[0m"
 "$BIN/nvim" . -c :PackUpdate!
+echo " ✅"
 
-echo "=== NPM deps ==="
+printf "\033[32m=== NPM deps ===\033[0m"
 "$BIN/npm" install -g --silent svelte-language-server
-echo "✅ npm packages updated."
+echo " ✅"
 
-echo "=== Cargo deps ==="
-cargo install ebnfer
-echo "✅ cargo packages updated."
+printf "\033[32m=== Cargo deps ===\033[0m"
+cargo install --quiet ebnfer
+echo " ✅"

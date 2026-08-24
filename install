@@ -15,8 +15,6 @@ declare -A confLinks=(
 	[config/zsh]="$HOME/.config/zsh"
 	[config/ssh/config]="$HOME/.ssh/config"
 	[config/zsh/zshrc]="$HOME/.zshrc"
-	[bin/dup]="$HOME/.local/bin/dup"
-	[bin/rebase]="$HOME/.local/bin/rebase"
 )
 
 # Required directories that just need to exist for other actions or for the config
@@ -51,21 +49,25 @@ echo "║╚══════════════════════�
 echo "╚═══════════════════════════════════════════════════════════════════════╝"
 echo '\033[0m'
 
-echo "\033[32m=== resetting env ===\033[0m"
+printf "\033[32m=== resetting env ===\033[0m"
 for value in "${confLinks[@]}"; do 
-	echo "  🔥 $value"
 	rm -rf "$value";
 done
-echo "✅ clean."
+if [ -d "$HOME/workspace/dotfiles" ]; then
+	for item in $HOME/workspace/dotfiles/bin/*; do
+		toolpath="$HOME/.local/bin/$(basename $item)"
+		rm -rf "$toolpath";
+	done
+fi
+echo " ✅"
 
-echo "\033[32m=== creating default directories ===\033[0m"
+printf "\033[32m=== creating default directories ===\033[0m"
 for item in "${defaultDirs[@]}"; do
-	echo "  🗂️ $item"
 	mkdir -p "$item"
 done
 # Create gitconfig.local so that our gitconfig will not break.
 touch $HOME/.gitconfig.local
-echo "✅ default directories in place."
+echo " ✅"
 
 # Ensure we have our ssh key setup if this is the first time.
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then
@@ -87,35 +89,40 @@ if [ ! -d "$HOME/workspace/dotfiles" ]; then
 	git clone git@github.com:tanema/dotfiles.git $HOME/workspace/dotfiles
 fi
 
-echo "\033[32m=== linking config files ===\033[0m"
+echo "\033[32m=== linking ===\033[0m"
 for key value in "${(@kv)confLinks}"; do 
-	echo "  🌊 Linking $HOME/workspace/dotfiles/$key => $value"
+	echo "  🌊 Linking $key => $value"
 	ln -sf "$HOME/workspace/dotfiles/$key" "$value"
 done
-echo "✅ config files linked"
+for item in $HOME/workspace/dotfiles/bin/*; do
+ 	toolname=$(basename $item)
+	echo "  🌊 Linking bin/$toolname => $HOME/.local/bin/$toolname"
+	ln -sf "$HOME/workspace/dotfiles/bin/$toolname" "$HOME/.local/bin/$toolname"
+done
 
-echo "\033[32m=== ensuring xcode is setup ===\033[0m"
+printf "\033[32m=== ensuring xcode is setup ===\033[0m"
 xcode-select --install 2>/dev/null || true
-echo "✅ command line tools installed"
+echo "✅"
 
-echo "\033[32m=== installing homebrew ===\033[0m"
+printf "\033[32m=== installing homebrew ===\033[0m"
 if ! command -v brew >/dev/null 2>&1; then
 	sudo true
 	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-echo "✅ Homebrew installed"
+echo " ✅"
 
 # Calling our linked update command it will install the tools we need for following
 # commands
 $HOME/.local/bin/dup
 
-echo "\033[32m=== setting up GPG ===\033[0m"
+printf "\033[32m=== setting up GPG ===\033[0m"
 GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
 if [[ -z "$GPG_COUNT" ]]; then
+	echo ""
 	gpg --default-new-key-algo rsa4096 --gen-key
 	gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
 	open "https://github.com/settings/keys"
 	read -p "New gpg key is in clipboard add it to github and press enter to continue ..."
 fi
-echo "✅ gpg setup complete"
+echo " ✅"
