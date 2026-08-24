@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-
+echo '\033[32m'
 echo '╔──────────────────────────────────────────────────────────────────╗'
 echo '│  __  __   ______    ______    ________    _________   ______     │'
 echo '│/_/\/_/\  /_____/\  /_____/\  /_______/\  /________/\ /_____/\    │'
@@ -10,29 +10,36 @@ echo '│  \:\ \:\ \ \: ___\/  \:\ \ \ \ \:: __  \ \   \::\ \    \::___\/_ │'
 echo '│   \:\_\:\ \ \ \ \     \:\/.:| | \:.\ \  \ \   \::\ \    \:\____/\│'
 echo '│    \_____\/  \_\/      \____/_/  \__\/\__\/    \__\/     \_____\/│'
 echo '╚──────────────────────────────────────────────────────────────────╝'
+echo '\033[0m"'
 
 DOTFILES_DIR="$HOME/workspace/dotfiles"
+BIN="$(brew --prefix)/bin"
 
 echo "=== Dotfiles repo ==="
-git -C "$DOTFILES_DIR" fetch --quiet
-if [[ "$(git -C "$DOTFILES_DIR" rev-parse @)" != "$(git -C "$DOTFILES_DIR" rev-parse @{u})" ]]; then
-	if [[ -n "$(git -C "$DOTFILES_DIR" status --porcelain)" ]]; then
+"$BIN/git" -C "$DOTFILES_DIR" fetch --quiet
+if [[ "$($BIN/git -C "$DOTFILES_DIR" rev-parse @)" != "$($BIN/git -C "$DOTFILES_DIR" rev-parse @{u})" ]]; then
+	if [[ -n "$($BIN/git -C "$DOTFILES_DIR" status --porcelain)" ]]; then
 		echo "⚠️  dotfiles repo is behind remote, commit or stash local changes before updating"
 	else
 		echo "⬇️  pulling latest dotfiles"
-		git -C "$DOTFILES_DIR" pull --ff-only
+		$BIN/git -C "$DOTFILES_DIR" pull --ff-only
 	fi
 else
 	echo "✅ dotfiles up to date."
 fi
 
 echo "=== Brew Bundle ==="
-/opt/homebrew/bin/brew update
-/opt/homebrew/bin/brew bundle --global --quiet
+"$BIN/brew" update
+"$BIN/brew" bundle cleanup --global --quiet --all --force
+"$BIN/brew" bundle install --global --quiet
+"$BIN/brew" cleanup --quiet --scrub
 echo "✅ homebrew bundle updated."
 
+echo "=== Neovim Packages ==="
+"$BIN/nvim" . -c :PackUpdate!
+
 echo "=== NPM deps ==="
-"$(brew --prefix)/bin/npm" install -g --silent svelte-language-server
+"$BIN/npm" install -g --silent svelte-language-server
 echo "✅ npm packages updated."
 
 echo "=== Cargo deps ==="

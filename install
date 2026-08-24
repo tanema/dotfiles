@@ -15,8 +15,8 @@ declare -A confLinks=(
 	[config/zsh]="$HOME/.config/zsh"
 	[config/ssh/config]="$HOME/.ssh/config"
 	[config/zsh/zshrc]="$HOME/.zshrc"
-	[config/bin/dup]="$HOME/.local/bin/dup"
-	[config/bin/rebase]="$HOME/.local/bin/rebase"
+	[bin/dup]="$HOME/.local/bin/dup"
+	[bin/rebase]="$HOME/.local/bin/rebase"
 )
 
 # Required directories that just need to exist for other actions or for the config
@@ -38,6 +38,7 @@ declare -a defaultDirs=(
 	"$HOME/.local/share/zsh"
 )
                                                                 
+echo '\033[32m'
 echo "╔═══════════════════════════════════════════════════════════════════════╗"
 echo "║╔═════════════════════════════════════════════════════════════════════╗║"
 echo "║║   █████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗██╗   ║║"
@@ -48,15 +49,16 @@ echo "║║   █████╔╝╚██████╔╝   ██║   �
 echo "║║   ═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝╚═╝   ║║"
 echo "║╚═════════════════════════════════════════════════════════════════════╝║"
 echo "╚═══════════════════════════════════════════════════════════════════════╝"
+echo '\033[0m'
 
-echo "=== resetting env ==="
+echo "\033[32m=== resetting env ===\033[0m"
 for value in "${confLinks[@]}"; do 
 	echo "  🔥 $value"
 	rm -rf "$value";
 done
 echo "✅ clean."
 
-echo "=== creating default directories ==="
+echo "\033[32m=== creating default directories ===\033[0m"
 for item in "${defaultDirs[@]}"; do
 	echo "  🗂️ $item"
 	mkdir -p "$item"
@@ -67,7 +69,7 @@ echo "✅ default directories in place."
 
 # Ensure we have our ssh key setup if this is the first time.
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then
-	echo "==== generating a new ssh key"
+	echo "\033[32m=== generating a new ssh key ===\033[0m"
 	mkdir -p $HOME/.ssh
 	read -r "ssh_email?Enter your email for the SSH key: "
 	ssh-keygen -t rsa -b 4096 -C "$ssh_email"
@@ -80,23 +82,23 @@ fi
 
 # This might be a call from curl pipes to bash so we might not have the repo yet.
 if [ ! -d "$HOME/workspace/dotfiles" ]; then
-	echo "=== Cloning dotfiles"
+	echo "\033[32m=== Cloning dotfiles ===\033[0m"
 	mkdir -p $HOME/workspace
 	git clone git@github.com:tanema/dotfiles.git $HOME/workspace/dotfiles
 fi
 
-echo "=== linking config files ==="
+echo "\033[32m=== linking config files ===\033[0m"
 for key value in "${(@kv)confLinks}"; do 
 	echo "  🌊 Linking $HOME/workspace/dotfiles/$key => $value"
 	ln -sf "$HOME/workspace/dotfiles/$key" "$value"
 done
 echo "✅ config files linked"
 
-echo "=== ensuring xcode is setup ==="
+echo "\033[32m=== ensuring xcode is setup ===\033[0m"
 xcode-select --install 2>/dev/null || true
 echo "✅ command line tools installed"
 
-echo "=== installing homebrew ==="
+echo "\033[32m=== installing homebrew ===\033[0m"
 if ! command -v brew >/dev/null 2>&1; then
 	sudo true
 	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
@@ -108,7 +110,7 @@ echo "✅ Homebrew installed"
 # commands
 $HOME/.local/bin/dup
 
-echo "=== setting up GPG ==="
+echo "\033[32m=== setting up GPG ===\033[0m"
 GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
 if [[ -z "$GPG_COUNT" ]]; then
 	gpg --default-new-key-algo rsa4096 --gen-key
