@@ -5,6 +5,7 @@ brew 'nvim'
 cask 'ghostty'
 brew 'mysql'
 brew 'openssl'
+brew 'gh'
 
 # Clankers
 cask 'claude-code'
