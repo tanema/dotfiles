@@ -31,10 +31,8 @@ vim.opt.completeopt = { -- tab complete opts
   "menu", -- Use a popup menu to show the possible completions.
   "menuone", -- Use the popup menu also when there is only one match.
   "noinsert", -- Do not insert any text for a match until the user selects a match from the menu.
-  -- "noselect", -- Same as "noinsert", except that no menu item is pre-selected.
   "popup", -- Show extra information about the currently selected completion in a popup window.
   "preview", -- Show extra information about the currently selected completion in the preview window.
-  -- "preselect", -- When one of complete-items has its "preselect" field set, select the first such item
   "fuzzy", -- Enable fuzzy-matching for completion candidates.
 }
 vim.opt.spelllang = "en_gb"

@@ -1,6 +1,6 @@
 # This file is entirely devoted to setting up my $PATH variable to ensure a clean
 # and properly ordered $PATH in every environment without having to touch /etc/paths
-# which requires sudo. It also ensure that if anything has touched my /etc/paths
+# which requires sudo. It also ensures that if anything has touched my /etc/paths
 # it will no get touched anyways.
 export PATH=""                                         # reset so my path to empty.
 export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin # use homebrew over any system command
