@@ -4,7 +4,6 @@ vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim", -- dependency for telescope
   "https://github.com/nvim-telescope/telescope.nvim", -- fuzzy interactive file finder
   "https://github.com/leafOfTree/vim-svelte-plugin", -- svelte syntax
-  "https://github.com/Mofiqul/dracula.nvim",
 })
 
 vim.filetype.add({ extension = { ebnf = "ebnf" } })

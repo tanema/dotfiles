@@ -13,7 +13,7 @@ at anytime you can call `dup` to update those deps.
 
 ## Config Strategy
 I have tried hard to assert XDG setup in my environments so that my `$HOME` does not
-become cluttered with a mess of dotfiles. See `config/zsh/xdg_setup.sh` for my setup.
+become cluttered with a mess of dotfiles. See `config/zsh/zshrc` for my setup.
 
 ## Git Local Config
 I like to keep my gitconfig in the dotfiles, however I usually need a different key
