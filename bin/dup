@@ -2,6 +2,7 @@
 
 DOTFILES_DIR="$HOME/workspace/dotfiles"
 BIN="$(brew --prefix)/bin"
+RUBY_VERSION="3.4.10"
 
 printf "\033[32m=== Repo ===\033[0m"
 "$BIN/git" -C "$DOTFILES_DIR" fetch --quiet
@@ -25,6 +26,14 @@ printf "\033[32m=== Brew Bundle ===\033[0m"
 
 printf "\033[32m=== Neovim Packages ===\033[0m"
 "$BIN/nvim" . -c :PackUpdate!
+echo " ✅"
+
+printf "\033[32m=== Ruby Deps ===\033[0m"
+"$BIN/rbenv" init
+eval "$($BIN/rbenv init - --no-rehash zsh)"
+"$BIN/rbenv" install -s $RUBY_VERSION
+"$BIN/rbenv" global $RUBY_VERSION
+"$BIN/rbenv" exec gem install ruby-lsp
 echo " ✅"
 
 printf "\033[32m=== NPM deps ===\033[0m"

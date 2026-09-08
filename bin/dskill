@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+# A simple command to eradicate .DS_Store files from a directory recursively.
+
+find . -name ".DS_Store" \
+       -type f \
+       -print \
+       -delete

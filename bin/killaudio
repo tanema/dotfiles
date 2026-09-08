@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+# A simple command to restart coreaudio on mac when the speakers start popping.
+
+killall coreaudiod
