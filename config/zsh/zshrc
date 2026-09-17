@@ -5,9 +5,83 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="$HOME/.local/run"
 export ZSH="$XDG_CONFIG_HOME/zsh"
 
-source "$ZSH/variables.sh"
-source "$ZSH/options.sh"
-source "$ZSH/path_setup.sh"
-source "$ZSH/alias.sh"
-source "$ZSH/plugins.sh"
+# Shell Vars
+# VISUAL: Programs check VISUAL first, fall back to EDITOR if unset or in a dumb terminal
+# MANPAGER: overrides PAGER specifically for man pages, taking precedence over both PAGER and the man default
+# LANG: controls encoding, sorting, date formats, and more across all programs
+# WORDCHARS: defines which non-alphanumeric characters are considered part of a single word by the line editor
+export DO_NOT_TRACK=1          # Opt out of telemetry for tools that respect this convention 
+export HISTFILE="$XDG_DATA_HOME/zsh/history"
+export HISTSIZE=50000          # HISTSIZE = lines kept in memory per session 
+export SAVEHIST=50000          # SAVEHIST = lines written to HISTFILE on disk 
+export VISUAL=nvim             # VISUAL = full-screen editor (assumed capable terminal); 
+export EDITOR=nvim             # EDITOR = fallback for line-oriented editors  
+export GIT_EDITOR=nvim         # Commit message editor
+export MANPAGER='nvim +Man!'   # Using nvims pager makes man pages a lot more friendly 
+export PAGER="/usr/bin/less"   # PAGER is the default pager for anything that pages output (git log, systemctl, etc.) 
+export LESS='-R -F -X'         # Less Args: -R=ANSI color, -F=Quit if small, -X=dont'clear when exit
+export LESSHISTFILE="$XDG_DATA_HOME/less/history"
+export LANG='en_CA.UTF-8'      # Set to canadian english 
+export COLORTERM=truecolor     # Signals 24-bit truecolor support
+export GPG_TTY=$(tty)          # Required for GPG to find the correct terminal for passphrase prompts and commit signing 
+export BROWSER="/usr/bin/open" # Default browser for tools that open URLs (e.g. gh, some CLIs);  
+export REPORTTIME=5            # Auto-print real/user/sys time for any command that takes longer than this many seconds 
+export WORDCHARS=${WORDCHARS//[\/.-]} # Removing / means path segments are separate words 
+# App Config folders
+export AWS_CLI_HISTORY_FILE="$XDG_DATA_HOME/aws/history"
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_DATA_HOME/aws/credentials"
+export BUNDLE_USER_HOME="$XDG_CONFIG_HOME/bundle"
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GOPATH="$XDG_DATA_HOME/go"
+export KUBECONFIG="$XDG_CONFIG_HOME/kube/config"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump-$HOST"
+
+# Better history usage
+autoload -Uz compinit; compinit -u
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
+# ZSH specific settings.
+setopt autocd                 # name a directory to navigate to it.
+setopt NO_BEEP                # no dang bell
+setopt EXTENDED_HISTORY       # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY          # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_ALL_DUPS   # History won't save duplicates.
+setopt HIST_IGNORE_DUPS       # Don\'t record an entry that was just recorded again.
+setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE      # Don\'t record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS      # Don\'t write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY            # show command with history expansion to user before running it
+setopt INC_APPEND_HISTORY     # automatically append history after every command rather than on exit
+setopt AUTO_MENU              # show completion menu on successive tab press
+setopt COMPLETE_IN_WORD       # Allow completion from within a word/phrase
+setopt ALWAYS_TO_END          # When completing from the middle of a word, move the cursor to the end of the word
+setopt PROMPT_SUBST           # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
+
+# This file is entirely devoted to setting up my $PATH variable to ensure a clean
+# and properly ordered $PATH in every environment without having to touch /etc/paths
+# which requires sudo. It also ensures that if anything has touched my /etc/paths
+# it will no get touched anyways.
+export PATH=""                                         # reset so my path to empty.
+export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin # use homebrew over any system command
+export PATH=$PATH:$HOME/.local/bin                     # custom local system commands if I make them.
+export PATH=$PATH:$GOPATH/bin                          # golang tools
+export PATH=$PATH:$HOME/.cargo/bin                     # rust tools
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin       # local takes precedence over /usr
+export PATH=$PATH:/usr/bin:/usr/sbin                   # usr takes precedence over /
+export PATH=$PATH:/bin:/sbin                           # root tools
+
 source "$ZSH/themes/dracula/dracula.zsh-theme"
+eval "$(mise activate zsh)"

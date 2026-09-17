@@ -1,0 +1,79 @@
+[bootstrap.repos]
+"~/workspace/dotfiles" = { url = "git@github.com:tanema/dotfiles.git", ref = "main" }
+
+[dotfiles]
+"~/.config/git" = { source = "../git", mode = "symlink" }
+"~/.config/tmux" = { source = "../tmux", mode = "symlink" }
+"~/.config/nvim" = { source = "../nvim", mode = "symlink" }
+"~/.config/claude/CLAUDE.md" = { source = "../claude/CLAUDE.md", mode = "symlink" }
+"~/.config/claude/settings.json" = { source = "../claude/settings.json", mode = "symlink" }
+"~/.config/claude/statusline-command.sh" = { source = "../claude/statusline-command.sh", mode = "symlink" }
+"~/.config/claude/hooks" = { source = "../claude/hooks", mode = "symlink" }
+"~/.config/zsh" = { source = "../zsh", mode = "symlink" }
+"~/.ssh/config" = { source = "../ssh/config", mode = "symlink" }
+"~/.zshrc" = { source = "../zsh/zshrc", mode = "symlink" }
+
+[bootstrap.macos.dock]
+autohide = true
+tilesize = 75
+show_recents = false
+
+[bootstrap.macos.finder]
+show_all_files = true
+show_pathbar = true
+preferred_view_style = "column"
+
+[bootstrap.macos.keyboard]
+key_repeat = 2
+initial_key_repeat = 15
+
+[shell_alias]
+reload="source $HOME/.zshrc"
+ls='ls -GoAhFD "%d/%m/%y %H:%M"'
+
+[bootstrap.packages]
+"brew:gnupg" = "latest"
+"brew:openssl@3.0" = "latest"
+"brew-cask:ghostty" = "latest"
+"brew-cask:firefox" = "latest"
+
+[tools]
+neovim = "latest"
+mysql = "latest"
+rg = "15.2.0"
+gh = "2.100.0"
+tmux = "latest"
+claude-code = "latest"
+rtk = "latest"
+ruby = "3.4.10"
+"github:fables-tales/rubyfmt" = "v0.14.1"
+"gem:ruby-lsp" = "v0.26.11"
+node = "26.7.0"
+"npm:typescript-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:@fsouza/prettierd" = "latest"
+"npm:svelte-language-server" = { version = "latest", trust_policy_excludes = ["svelte@4.2.20"] }
+rust = "1.98.1"
+rust-analyzer = "2026-09-14"
+lua = "5.5.1"
+luajit = "latest"
+stylua = "2.5.2"
+"npm:yaml-language-server" = "latest"
+go = "1.27.1"
+golangci-lint = "2.13.2"
+"go:golang.org/x/tools/gopls" = "0.23.0"
+"go:github.com/nametake/golangci-lint-langserver" = "latest"
+zig = "0.16.0"
+"github:zigtools/zls" = "0.16.0"
+"cargo:ebnfer" = "0.1.1"
+ 
+[bootstrap.directories."~/.ssh"]
+[bootstrap.directories."~/workspace"]
+[bootstrap.directories."~/.config"]
+[bootstrap.directories."~/.config/claude"]
+[bootstrap.directories."~/.local"]
+[bootstrap.directories."~/.cache"]
+[bootstrap.directories."~/.local/bin"]
+[bootstrap.directories."~/.local/run"]
+[bootstrap.directories."~/.local/share/less"]
+[bootstrap.directories."~/.local/share/zsh"]

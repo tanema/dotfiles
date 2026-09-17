@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
+if [[ ! -z "$GPG_COUNT" ]]; then; exit 0; fi
+
+echo "\033[32m=== setting up GPG ===\033[0m"
+gpg --default-new-key-algo rsa4096 --gen-key
+gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
+open "https://github.com/settings/keys"
+read -p "New gpg key is in clipboard add it to github and press enter to continue ..."

@@ -2,18 +2,18 @@ Tims Dotfiles
 -------------
 
 Run this command and hope to hell most of the work is done for you. This script sets up the 
-computer's ssh key, clones the repo, and installs tools needed.
+computer's ssh key, clones the repo, and installs tools needed via [mise](https://mise.jdx.dev).
 
 ```zsh
 curl -fsSL https://raw.githubusercontent.com/tanema/dotfiles/main/install | bash
 ```
-## Updates
-If any updates are needed a script call `dup` is linked in `~/.local/bin` so 
-at anytime you can call `dup` to update those deps.
 
 ## Config Strategy
 I have tried hard to assert XDG setup in my environments so that my `$HOME` does not
 become cluttered with a mess of dotfiles. See `config/zsh/zshrc` for my setup.
+
+Config files are symlinked into place declaratively via the `[dotfiles]` table in
+`config/mise/config.toml`, applied as part of `mise bootstrap`.
 
 ## Git Local Config
 I like to keep my gitconfig in the dotfiles, however I usually need a different key
@@ -23,11 +23,10 @@ and include the `~/.gitconfig.local` to change keys and emails.
 ## Plugin Strategy
 No plugin managers or LSP managers. Whenever a tool is needed for nvim, zsh or tmux:
 
-- Add tool to config/homebrew/Brewfile or add an install command to the `./scripts/dup` script.
-- Run `dup` to install it.
-- Add config to use it.
-    - In `zsh` source the tool
-    - In `nvim` add config. (See: `config/nvim/lsp` files)
+- Add the tool to `config/mise/config.toml`: under `[tools]` for versioned dev tools/CLIs,
+  or `[bootstrap.packages]` for system packages and homebrew casks.
+- Run `./install` to install it.
+- Add config to use it. (See lsp config as example: `config/nvim/lsp` files)
 - For any plugins that are not able to be installed in this way, `git clone` them
   to their destination and commit to the dotfiles repo.
     - See `config/zsh/themes/dracula` and it is sourced in the zshrc.

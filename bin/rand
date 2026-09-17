@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-# A simple random string generator good for stubbing passwords
-set -euo pipefail
-
-head -c 16 /dev/urandom | base64 | tr -dc "a-zA-Z0-9"

@@ -1,41 +1,6 @@
 #!/usr/bin/env zsh
 # Main install script to setup links to dotfiles that are in this repo. This can be called
 # locally after cloning the repo or through curling the file and pipeing it to bash.
-
-declare -A confLinks=(
-	[config/git]="$HOME/.config/git" 
-	[config/tmux]="$HOME/.config/tmux" 
-	[config/nvim]="$HOME/.config/nvim"
-	[config/homebrew]="$HOME/.config/homebrew"
-	[config/claude/CLAUDE.md]="$HOME/.config/claude/CLAUDE.md"
-	[config/claude/RTK.md]="$HOME/.config/claude/RTK.md"
-	[config/claude/settings.json]="$HOME/.config/claude/settings.json"
-	[config/claude/statusline-command.sh]="$HOME/.config/claude/statusline-command.sh"
-	[config/claude/hooks]="$HOME/.config/claude/hooks"
-	[config/zsh]="$HOME/.config/zsh"
-	[config/ssh/config]="$HOME/.ssh/config"
-	[config/zsh/zshrc]="$HOME/.zshrc"
-)
-
-# Required directories that just need to exist for other actions or for the config
-# to work correctly
-declare -a defaultDirs=(
-	"$HOME/.ssh"
-	"$HOME/workspace"
-	# Enure XDG folders are setup
-	"$HOME/.config"
-	"$HOME/.config/claude"
- 	"$HOME/.local"
-	"$HOME/.cache"
-	# Local Bin folder for linked commands
-	"$HOME/.local/bin"
-	# XDG Runtime Directory
-	"$HOME/.local/run"
-	# History File Locations
-	"$HOME/.local/share/less" 
-	"$HOME/.local/share/zsh"
-)
-                                                                
 echo '\033[32m'
 echo "╔═══════════════════════════════════════════════════════════════════════╗"
 echo "║╔═════════════════════════════════════════════════════════════════════╗║"
@@ -49,80 +14,41 @@ echo "║╚══════════════════════�
 echo "╚═══════════════════════════════════════════════════════════════════════╝"
 echo '\033[0m'
 
-printf "\033[32m=== resetting env ===\033[0m"
-for value in "${confLinks[@]}"; do 
-	rm -rf "$value";
-done
-if [ -d "$HOME/workspace/dotfiles" ]; then
-	for item in $HOME/workspace/dotfiles/bin/*; do
-		toolpath="$HOME/.local/bin/$(basename $item)"
-		rm -rf "$toolpath";
-	done
-fi
-echo " ✅"
+SSH_CONFIG="$HOME/.ssh"
+CONFIG_DIR="$HOME/.config"
+DOTFILES_DIR="$HOME/workspace/dotfiles"
 
-printf "\033[32m=== creating default directories ===\033[0m"
-for item in "${defaultDirs[@]}"; do
-	mkdir -p "$item"
-done
-# Create gitconfig.local so that our gitconfig will not break.
-touch $HOME/.gitconfig.local
-echo " ✅"
+xcode-select --install 2>/dev/null || true
 
 # Ensure we have our ssh key setup if this is the first time.
-if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+if [ ! -f "$SSH_CONFIG/id_rsa" ]; then
 	echo "\033[32m=== generating a new ssh key ===\033[0m"
-	mkdir -p $HOME/.ssh
+	mkdir -p $SSH_CONFIG
 	read -r "ssh_email?Enter your email for the SSH key: "
 	ssh-keygen -t rsa -b 4096 -C "$ssh_email"
 	eval "$(ssh-agent -s)"
-	ssh-add --apple-use-keychain $HOME/.ssh/id_rsa
-	cat $HOME/.ssh/id_rsa.pub | pbcopy
+	ssh-add --apple-use-keychain $SSH_CONFIG/id_rsa
+	cat $SSH_CONFIG/id_rsa.pub | pbcopy
 	open "https://github.com/settings/keys"
 	read -p "New ssh key is in clipboard add it to github and press enter to continue ..."
 fi
 
-# This might be a call from curl pipes to bash so we might not have the repo yet.
-if [ ! -d "$HOME/workspace/dotfiles" ]; then
-	echo "\033[32m=== Cloning dotfiles ===\033[0m"
-	mkdir -p $HOME/workspace
-	git clone git@github.com:tanema/dotfiles.git $HOME/workspace/dotfiles
+if [ ! -d "$DOTFILES_DIR" ]; then
+	echo "\033[32m=== Cloning Repo ===\033[0m"
+	# This might be a call from curl pipes to bash so we might not have the repo yet.
+	# Once it exists, `[bootstrap.repos]` in config/mise/config.toml takes over keeping it updated.
+	mkdir -p $DOTFILES_DIR && git clone git@github.com:tanema/dotfiles.git "$DOTFILES_DIR"
 fi
-
-echo "\033[32m=== linking ===\033[0m"
-for key value in "${(@kv)confLinks}"; do 
-	echo "  🌊 Linking $key => $value"
-	ln -sf "$HOME/workspace/dotfiles/$key" "$value"
-done
-for item in $HOME/workspace/dotfiles/bin/*; do
- 	toolname=$(basename $item)
-	echo "  🌊 Linking bin/$toolname => $HOME/.local/bin/$toolname"
-	ln -sf "$HOME/workspace/dotfiles/bin/$toolname" "$HOME/.local/bin/$toolname"
-done
-
-printf "\033[32m=== ensuring xcode is setup ===\033[0m"
-xcode-select --install 2>/dev/null || true
-echo "✅"
-
-printf "\033[32m=== installing homebrew ===\033[0m"
-if ! command -v brew >/dev/null 2>&1; then
-	sudo true
-	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
-	eval "$(/opt/homebrew/bin/brew shellenv)"
+# Create gitconfig.local so that our gitconfig will not break, and ~/.config so the
+# mise config symlink below has somewhere to land.
+touch $HOME/.gitconfig.local
+mkdir -p $CONFIG_DIR
+ln -sf "$DOTFILES_DIR/config/mise" "$CONFIG_DIR/mise"
+if ! command -v mise >/dev/null 2>&1; then
+	echo "\033[32m=== installing mise ===\033[0m"
+	curl https://mise.run | sh
 fi
-echo " ✅"
-
-# Calling our linked update command it will install the tools we need for following
-# commands
-$HOME/.local/bin/dup
-
-printf "\033[32m=== setting up GPG ===\033[0m"
-GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
-if [[ -z "$GPG_COUNT" ]]; then
-	echo ""
-	gpg --default-new-key-algo rsa4096 --gen-key
-	gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
-	open "https://github.com/settings/keys"
-	read -p "New gpg key is in clipboard add it to github and press enter to continue ..."
-fi
-echo " ✅"
+mise bootstrap --quiet --yes --skip-dirty
+mise install --quiet --system
+mise run update_nvim
+mise run setup_gpg
