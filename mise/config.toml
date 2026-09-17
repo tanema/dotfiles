@@ -68,11 +68,9 @@ zig = "0.16.0"
 "cargo:ebnfer" = "0.1.1"
  
 [bootstrap.directories."~/.ssh"]
-[bootstrap.directories."~/workspace"]
-[bootstrap.directories."~/.config"]
-[bootstrap.directories."~/.config/claude"]
 [bootstrap.directories."~/.local"]
 [bootstrap.directories."~/.cache"]
+[bootstrap.directories."~/workspace"]
 [bootstrap.directories."~/.local/bin"]
 [bootstrap.directories."~/.local/run"]
 [bootstrap.directories."~/.local/share/less"]

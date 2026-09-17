@@ -14,21 +14,19 @@ echo "║╚══════════════════════�
 echo "╚═══════════════════════════════════════════════════════════════════════╝"
 echo '\033[0m'
 
-SSH_CONFIG="$HOME/.ssh"
-CONFIG_DIR="$HOME/.config"
 DOTFILES_DIR="$HOME/workspace/dotfiles"
 
 xcode-select --install 2>/dev/null || true
 
 # Ensure we have our ssh key setup if this is the first time.
-if [ ! -f "$SSH_CONFIG/id_rsa" ]; then
+if [ ! -f "$HOME/.ssh/id_rsa" ]; then
 	echo "\033[32m=== generating a new ssh key ===\033[0m"
-	mkdir -p $SSH_CONFIG
+	mkdir -p $HOME/.ssh
 	read -r "ssh_email?Enter your email for the SSH key: "
 	ssh-keygen -t rsa -b 4096 -C "$ssh_email"
 	eval "$(ssh-agent -s)"
-	ssh-add --apple-use-keychain $SSH_CONFIG/id_rsa
-	cat $SSH_CONFIG/id_rsa.pub | pbcopy
+	ssh-add --apple-use-keychain $HOME/.ssh/id_rsa
+	cat $HOME/.ssh/id_rsa.pub | pbcopy
 	open "https://github.com/settings/keys"
 	read -p "New ssh key is in clipboard add it to github and press enter to continue ..."
 fi
@@ -36,17 +34,18 @@ fi
 if [ ! -d "$DOTFILES_DIR" ]; then
 	echo "\033[32m=== Cloning Repo ===\033[0m"
 	# This might be a call from curl pipes to bash so we might not have the repo yet.
-	# Once it exists, `[bootstrap.repos]` in config/mise/config.toml takes over keeping it updated.
+	# Once it exists, `[bootstrap.repos]` in mise/config.toml takes over keeping it updated.
 	mkdir -p $DOTFILES_DIR && git clone git@github.com:tanema/dotfiles.git "$DOTFILES_DIR"
 fi
 # Create gitconfig.local so that our gitconfig will not break, and ~/.config so the
 # mise config symlink below has somewhere to land.
 touch $HOME/.gitconfig.local
-mkdir -p $CONFIG_DIR
-ln -sf "$DOTFILES_DIR/config/mise" "$CONFIG_DIR/mise"
+mkdir -p "$HOME/.config"
+ln -sf "$DOTFILES_DIR/mise" "$HOME/.config/mise"
 if ! command -v mise >/dev/null 2>&1; then
 	echo "\033[32m=== installing mise ===\033[0m"
 	curl https://mise.run | sh
+	eval "$(mise activate zsh)"
 fi
 mise bootstrap --quiet --yes --skip-dirty
 mise install --quiet --system
