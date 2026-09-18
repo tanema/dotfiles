@@ -1,5 +1,5 @@
 return {
   cmd = { "stylua", "--lsp" }, -- { "luaf", "lsp" },
   filetypes = { "lua" },
-  root_markers = { ".stylua.toml", "stylua.toml", ".editorconfig" },
+  root_markers = { ".stylua.toml", "stylua.toml", ".git" },
 }

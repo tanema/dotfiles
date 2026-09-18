@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+#MISE description="Setup gpg keys for git signing"
 
 GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
 if [[ ! -z "$GPG_COUNT" ]]; then; exit 0; fi

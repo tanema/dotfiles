@@ -6,25 +6,4 @@ vim.pack.add({
   "https://github.com/leafOfTree/vim-svelte-plugin", -- svelte syntax
 })
 
-vim.filetype.add({ extension = { ebnf = "ebnf" } })
-
--- LSP setup, enabling configured LSPs
--- see lsp directory for configuration of these.
-vim.lsp.enable({
-  "clangd",
-  "css",
-  "ebnf",
-  "golang",
-  "html",
-  "json",
-  "lua",
-  "markdown",
-  "ruby",
-  "rust",
-  "svelte",
-  "typescript",
-  "yaml",
-  "zig",
-})
-
 vim.cmd.colorscheme("dracula")

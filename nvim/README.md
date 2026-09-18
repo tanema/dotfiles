@@ -31,6 +31,12 @@ config/nvim
 - Load `start/**/*.{vim,lua}`
 - Load `after/**/*.{vim,lua}`
 
+## Package Manager
+ - use `gra` to delete a package
+ - :help vim.pack-examples
+ - :help vim.pack.update()
+ - :packupdate
+
 ## Useful
 - Load without plugins or syntax highlighting `nvim -u NONE`
 - Load specific settings file `nvim -u {file}`

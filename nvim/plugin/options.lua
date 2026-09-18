@@ -47,3 +47,6 @@ for i = 120, 200 do
   table.insert(colorColumns, i)
 end
 vim.opt.colorcolumn = colorColumns
+
+-- Add filetypes
+vim.filetype.add({ extension = { ebnf = "ebnf" } })

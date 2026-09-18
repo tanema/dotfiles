@@ -66,11 +66,15 @@ golangci-lint = "2.13.2"
 zig = "0.16.0"
 "github:zigtools/zls" = "0.16.0"
 "cargo:ebnfer" = "0.1.1"
+
+[tasks.update_nvim]
+description = "Automatically update neovim plugins using the builtin plugin manager"
+run = 'nvim --headless -c ":lua vim.pack.update(nil, { force = true }); os.exit(0)"'
  
+# Default required directories that need to exist for config to be in place.
 [bootstrap.directories."~/.ssh"]
 [bootstrap.directories."~/.local"]
 [bootstrap.directories."~/.cache"]
-[bootstrap.directories."~/workspace"]
 [bootstrap.directories."~/.local/bin"]
 [bootstrap.directories."~/.local/run"]
 [bootstrap.directories."~/.local/share/less"]
