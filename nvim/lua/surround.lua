@@ -101,6 +101,7 @@ local function surround_visual()
 end
 
 return {
+  cmd = ':<C-u>lua require("surround").surround_visual()<CR>',
   delete_surround = delete_surround,
   change_surround = change_surround,
   surround_visual = surround_visual,

@@ -59,6 +59,7 @@ local function toggle_comment(start_line, end_line)
 end
 
 return {
+  cmd = ':<C-u>lua require("commentary").toggle()<CR>',
   toggle = function() toggle_comment(vim.fn.line("'<"), vim.fn.line("'>")) end,
   toggle_line = function()
     local line = vim.fn.line(".")

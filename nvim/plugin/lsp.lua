@@ -6,6 +6,7 @@ vim.lsp.inline_completion.enable()
 -- LSP setup, enabling configured LSPs
 -- see lsp directory for configuration of these.
 vim.lsp.enable({
+  "ccls",
   "clangd",
   "css",
   "ebnf",
@@ -16,6 +17,7 @@ vim.lsp.enable({
   "markdown",
   "ruby",
   "rust",
+  "stylua",
   "svelte",
   "typescript",
   "yaml",

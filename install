@@ -41,7 +41,7 @@ fi
 # mise config symlink below has somewhere to land.
 touch $HOME/.gitconfig.local
 mkdir -p "$HOME/.config"
-ln -sf "$DOTFILES_DIR/mise" "$HOME/.config/mise"
+ln -shf "$DOTFILES_DIR/mise" "$HOME/.config/mise"
 if ! command -v mise >/dev/null 2>&1; then
 	echo "\033[32m=== installing mise ===\033[0m"
 	curl https://mise.run | sh

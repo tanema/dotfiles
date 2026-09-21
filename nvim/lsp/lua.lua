@@ -1,5 +1,12 @@
 return {
-  cmd = { "stylua", "--lsp" }, -- { "luaf", "lsp" },
+  cmd = { "lua-language-server" },
   filetypes = { "lua" },
-  root_markers = { ".stylua.toml", "stylua.toml", ".git" },
+  root_markers = { ".luarc.json", ".luarc.jsonc", ".stylua.toml", ".git" },
+  settings = {
+    Lua = {
+      diagnostics = { globals = { "vim" } },
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+    },
+  },
 }
