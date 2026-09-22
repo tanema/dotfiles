@@ -3,6 +3,9 @@ return {
   filetypes = { "go", "gomod", "gowork" },
   root_markers = { "go.mod", ".git" },
   settings = {
+    autoFormat = {
+      codeActions = { "source.organizeImports" },
+    },
     gopls = {
       staticcheck = true,
       gofumpt = true,

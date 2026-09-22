@@ -8,7 +8,6 @@
 "~/.config/claude/CLAUDE.md" = { source = "../claude/CLAUDE.md", mode = "symlink" }
 "~/.config/claude/settings.json" = { source = "../claude/settings.json", mode = "symlink" }
 "~/.config/claude/statusline-command.sh" = { source = "../claude/statusline-command.sh", mode = "symlink" }
-"~/.config/claude/hooks" = { source = "../claude/hooks", mode = "symlink" }
 "~/.config/zsh" = { source = "../zsh", mode = "symlink" }
 "~/.ssh/config" = { source = "../ssh/config", mode = "symlink" }
 "~/.zshrc" = { source = "../zsh/zshrc", mode = "symlink" }
@@ -34,11 +33,10 @@ ls='ls -GoAhFD "%d/%m/%y %H:%M"'
 [bootstrap.packages]
 "brew:gnupg" = "latest"
 "brew:openssl@3.0" = "latest"
-"brew:ccls" = "latest"
 "brew-cask:ghostty" = "latest"
 
 [tools]
-neovim = "latest"
+neovim = "nightly"
 mysql = "latest"
 rg = "15.2.0"
 gh = "2.100.0"
@@ -71,7 +69,7 @@ zig = "0.16.0"
 
 [tasks.update_nvim]
 description = "Automatically update neovim plugins using the builtin plugin manager"
-run = 'nvim --headless -c ":lua vim.pack.update(nil, { force = true }); os.exit(0)"'
+run = 'nvim --headless -c ":packupdate!; os.exit(0)"'
  
 # Default required directories that need to exist for config to be in place.
 [bootstrap.directories."~/.ssh"]
