@@ -69,7 +69,7 @@ zig = "0.16.0"
 
 [tasks.update_nvim]
 description = "Automatically update neovim plugins using the builtin plugin manager"
-run = 'nvim --headless -c ":packupdate!; os.exit(0)"'
+run = "nvim --headless --cmd \":lua vim.cmd('packupdate'); os.exit(0)\""
  
 # Default required directories that need to exist for config to be in place.
 [bootstrap.directories."~/.ssh"]
