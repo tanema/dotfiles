@@ -1,10 +1,6 @@
 local dracula = require("colorscheme")
 local colors = dracula.colors
 
-if vim.fn.has("nvim-0.7") ~= 1 then
-  vim.notify("dracula.nvim: you must use neovim 0.7 or higher")
-  return
-end
 if vim.g.colors_name then vim.cmd("hi clear") end
 if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
 vim.o.background = "dark"

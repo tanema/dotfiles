@@ -4,32 +4,6 @@
 		"DO_NOT_TRACK": "1",
 		"ENABLE_LSP_TOOL": "1"
 	},
-	"permissions": {
-		"allow": [
-			"Bash(go build *)",
-			"Bash(go test *)",
-			"Bash(go vet *)",
-			"Bash(rtk ls *)",
-			"Bash(rtk find *)",
-			"Bash(rtk wc *)",
-			"Bash(rtk tree *)",
-			"Bash(rtk read *)",
-			"Bash(rtk lint *)",
-			"Bash(rtk prettier *)",
-			"Bash(rtk grep *)",
-			"Bash(rtk rg *)",
-			"Bash(rtk rubocop *)",
-			"Bash(rtk go *)",
-			"Bash(rtk golangci-lint *)",
-			"Bash(rtk rspec *)",
-			"Bash(rtk git diff *)",
-			"Bash(rtk gh pr diff *)"
-		],
-		"deny": [
-			"Bash(rtk git push *)",
-			"Bash(rtk git commit *)"
-		]
-	},
 	"hooks": {
 		"PreToolUse": [
 			{

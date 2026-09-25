@@ -1,6 +1,3 @@
-[bootstrap.repos]
-"~/workspace/dotfiles" = { url = "git@github.com:tanema/dotfiles.git", ref = "main" }
-
 [dotfiles]
 "~/.config/git" = { source = "../git", mode = "symlink" }
 "~/.config/tmux" = { source = "../tmux", mode = "symlink" }
