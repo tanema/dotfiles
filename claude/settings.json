@@ -15,11 +15,31 @@
 					}
 				]
 			}
+		],
+		"UserPromptSubmit": [
+			{
+				"hooks": [
+					{
+						"type": "command",
+						"command": "$CLAUDE_CONFIG_DIR/scripts/awake.sh start"
+					}
+				]
+			}
+		],
+		"Stop": [
+			{
+				"hooks": [
+					{
+						"type": "command",
+						"command": "$CLAUDE_CONFIG_DIR/scripts/awake.sh stop"
+					}
+				]
+			}
 		]
 	},
 	"statusLine": {
 		"type": "command",
-		"command": "bash /Users/timanema/.config/claude/statusline-command.sh"
+		"command": "bash $CLAUDE_CONFIG_DIR/scripts/statusline.sh"
 	},
 	"enabledPlugins": {
 		"typescript-lsp@claude-plugins-official": true,
@@ -81,11 +101,11 @@
 			"🦠"
 		]
 	},
+	"awaySummaryEnabled": false,
 	"companyAnnouncements": [],
 	"tui": "fullscreen",
-	"theme": "dark-daltonized",
+	"theme": "custom:dracula",
 	"showTurnDuration": true,
 	"editormode": "vim",
-	"effort": "medium",
-	"awaySummaryEnabled": false
+	"effort": "medium"
 }

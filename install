@@ -54,3 +54,5 @@ mise install --quiet --system
 echo "\033[32m=== neovim ===\033[0m"
 mise run update_nvim
 mise run setup_gpg
+echo "\033[32m=== claude theme ===\033[0m"
+"$DOTFILES_DIR/claude/scripts/build-theme.sh"

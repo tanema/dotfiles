@@ -2,9 +2,11 @@
 "~/.config/git" = { source = "../git", mode = "symlink" }
 "~/.config/tmux" = { source = "../tmux", mode = "symlink" }
 "~/.config/nvim" = { source = "../nvim", mode = "symlink" }
+"~/.config/ghostty" = { source = "../ghostty", mode = "symlink" }
 "~/.config/claude/CLAUDE.md" = { source = "../claude/CLAUDE.md", mode = "symlink" }
 "~/.config/claude/settings.json" = { source = "../claude/settings.json", mode = "symlink" }
-"~/.config/claude/statusline-command.sh" = { source = "../claude/statusline-command.sh", mode = "symlink" }
+"~/.config/claude/scripts" = { source = "../claude/scripts", mode = "symlink" }
+"~/.config/claude/themes" = { source = "../claude/themes", mode = "symlink" }
 "~/.config/zsh" = { source = "../zsh", mode = "symlink" }
 "~/.ssh/config" = { source = "../ssh/config", mode = "symlink" }
 "~/.zshrc" = { source = "../zsh/zshrc", mode = "symlink" }
@@ -33,6 +35,7 @@ ls='ls -GoAhFD "%d/%m/%y %H:%M"'
 "brew-cask:ghostty" = "latest"
 
 [tools]
+jq = "latest"
 neovim = "nightly"
 mysql = "latest"
 rg = "15.2.0"

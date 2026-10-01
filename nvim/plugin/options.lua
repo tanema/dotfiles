@@ -1,5 +1,3 @@
-vim.opt.background = "dark"
-vim.opt.laststatus = 2
 vim.opt.showmode = false
 vim.opt.tabstop = 2 -- numbers of spaces of tab character
 vim.opt.shiftwidth = 2 -- numbers of spaces to (auto)indent
@@ -18,8 +16,7 @@ vim.opt.virtualedit = "all" -- this means we can go into empty spaces
 vim.opt.list = true -- display hidden characters
 vim.opt.listchars = "tab:→ ,nbsp:~,eol:$" -- set how hidden characters are displayed
 vim.opt.clipboard:append("unnamed") -- use system clipboard
-vim.opt.switchbuf:append({ "usetab", "newtab" }) -- this will make it switch to a tab if I already have the file open and open the quickfix in a tab
-vim.opt.wildmenu = true
+vim.opt.switchbuf:append("usetab,newtab") -- this will make it switch to a tab if I already have the file open and open the quickfix in a tab
 vim.opt.termguicolors = true
 vim.opt.updatetime = 100
 vim.opt.completeopt = { -- tab complete opts

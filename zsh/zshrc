@@ -60,6 +60,7 @@ export REPORTTIME=5            # Auto-print real/user/sys time for any command t
 export WORDCHARS=${WORDCHARS//[\/.-]} # Removing / means path segments are separate words 
 
 # App Config folders
+export DOTFILES="$HOME/workspace/dotfiles"
 export AWS_CLI_HISTORY_FILE="$XDG_DATA_HOME/aws/history"
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_DATA_HOME/aws/credentials"
