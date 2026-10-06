@@ -4,6 +4,9 @@
 		"DO_NOT_TRACK": "1",
 		"ENABLE_LSP_TOOL": "1"
 	},
+	"permissions": {
+		"defaultMode": "auto"
+	},
 	"hooks": {
 		"PreToolUse": [
 			{
@@ -48,7 +51,8 @@
 		"lua-lsp@claude-plugins-official": true,
 		"rust-analyzer-lsp@claude-plugins-official": true,
 		"swift-lsp@claude-plugins-official": true,
-		"i-have-adhd@i-have-adhd": true
+		"i-have-adhd@i-have-adhd": true,
+		"svelte@svelte": true
 	},
 	"extraKnownMarketplaces": {
 		"claude-plugins-official": {
