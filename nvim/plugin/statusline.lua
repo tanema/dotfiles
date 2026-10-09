@@ -1,15 +1,3 @@
-local colors = require("colorscheme").colors
-
-vim.api.nvim_set_hl(0, "SLNormal", { fg = colors.bg, bg = colors.cyan })
-vim.api.nvim_set_hl(0, "SLInsert", { fg = colors.fg, bg = colors.green })
-vim.api.nvim_set_hl(0, "SLVisual", { fg = colors.fg, bg = colors.red })
-vim.api.nvim_set_hl(0, "SLSelect", { fg = colors.fg, bg = colors.yellow })
-vim.api.nvim_set_hl(0, "SLReplace", { fg = colors.fg, bg = colors.yellow })
-vim.api.nvim_set_hl(0, "SLCommand", { fg = colors.fg, bg = colors.orange })
-vim.api.nvim_set_hl(0, "SLConfirm", { fg = colors.fg, bg = colors.purple })
-vim.api.nvim_set_hl(0, "SLTerminal", { fg = colors.fg, bg = colors.purple })
-vim.api.nvim_set_hl(0, "User1", { fg = colors.fg, bg = colors.bg })
-
 local mode_map = {
   n = { "SLNormal", "Normal" },
   v = { "SLVisual", "Visual" },

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+echo "\033[32m=== generating a new ssh key ===\033[0m"
+mkdir -p $HOME/.ssh
+read -r "ssh_email?Enter your email for the SSH key: "
+ssh-keygen -t rsa -b 4096 -C "$ssh_email"
+eval "$(ssh-agent -s)"
+ssh-add --apple-use-keychain $HOME/.ssh/id_rsa
+cat $HOME/.ssh/id_rsa.pub | pbcopy
+open "https://github.com/settings/keys"
+read -p "New ssh key is in clipboard add it to github and press enter to continue ..."

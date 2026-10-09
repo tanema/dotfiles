@@ -1,5 +1,5 @@
 {
-  "name": "Dracula (dotfiles)",
+  "name": "Orlok",
   "base": "dark",
   "overrides": {
     "text": "#f8f8f2",

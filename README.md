@@ -29,7 +29,6 @@ No plugin managers or LSP managers. Whenever a tool is needed for nvim, zsh or t
 - Add config to use it. (See lsp config as example: `nvim/lsp` files)
 - For any plugins that are not able to be installed in this way, `git clone` them
   to their destination and commit to the dotfiles repo.
-    - See `zsh/themes/dracula` and it is sourced in the zshrc.
 - Finally if you need a plugin for nvim, install it using the nvim package manager
 
 With this setup, it prevents slow starting of any of my tools while plugin managers 

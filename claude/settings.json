@@ -108,7 +108,7 @@
 	"awaySummaryEnabled": false,
 	"companyAnnouncements": [],
 	"tui": "fullscreen",
-	"theme": "custom:dracula",
+	"theme": "custom:orlok",
 	"showTurnDuration": true,
 	"editormode": "vim",
 	"effort": "medium"
