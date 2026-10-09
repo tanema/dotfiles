@@ -108,7 +108,7 @@
 	"awaySummaryEnabled": false,
 	"companyAnnouncements": [],
 	"tui": "fullscreen",
-	"theme": "custom:orlok",
+	"theme": "custom:timscheme",
 	"showTurnDuration": true,
 	"editormode": "vim",
 	"effort": "medium"

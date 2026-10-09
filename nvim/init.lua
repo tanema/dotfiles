@@ -6,4 +6,4 @@ vim.pack.add({
   "https://github.com/leafOfTree/vim-svelte-plugin", -- svelte syntax
 })
 
-vim.cmd.colorscheme("orlok")
+vim.cmd.colorscheme("timscheme")

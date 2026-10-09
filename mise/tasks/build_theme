@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-#MISE description="Regenerates the Claude Code and Ghostty orlok themes from colorscheme/orlok.json so Claude Code, Ghostty, and nvim never drift out of sync."
+#MISE description="Generates claude and ghostty themes from a json file at $COLORSCHEME."
 set -euo pipefail
 
 # source the colorscheme variables as env vars to use in envsubst
-$(jq -r 'keys[] as $k | "export \($k)=\(.[$k])"' "$DOTFILES/colorscheme/orlok.json")
-envsubst < "$DOTFILES/colorscheme/claude.tmpl" > "$DOTFILES/claude/themes/orlok.json"
-envsubst < "$DOTFILES/colorscheme/ghostty.tmpl" > "$DOTFILES/ghostty/themes/orlok"
+$(jq -r 'keys[] as $k | "export \($k)=\(.[$k])"' "$COLORSCHEME")
+envsubst < "$DOTFILES/colorscheme/claude.tmpl" > "$DOTFILES/claude/themes/timscheme.json"
+envsubst < "$DOTFILES/colorscheme/ghostty.tmpl" > "$DOTFILES/ghostty/themes/timscheme"

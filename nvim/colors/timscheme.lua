@@ -1,5 +1,4 @@
-local config_dir = vim.env.DOTFILES
-local file = io.open(config_dir .. "/colorscheme/orlok.json", "r")
+local file = io.open(vim.env.COLORSCHEME, "r")
 if file == nil then error("Could not load colorscheme") end
 local content = file:read("*a")
 file:close()
@@ -9,7 +8,7 @@ if vim.g.colors_name then vim.cmd("hi clear") end
 if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
 vim.o.background = "dark"
 vim.o.termguicolors = true
-vim.g.colors_name = "orlok"
+vim.g.colors_name = "timscheme"
 vim.g.terminal_color_0 = colors.black
 vim.g.terminal_color_1 = colors.red
 vim.g.terminal_color_2 = colors.green
