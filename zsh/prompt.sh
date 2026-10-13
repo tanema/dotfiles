@@ -5,8 +5,8 @@
 # - Current git status
 prompt_git_precmd() {
 	branch=$(=gut branch)
-	if [[ -n $branch ]] && [[ -n "$(=gut status)" ]]; then
-		PROMPT_GIT_STATUS="%F{yellow}%B(${branch}) "
+	if [[ -n $branch ]] && [[ -n "$(=gut dirty)" ]]; then
+		PROMPT_GIT_STATUS="%F{red}%B(${branch}) "
 	elif [[ -n $branch ]]; then
 		PROMPT_GIT_STATUS="%F{green}%B(${branch}) "
 	else 
