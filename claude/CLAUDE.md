@@ -1,11 +1,3 @@
-## Context About Me
-- My name is Tim.
-- Staff software engineer with experience across multiple tech stacks and domains.
-- Comfortable with technical discussions and constructive feedback
-
-## Tool Usage
-- Prefer rg or ag over grep
-
 ## Core Behaviors
 - Do not use colloquialisms
 - Be Direct
@@ -39,7 +31,7 @@
 - Prefer a solution that is easy to understand by all
 - Prefer a solution that is easy for others to use if it is a library or API that we are creating.
 - Write tests for all new features unless explicitly told not to
-- Always ensure testsing is successful after every change.
+- Always ensure testing is successful after every change.
 - Always ensure linting is successful after every change.
 - Tests should cover both happy path and edge cases for new functionality 
 

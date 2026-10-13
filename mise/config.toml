@@ -1,5 +1,6 @@
 [dotfiles]
 "~/.local/bin/awake" = { source = "../bin/awake", mode = "symlink" }
+"~/.local/bin/gut" = { source = "../bin/gut", mode = "symlink" }
 "~/.config/git" = { source = "../git", mode = "symlink" }
 "~/.config/tmux" = { source = "../tmux", mode = "symlink" }
 "~/.config/nvim" = { source = "../nvim", mode = "symlink" }

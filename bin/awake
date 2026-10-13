@@ -20,7 +20,7 @@ case "$action" in
 		;;
 	*)
  		cat << EOF
-Usage: awake [start|stop]"
+Usage: awake [start|stop]
 
 Keeps the Mac awake using caffeinate tracking it with a pid file so the command
 does not need to continuously be running.

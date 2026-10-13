@@ -1,4 +1,13 @@
 {
+	"outputStyle": "Explanatory",
+	"spinnerTipsEnabled": false,
+	"awaySummaryEnabled": false,
+	"companyAnnouncements": [],
+	"tui": "fullscreen",
+	"theme": "custom:timscheme",
+	"showTurnDuration": true,
+	"editormode": "vim",
+	"effort": "medium",
 	"env": {
 		"CLAUDE_CODE_ENABLE_TELEMETRY": "0",
 		"DO_NOT_TRACK": "1",
@@ -68,48 +77,15 @@
 			}
 		}
 	},
-	"outputStyle": "Explanatory",
-	"spinnerTipsEnabled": false,
 	"spinnerVerbs": {
 		"mode": "replace",
 		"verbs": [
-			"🤖",
-			"🖕🏻",
-			"💩",
-			"🚽",
-			"🫪",
 			"🪦",
 			"💀",
 			"⚰️",
-			"⚱️",
-			"🎠",
-			"🥸",
-			"🤮",
-			"👽",
-			"👹",
-			"🐳",
-			"💰",
-			"💸",
-			"🪎",
-			"💵",
-			"🤑",
-			"🧨",
-			"💣",
-			"🧿",
-			"🎱",
-			"⚗️",
-			"🗿",
-			"🏧",
-			"🔥",
-			"🌊",
-			"🦠"
+			"👻",
+			"☠️",
+			"🎃"
 		]
-	},
-	"awaySummaryEnabled": false,
-	"companyAnnouncements": [],
-	"tui": "fullscreen",
-	"theme": "custom:timscheme",
-	"showTurnDuration": true,
-	"editormode": "vim",
-	"effort": "medium"
+	}
 }

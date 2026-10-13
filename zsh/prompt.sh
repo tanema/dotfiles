@@ -4,26 +4,13 @@
 # - Current git branch
 # - Current git status
 prompt_git_precmd() {
-	local ref branch git_status
-	PROMPT_GIT_STATUS=""
-
-	builtin cd "$(pwd)"
-	ref=$(=git --no-optional-locks symbolic-ref --quiet HEAD 2>/dev/null)
-	case $? in
-		0)   ;;
-		128) return ;;
-		*)   ref=$(=git --no-optional-locks rev-parse --short HEAD 2>/dev/null) || return ;;
-	esac
-   
-	branch=${ref#refs/heads/}
-	if [[ -n $branch ]]; then
-		PROMPT_GIT_STATUS="%F{cyan}%B(${branch}) "
-		git_status="$(LC_ALL=C =git --no-optional-locks status 2>&1)"
-		if [[ "$git_status" =~ 'new file:|deleted:|modified:|renamed:|Untracked files:' ]]; then
-			PROMPT_GIT_STATUS+="%F{yellow}%B✗ "
-		else
-			PROMPT_GIT_STATUS+="%F{green}%B✓ "
-		fi
+	branch=$(=gut branch)
+	if [[ -n $branch ]] && [[ -n "$(=gut status)" ]]; then
+		PROMPT_GIT_STATUS="%F{yellow}%B(${branch}) "
+	elif [[ -n $branch ]]; then
+		PROMPT_GIT_STATUS="%F{green}%B(${branch}) "
+	else 
+		PROMPT_GIT_STATUS=""
 	fi
 }
 

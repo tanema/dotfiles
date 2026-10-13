@@ -1,19 +1,23 @@
+[user]
+  name = Tim Anema
+[include]
+	# Allow computer settings so each computer can have different emails and signing keys
+  path = ~/.gitconfig.local
 [core]
   editor = nvim
   commitGraph = true
+ 	fsmonitor = true
+ 	untrackedCache = true
 [color]
   ui = true
 [init]
   defaultBranch = main
 [column]
   ui = auto 
+[format]
+	pretty=%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [help]
   autocorrect = 5
-[include]
-	# Allow computer settings so each computer can have different emails and signing keys
-  path = ~/.gitconfig.local
-[user]
-  name = Tim Anema
 [diff]
   tool = nvim -d
   algorithm = histogram
@@ -22,6 +26,8 @@
   mnemonicPrefix = true
   renames = true
 	context = 10
+[status]
+	short = true
 [push]
   default = current
   autoSetupRemote = true
