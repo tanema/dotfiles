@@ -40,7 +40,7 @@
   pruneTags = true
   all = true
 [commit]
-  # gpgsign = true
+  gpgsign = true
   verbose = true
 [rebase]
   autoStash = true

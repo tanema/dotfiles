@@ -1,4 +1,5 @@
 [dotfiles]
+"~/.local/bin/awake" = { source = "../bin/awake", mode = "symlink" }
 "~/.config/git" = { source = "../git", mode = "symlink" }
 "~/.config/tmux" = { source = "../tmux", mode = "symlink" }
 "~/.config/nvim" = { source = "../nvim", mode = "symlink" }
@@ -10,6 +11,15 @@
 "~/.config/zsh" = { source = "../zsh", mode = "symlink" }
 "~/.ssh/config" = { source = "../ssh/config", mode = "symlink" }
 "~/.zshrc" = { source = "../zsh/zshrc", mode = "symlink" }
+
+# Default required directories that need to exist for config to be in place.
+[bootstrap.directories."~/.ssh"]
+[bootstrap.directories."~/.local"]
+[bootstrap.directories."~/.cache"]
+[bootstrap.directories."~/.local/bin"]
+[bootstrap.directories."~/.local/run"]
+[bootstrap.directories."~/.local/share/less"]
+[bootstrap.directories."~/.local/share/zsh"]
 
 [bootstrap.macos.dock]
 autohide = true
@@ -25,10 +35,6 @@ preferred_view_style = "column"
 key_repeat = 2
 initial_key_repeat = 15
 
-[shell_alias]
-reload="source $HOME/.zshrc"
-ls='ls -GoAhFD "%d/%m/%y %H:%M"'
-
 [bootstrap.packages]
 "brew:gnupg" = "latest"
 "brew:openssl@3.0" = "latest"
@@ -38,44 +44,31 @@ ls='ls -GoAhFD "%d/%m/%y %H:%M"'
 jq = "latest"
 neovim = "nightly"
 mysql = "latest"
-rg = "15.2.0"
-gh = "2.100.0"
+rg = "latest"
+gh = "latest"
 tmux = "latest"
 claude-code = "latest"
 rtk = "latest"
-ruby = "3.4.10"
 "github:fables-tales/rubyfmt" = "latest"
 "gem:ruby-lsp" = "latest"
-node = "26.7.0"
 "npm:typescript-language-server" = "latest"
 "npm:vscode-langservers-extracted" = "latest"
 "npm:@fsouza/prettierd" = "latest"
 "npm:svelte-language-server" = { version = "latest", trust_policy_excludes = ["svelte@4.2.20"] }
-rust = "1.98.1"
 rust-analyzer = "latest"
 lua = "latest"
 luajit = "latest"
 stylua = "latest"
 lua-language-server = "latest"
 "npm:yaml-language-server" = "latest"
-go = "1.27.1"
 golangci-lint = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "go:github.com/nametake/golangci-lint-langserver" = "latest"
-zig = "0.16.0"
-"github:zigtools/zls" = "0.16.0"
+"github:zigtools/zls" = "latest"
 "cargo:ebnfer" = "latest"
 "arduino-cli" = "latest"
-
-[tasks.update_nvim]
-description = "Automatically update neovim plugins using the builtin plugin manager"
-run = "nvim --headless --cmd \":lua vim.cmd('packupdate'); os.exit(0)\""
- 
-# Default required directories that need to exist for config to be in place.
-[bootstrap.directories."~/.ssh"]
-[bootstrap.directories."~/.local"]
-[bootstrap.directories."~/.cache"]
-[bootstrap.directories."~/.local/bin"]
-[bootstrap.directories."~/.local/run"]
-[bootstrap.directories."~/.local/share/less"]
-[bootstrap.directories."~/.local/share/zsh"]
+ruby = "3.4.10"
+node = "26.7.0"
+rust = "1.98.1"
+go = "1.27.1"
+zig = "0.16.0"

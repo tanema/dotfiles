@@ -1,5 +1,3 @@
-local gitgutter = require("gitgutter")
-
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
   desc = "Automatically opens quickfix when needed.",
   group = vim.api.nvim_create_augroup("AutoQuickfix", { clear = true }),
@@ -8,6 +6,7 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 })
 
 -- git-gutter port of only the stuff I use
+local gitgutter = require("gitgutter")
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "BufEnter", "FocusGained" }, {
   group = vim.api.nvim_create_augroup("gitgutter", { clear = true }),
   callback = function(args) gitgutter.update(args.buf) end,

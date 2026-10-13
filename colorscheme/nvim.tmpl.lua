@@ -1,0 +1,325 @@
+-- ====== WARNING =====
+-- This file is generated from colorscheme/nvim.tmpl.lua do not change the file
+-- at nvim/colors/timscheme.lua as it will be overwritten.
+-- ====== WARNING =====
+
+if vim.g.colors_name then
+	vim.cmd("hi clear")
+end
+if vim.fn.exists("syntax_on") then
+	vim.cmd("syntax reset")
+end
+vim.g.colors_name = "timscheme"
+vim.o.background = "dark"
+vim.o.termguicolors = true
+vim.g.terminal_color_0 = "${black}"
+vim.g.terminal_color_1 = "${red}"
+vim.g.terminal_color_2 = "${green}"
+vim.g.terminal_color_3 = "${yellow}"
+vim.g.terminal_color_4 = "${purple}"
+vim.g.terminal_color_5 = "${pink}"
+vim.g.terminal_color_6 = "${cyan}"
+vim.g.terminal_color_7 = "${white}"
+vim.g.terminal_color_8 = "${selection}"
+vim.g.terminal_color_9 = "${brightRed}"
+vim.g.terminal_color_10 = "${brightGreen}"
+vim.g.terminal_color_11 = "${brightYellow}"
+vim.g.terminal_color_12 = "${brightBlue}"
+vim.g.terminal_color_13 = "${brightMagenta}"
+vim.g.terminal_color_14 = "${brightCyan}"
+vim.g.terminal_color_15 = "${brightWhite}"
+vim.g.terminal_color_background = "${background}"
+vim.g.terminal_color_foreground = "${foreground}"
+
+local groups = {
+	Normal = { fg = "${foreground}", bg = "${background}" },
+	NormalFloat = { fg = "${foreground}", bg = "${background}" },
+	Comment = { fg = "${comment}", italic = true },
+	Constant = { fg = "${yellow}" },
+	String = { fg = "${yellow}" },
+	Character = { fg = "${green}" },
+	Number = { fg = "${orange}" },
+	Boolean = { fg = "${cyan}" },
+	Float = { fg = "${orange}" },
+	FloatBorder = { fg = "${white}" },
+	Operator = { fg = "${purple}" },
+	Keyword = { fg = "${cyan}" },
+	Keywords = { fg = "${cyan}" },
+	Identifier = { fg = "${cyan}" },
+	Function = { fg = "${yellow}" },
+	Statement = { fg = "${purple}" },
+	Conditional = { fg = "${pink}" },
+	Repeat = { fg = "${pink}" },
+	Label = { fg = "${cyan}" },
+	Exception = { fg = "${purple}" },
+	PreProc = { fg = "${yellow}" },
+	Include = { fg = "${purple}" },
+	Define = { fg = "${purple}" },
+	Title = { fg = "${cyan}" },
+	Macro = { fg = "${purple}" },
+	PreCondit = { fg = "${cyan}" },
+	Type = { fg = "${cyan}" },
+	StorageClass = { fg = "${pink}" },
+	Structure = { fg = "${yellow}" },
+	TypeDef = { fg = "${yellow}" },
+	Special = { fg = "${green}", italic = true },
+	SpecialComment = { fg = "${comment}", italic = true },
+	Error = { fg = "${brightRed}" },
+	Todo = { fg = "${purple}", bold = true, italic = true },
+	Underlined = { fg = "${cyan}", underline = true },
+	Cursor = { reverse = true },
+	CursorLineNr = { fg = "${foreground}", bold = true },
+	SignColumn = { bg = "${background}" },
+	Conceal = { fg = "${comment}" },
+	CursorColumn = { bg = "${black}" },
+	CursorLine = { bg = "${selection}" },
+	ColorColumn = { bg = "${selection}" },
+	StatusLine = { fg = "${white}", bg = "${selection}" },
+	StatusLineNC = { fg = "${comment}" },
+	StatusLineTerm = { fg = "${white}", bg = "${black}" },
+	StatusLineTermNC = { fg = "${comment}" },
+	Directory = { fg = "${cyan}" },
+	DiffAdd = { fg = "${background}", bg = "${green}" },
+	DiffChange = { fg = "${orange}" },
+	DiffDelete = { fg = "${red}" },
+	DiffText = { fg = "${comment}" },
+	ErrorMsg = { fg = "${brightRed}" },
+	VertSplit = { fg = "${black}" },
+	WinSeparator = { fg = "${black}" },
+	Folded = { fg = "${comment}" },
+	FoldColumn = {},
+	Search = { fg = "${black}", bg = "${orange}" },
+	IncSearch = { fg = "${orange}", bg = "${comment}" },
+	LineNr = { fg = "${comment}" },
+	MatchParen = { fg = "${foreground}", underline = true },
+	NonText = { fg = "${nontext}" },
+	Pmenu = { fg = "${white}", bg = "${menu}" },
+	PmenuSel = { fg = "${white}", bg = "${selection}" },
+	PmenuSbar = { bg = "${background}" },
+	PmenuThumb = { bg = "${selection}" },
+	Question = { fg = "${purple}" },
+	QuickFixLine = { fg = "${black}", bg = "${yellow}" },
+	SpecialKey = { fg = "${nontext}" },
+	SpellBad = { fg = "${brightRed}", underline = true },
+	SpellCap = { fg = "${yellow}" },
+	SpellLocal = { fg = "${yellow}" },
+	SpellRare = { fg = "${yellow}" },
+	TabLine = { fg = "${comment}" },
+	TabLineSel = { fg = "${white}" },
+	TabLineFill = { bg = "${background}" },
+	Terminal = { fg = "${white}", bg = "${black}" },
+	Visual = { bg = "${visual}" },
+	VisualNOS = { fg = "${visual}" },
+	WarningMsg = { fg = "${yellow}" },
+	WildMenu = { fg = "${black}", bg = "${white}" },
+	EndOfBuffer = { fg = "${background}" },
+
+	-- TreeSitter
+	["@error"] = { fg = "${brightRed}" },
+	["@punctuation.delimiter"] = { fg = "${foreground}" },
+	["@punctuation.bracket"] = { fg = "${foreground}" },
+	["@markup.list"] = { fg = "${cyan}" },
+	["@constant"] = { fg = "${purple}" },
+	["@constant.builtin"] = { fg = "${purple}" },
+	["@markup.link.label.symbol"] = { fg = "${purple}" },
+	["@constant.macro"] = { fg = "${cyan}" },
+	["@string.regexp"] = { fg = "${red}" },
+	["@string"] = { fg = "${yellow}" },
+	["@string.escape"] = { fg = "${cyan}" },
+	["@string.special.symbol"] = { fg = "${purple}" },
+	["@character"] = { fg = "${green}" },
+	["@number"] = { fg = "${purple}" },
+	["@boolean"] = { fg = "${purple}" },
+	["@number.float"] = { fg = "${green}" },
+	["@annotation"] = { fg = "${yellow}" },
+	["@attribute"] = { fg = "${cyan}" },
+	["@module"] = { fg = "${orange}" },
+	["@function.builtin"] = { fg = "${cyan}" },
+	["@function"] = { fg = "${green}" },
+	["@function.macro"] = { fg = "${green}" },
+	["@variable.parameter"] = { fg = "${orange}" },
+	["@variable.parameter.reference"] = { fg = "${orange}" },
+	["@function.method"] = { fg = "${green}" },
+	["@variable.member"] = { fg = "${orange}" },
+	["@property"] = { fg = "${purple}" },
+	["@constructor"] = { fg = "${cyan}" },
+	["@keyword.conditional"] = { fg = "${pink}" },
+	["@keyword.repeat"] = { fg = "${pink}" },
+	["@label"] = { fg = "${cyan}" },
+	["@keyword"] = { fg = "${pink}" },
+	["@keyword.function"] = { fg = "${cyan}" },
+	["@keyword.function.ruby"] = { fg = "${pink}" },
+	["@keyword.operator"] = { fg = "${pink}" },
+	["@operator"] = { fg = "${pink}" },
+	["@keyword.exception"] = { fg = "${purple}" },
+	["@type"] = { fg = "${brightCyan}" },
+	["@type.builtin"] = { fg = "${cyan}", italic = true },
+	["@type.qualifier"] = { fg = "${pink}" },
+	["@structure"] = { fg = "${purple}" },
+	["@keyword.include"] = { fg = "${pink}" },
+	["@variable"] = { fg = "${foreground}" },
+	["@variable.builtin"] = { fg = "${purple}" },
+	["@markup"] = { fg = "${orange}" },
+	["@markup.strong"] = { fg = "${orange}", bold = true }, -- bold
+	["@markup.emphasis"] = { fg = "${yellow}", italic = true }, -- italic
+	["@markup.underline"] = { fg = "${orange}" },
+	["@markup.heading"] = { fg = "${pink}", bold = true }, -- title
+	["@markup.raw"] = { fg = "${yellow}" }, -- inline code
+	["@markup.link.url"] = { fg = "${yellow}", italic = true }, -- urls
+	["@markup.link"] = { fg = "${orange}", bold = true },
+	["@tag"] = { fg = "${cyan}" },
+	["@tag.attribute"] = { fg = "${green}" },
+	["@tag.delimiter"] = { fg = "${cyan}" },
+
+	-- Semantic
+	["@class"] = { fg = "${cyan}" },
+	["@struct"] = { fg = "${cyan}" },
+	["@enum"] = { fg = "${cyan}" },
+	["@enumMember"] = { fg = "${purple}" },
+	["@event"] = { fg = "${cyan}" },
+	["@interface"] = { fg = "${cyan}" },
+	["@modifier"] = { fg = "${cyan}" },
+	["@regexp"] = { fg = "${yellow}" },
+	["@typeParameter"] = { fg = "${cyan}" },
+	["@decorator"] = { fg = "${cyan}" },
+
+	-- LSP Semantic (0.9+)
+	["@lsp.type.class"] = { fg = "${cyan}" },
+	["@lsp.type.enum"] = { fg = "${cyan}" },
+	["@lsp.type.decorator"] = { fg = "${green}" },
+	["@lsp.type.enumMember"] = { fg = "${purple}" },
+	["@lsp.type.function"] = { fg = "${green}" },
+	["@lsp.type.interface"] = { fg = "${cyan}" },
+	["@lsp.type.macro"] = { fg = "${cyan}" },
+	["@lsp.type.method"] = { fg = "${green}" },
+	["@lsp.type.namespace"] = { fg = "${orange}" },
+	["@lsp.type.parameter"] = { fg = "${orange}" },
+	["@lsp.type.property"] = { fg = "${purple}" },
+	["@lsp.type.struct"] = { fg = "${cyan}" },
+	["@lsp.type.type"] = { fg = "${brightCyan}" },
+	["@lsp.type.variable"] = { fg = "${foreground}" },
+
+	-- HTML
+	htmlArg = { fg = "${green}" },
+	htmlBold = { fg = "${yellow}", bold = true },
+	htmlEndTag = { fg = "${cyan}" },
+	htmlH1 = { fg = "${pink}" },
+	htmlH2 = { fg = "${pink}" },
+	htmlH3 = { fg = "${pink}" },
+	htmlH4 = { fg = "${pink}" },
+	htmlH5 = { fg = "${pink}" },
+	htmlH6 = { fg = "${pink}" },
+	htmlItalic = { fg = "${purple}", italic = true },
+	htmlLink = { fg = "${purple}", underline = true },
+	htmlSpecialChar = { fg = "${yellow}" },
+	htmlSpecialTagName = { fg = "${cyan}" },
+	htmlTag = { fg = "${cyan}" },
+	htmlTagN = { fg = "${cyan}" },
+	htmlTagName = { fg = "${cyan}" },
+	htmlTitle = { fg = "${white}" },
+
+	-- Markdown
+	markdownBlockquote = { fg = "${yellow}", italic = true },
+	markdownBold = { fg = "${orange}", bold = true },
+	markdownCode = { fg = "${green}" },
+	markdownCodeBlock = { fg = "${orange}" },
+	markdownCodeDelimiter = { fg = "${red}" },
+	markdownH2 = { link = "rainbow2" },
+	markdownH1 = { link = "rainbow1" },
+	markdownH3 = { link = "rainbow3" },
+	markdownH4 = { link = "rainbow4" },
+	markdownH5 = { link = "rainbow5" },
+	markdownH6 = { link = "rainbow6" },
+	markdownHeadingDelimiter = { fg = "${red}" },
+	markdownHeadingRule = { fg = "${comment}" },
+	markdownId = { fg = "${purple}" },
+	markdownIdDeclaration = { fg = "${cyan}" },
+	markdownIdDelimiter = { fg = "${purple}" },
+	markdownItalic = { fg = "${yellow}", italic = true },
+	markdownLinkDelimiter = { fg = "${purple}" },
+	markdownLinkText = { fg = "${pink}" },
+	markdownListMarker = { fg = "${cyan}" },
+	markdownOrderedListMarker = { fg = "${red}" },
+	markdownRule = { fg = "${comment}" },
+	["@markup.heading.1.markdown"] = { link = "rainbowcol1" },
+	["@markup.heading.2.markdown"] = { link = "rainbowcol2" },
+	["@markup.heading.3.markdown"] = { link = "rainbowcol3" },
+	["@markup.heading.4.markdown"] = { link = "rainbowcol4" },
+	["@markup.heading.5.markdown"] = { link = "rainbowcol5" },
+	["@markup.heading.6.markdown"] = { link = "rainbowcol6" },
+
+	--  Diff
+	diffAdded = { fg = "${green}" },
+	diffRemoved = { fg = "${red}" },
+	diffFileId = { fg = "${yellow}", bold = true, reverse = true },
+	diffFile = { fg = "${nontext}" },
+	diffNewFile = { fg = "${green}" },
+	diffOldFile = { fg = "${red}" },
+
+	debugPc = { bg = "${menu}" },
+	debugBreakpoint = { fg = "${red}", reverse = true },
+
+	-- Telescope
+	TelescopePromptBorder = { fg = "${comment}" },
+	TelescopeResultsBorder = { fg = "${comment}" },
+	TelescopePreviewBorder = { fg = "${comment}" },
+	TelescopeSelection = { fg = "${white}", bg = "${selection}" },
+	TelescopeMultiSelection = { fg = "${purple}", bg = "${selection}" },
+	TelescopeNormal = { fg = "${foreground}", bg = "${background}" },
+	TelescopeMatching = { fg = "${green}" },
+	TelescopePromptPrefix = { fg = "${purple}" },
+	TelescopeResultsDiffDelete = { fg = "${red}" },
+	TelescopeResultsDiffChange = { fg = "${cyan}" },
+	TelescopeResultsDiffAdd = { fg = "${green}" },
+
+	-- LSP
+	DiagnosticError = { fg = "${red}" },
+	DiagnosticWarn = { fg = "${yellow}" },
+	DiagnosticInfo = { fg = "${cyan}" },
+	DiagnosticHint = { fg = "${cyan}" },
+	DiagnosticUnderlineError = { undercurl = true, sp = "${red}" },
+	DiagnosticUnderlineWarn = { undercurl = true, sp = "${yellow}" },
+	DiagnosticUnderlineInfo = { undercurl = true, sp = "${cyan}" },
+	DiagnosticUnderlineHint = { undercurl = true, sp = "${cyan}" },
+	DiagnosticSignError = { fg = "${red}" },
+	DiagnosticSignWarn = { fg = "${yellow}" },
+	DiagnosticSignInfo = { fg = "${cyan}" },
+	DiagnosticSignHint = { fg = "${cyan}" },
+	DiagnosticFloatingError = { fg = "${red}" },
+	DiagnosticFloatingWarn = { fg = "${yellow}" },
+	DiagnosticFloatingInfo = { fg = "${cyan}" },
+	DiagnosticFloatingHint = { fg = "${cyan}" },
+	DiagnosticVirtualTextError = { fg = "${red}" },
+	DiagnosticVirtualTextWarn = { fg = "${yellow}" },
+	DiagnosticVirtualTextInfo = { fg = "${cyan}" },
+	DiagnosticVirtualTextHint = { fg = "${cyan}" },
+
+	LspDiagnosticsDefaultError = { fg = "${red}" },
+	LspDiagnosticsDefaultWarning = { fg = "${yellow}" },
+	LspDiagnosticsDefaultInformation = { fg = "${cyan}" },
+	LspDiagnosticsDefaultHint = { fg = "${cyan}" },
+	LspDiagnosticsUnderlineError = { fg = "${red}", undercurl = true },
+	LspDiagnosticsUnderlineWarning = { fg = "${yellow}", undercurl = true },
+	LspDiagnosticsUnderlineInformation = { fg = "${cyan}", undercurl = true },
+	LspDiagnosticsUnderlineHint = { fg = "${cyan}", undercurl = true },
+	LspReferenceText = { fg = "${orange}" },
+	LspReferenceRead = { fg = "${orange}" },
+	LspReferenceWrite = { fg = "${orange}" },
+	LspCodeLens = { fg = "${cyan}" },
+	LspInlayHint = { fg = "${gray}", bg = "${backgroundLight}" },
+
+	-- statusline
+	SLNormal = { fg = "${background}", bg = "${cyan}" },
+	SLInsert = { fg = "${foreground}", bg = "${green}" },
+	SLVisual = { fg = "${foreground}", bg = "${red}" },
+	SLSelect = { fg = "${foreground}", bg = "${yellow}" },
+	SLReplace = { fg = "${foreground}", bg = "${yellow}" },
+	SLCommand = { fg = "${foreground}", bg = "${orange}" },
+	SLConfirm = { fg = "${foreground}", bg = "${purple}" },
+	SLTerminal = { fg = "${foreground}", bg = "${purple}" },
+	User1 = { fg = "${foreground}", bg = "${background}" },
+}
+
+for group, setting in pairs(groups) do
+	vim.api.nvim_set_hl(0, group, setting)
+end

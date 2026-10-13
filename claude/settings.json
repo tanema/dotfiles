@@ -24,7 +24,7 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "$CLAUDE_CONFIG_DIR/scripts/awake.sh start"
+						"command": "awake start"
 					}
 				]
 			}
@@ -34,7 +34,7 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "$CLAUDE_CONFIG_DIR/scripts/awake.sh stop"
+						"command": "awake stop"
 					}
 				]
 			}

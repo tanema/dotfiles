@@ -19,6 +19,8 @@ vim.opt.clipboard:append("unnamed") -- use system clipboard
 vim.opt.switchbuf:append("usetab,newtab") -- this will make it switch to a tab if I already have the file open and open the quickfix in a tab
 vim.opt.termguicolors = true
 vim.opt.updatetime = 100
+vim.opt.spelllang = "en_gb"
+vim.opt.colorcolumn = { "80", "120", "121", "122", "123", "124", "125" }
 vim.opt.completeopt = { -- tab complete opts
   "menu", -- Use a popup menu to show the possible completions.
   "menuone", -- Use the popup menu also when there is only one match.
@@ -27,18 +29,7 @@ vim.opt.completeopt = { -- tab complete opts
   "preview", -- Show extra information about the currently selected completion in the preview window.
   "fuzzy", -- Enable fuzzy-matching for completion candidates.
 }
-vim.opt.spelllang = "en_gb"
-
+vim.opt.grepformat = "%f:%l:%c:%m"
 if vim.fn.executable("rg") then -- Use rg over grep
   vim.opt.grepprg = "rg --vimgrep --smart-case"
-  vim.opt.grepformat = "%f:%l:%c:%m"
 end
-
-local colorColumns = { "80" }
-for i = 120, 200 do
-  table.insert(colorColumns, tostring(i))
-end
-vim.opt.colorcolumn = colorColumns
-
--- Add filetypes
-vim.filetype.add({ extension = { ebnf = "ebnf" } })

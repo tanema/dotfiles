@@ -41,4 +41,4 @@ I have a unified colorscheme setup so I have my colorscheme defined at `colorsch
 which is a copy of dracula. It is also exported to the shell at `$COLORSCHEME`
 so that everywhere the colorscheme is used, it uses the variable so that it can
 be swapped. Then, we use env var templates to generate other templates such 
-as claude and ghostty. Lastly nvim loads and parses the json to define the colorscheme.
+as claude, nvim, and ghostty. 
