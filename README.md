@@ -6,7 +6,7 @@ sets up the computer's ssh key, clones the repo, and installs tools needed via
 [mise](https://mise.jdx.dev).
 
 ```zsh
-curl -fsSL https://raw.githubusercontent.com/tanema/dotfiles/main/install | bash
+curl -fsSL https://raw.githubusercontent.com/tanema/dotfiles/main/bin/install | bash
 ```
 
 ## Config Strategy

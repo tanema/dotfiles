@@ -1,15 +1,17 @@
 [dotfiles]
-"~/.local/bin/awake" = { source = "../bin/awake", mode = "symlink" }
-"~/.config/git" = { source = "../git", mode = "symlink" }
-"~/.config/tmux" = { source = "../tmux", mode = "symlink" }
-"~/.config/nvim" = { source = "../nvim", mode = "symlink" }
-"~/.config/ghostty" = { source = "../ghostty", mode = "symlink" }
-"~/.config/claude/CLAUDE.md" = { source = "../claude/CLAUDE.md", mode = "symlink" }
-"~/.config/claude/settings.json" = { source = "../claude/settings.json", mode = "symlink" }
-"~/.config/claude/scripts" = { source = "../claude/scripts", mode = "symlink" }
-"~/.config/claude/themes" = { source = "../claude/themes", mode = "symlink" }
-"~/.ssh/config" = { source = "../ssh_config", mode = "symlink" }
-"~/.zshrc" = { source = "../zshrc", mode = "symlink" }
+"~/.local/bin/awake" = { source = "bin/awake", mode = "symlink" }
+"~/.config/mise/config.toml" = { source = "mise.toml", mode = "symlink" }
+"~/.config/git/config" = { source = "git/config", mode = "symlink" }
+"~/.config/git/ignore" = { source = "git/ignore", mode = "symlink" }
+"~/.config/tmux/tmux.conf" = { source = "tmux.conf", mode = "symlink" }
+"~/.config/nvim" = { source = "nvim", mode = "symlink" }
+"~/.config/ghostty" = { source = "ghostty", mode = "symlink" }
+"~/.config/claude/CLAUDE.md" = { source = "claude/CLAUDE.md", mode = "symlink" }
+"~/.config/claude/settings.json" = { source = "claude/settings.json", mode = "symlink" }
+"~/.config/claude/scripts" = { source = "claude/scripts", mode = "symlink" }
+"~/.config/claude/themes" = { source = "claude/themes", mode = "symlink" }
+"~/.ssh/config" = { source = "ssh_config", mode = "symlink" }
+"~/.zshrc" = { source = "zshrc", mode = "symlink" }
 
 # Default required directories that need to exist for config to be in place.
 [bootstrap.directories."~/.ssh"]
@@ -20,24 +22,18 @@
 [bootstrap.directories."~/.local/share/less"]
 [bootstrap.directories."~/.local/share/zsh"]
 
-[bootstrap.macos.dock]
-autohide = true
-tilesize = 75
-show_recents = false
-
-[bootstrap.macos.finder]
-show_all_files = true
-show_pathbar = true
-preferred_view_style = "column"
-
-[bootstrap.macos.keyboard]
-key_repeat = 2
-initial_key_repeat = 15
-
 [bootstrap.packages]
 "brew:gnupg" = "latest"
 "brew:openssl@3.0" = "latest"
 "brew-cask:ghostty" = "latest"
+
+[shell_alias]
+reload = 'source $HOME/.zshrc'
+ls = 'ls -GoAhFD "%d/%m/%y %H:%M"'
+
+[tasks.update_nvim]
+description = "update neovim packages"
+run = "nvim --headless --cmd \":lua vim.cmd('packupdate'); os.exit(0)\" && echo ''"
 
 [tools]
 jq = "latest"

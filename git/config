@@ -2,7 +2,7 @@
   name = Tim Anema
 [include]
 	# Allow computer settings so each computer can have different emails and signing keys
-  path = ~/.gitconfig.local
+  path = ~/.config/git/config.local
 [core]
   editor = nvim
   commitGraph = true

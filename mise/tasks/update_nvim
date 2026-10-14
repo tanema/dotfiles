@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Automatically update neovim plugins using the builtin plugin manager"
-
-nvim --headless --cmd ":lua vim.cmd('packupdate'); os.exit(0)"
-echo "" # last command doesnt end with newline

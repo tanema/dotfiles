@@ -15,12 +15,10 @@ echo "╚═══════════════════════�
 echo '\033[0m'
 
 DOTFILES_DIR="$HOME/workspace/dotfiles"
-
 xcode-select --install 2>/dev/null || true
 
 # Ensure we have our ssh key setup if this is the first time.
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then
-	echo "\033[32m=== generating a new ssh key ===\033[0m"
 	mkdir -p $HOME/.ssh
 	read -r "ssh_email?Enter your email for the SSH key: "
 	ssh-keygen -t rsa -b 4096 -C "$ssh_email"
@@ -32,23 +30,17 @@ if [ ! -f "$HOME/.ssh/id_rsa" ]; then
 fi
 
 if [ ! -d "$DOTFILES_DIR" ]; then
-	echo "\033[32m=== Cloning Repo ===\033[0m"
-	# This might be a call from curl pipes to bash so we might not have the repo yet.
-	# Once it exists, `[bootstrap.repos]` in mise/config.toml takes over keeping it updated.
-	mkdir -p $DOTFILES_DIR && git clone git@github.com:tanema/dotfiles.git "$DOTFILES_DIR"
+	git clone git@github.com:tanema/dotfiles.git "$DOTFILES_DIR" && cd $DOTFILES_DIR
 fi
-# Create gitconfig.local so that our gitconfig will not break, and ~/.config so the
-# mise config symlink below has somewhere to land.
-touch $HOME/.gitconfig.local
-mkdir -p "$HOME/.config"
-ln -shf "$DOTFILES_DIR/mise" "$HOME/.config/mise"
+
 if ! command -v mise >/dev/null 2>&1; then
-	echo "\033[32m=== installing mise ===\033[0m"
-	curl https://mise.run | sh
-	eval "$(mise activate zsh)"
+	curl https://mise.run | sh && eval "$(mise activate zsh)"
 fi
+
 mise bootstrap --quiet --yes --skip-dirty
 mise install --quiet --system
+touch $HOME/.config/git/config.local
 mise run update_nvim
-mise run setup_gpg
-mise run build_theme
+$DOTFILES_DIR/bin/build_theme
+$DOTFILES_DIR/bin/setup_gpg
+$DOTFILES_DIR/bin/macos_defaults

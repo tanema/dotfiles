@@ -1,7 +1,7 @@
 local commentary = require("commentary")
 local surround = require("surround")
 local telescope = {
-  find = ":lua require('telescope.builtin').find_files()<CR>",
+  find = ":lua require('telescope.builtin').find_files({ cwd = vim.fn.getcwd(-1, -1) })<CR>",
   grep = ":lua require('telescope.builtin').live_grep()<CR>",
 }
 local autocmpl = {

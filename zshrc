@@ -93,12 +93,9 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '%F{magenta}'
 zstyle ':vcs_info:*' unstagedstr '%F{magenta}'
-zstyle ':vcs_info:git:*' formats '%F{green}%c%u%B(%b) '
-zstyle ':vcs_info:git:*' actionformats '%F{green}%c%u%B(%b|%a) '
+zstyle ':vcs_info:git:*' formats '%F{green}%c%u%B(%b)'
+zstyle ':vcs_info:git:*' actionformats '%F{green}%c%u%B(%b|%a)'
 add-zsh-hook precmd vcs_info
-PROMPT='%(?:%B%F{green}:%F{red})%B➜ %F{blue}%B%1~%f ${vcs_info_msg_0_}%f%b'
-
-alias reload="source $HOME/.zshrc"
-alias ls='ls -GoAhFD "%d/%m/%y %H:%M"'
+PROMPT='%B%F{blue}%1~${vcs_info_msg_0_}%(?:%F{green}:%F{red}) ➔%f%b '
 
 eval "$(mise activate zsh)"
