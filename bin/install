@@ -30,6 +30,7 @@ if [ ! -f "$HOME/.ssh/id_rsa" ]; then
 fi
 
 if [ ! -d "$DOTFILES_DIR" ]; then
+	mkdir "$HOME/workspace"
 	git clone git@github.com:tanema/dotfiles.git "$DOTFILES_DIR" && cd $DOTFILES_DIR
 fi
 
@@ -40,7 +41,7 @@ fi
 mise bootstrap --quiet --yes --skip-dirty
 mise install --quiet --system
 touch $HOME/.config/git/config.local
-mise run update_nvim
+$DOTFILES_DIR/bin/nvimup
 $DOTFILES_DIR/bin/build_theme
 $DOTFILES_DIR/bin/setup_gpg
 $DOTFILES_DIR/bin/macos_defaults

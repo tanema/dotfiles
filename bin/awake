@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 set -eo pipefail
 
 action="$1"
@@ -28,6 +28,5 @@ does not need to continuously be running.
 start: launch caffeinate -i for this session if not already running.
 stop:  kill this session's caffeinate so the machine can sleep again.
 EOF
-
 		;;
 esac

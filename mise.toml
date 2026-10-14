@@ -1,4 +1,5 @@
 [dotfiles]
+"~/.local/bin/update" = { source = "bin/update", mode = "symlink" }
 "~/.local/bin/awake" = { source = "bin/awake", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "mise.toml", mode = "symlink" }
 "~/.config/git/config" = { source = "git/config", mode = "symlink" }
@@ -31,10 +32,6 @@
 reload = 'source $HOME/.zshrc'
 ls = 'ls -GoAhFD "%d/%m/%y %H:%M"'
 
-[tasks.update_nvim]
-description = "update neovim packages"
-run = "nvim --headless --cmd \":lua vim.cmd('packupdate'); os.exit(0)\" && echo ''"
-
 [tools]
 jq = "latest"
 neovim = "nightly"
@@ -62,8 +59,8 @@ golangci-lint = "latest"
 "github:zigtools/zls" = "latest"
 "cargo:ebnfer" = "latest"
 "arduino-cli" = "latest"
-ruby = "3.4.10"
-node = "26.7.0"
-rust = "1.98.1"
-go = "1.27.1"
-zig = "0.16.0"
+ruby = "4.0.7"
+node = "26.11.1"
+rust = "1.99.0"
+go = "1.27.2"
+zig = "0.17.0"

@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+nvim --headless --cmd ":lua vim.cmd('packupdate'); os.exit(0)"
+echo ''

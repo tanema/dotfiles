@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-#MISE description="Generates claude and ghostty themes from a json file at $COLORSCHEME."
+#!/usr/bin/env zsh
 set -euo pipefail
 
 # source the colorscheme variables as env vars to use in envsubst

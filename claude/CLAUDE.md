@@ -43,3 +43,4 @@
 - Don't agree just to be agreeable
 - Don't hedge criticism excessively - be direct but professional
 - Don't treat subjective preferences as objective improvements
+- Never add Co-Authored-By or any Claude attribution to commits or PRs.
