@@ -1,3 +1,23 @@
+[env]
+DOTFILES = "$HOME/workspace/dotfiles"
+COLORSCHEME = "$DOTFILES/colorscheme/orlok.json"
+AWS_CLI_HISTORY_FILE = "$XDG_DATA_HOME/aws/history"
+AWS_CONFIG_FILE = "$XDG_CONFIG_HOME/aws/config"
+AWS_SHARED_CREDENTIALS_FILE = "$XDG_DATA_HOME/aws/credentials"
+BUNDLE_USER_HOME = "$XDG_CONFIG_HOME/bundle"
+CLAUDE_CONFIG_DIR = "$XDG_CONFIG_HOME/claude"
+DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker"
+GNUPGHOME = "$XDG_DATA_HOME/gnupg"
+GOPATH = "$XDG_DATA_HOME/go"
+KUBECONFIG = "$XDG_CONFIG_HOME/kube/config"
+NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config"
+NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm"
+NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm"
+ZSH_CACHE_DIR = "$XDG_CACHE_HOME/zsh"
+ZSH_COMPDUMP = "$ZSH_CACHE_DIR/.zcompdump"
+RUSTUP_HOME = "$XDG_DATA_HOME/rustup"
+CARGO_HOME = "$XDG_DATA_HOME/cargo"
+
 [dotfiles]
 "~/.local/bin/update" = { source = "bin/update", mode = "symlink" }
 "~/.local/bin/awake" = { source = "bin/awake", mode = "symlink" }
@@ -17,8 +37,9 @@
 # Default required directories that need to exist for config to be in place.
 [bootstrap.directories."~/.ssh"]
 [bootstrap.directories."~/.local"]
-[bootstrap.directories."~/.cache"]
+[bootstrap.directories."~/.cache/zsh"]
 [bootstrap.directories."~/.local/bin"]
+[bootstrap.directories."~/.local/state"]
 [bootstrap.directories."~/.local/run"]
 [bootstrap.directories."~/.local/share/less"]
 [bootstrap.directories."~/.local/share/zsh"]
@@ -64,3 +85,6 @@ node = "26.11.1"
 rust = "1.99.0"
 go = "1.27.2"
 zig = "0.17.0"
+
+[settings]
+activate_aggressive = false

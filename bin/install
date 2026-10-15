@@ -38,8 +38,8 @@ if ! command -v mise >/dev/null 2>&1; then
 	curl https://mise.run | sh && eval "$(mise activate zsh)"
 fi
 
-mise bootstrap --quiet --yes --skip-dirty
-mise install --quiet --system
+mise bootstrap --yes --skip-dirty
+mise install --system
 touch $HOME/.config/git/config.local
 $DOTFILES_DIR/bin/nvimup
 $DOTFILES_DIR/bin/build_theme
