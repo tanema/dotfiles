@@ -81,4 +81,10 @@ zstyle ':vcs_info:git:*' actionformats '%F{green}%c%u%B(%b|%a)'
 add-zsh-hook precmd vcs_info
 PROMPT='%B%F{blue}%1~${vcs_info_msg_0_}%(?:%F{green}:%F{red}) ➔%f%b '
 
-eval "$(mise activate zsh)"
+# Smaller activation than mise's script. Still messes with my path that I don't love.
+_mise_hook() { eval "$($HOME/.local/bin/mise hook-env --shell-pid $$ -s zsh "$@")"; }
+_mise_hook_precmd() { _mise_hook --reason precmd }
+_mise_hook_chpwd() { _mise_hook --reason chpwd }
+add-zsh-hook precmd _mise_hook_precmd
+add-zsh-hook chpwd _mise_hook_chpwd
+_mise_hook --force

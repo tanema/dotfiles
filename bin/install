@@ -1,47 +1,11 @@
 #!/usr/bin/env zsh
-# Main install script to setup links to dotfiles that are in this repo. This can be called
-# locally after cloning the repo or through curling the file and pipeing it to bash.
-echo '\033[32m'
-echo "╔═══════════════════════════════════════════════════════════════════════╗"
-echo "║╔═════════════════════════════════════════════════════════════════════╗║"
-echo "║║   █████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗██╗   ║║"
-echo "║║   █╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝██║   ║║"
-echo "║║   █║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗██║   ║║"
-echo "║║   █║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║╚═╝   ║║"
-echo "║║   █████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║██╗   ║║"
-echo "║║   ═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝╚═╝   ║║"
-echo "║╚═════════════════════════════════════════════════════════════════════╝║"
-echo "╚═══════════════════════════════════════════════════════════════════════╝"
-echo '\033[0m'
-
-DOTFILES_DIR="$HOME/workspace/dotfiles"
+# This is a small script that will get called via the readme command 
+# `curl -fsSL https://timanema.com/dot | sh` so it expects that the dotfile directory
+# does not exit yet, it will clone it, and then run the install process from the
+# dotfiles repo.
 xcode-select --install 2>/dev/null || true
-
-# Ensure we have our ssh key setup if this is the first time.
-if [ ! -f "$HOME/.ssh/id_rsa" ]; then
-	mkdir -p $HOME/.ssh
-	read -r "ssh_email?Enter your email for the SSH key: "
-	ssh-keygen -t rsa -b 4096 -C "$ssh_email"
-	eval "$(ssh-agent -s)"
-	ssh-add --apple-use-keychain $HOME/.ssh/id_rsa
-	cat $HOME/.ssh/id_rsa.pub | pbcopy
-	open "https://github.com/settings/keys"
-	read -p "New ssh key is in clipboard add it to github and press enter to continue ..."
-fi
-
-if [ ! -d "$DOTFILES_DIR" ]; then
-	mkdir "$HOME/workspace"
-	git clone git@github.com:tanema/dotfiles.git "$DOTFILES_DIR" && cd $DOTFILES_DIR
-fi
-
-if ! command -v mise >/dev/null 2>&1; then
-	curl https://mise.run | sh && eval "$(mise activate zsh)"
-fi
-
-mise bootstrap --yes --skip-dirty
-mise install --system
-touch $HOME/.config/git/config.local
-$DOTFILES_DIR/bin/nvimup
-$DOTFILES_DIR/bin/build_theme
-$DOTFILES_DIR/bin/setup_gpg
-$DOTFILES_DIR/bin/macos_defaults
+mkdir "$HOME/workspace"
+git clone https://github.com/tanema/dotfiles.git "$HOME/workspace/dotfiles"
+cd "$HOME/workspace/dotfiles"
+git remote set-url origin git@github.com:tanema/dotfiles.git
+$HOME/workspace/bin/dot install

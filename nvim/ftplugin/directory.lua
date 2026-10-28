@@ -57,5 +57,4 @@ end
 vim.keymap.set("n", "%", create_file, { buffer = true, desc = "Create file" })
 vim.keymap.set("n", "d", create_dir, { buffer = true, desc = "Create directory" })
 vim.keymap.set("n", "D", delete_entry, { buffer = true, desc = "Delete entry under cursor" })
-vim.keymap.set("n", "r", rename_entry, { buffer = true, desc = "Rename entry under cursor" })
-vim.keymap.set("n", "R", rename_entry, { buffer = true, desc = "Rename entry under cursor" })
+vim.keymap.set("n", { "r", "R" }, rename_entry, { buffer = true, desc = "Rename entry under cursor" })

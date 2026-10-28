@@ -33,7 +33,7 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "awake start"
+						"command": "dot coffee"
 					}
 				]
 			}
@@ -43,7 +43,7 @@
 				"hooks": [
 					{
 						"type": "command",
-						"command": "awake stop"
+						"command": "dot turkey"
 					}
 				]
 			}

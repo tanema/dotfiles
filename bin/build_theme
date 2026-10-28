@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-set -euo pipefail
-
-# source the colorscheme variables as env vars to use in envsubst
-$(jq -r 'keys[] as $k | "export \($k)=\(.[$k])"' "$COLORSCHEME")
-envsubst < "$DOTFILES/colorscheme/claude.tmpl" > "$DOTFILES/claude/themes/timscheme.json"
-envsubst < "$DOTFILES/colorscheme/ghostty.tmpl" > "$DOTFILES/ghostty/themes/timscheme"
-envsubst < "$DOTFILES/colorscheme/nvim.tmpl.lua" > "$DOTFILES/nvim/colors/timscheme.lua"

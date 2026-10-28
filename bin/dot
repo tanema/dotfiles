@@ -1,0 +1,223 @@
+#!/usr/bin/env zsh
+# A swiss army knife to support my dotfiles, it used to be a makefile but I have
+# found that a shell script is more flexible and fun to work with. It still could
+# be a makefile, but thats up to you.
+set -eo pipefail
+
+DOTFILES="$HOME/workspace/dotfiles"
+COLORSCHEME="$DOTFILES/colorscheme/orlok.json"
+CAFFIENE_PID_FILE="/tmp/caffeinate.pid"
+
+BOLD="\033[1m"
+BLUE="\033[34;1m"
+MAGENTA="\033[35m"
+BRIGHT="\033[97m"
+RESET="\033[0m"
+
+HELPDOC=$(cat << EOF
+${BRIGHT}${BOLD}dot${RESET} is a quick tool to assit my dotfiles.
+
+${MAGENTA}Usage${RESET}: ${BRIGHT}${BOLD}dot <subcommand>${RESET}
+
+${BRIGHT}${BOLD}Subcommands:${RESET}
+
+${MAGENTA}install${RESET} Run install flow, (mise, ssh, gpg, macos, theme, neovim)
+${MAGENTA}update${RESET}  Run update flow, (mise, neovim)
+${MAGENTA}ssh${RESET}     Setup the computer to have an ssh key, on the keychain and helps add it to github.
+${MAGENTA}gpg${RESET}     Setup the computer to have an gpg key, helps add it to github.
+${MAGENTA}macos${RESET}   Setup macOS defaults through the defaults cli.
+${MAGENTA}mise${RESET}    Installs or updates the mise cli, and installs/updates system packages.
+${MAGENTA}theme${RESET}   (Re)Generate theme files in the dotfiles using envsubst templates.
+${MAGENTA}neovim${RESET}  Update neovims packages, requires neovim to already be installed and setup.
+${MAGENTA}coffee${RESET}  Launch caffeinate -i in background tracking pid to keep the computer awake.
+${MAGENTA}turkey${RESET}  Kill caffeinate if running so the machine can sleep again.
+${MAGENTA}death${RESET}   Restart macos Finder, Dock, coreaudiod and SystemUIServer to load changes and fix issues.
+${MAGENTA}help${RESET}    Display this message.
+
+EOF
+)
+
+function banner() {
+	echo $BLUE
+	echo "  ╔═══════════════════════════════════════════════════════════════════════╗"
+	echo "  ║╔═════════════════════════════════════════════════════════════════════╗║"
+	echo "  ║║   █████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗██╗   ║║"
+	echo "  ║║   █╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝██║   ║║"
+	echo "  ║║   █║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗██║   ║║"
+	echo "  ║║   █║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║╚═╝   ║║"
+	echo "  ║║   █████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║██╗   ║║"
+	echo "  ║║   ═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝╚═╝   ║║"
+	echo "  ║╚═════════════════════════════════════════════════════════════════════╝║"
+	echo "  ╚═══════════════════════════════════════════════════════════════════════╝"
+	echo $RESET
+}
+
+function dot_install() {
+	banner
+	touch $HOME/.config/git/config.local
+	install_mise
+	dot_ssh
+	dot_gpg
+	dot_macos
+ 	dot_theme
+	dot_neovim
+}
+
+function dot_update() {
+	banner
+	update_mise
+ 	dot_theme
+	dot_neovim
+}
+
+function dot_mise() {
+	command -v mise >/dev/null 2>&1 && update_mise || install_mise
+}
+
+function install_mise() {
+	command -v mise >/dev/null 2>&1 || \
+		curl https://mise.run | sh \
+		&& eval "$(mise activate zsh)"
+	mise bootstrap --yes --skip-dirty
+	mise install --system
+}
+
+function update_mise() {
+	mise up --bump
+}
+
+function dot_gpg() {
+	GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
+	if [[ ! -z "$GPG_COUNT" ]]; then; exit 0; fi
+
+	echo "\033[32m=== setting up GPG ===\033[0m"
+	gpg --default-new-key-algo rsa4096 --gen-key
+	gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
+	open "https://github.com/settings/keys"
+	read -p "New gpg key is in clipboard add it to github and press enter to continue ..."
+}
+
+function dot_ssh() {
+	# Ensure we have our ssh key setup if this is the first time.
+	if [ -f "$HOME/.ssh/id_rsa" ]; then
+		exit 0
+	fi
+
+	mkdir -p "$HOME/.ssh"
+	read -r "ssh_email?Enter your email for the SSH key: "
+	ssh-keygen -t rsa -b 4096 -C "$ssh_email"
+	eval "$(ssh-agent -s)"
+	ssh-add --apple-use-keychain "$HOME/.ssh/id_rsa"
+	cat "$HOME/.ssh/id_rsa.pub" | pbcopy
+	open "https://github.com/settings/keys"
+	read -p "New ssh key is in clipboard add it to github and press enter to continue ..."
+}
+
+function dot_macos() {
+	defaults write NSGlobalDomain AppleFontSmoothing -int 1 # Enable subpixel font rendering on non-Apple LCDs 
+	defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false # Disable press-and-hold for keys in favor of key repeat
+	defaults write NSGlobalDomain AppleShowAllExtensions -bool true # Finder: show all filename extensions 
+	defaults write NSGlobalDomain com.apple.sound.beep.feedback  -bool false
+	defaults write NSGlobalDomain InitialKeyRepeat -int 15
+	defaults write NSGlobalDomain KeyRepeat -int 2 # Set a blazingly fast keyboard repeat rate 
+	defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false # Save to disk (not to iCloud) by default 
+	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+	defaults write NSGlobalDomain NSWindowShouldDragOnGesture YES # Allow ctrl-opt-cmd-click drag anywhere in window to move it.
+	defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+	defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+	defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40 # Increase sound quality for Bluetooth headphones/headsets 
+	defaults write com.apple.CrashReporter DialogType -string "none" # Disable the crash reporter
+	defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+	defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+	defaults write com.apple.dock autohide -bool true
+	defaults write com.apple.dock largesize -int 112
+	defaults write com.apple.dock magnification -bool true
+	defaults write com.apple.dock minimize-to-application -bool true
+	defaults write com.apple.dock tilesize -int 85
+	defaults write com.apple.dock wvous-bl-corner -int 0
+	defaults write com.apple.dock wvous-bl-modifier -int 0
+	defaults write com.apple.dock wvous-br-corner -int 0
+	defaults write com.apple.dock wvous-br-modifier -int 0
+	defaults write com.apple.dock wvous-tl-corner -int 0
+	defaults write com.apple.dock wvous-tl-modifier -int 0
+	defaults write com.apple.dock wvous-tr-corner -int 0
+	defaults write com.apple.dock wvous-tr-modifier -int 0
+	defaults write com.apple.finder _FXShowPosixPathInTitle -bool true # Display full POSIX path as Finder window title
+	defaults write com.apple.finder _FXSortFoldersFirst -bool true # Keep folders on top when sorting by name
+	defaults write com.apple.finder AppleShowAllFiles -bool false # show hidden files by default 
+	defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false # Disable the warning when changing a file extension
+	defaults write com.apple.finder FXInfoPanesExpanded -dict General -bool true OpenWith -bool true Privileges -bool true
+	defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Use column view  [`icnv`, `clmv`, `glyv`] 
+	defaults write com.apple.finder NewWindowTarget -string "PfDe" # Set $HOME as the default location new Finder windows 
+	defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+	defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+	defaults write com.apple.finder ShowPathbar -bool true # show path bar 
+	defaults write com.apple.finder SidebarTagsSctionDisclosedState -bool false # Remove tags from sidebar 
+	defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+	defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+	defaults write com.apple.LaunchServices LSQuarantine -bool false # Disable the “Are you sure you want to open this application?” dialog
+	defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true # Automatically quit printer app once the print jobs complete 
+	defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+	defaults write com.apple.screencapture type -string "png"
+	defaults write com.apple.screensaver askForPassword -int 1 # Require password immediately after sleep 
+	defaults write com.apple.screensaver askForPasswordDelay -int 0
+}
+
+function dot_theme() {
+	# source the colorscheme variables as env vars to use in envsubst
+	$(jq -r 'keys[] as $k | "export \($k)=\(.[$k])"' "$COLORSCHEME")
+	envsubst < "$DOTFILES/colorscheme/claude.tmpl" > "$DOTFILES/claude/themes/timscheme.json"
+	envsubst < "$DOTFILES/colorscheme/ghostty.tmpl" > "$DOTFILES/ghostty/themes/timscheme"
+	envsubst < "$DOTFILES/colorscheme/nvim.tmpl.lua" > "$DOTFILES/nvim/colors/timscheme.lua"
+}
+
+function dot_neovim() {
+	nvim --headless --cmd ":lua vim.cmd('packupdate'); os.exit(0)"
+	echo '' # the last command has no newline
+}
+
+function dot_coffee() {
+	if [[ -f "$CAFFIENE_PID_FILE" ]] && kill -0 "$(cat "$CAFFIENE_PID_FILE")" 2>/dev/null; then
+		exit 0
+	fi
+	nohup caffeinate -dis >/dev/null 2>&1 &
+	disown
+	echo $! >"$CAFFIENE_PID_FILE"
+}
+
+function dot_turkey() {
+	if [[ -f "$CAFFIENE_PID_FILE" ]]; then
+		kill "$(cat "$CAFFIENE_PID_FILE")" 2>/dev/null
+		rm -f "$CAFFIENE_PID_FILE"
+	fi
+}
+
+function dot_killall() {
+	killall coreaudiod
+	killall Finder
+ 	killall Dock 
+	killall SystemUIServer
+}
+
+function dot_help() {
+	echo $HELPDOC
+	echo ''
+}
+ 
+SUBCOMMAND=$1
+SUBCOMMAND_FN="dot_${SUBCOMMAND}"
+# No subcommand provided, print help.
+if (( $# == 0 )); then
+	dot_help
+	exit 0
+fi
+
+shift # Remove command name from arguments
+if declare -f "${SUBCOMMAND_FN}" > /dev/null; then
+	"${SUBCOMMAND_FN}" "$@"
+else
+	dot_help
+  exit 1
+fi

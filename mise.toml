@@ -1,6 +1,4 @@
 [env]
-DOTFILES = "$HOME/workspace/dotfiles"
-COLORSCHEME = "$DOTFILES/colorscheme/orlok.json"
 AWS_CLI_HISTORY_FILE = "$XDG_DATA_HOME/aws/history"
 AWS_CONFIG_FILE = "$XDG_CONFIG_HOME/aws/config"
 AWS_SHARED_CREDENTIALS_FILE = "$XDG_DATA_HOME/aws/credentials"
@@ -19,8 +17,7 @@ RUSTUP_HOME = "$XDG_DATA_HOME/rustup"
 CARGO_HOME = "$XDG_DATA_HOME/cargo"
 
 [dotfiles]
-"~/.local/bin/update" = { source = "bin/update", mode = "symlink" }
-"~/.local/bin/awake" = { source = "bin/awake", mode = "symlink" }
+"~/.local/bin/dot" = { source = "bin/dot", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "mise.toml", mode = "symlink" }
 "~/.config/git/config" = { source = "git/config", mode = "symlink" }
 "~/.config/git/ignore" = { source = "git/ignore", mode = "symlink" }
@@ -80,10 +77,10 @@ golangci-lint = "latest"
 "github:zigtools/zls" = "latest"
 "cargo:ebnfer" = "latest"
 "arduino-cli" = "latest"
-ruby = "4.0.7"
-node = "26.11.1"
-rust = "1.99.0"
-go = "1.27.2"
+ruby = "4.0.9"
+node = "26.12.1"
+rust = "1.99.1"
+go = "1.27.3"
 zig = "0.17.0"
 
 [settings]
