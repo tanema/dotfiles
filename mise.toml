@@ -19,15 +19,12 @@ CARGO_HOME = "$XDG_DATA_HOME/cargo"
 [dotfiles]
 "~/.local/bin/dot" = { source = "bin/dot", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "mise.toml", mode = "symlink" }
-"~/.config/git/config" = { source = "git/config", mode = "symlink" }
-"~/.config/git/ignore" = { source = "git/ignore", mode = "symlink" }
+"~/.config/git" = { source = "git", mode = "symlink" }
 "~/.config/tmux/tmux.conf" = { source = "tmux.conf", mode = "symlink" }
 "~/.config/nvim" = { source = "nvim", mode = "symlink" }
 "~/.config/ghostty" = { source = "ghostty", mode = "symlink" }
 "~/.config/claude/CLAUDE.md" = { source = "claude/CLAUDE.md", mode = "symlink" }
 "~/.config/claude/settings.json" = { source = "claude/settings.json", mode = "symlink" }
-"~/.config/claude/scripts" = { source = "claude/scripts", mode = "symlink" }
-"~/.config/claude/themes" = { source = "claude/themes", mode = "symlink" }
 "~/.ssh/config" = { source = "ssh_config", mode = "symlink" }
 "~/.zshrc" = { source = "zshrc", mode = "symlink" }
 
@@ -47,7 +44,6 @@ CARGO_HOME = "$XDG_DATA_HOME/cargo"
 "brew-cask:ghostty" = "latest"
 
 [shell_alias]
-reload = 'source $HOME/.zshrc'
 ls = 'ls -GoAhFD "%d/%m/%y %H:%M"'
 
 [tools]

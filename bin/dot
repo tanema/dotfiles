@@ -23,6 +23,7 @@ ${BRIGHT}${BOLD}Subcommands:${RESET}
 
 ${MAGENTA}install${RESET} Run install flow, (mise, ssh, gpg, macos, theme, neovim)
 ${MAGENTA}update${RESET}  Run update flow, (mise, neovim)
+${MAGENTA}reload${RESET}  Reload shell config to update any changes.
 ${MAGENTA}ssh${RESET}     Setup the computer to have an ssh key, on the keychain and helps add it to github.
 ${MAGENTA}gpg${RESET}     Setup the computer to have an gpg key, helps add it to github.
 ${MAGENTA}macos${RESET}   Setup macOS defaults through the defaults cli.
@@ -54,7 +55,7 @@ function banner() {
 
 function dot_install() {
 	banner
-	touch $HOME/.config/git/config.local
+	touch $HOME/.config/gitconfig.local
 	install_mise
 	dot_ssh
 	dot_gpg
@@ -68,6 +69,11 @@ function dot_update() {
 	update_mise
  	dot_theme
 	dot_neovim
+}
+
+function dot_reload() {
+	source $HOME/.zshrc
+	clear
 }
 
 function dot_mise() {
@@ -168,7 +174,8 @@ function dot_macos() {
 function dot_theme() {
 	# source the colorscheme variables as env vars to use in envsubst
 	$(jq -r 'keys[] as $k | "export \($k)=\(.[$k])"' "$COLORSCHEME")
-	envsubst < "$DOTFILES/colorscheme/claude.tmpl" > "$DOTFILES/claude/themes/timscheme.json"
+	mkdir -p "$XDG_CONFIG_HOME/claude/themes"
+	envsubst < "$DOTFILES/colorscheme/claude.tmpl" > "$XDG_CONFIG_HOME/claude/themes/timscheme.json"
 	envsubst < "$DOTFILES/colorscheme/ghostty.tmpl" > "$DOTFILES/ghostty/themes/timscheme"
 	envsubst < "$DOTFILES/colorscheme/nvim.tmpl.lua" > "$DOTFILES/nvim/colors/timscheme.lua"
 }

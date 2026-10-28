@@ -51,7 +51,7 @@
 	},
 	"statusLine": {
 		"type": "command",
-		"command": "bash $CLAUDE_CONFIG_DIR/scripts/statusline.sh"
+		"command": "bash $HOME/workspace/dotfiles/bin/claude_statusline.sh"
 	},
 	"enabledPlugins": {
 		"typescript-lsp@claude-plugins-official": true,
