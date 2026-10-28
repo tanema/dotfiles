@@ -54,8 +54,9 @@ function banner() {
 }
 
 function dot_install() {
+	cd $DOTFILES
 	banner
-	touch $HOME/.config/gitconfig.local
+	touch $HOME/.config/git/config.local
 	install_mise
 	dot_ssh
 	dot_gpg
@@ -176,7 +177,8 @@ function dot_theme() {
 	$(jq -r 'keys[] as $k | "export \($k)=\(.[$k])"' "$COLORSCHEME")
 	mkdir -p "$XDG_CONFIG_HOME/claude/themes"
 	envsubst < "$DOTFILES/colorscheme/claude.tmpl" > "$XDG_CONFIG_HOME/claude/themes/timscheme.json"
-	envsubst < "$DOTFILES/colorscheme/ghostty.tmpl" > "$DOTFILES/ghostty/themes/timscheme"
+	mkdir -p "$XDG_CONFIG_HOME/ghostty/themes"
+	envsubst < "$DOTFILES/colorscheme/ghostty.tmpl" > "$XDG_CONFIG_HOME/ghostty/themes/timscheme"
 	envsubst < "$DOTFILES/colorscheme/nvim.tmpl.lua" > "$DOTFILES/nvim/colors/timscheme.lua"
 }
 
