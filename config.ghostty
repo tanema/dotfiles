@@ -1,0 +1,9 @@
+font-family=PT Mono
+theme=timscheme
+font-size = 14
+mouse-hide-while-typing = true
+background-opacity = 1
+window-decoration = true
+link-url = true
+link-previews = true
+quit-after-last-window-closed = true
