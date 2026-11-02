@@ -1,0 +1,85 @@
+# ENV file loaded for every shell in my zshrc. Kind of fun to keep separate as it 
+# is config only.
+
+# XDG Setup
+XDG_CONFIG_HOME="$HOME/.config"
+XDG_CACHE_HOME="$HOME/.cache"
+XDG_DATA_HOME="$HOME/.local/share"
+XDG_STATE_HOME="$HOME/.local/state"
+XDG_RUNTIME_DIR="$HOME/.local/run"
+ZSH="$XDG_CONFIG_HOME/zsh"
+
+# Dotfiles setup support
+WORKSPACE="$HOME/workspace"
+DOTFILES="$WORKSPACE/dotfiles"
+DOTBIN="$DOTFILES/bin"
+
+# Setting the $PATH variable to ensure a clean and properly ordered $PATH in every 
+# environment without having to touch /etc/paths which requires sudo. It also 
+# ensures that if anything has touched my /etc/paths it will no get touched anyways.
+PATH=""                        # reset so my path to empty.
+PATH=$HOME/.local/bin          # custom local system commands if I make them.
+PATH=$PATH:$GOPATH/bin         # golang tools
+PATH=$PATH:$CARGO_HOME/bin     # rust tools
+PATH=$PATH:/opt/homebrew/bin   # homebrew
+PATH=$PATH:/opt/homebrew/sbin  # homebrew
+PATH=$PATH:/usr/local/bin      # local takes precedence over /usr
+PATH=$PATH:/usr/local/sbin     # local takes precedence over /usr
+PATH=$PATH:/usr/bin            # usr takes precedence over /
+PATH=$PATH:/usr/sbin           # usr takes precedence over /
+PATH=$PATH:/bin                # root tools
+PATH=$PATH:/sbin               # root tools
+
+# VISUAL: Programs check VISUAL first, fall back to EDITOR if unset or in a dumb terminal
+# MANPAGER: overrides PAGER specifically for man pages, taking precedence over both PAGER and the man default
+# LANG: controls encoding, sorting, date formats, and more across all programs
+# WORDCHARS: defines which non-alphanumeric characters are considered part of a single word by the line editor
+# Opt out of telemetry for tools that respect this convention  
+DO_NOT_TRACK=1          
+HISTFILE="$XDG_DATA_HOME/zsh/history"
+# HISTSIZE = lines kept in memory per session  
+HISTSIZE=50000          
+# SAVEHIST = lines written to HISTFILE on disk  
+SAVEHIST=50000          
+# VISUAL = full-screen editor (assumed capable terminal);  
+VISUAL=nvim             
+# EDITOR = fallback for line-oriented editors   
+EDITOR=nvim             
+# Commit message editor 
+GIT_EDITOR=nvim         
+# Using nvims pager makes man pages a lot more friendly  
+MANPAGER='nvim +Man!'   
+# PAGER is the default pager for anything that pages output (git log, systemctl, etc.)  
+PAGER="/usr/bin/less"   
+# Less Args: -R=ANSI color, -F=Quit if small, -X=dont'clear when exit 
+LESS='-R -F -X'         
+# Set to canadian english  
+LANG='en_CA.UTF-8'      
+# Signals 24-bit truecolor support 
+COLORTERM=truecolor     
+# Required for GPG to find the correct terminal for passphrase prompts and commit signing  
+GPG_TTY=$(tty)          
+# Default browser for tools that open URLs (e.g. gh, some CLIs);   
+BROWSER="/usr/bin/open" 
+# Removing / means path segments are separate words  
+WORDCHARS=${WORDCHARS//[\/.-]} 
+
+LESSHISTFILE="$XDG_DATA_HOME/less/history"
+AWS_CLI_HISTORY_FILE="$XDG_DATA_HOME/aws/history"
+AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+AWS_SHARED_CREDENTIALS_FILE="$XDG_DATA_HOME/aws/credentials"
+BUNDLE_USER_HOME="$XDG_CONFIG_HOME/bundle"
+ENABLE_LSP_TOOL=1
+CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
+CLAUDE_CODE_ENABLE_TELEMETRY=0
+DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+GNUPGHOME="$XDG_DATA_HOME/gnupg"
+GOPATH="$XDG_DATA_HOME/go"
+KUBECONFIG="$XDG_CONFIG_HOME/kube/config"
+NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+NPM_CONFIG_TMP="$XDG_RUNTIME_DIR/npm"
+ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
+RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+CARGO_HOME="$XDG_DATA_HOME/cargo"

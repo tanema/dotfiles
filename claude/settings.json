@@ -8,11 +8,6 @@
 	"showTurnDuration": true,
 	"editormode": "vim",
 	"effort": "medium",
-	"env": {
-		"CLAUDE_CODE_ENABLE_TELEMETRY": "0",
-		"DO_NOT_TRACK": "1",
-		"ENABLE_LSP_TOOL": "1"
-	},
 	"permissions": {
 		"defaultMode": "auto"
 	},
