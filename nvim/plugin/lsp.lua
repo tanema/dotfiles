@@ -19,7 +19,7 @@ vim.lsp.enable({
 })
 
 local support = require("lsp_support")
-local lspFmtGroup = vim.api.nvim_create_augroup("lsp-auto-format")
+local lspFmtGroup = vim.api.nvim_create_augroup("lsp-auto-format", {})
 vim.api.nvim_create_autocmd("LspAttach", {
   group = lspFmtGroup,
   desc = "Attach LSP to autocomplete and auto formatting",

@@ -21,20 +21,46 @@ ${MAGENTA}Usage${RESET}: ${BRIGHT}${BOLD}dot <subcommand>${RESET}
 
 ${BRIGHT}${BOLD}Subcommands:${RESET}
 
-${MAGENTA}install${RESET} Run install flow, [mise, ssh, gpg, macos, theme, neovim]
-${MAGENTA}update${RESET}  Run update flow, [mise, neovim]
-${MAGENTA}reload${RESET}  Reload shell config to update any changes.
-${MAGENTA}ssh${RESET}     Setup the computer to have an ssh key, on the keychain and helps add it to github.
-${MAGENTA}gpg${RESET}     Setup the computer to have an gpg key, helps add it to github.
-${MAGENTA}macos${RESET}   Setup macOS defaults through the defaults cli.
-${MAGENTA}mise${RESET}    Installs or updates the mise cli and system packages.
-${MAGENTA}theme${RESET}   [Re]Generate theme files in the dotfiles using envsubst templates.
-${MAGENTA}neovim${RESET}  Update neovims packages, requires neovim to already be installed and setup.
-${MAGENTA}coffee${RESET}  Launch caffeinate -i in background tracking pid to keep the computer awake.
-${MAGENTA}turkey${RESET}  Kill caffeinate if running so the machine can sleep again.
-${MAGENTA}death${RESET}   Restart macos Finder, Dock, coreaudiod and SystemUIServer to load changes and fix issues.
-${MAGENTA}help${RESET}    Display this message.
+${MAGENTA}install${RESET}         Run install flow, [mise, ssh, gpg, macos, theme, neovim]
+${MAGENTA}update${RESET}          Run update flow, [mise, neovim]
+${MAGENTA}reload${RESET}          Reload shell config to update any changes.
+${MAGENTA}ssh${RESET}             Setup the ssh key, on the keychain and helps add it to github.
+${MAGENTA}gpg${RESET}             Setup the gpg key, helps add it to github.
+${MAGENTA}macos${RESET}           Setup macOS defaults through the defaults cli.
+${MAGENTA}mise${RESET}            Installs or updates the mise cli and system packages.
+${MAGENTA}activate_mise${RESET}   Minimal addition to zshrc to allow mise bin paths rather than everything.
+${MAGENTA}theme${RESET}           [Re]Generate theme files in the dotfiles using envsubst templates.
+${MAGENTA}neovim${RESET}          Update neovims packages, requires neovim to already be installed and setup.
+${MAGENTA}coffee${RESET}          Launch caffeinate -i in background tracking pid to keep the computer awake.
+${MAGENTA}turkey${RESET}          Kill caffeinate if running so the machine can sleep again.
+${MAGENTA}death${RESET}           Restart macos services to load changes and fix issues.
+${MAGENTA}zsh${RESET}             ZSH additions.
+${MAGENTA}zsh_prompt${RESET}      Initializes zsh prompt setting.
+${MAGENTA}help${RESET}            Display this message.
 
+EOF
+)
+
+MISE_ACTIVATE=$(cat << EOF
+function _dot_mise_hook() { 
+	_MISE_BINPATHS=(\$(mise bin-paths))
+	_MISE_BINPATHS_JOINED=$(IFS=: ; echo "\${_MISE_BINPATHS[*]}")
+	export PATH="\$_ORIG_PATH:\$_MISE_BINPATHS_JOINED"
+}
+export _ORIG_PATH=\$PATH
+add-zsh-hook precmd _dot_mise_hook
+EOF
+)
+
+ZSH_PROMPT=$(cat << EOF
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '%F{magenta}'
+zstyle ':vcs_info:*' unstagedstr '%F{magenta}'
+zstyle ':vcs_info:git:*' formats '%F{green}%c%u%B(%b)'
+zstyle ':vcs_info:git:*' actionformats '%F{green}%c%u%B(%b|%a)'
+add-zsh-hook precmd vcs_info
+PROMPT='%B%F{blue}%1~${vcs_info_msg_0_}%(?:%F{green}:%F{red}) ➔%f%b '
 EOF
 )
 
@@ -53,10 +79,22 @@ function banner() {
 	echo $RESET
 }
 
+function ensure_default_files() {
+	touch $HOME/.config/git/config.local
+	mkdir -p $HOME/.ssh
+	mkdir -p $HOME/.local
+	mkdir -p $HOME/.cache/zsh
+	mkdir -p $HOME/.local/bin
+	mkdir -p $HOME/.local/state
+	mkdir -p $HOME/.local/run
+	mkdir -p $HOME/.local/share/less
+	mkdir -p $HOME/.local/share/zsh
+}
+
 function dot_install() {
 	cd $DOTFILES
 	banner
-	touch $HOME/.config/git/config.local
+	ensure_default_files
 	install_mise
 	dot_ssh
 	dot_gpg
@@ -206,6 +244,19 @@ function dot_death() {
 	killall Finder
  	killall Dock 
 	killall SystemUIServer
+}
+
+function dot_activate_mise() {
+	echo $MISE_ACTIVATE
+}
+
+function dot_zsh_prompt() {
+	echo $ZSH_PROMPT
+}
+
+function dot_zsh() {
+	dot_zsh_prompt
+	dot_activate_mise
 }
 
 function dot_help() {

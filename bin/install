@@ -8,4 +8,4 @@ mkdir "$HOME/workspace"
 git clone https://github.com/tanema/dotfiles.git "$HOME/workspace/dotfiles"
 cd "$HOME/workspace/dotfiles"
 git remote set-url origin git@github.com:tanema/dotfiles.git
-$HOME/workspace/bin/dot install
+"$HOME/workspace/dotfiles/bin/dot" install

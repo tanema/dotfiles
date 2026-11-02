@@ -64,27 +64,34 @@ export WORDCHARS=${WORDCHARS//[\/.-]} # Removing / means path segments are separ
 # environment without having to touch /etc/paths which requires sudo. It also 
 # ensures that if anything has touched my /etc/paths it will no get touched anyways.
 export PATH=""                                         # reset so my path to empty.
-export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin # use homebrew over any system command
-export PATH=$PATH:$HOME/.local/bin                     # custom local system commands if I make them.
+export PATH=$HOME/.local/bin                     # custom local system commands if I make them.
 export PATH=$PATH:$GOPATH/bin                          # golang tools
 export PATH=$PATH:$CARGO_HOME/bin                     # rust tools
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin       # local takes precedence over /usr
 export PATH=$PATH:/usr/bin:/usr/sbin                   # usr takes precedence over /
 export PATH=$PATH:/bin:/sbin                           # root tools
+export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin # use homebrew over any system command
 
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%F{magenta}'
-zstyle ':vcs_info:*' unstagedstr '%F{magenta}'
-zstyle ':vcs_info:git:*' formats '%F{green}%c%u%B(%b)'
-zstyle ':vcs_info:git:*' actionformats '%F{green}%c%u%B(%b|%a)'
-add-zsh-hook precmd vcs_info
-PROMPT='%B%F{blue}%1~${vcs_info_msg_0_}%(?:%F{green}:%F{red}) ➔%f%b '
+export WORKSPACE="$HOME/workspace"
+export DOTFILES="$WORKSPACE/dotfiles"
+export DOTBIN="$DOTFILES/bin"
+export AWS_CLI_HISTORY_FILE="$XDG_DATA_HOME/aws/history"
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_DATA_HOME/aws/credentials"
+export BUNDLE_USER_HOME="$XDG_CONFIG_HOME/bundle"
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GOPATH="$XDG_DATA_HOME/go"
+export KUBECONFIG="$XDG_CONFIG_HOME/kube/config"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR/npm"
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
-# Smaller activation than mise's script. Still messes with my path that I don't love.
-_mise_hook() { eval "$($HOME/.local/bin/mise hook-env --shell-pid $$ -s zsh "$@")"; }
-_mise_hook_precmd() { _mise_hook --reason precmd }
-_mise_hook_chpwd() { _mise_hook --reason chpwd }
-add-zsh-hook precmd _mise_hook_precmd
-add-zsh-hook chpwd _mise_hook_chpwd
-_mise_hook --force
+alias ls='ls -GoAhFD "%d/%m/%y %H:%M"'
+
+eval "$($DOTBIN/dot zsh)"

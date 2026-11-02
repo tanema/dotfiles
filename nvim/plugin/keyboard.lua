@@ -41,6 +41,7 @@ local keymap = {
   { { "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP hover signature help" } },
   { { "n" }, "<leader>f", ':!echo "%" | pbcopy<CR><CR>', { desc = "quickly copy filename of current file" } },
   { { "n" }, "<leader>r", ":vsplit | terminal %<CR>", { desc = "run current file" } },
+  { { "n" }, "-", "<Plug>(nvim-dir-up)", { desc = "go up to directory" } },
 }
 
 for _, params in ipairs(keymap) do
