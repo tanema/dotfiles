@@ -1,6 +1,7 @@
 brew 'git'
 brew 'rg'
 brew 'jq'
+brew 'yq'
 brew 'gnupg'
 cask 'ghostty'
 brew 'neovim', args: ["HEAD"]
