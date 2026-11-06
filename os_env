@@ -14,22 +14,6 @@ WORKSPACE="$HOME/workspace"
 DOTFILES="$WORKSPACE/dotfiles"
 DOTBIN="$DOTFILES/bin"
 
-# Setting the $PATH variable to ensure a clean and properly ordered $PATH in every 
-# environment without having to touch /etc/paths which requires sudo. It also 
-# ensures that if anything has touched my /etc/paths it will no get touched anyways.
-PATH=""                        # reset so my path to empty.
-PATH=$HOME/.local/bin          # custom local system commands if I make them.
-PATH=$PATH:$GOPATH/bin         # golang tools
-PATH=$PATH:$CARGO_HOME/bin     # rust tools
-PATH=$PATH:/opt/homebrew/bin   # homebrew
-PATH=$PATH:/opt/homebrew/sbin  # homebrew
-PATH=$PATH:/usr/local/bin      # local takes precedence over /usr
-PATH=$PATH:/usr/local/sbin     # local takes precedence over /usr
-PATH=$PATH:/usr/bin            # usr takes precedence over /
-PATH=$PATH:/usr/sbin           # usr takes precedence over /
-PATH=$PATH:/bin                # root tools
-PATH=$PATH:/sbin               # root tools
-
 # VISUAL: Programs check VISUAL first, fall back to EDITOR if unset or in a dumb terminal
 # MANPAGER: overrides PAGER specifically for man pages, taking precedence over both PAGER and the man default
 # LANG: controls encoding, sorting, date formats, and more across all programs
@@ -83,3 +67,23 @@ ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 CARGO_HOME="$XDG_DATA_HOME/cargo"
+RBENV_ROOT="$XDG_DATA_HOME/rbenv"
+NVM_DIR="$XDG_CONFIG_HOME/nvm"
+
+
+# Setting the $PATH variable to ensure a clean and properly ordered $PATH in every 
+# environment without having to touch /etc/paths which requires sudo. It also 
+# ensures that if anything has touched my /etc/paths it will no get touched anyways.
+PATH=""                        # reset so my path to empty.
+PATH=$HOME/.local/bin          # custom local system commands if I make them.
+PATH=$PATH:$GOPATH/bin         # golang tools
+PATH=$PATH:$CARGO_HOME/bin     # rust tools
+PATH=$PATH:$RBENV_ROOT/shims   # rbenv ruby shims
+PATH=$PATH:/opt/homebrew/bin   # homebrew
+PATH=$PATH:/opt/homebrew/sbin  # homebrew
+PATH=$PATH:/usr/local/bin      # local takes precedence over /usr
+PATH=$PATH:/usr/local/sbin     # local takes precedence over /usr
+PATH=$PATH:/usr/bin            # usr takes precedence over /
+PATH=$PATH:/usr/sbin           # usr takes precedence over /
+PATH=$PATH:/bin                # root tools
+PATH=$PATH:/sbin               # root tools
