@@ -1,86 +1,88 @@
 {
-	"outputStyle": "Explanatory",
-	"spinnerTipsEnabled": false,
-	"awaySummaryEnabled": false,
-	"companyAnnouncements": [],
-	"tui": "fullscreen",
-	"theme": "custom:timscheme",
-	"showTurnDuration": true,
-	"editormode": "vim",
-	"effort": "medium",
-	"permissions": {
-		"defaultMode": "auto"
-	},
-	"hooks": {
-		"PreToolUse": [
-			{
-				"matcher": "Bash",
-				"hooks": [
-					{
-						"type": "command",
-						"command": "rtk hook claude"
-					}
-				]
-			}
-		],
-		"UserPromptSubmit": [
-			{
-				"hooks": [
-					{
-						"type": "command",
-						"command": "dot coffee"
-					}
-				]
-			}
-		],
-		"Stop": [
-			{
-				"hooks": [
-					{
-						"type": "command",
-						"command": "dot turkey"
-					}
-				]
-			}
-		]
-	},
-	"statusLine": {
-		"type": "command",
-		"command": "bash $HOME/workspace/dotfiles/bin/claude_statusline.sh"
-	},
-	"enabledPlugins": {
-		"typescript-lsp@claude-plugins-official": true,
-		"gopls-lsp@claude-plugins-official": true,
-		"ruby-lsp@claude-plugins-official": true,
-		"lua-lsp@claude-plugins-official": true,
-		"rust-analyzer-lsp@claude-plugins-official": true,
-		"swift-lsp@claude-plugins-official": true,
-		"i-have-adhd@i-have-adhd": true,
-		"svelte@svelte": true
-	},
-	"extraKnownMarketplaces": {
-		"claude-plugins-official": {
-			"source": {
-				"source": "github",
-				"repo": "anthropics/claude-plugins-official"
-			}
-		},
-		"i-have-adhd": {
-			"source": {
-				"source": "github",
-				"repo": "ayghri/i-have-adhd"
-			}
-		}
-	},
-	"spinnerVerbs": {
-		"mode": "replace",
-		"verbs": [
-			"🪦",
-			"💀",
-			"⚰️",
-			"👻",
-			"☠️",
-			"🎃"
-		]
-	}
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dot coffee"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dot turkey"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash $HOME/workspace/dotfiles/bin/claude_statusline.sh"
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "i-have-adhd@i-have-adhd": true,
+    "svelte@svelte": true,
+    "clangd-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "i-have-adhd": {
+      "source": {
+        "source": "github",
+        "repo": "ayghri/i-have-adhd"
+      }
+    }
+  },
+  "outputStyle": "Explanatory",
+  "spinnerTipsEnabled": false,
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "🪦",
+      "💀",
+      "⚰️",
+      "👻",
+      "☠️",
+      "🎃"
+    ]
+  },
+  "awaySummaryEnabled": false,
+  "companyAnnouncements": [],
+  "tui": "fullscreen",
+  "theme": "custom:timscheme",
+  "showTurnDuration": true,
+  "skipAutoPermissionPrompt": true,
+  "editormode": "vim",
+  "effort": "medium"
 }
