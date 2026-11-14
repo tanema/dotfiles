@@ -2,8 +2,9 @@
 # A swiss army knife to support my dotfiles, it used to be a makefile but I have
 # found that a shell script is more flexible and fun to work with. It still could
 # be a makefile, but thats up to you.
-set -euo pipefail
+set -eo pipefail
 
+VERBOSE="$VERBOSE"
 DOTFILES="$HOME/workspace/dotfiles"
 COLORSCHEME="$DOTFILES/colorscheme/orlok.json"
 CAFFIENE_PID_FILE="/tmp/caffeinate.pid"
@@ -29,7 +30,7 @@ declare -A confLinks=(
 )
  
 declare -a defaultDirs=(
-	".config/claude"
+	".config/claude/themes"
 	".config/ghostty"
 	".config/git"
 	".config/homebrew"
@@ -37,6 +38,7 @@ declare -a defaultDirs=(
   ".cache/zsh"
   ".local/bin"
   ".local/run"
+ 	".local/share/gnupg"
   ".local/share/less"
   ".local/share/zsh"
   ".local/state"
@@ -82,15 +84,25 @@ function banner() {
   echo $RESET
 }
 
+function log() {
+	if [[ -z "$VERBOSE" ]]; then; return 0; fi
+	echo "$@"
+}
+
 function ensure_default_files() {
+	log "DOT: ensure default files"
 	for item in "${defaultDirs[@]}"; do
+		log "  mkdir -p ~/$item"
 		mkdir -p "$HOME/$item"
 	done
+	log "  touch ~/.config/git/config.local"
   touch "$HOME/.config/git/config.local"
 }
 
 function link_config_files() {
+	log "DOT: link config files"
 	for key value in "${(@kv)confLinks}"; do 
+		log "  ln -sf dotfiles/$key ~/$value" 
 		ln -sf "$DOTFILES/$key" "$HOME/$value"
 	done
 }
@@ -99,6 +111,7 @@ function install_homebrew() {
  	if command -v brew >/dev/null 2>&1; then
 		return 0
 	fi
+ 	log "DOT: installing homebrew"
 	NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 }
@@ -124,6 +137,7 @@ function dot_update() {
 }
 
 function dot_brew() {
+ 	log "DOT: brew bundle install --global"
  	brew bundle install --global --upgrade --force-cleanup
 }
 
@@ -133,8 +147,10 @@ function dot_reload() {
 }
 
 function dot_gpg() {
-  GPG_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
-  if [[ ! -z "$GPG_COUNT" ]]; then; return 0; fi
+ 	log "DOT: gpg"
+	GPG_KEY_COUNT=$(gpg --list-keys --with-colons 2>/dev/null | grep -c '^pub:')
+  if [[ ! -z "$GPG_KEY_COUNT" ]]; then; return 0; fi
+ 	log "DOT: gpg setup"
   gpg --default-new-key-algo rsa4096 --gen-key
   gpg --armor --export $(gpg --list-keys --with-colons --with-fingerprint | awk -F: '/^fpr:/ { print $10 }' | tail -n 1) | pbcopy
   open "https://github.com/settings/keys"
@@ -142,11 +158,13 @@ function dot_gpg() {
 }
 
 function dot_ssh() {
+ 	log "DOT: ssh"
   # Ensure we have our ssh key setup if this is the first time.
-  if [ -f "$HOME/.ssh/id_rsa" ]; then
-    return 0
-  fi
+  if [[ -f "$HOME/.ssh/id_rsa" ]]; then; 
+		return 0; 
+	fi
 
+ 	log "DOT: ssh setup"
   mkdir -p "$HOME/.ssh"
   read -r "ssh_email?Enter your email for the SSH key: "
   ssh-keygen -t rsa -b 4096 -C "$ssh_email"
@@ -158,6 +176,7 @@ function dot_ssh() {
 }
 
 function dot_macos() {
+ 	log "DOT: macos defaults"
   defaults write NSGlobalDomain AppleFontSmoothing -int 1 # Enable subpixel font rendering on non-Apple LCDs 
   defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
   defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false # Disable press-and-hold for keys in favor of key repeat
@@ -210,6 +229,7 @@ function dot_macos() {
 }
 
 function dot_theme() {
+	log "DOT: generating theme"
   # source the colorscheme variables as env vars to use in envsubst
   $(jq -r 'keys[] as $k | "export \($k)=\(.[$k])"' "$COLORSCHEME")
   mkdir -p "$XDG_CONFIG_HOME/claude/themes"
@@ -220,6 +240,7 @@ function dot_theme() {
 }
 
 function dot_neovim() {
+	log "DOT: updating neovim pkgs"
   nvim --headless --cmd ":lua vim.cmd('packupdate'); os.exit(0)"
   echo '' # the last command has no newline
 }
